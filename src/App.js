@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import {Route, Switch} from "react-router-dom";
 import CookPage from './components/cookpage/cook';
@@ -13,7 +13,7 @@ class App extends Component {
                   <Route path="/cook" component={CookPage}/>
             
               </Switch>
-              <Modal/>
+              
           </React.Fragment>
       );
   }
