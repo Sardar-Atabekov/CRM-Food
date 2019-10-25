@@ -1,12 +1,17 @@
-.item {
-    margin: 20px auto;
-    width: 30%;
+.item {    
     background: #FFFFFF;
 }
 
-
 body {
-    background: #DFDFDF;
+    background: #E4E4E4;
+}
+.wrapper {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2vw;
+    margin: 10px 10px;
+    
 }
 header {
     display: flex;
