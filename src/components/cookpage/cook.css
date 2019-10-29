@@ -35,5 +35,20 @@ button {
     background: #E7B10E;
     border: none;
     font-size: 18px;
-
 }
+
+.comments {
+    padding: 10px 20px;
+}
+
+.item header .tableNumber {
+    padding: 0 10px;
+}
+.item li {
+    display: flex;
+    margin: 15px 10px;
+    justify-content: space-between;
+}
+/* .notReady {
+    background-image: url(/ikonka-green.jpg);
+} */

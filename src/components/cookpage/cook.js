@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './cook.css';
-
+import сheckStatusFood  from "./check.js";
 
 const API = 'https://neobiscrmfood.herokuapp.com/api/';
 const DEFAULT_QUERY = 'cook/getactiveorders';
+
 
 
 class CookPage extends Component {
@@ -16,6 +17,8 @@ class CookPage extends Component {
       error: null,
     };
   }
+  
+  
   
   async componentDidMount() {
     this.setState({ isLoading: true });
@@ -39,20 +42,20 @@ class CookPage extends Component {
     if (error) {
       return <p>{error.message}</p>;
     }
+    console.log(data);
     if (isLoading) {
       return <p>Loading ...</p>;
     }
-
- 
-        return (
+    
+     return (
             <div className="wrapper">
-            {console.log(data)}
+           
             {      
                 
                 data.map(a=>
                     <div className="item" key={a.id}>
                         <header>
-                            <span className="tableNumber">{a.id}</span>
+                            <span className="tableNumber">№{a.id}</span>
                             <span className="orderTime">{
                             new Date(a.dateTimeOrdered).getHours()+":"
                             +new Date(a.dateTimeOrdered).getMinutes()
@@ -66,8 +69,9 @@ class CookPage extends Component {
                                 {a.comment}
                             </div>
                             
-                            <ul key>
-                            {a.mealsList.map(meal=><li key={meal.mealId}>{`${meal.mealName} x ${meal.quantity}`}</li>)}
+                            <ul>
+                            {a.mealsList.map(meal=><li key={meal.mealId}>{`${meal.mealName} x ${meal.quantity} id=${meal.mealId} `} 
+                             <img  alt="book" width="30" height="27" src={сheckStatusFood(meal.status)} /></li>)}
                             </ul>
                             
                            
