@@ -22,7 +22,7 @@ class LoginPage extends Component {
                     <form className="loginForm">
                         <input className="loginInput" type="text" placeholder="Username" /><br/>
                         <input className="loginInput" type="password" placeholder="Password" />
-                        <button>LOGIN </button><br/>
+                        <button className="loginButton">LOGIN </button><br/>
                     </form>
 
                 </div>

@@ -21,6 +21,16 @@ h1 {
     text-align: center;
 }
 
+.loginin {
+    background: #e4e4e4;
+    margin: 10px auto;
+    height: 40px;
+    color: black;
+    width: 205px;
+    padding-left: 15px;
+    border: none;
+    outline: none;
+}
 .loginInput {
     margin: 10px auto;
     height: 40px;
@@ -31,7 +41,7 @@ h1 {
     outline: none;
 }
 
-button {
+.loginButton {
     width: 220px;
     margin: 10px auto;
     height: 40px;
