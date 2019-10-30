@@ -50,8 +50,9 @@ class BarmenPage extends Component {
     }
     
      return (
-            <div className="wrapper">
-           
+          <div className="backgroundCook">
+            <div className="wrapperCook">
+
             {      
                 
                 data.map(order=>
@@ -82,6 +83,7 @@ class BarmenPage extends Component {
                 )
             }   
             </div>
+          </div>
           );
         }
     

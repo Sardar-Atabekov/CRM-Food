@@ -2,15 +2,19 @@
     background: #FFFFFF;
 }
 
-body {
-    background: #E4E4E4;
-}
-.wrapper {
+.wrapperCook {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 2vw;
     margin: 10px 10px 40px 10px;
+    
+}
+
+body {
+    background: #E4E4E4;
+    margin: 0px;
+    padding: 0px;
 }
 header {
     display: flex;
