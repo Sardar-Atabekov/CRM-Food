@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './cook.css';
-import {сheckStatusFood, checkClassName, mealReady, orderReady} from "./check";
+import './../cookpage/cook.css';
+import {сheckStatusFood, checkClassName, mealReady, orderReady} from "./../cookpage/check";
 
 const API = 'https://neobiscrmfood.herokuapp.com/api/';
 const DEFAULT_QUERY = 'cook/getactiveorders';
 
 
 
-class CookPage extends Component {
+class BarmenPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -39,7 +39,7 @@ class CookPage extends Component {
   }
   render() {
     let { data, isLoading, error } = this.state;
-    data= data.filter(a=>a.mealsList.some(s=>s.departmentName==="Кухня"));
+    data= data.filter(a=>a.mealsList.some(s=>s.departmentName==="Бар"));
     
     if (error) {
       return <p>{error.message}</p>;
@@ -89,4 +89,4 @@ class CookPage extends Component {
 }
 
 
-export default CookPage;
+export default BarmenPage;

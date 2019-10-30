@@ -126,14 +126,18 @@ async function getResource(name) {
             body:JSON.stringify(data)
         });
     };
-    postData({orderId: 6, mealId: 3}, 'https://neobiscrmfood.herokuapp.com/api/cook/closemeal');
-    // var payload = {
-    //     orderId: 9, 
-    //     mealId: 6
-    // }
+    postData({orderId: 4, mealId: 2}, 'https://neobiscrmfood.herokuapp.com/api/cook/closemeal');
     
-    // var data = new FormData();
-    // data.append( "json", JSON.stringify( payload ) );
+
+    async function putData(url) {
+      
+        const rawResponse = await fetch(url, {
+            method:'PUT'
+        });
+    };
+    putData('https://neobiscrmfood.herokuapp.com/api/cook/closeorder/8');
+
+    
     
 
    
