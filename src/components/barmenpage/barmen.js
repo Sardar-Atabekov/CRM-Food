@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+
 import './../cookpage/cook.css';
+import getData from './../requests/getData';
 import {сheckStatusFood, checkClassName, mealReady, orderReady} from "./../cookpage/check";
 
 const API = 'https://neobiscrmfood.herokuapp.com/api/';
@@ -20,34 +21,17 @@ class BarmenPage extends Component {
   
  
   
-  async componentDidMount() {
-    this.setState({ isLoading: true });
-    try {
-      const result = await axios.get(API + DEFAULT_QUERY);
- 
-      this.setState({
-        data: result.data,
-        isLoading: false,
-        
-      });
-    } catch (error) {
-      this.setState({
-        error,
-        isLoading: false
-      });
-    }
-  }
+  
   render() {
-    let { data, isLoading, error } = this.state;
+    getData(API + DEFAULT_QUERY)
+    .then((body)=> {
+        this.setState({data: body});
+    });
+    let { data} = this.state;
+    console.log(data);
     data= data.filter(a=>a.mealsList.some(s=>s.departmentName==="Бар"));
     
-    if (error) {
-      return <p>{error.message}</p>;
-    }
-    console.log(data);
-    if (isLoading) {
-      return <p>Loading ...</p>;
-    }
+    
     
      return (
           <div className="backgroundCook">
@@ -56,9 +40,9 @@ class BarmenPage extends Component {
             {      
                 
                 data.map(order=>
-                    <div className="item" key={order.orderId}>
+                    <div className="cookitem" key={order.orderId}>
                         <header>
-                            <span className="tableNumber">№{order.orderId}</span>
+                            <span className="tableNumber">{`№${order.orderId}`}</span>
                             <span className="orderTime">{
                             new Date(order.dateTimeOrdered).getHours()+":"
                             +new Date(order.dateTimeOrdered).getMinutes()

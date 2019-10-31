@@ -44,6 +44,7 @@ class CookPage extends Component {
     if (error) {
       return <p>{error.message}</p>;
     }
+    
     console.log(data);
     if (isLoading) {
       return <p>Loading ...</p>;
@@ -55,7 +56,7 @@ class CookPage extends Component {
             {      
                 
                 data.map(order=>
-                    <div className="item" key={order.orderId}>
+                    <div className="cookitem" key={order.orderId}>
                         <header>
                             <span className="tableNumber">№{order.orderId}</span>
                             <span className="orderTime">{

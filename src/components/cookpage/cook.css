@@ -1,4 +1,4 @@
-.item {    
+.cookitem {    
     background: #FFFFFF;
 }
 
@@ -16,7 +16,7 @@ body {
     margin: 0px;
     padding: 0px;
 }
-header {
+.cookitem header {
     display: flex;
     justify-content: space-between;
     background: #FFE9A6;
@@ -24,17 +24,21 @@ header {
     padding: 10px;
     align-items: center;
 }
- ul {
+.cookitem ul {
      padding: 0px;
      margin: 10px 0;
  }
-li {
+ 
+ .cookitem li {
     list-style-type: none;
     margin:  0;
     font-weight: 600;
     padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
 }
-button {
+
+.cookitem button {
     height: 30px;
     width: 150px;
     background: #E7B10E;
@@ -46,10 +50,10 @@ button {
     padding: 10px 15px;  
 }
 
-.item header .tableNumber {
+.cookitem header .tableNumber {
     padding: 0 10px;
 }
-.item li {
+.cookitem li {
     display: flex;
     justify-content: space-between;
 }

@@ -110,7 +110,7 @@ async function getResource(name) {
     //       },
     //       body: JSON.stringify({orderId: 12, mealId: 9})
     //     });
-        
+  
       
        
     //   })();
@@ -126,7 +126,28 @@ async function getResource(name) {
             body:JSON.stringify(data)
         });
     };
-    postData({orderId: 4, mealId: 2}, 'https://neobiscrmfood.herokuapp.com/api/cook/closemeal');
+    postData({
+        "userId": 3,
+        "tableId": 4,
+        "totalPrice": 230,
+        "comment": "fsfdfsdfswerwer",
+        "mealOrders": [
+          {
+            "orderId": 12,
+            "mealId": 23,
+            "meal": {
+              "categoryId": 3,
+              "name": "Jameson",
+              "description": "string",
+              "price": 230,
+              "weight": 0,
+              "imageURL": "string"
+            },
+            "quantity": 3,
+            "mealOrderStatus": 1
+          }
+        ]
+      }, 'https://neobiscrmfood.herokuapp.com/api/orders/createorder');
     
 
     async function putData(url) {
