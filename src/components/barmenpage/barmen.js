@@ -19,14 +19,16 @@ class BarmenPage extends Component {
     };
   }
   
- 
-  
-  
-  render() {
+  async componentDidMount() {
     getData(API + DEFAULT_QUERY)
     .then((body)=> {
         this.setState({data: body});
     });
+  }
+  
+  
+  render() {
+    
     let { data} = this.state;
     console.log(data);
     data= data.filter(a=>a.mealsList.some(s=>s.departmentName==="Бар"));

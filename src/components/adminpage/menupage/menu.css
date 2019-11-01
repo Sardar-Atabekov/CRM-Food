@@ -1,0 +1,22 @@
+.menuWrapper {
+    display: flex;
+
+}
+
+.menuWrapper .menu {
+    width: 20%;
+}
+
+.menuWrapper .content {
+    display: flex;
+    flex-direction: column;
+}
+
+.menuWrapper .content .item {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.menuWrapper .content .item h1 {
+    text-align: center;
+}
