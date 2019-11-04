@@ -37,7 +37,7 @@ class menuPage extends Component {
     
      return (
             <div className="menuWrapper">
-                <header className="menu"> Menu </header>   
+                <header className="menu">  </header>   
                 <main className="content">
                   {
                       data.map(item=>

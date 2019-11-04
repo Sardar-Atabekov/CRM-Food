@@ -1,0 +1,43 @@
+
+.navigationComponent {
+    display: flex;
+    flex-direction: column;
+    width:240px;
+    height: 100%;
+    background: #ffffff;
+}
+
+.neobis_logo {
+    width: 180px;
+    height: 40px;
+    margin: 10px;
+}
+
+.navbar {
+    display: flex;
+    background: #FCF9F9;    
+}
+
+
+.navbar > div {
+    border-right: #e4e4e4 solid 1px;
+}
+.navbar .input {
+    margin-left: 20px;
+   
+    height: 50px;
+}
+.navbar .navbar-search {
+    width: 965px;
+    height: 50px;
+    margin: 0px;
+    border: none;
+}
+.navigationComponent .categories {
+    padding: .9375rem 1.5625rem;
+}
+a {
+    text-decoration: none;
+}
+
+

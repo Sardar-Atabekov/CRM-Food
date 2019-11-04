@@ -3,7 +3,7 @@ import getData from '../../requests/getData';
 import './meals.css';
 
 const API = 'https://neobiscrmfood.herokuapp.com/api/';
-const DEFAULT_QUERY = 'meals';
+const DEFAULT_QUERY = 'admin/getmeals';
 
 
 
@@ -54,7 +54,7 @@ class MealsPage extends Component {
                           <td>{meal.name}</td>
                           
                           <td>{meal.categoryName}</td>
-                          <td>
+                          <td>{meal.status} 
                              <label className="switch">
                                 <input type="checkbox"/>
                                 <span className="slider round"></span>

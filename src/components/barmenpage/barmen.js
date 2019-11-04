@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 
 import './../cookpage/cook.css';
 import getData from './../requests/getData';
-import {сheckStatusFood, checkClassName, mealReady, orderReady} from "./../cookpage/check";
+import {сheckStatusFood, checkClassName, mealReady, orderReady} from "./check";
 
 const API = 'https://neobiscrmfood.herokuapp.com/api/';
-const DEFAULT_QUERY = 'cook/getactiveorders';
+const DEFAULT_QUERY = 'barman/getActiveOrders';
 
 
 
@@ -25,6 +25,7 @@ class BarmenPage extends Component {
         this.setState({data: body});
     });
   }
+  
   
   
   render() {
