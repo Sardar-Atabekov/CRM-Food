@@ -1,6 +1,6 @@
 
 
-async function postData(data, url) {
+async function postData(url, data) {
     let API = 'https://neobiscrmfood.herokuapp.com/api' + url; 
     await fetch(API, {
         method:'POST',

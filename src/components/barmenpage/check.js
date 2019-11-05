@@ -22,7 +22,7 @@ function mealReady(event) {
     orderId: parent.getAttribute('orderid'),
     mealId: event.target.getAttribute('mealid')
   };
-  postData(data, '/barman/closemeal');
+  postData( '/barman/closemeal', data);
 }
 
 

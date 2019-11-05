@@ -5,6 +5,7 @@ import './adduser.css';
 import Navigation from '../../block/navigation.js';
 import Search from '../../block/search.js';
 import operatorImg from '../../images/Screenshot.png';
+import postData from '../../requests/postData';
 
 const API = 'https://neobiscrmfood.herokuapp.com/api/';
 const DEFAULT_QUERY = 'users';
@@ -30,11 +31,8 @@ class addUser extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.target);
-    console.log(data);
-    fetch('https://neobiscrmfood.herokuapp.com/api/users', {
-      method: 'POST',
-      body: data,
-    });
+    postData('/users/', data);
+    
   }
 
   handleInputChange(event) {
