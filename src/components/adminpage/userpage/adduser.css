@@ -1,0 +1,192 @@
+
+.addUser {
+    background-color: #fff;
+    border: none;
+    border-radius: .625rem;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,.1),
+                0 0.9375rem 1.40625rem rgba(90,97,105,.1), 
+                0 0.25rem 0.53125rem rgba(90,97,105,.12), 
+                0 0.125rem 0.1875rem rgba(90,97,105,.1);
+    margin: 40px auto;
+    width: 804px;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    
+}
+
+.addUser .formBlock {
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+    margin-top: 20px;
+}
+.addUser .form-row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+    width: 524px;
+}
+
+
+.addUser .form-row .form-group {
+    display: flex;
+    flex-direction: column;
+    width: 252px;
+    margin-bottom: 1rem;
+    height: 66px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+ 
+
+.addUser .form-row label {
+    margin-bottom: .5rem;
+}
+.addUser .form .form-control {
+    height: auto;
+    padding: .4375rem .75rem;
+    font-size: .8125rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #e1e5eb;
+    font-weight: 300;
+    will-change: border-color,box-shadow;
+    border-radius: .25rem;
+    box-shadow: none;
+    transition: box-shadow 250ms cubic-bezier(.27,.01,.38,1.06),border 250ms cubic-bezier(.27,.01,.38,1.06);
+}
+
+.title-block {
+    margin-bottom: 1rem;
+}
+.addUser .form-title h6 {
+    margin:0px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-weight: 400;
+    color: #3d5170;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.addUser .form-title .form-text {
+    margin: 0px;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+.addUser .form-row .select {
+    height: calc(2.09375rem + 2px);
+    padding: .375rem 1.75rem .375rem .75rem;
+    line-height: 1.5;
+    color: #495057;
+    background-size: 8px 10px;
+    border: 1px solid #e1e5eb;
+    font-weight: 300;
+    font-size: .8125rem;
+    transition: box-shadow 250ms cubic-bezier(.27,.01,.38,1.06),border 250ms cubic-bezier(.27,.01,.38,1.06);
+    border-radius: .25rem;
+}
+
+.addUser .form {
+    display: flex;
+    flex-flow: wrap;
+}
+ .card-header {
+    overflow: hidden;
+    border-radius: .625rem .625rem 0 0;
+}
+.edit-user-details__bg {
+    width: 100%;
+    position: relative;
+    max-height: 7.1875rem;
+}
+
+.edit-user-details__bg img {
+    width: 802px;
+    height: 115px;
+}
+
+.user__avatar {
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    margin: 30px auto;
+    max-width: 7.5rem;
+    box-shadow: 0 2px 0 rgba(90,97,105,.11), 0 4px 8px rgba(90,97,105,.12), 0 10px 10px rgba(90,97,105,.06), 0 7px 70px rgba(90,97,105,.1);
+}
+
+.userProfilePicture {
+    width: 240px;
+    padding-top: 0;
+}
+
+
+
+.text-center {
+    text-align: center!important;
+    width:100%;
+    margin-left: 67px;
+    margin-bottom: 1.5rem!important;
+}
+.user__avatar img {
+    width: 120px;
+    height: 120px;
+}
+.user__avatar__change {
+    margin: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 1.875rem;
+    background: rgba(255,255,255,.95);
+    transition: all 250ms cubic-bezier(.27,.01,.38,1.06);
+}
+
+
+.commentBlock textarea {
+    margin-top: 20px;
+    width: 370px;
+    height: 70px !important;
+}
+
+.btn {
+    font-weight: 400;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    border: 1px solid transparent;
+    padding: .5625rem 1rem;
+    font-size: .75rem;
+    line-height: 1.125;
+    border-radius: .25rem;
+    transition: all 250ms cubic-bezier(.27,.01,.38,1.06);
+}
+
+.btnSumbit {
+    background: green;
+    color: white;
+    font-weight: 500;
+    font-size: .6875rem;
+    padding: 0 40px;
+    border-radius: .25rem;
+    height: 30px;
+    margin-left: 200px;
+    margin-top: 80px;
+}
+
