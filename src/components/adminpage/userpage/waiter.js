@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import getData from '../../requests/getData';
+import {getData} from "./../../requests";
 import './waiter.css';
 import Navigation from '../../block/navigation.js';
 import Search from '../../block/search.js';
@@ -32,7 +32,7 @@ class waiterPage extends Component {
        
     
     
-    
+
      return (
             <div className="wrapper">
                 <Navigation/> 

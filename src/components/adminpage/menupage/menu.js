@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import getData from '../../requests/getData';
+import {getData} from "./../../requests";
 import './menu.css';
 
 const API = 'https://neobiscrmfood.herokuapp.com/api/';

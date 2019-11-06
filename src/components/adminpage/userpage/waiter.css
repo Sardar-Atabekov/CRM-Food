@@ -12,7 +12,9 @@
     flex-direction: column;    
 }
 
-
+.waiterContent .form {
+    display: flex;
+}
 .waiterContent th {
     padding: 20px 13px;
 }

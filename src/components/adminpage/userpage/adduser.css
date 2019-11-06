@@ -100,7 +100,7 @@
     border-radius: .25rem;
 }
 
-.addUserContent .addUser .form {
+.addUserContent  .form {
     display: flex;
     flex-flow: wrap;
 }
@@ -191,3 +191,6 @@
     margin-top: 80px;
 }
 
+.pos {
+    position: relative;
+}

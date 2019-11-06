@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import './../cookpage/cook.css';
-import getData from './../requests/getData';
+import {getData} from "./../requests";
 import {сheckStatusFood, checkClassName, mealReady, orderReady} from "./check";
 
 const API = 'https://neobiscrmfood.herokuapp.com/api/';

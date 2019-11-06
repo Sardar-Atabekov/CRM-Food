@@ -54,7 +54,7 @@ class addUser extends Component {
     
      return (
             <div className="wrapper">
-                <aside>
+                <aside className="pos">
                   <Navigation/> 
                 </aside>
                

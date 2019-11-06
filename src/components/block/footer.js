@@ -12,7 +12,7 @@ class Footer extends Component {
                 <Link to={'/admin'} className="categories">Home</Link>
                 <Link to={'/cooker'} className="categories">Cooker</Link>
                 <Link to={'/barmen'} className="categories">Barmen</Link>
-                <Link className="categories">Бар</Link>
+                
                 
             </nav>   
                 
