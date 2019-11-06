@@ -5,29 +5,34 @@
     width:240px;
     height: 100%;
     background: #ffffff;
+    
 }
 
+
+.navigationComponent a {
+    color: #3d5170;
+}
 .neobis_logo {
     width: 180px;
     height: 40px;
     margin: 10px;
 }
 
-.navbar {
+.serchNavbar {
     display: flex;
     background: #FCF9F9;    
 }
 
 
-.navbar > div {
+.serchNavbar > div {
     border-right: #e4e4e4 solid 1px;
 }
-.navbar .input {
+.serchNavbar .input {
     margin-left: 20px;
    
     height: 50px;
 }
-.navbar .navbar-search {
+.serchNavbar .navbar-search {
     width: 965px;
     height: 50px;
     margin: 0px;

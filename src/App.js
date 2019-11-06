@@ -19,7 +19,7 @@ class App extends Component {
                   <Route path="/barmen" exact component={BarmenPage}/>
                   <Route path="/cook" exact component={CookPage}/>
                   <Route path="/admin" exact component={adminPage}/>
-                  <Route path="/waiter" exact component={waiterPage}/>
+                  <Route path="/users" exact component={waiterPage}/>
                   <Route path="/menu" exact component={menuPage}/>
                   <Route path="/admin/meals" exact component={MealsPage}/>
                   <Route path="/meals" exact component={MealsPage}/>

@@ -1,54 +1,54 @@
 
-.waiterWrapper {
+.wrapper {
     display: flex;
     background: #F4F5F7;
     width: 100%;
     height:  100%;
-   
-    
+
 }
 
-.waiterWrapper .container {
+.wrapper .waiterContent {
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column;    
 }
 
 
-.waiterWrapper th {
+.waiterContent th {
     padding: 20px 13px;
 }
 
-.waiterWrapper .content {
+.waiterContent  {
     background: #ffffff;
     margin: 20px;
 }
-.waiterWrapper td, .waiterWrapper th {
+.waiterContent td, .waiterContent th {
     border: #e4e4e4 1px solid;
     margin: 0px;
    
     text-align: center;
 }
-
-.waiterWrapper tr {
+.waiterContent td {
+    padding: 0px 5px;
+}
+.waiterContent tr {
     border: black 1px solid;
     margin: 0px;
     padding: 3px;
 }
 
-.waiterWrapper .avatar {
+.waiterContent .avatar {
     padding: 0;
     padding-top: 5px;
     text-align: center;
 }
-.waiterWrapper .avatar img {
+.waiterContent .avatar img {
     border-radius: 50%;
     background:url(https://image.freepik.com/free-icon/_318-10391.jpg);
     width: 60px;
     height: 60px;
 }
 
-.waiterWrapper table {
+.waiterContent table {
     width: 1250px;
     border-collapse: collapse; 
     line-height: 1.1;

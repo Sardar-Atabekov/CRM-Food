@@ -17,7 +17,7 @@ class Search extends Component {
   render() {
       
      return (
-            <nav className="navbar">
+            <nav className="serchNavbar">
                   <div className="input">
                      <div className="input-group-prepend">
                          <div className="input-group-text">

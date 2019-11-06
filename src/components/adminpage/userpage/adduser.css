@@ -1,5 +1,5 @@
 
-.addUser {
+.addUserContent  {
     background-color: #fff;
     border: none;
     border-radius: .625rem;
@@ -22,12 +22,11 @@
     
 }
 
-.addUser .formBlock {
-    margin-right: 1.5rem;
-    margin-left: 1.5rem;
-    margin-top: 20px;
+.addUserContent  .formBlock {
+    
+    margin: 20px 1.5rem;
 }
-.addUser .form-row {
+.addUserContent  .form-row {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
@@ -38,7 +37,7 @@
 }
 
 
-.addUser .form-row .form-group {
+.addUserContent  .form-row .form-group {
     display: flex;
     flex-direction: column;
     width: 252px;
@@ -49,10 +48,10 @@
 }
  
 
-.addUser .form-row label {
+.addUserContent  .form-row label {
     margin-bottom: .5rem;
 }
-.addUser .form .form-control {
+.addUserContent  .form .form-control {
     height: auto;
     padding: .4375rem .75rem;
     font-size: .8125rem;
@@ -70,7 +69,8 @@
 .title-block {
     margin-bottom: 1rem;
 }
-.addUser .form-title h6 {
+
+.addUserContent  .form-title h6 {
     margin:0px;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
     font-weight: 400;
@@ -79,7 +79,7 @@
     line-height: 1.5rem;
 }
 
-.addUser .form-title .form-text {
+.addUserContent  .form-title .form-text {
     margin: 0px;
 }
 
@@ -87,7 +87,7 @@
     box-sizing: border-box;
 }
 
-.addUser .form-row .select {
+.addUserContent  .form-row .select {
     height: calc(2.09375rem + 2px);
     padding: .375rem 1.75rem .375rem .75rem;
     line-height: 1.5;
@@ -100,26 +100,27 @@
     border-radius: .25rem;
 }
 
-.addUser .form {
+.addUserContent .addUser .form {
     display: flex;
     flex-flow: wrap;
 }
- .card-header {
+
+.addUserContent .card-header {
     overflow: hidden;
     border-radius: .625rem .625rem 0 0;
 }
-.edit-user-details__bg {
+.addUserContent .edit-user-details__bg {
     width: 100%;
     position: relative;
     max-height: 7.1875rem;
 }
 
-.edit-user-details__bg img {
+.addUserContent .edit-user-details__bg img {
     width: 802px;
     height: 115px;
 }
 
-.user__avatar {
+.addUserContent .user__avatar {
     border-radius: 50%;
     overflow: hidden;
     position: relative;
@@ -128,24 +129,24 @@
     box-shadow: 0 2px 0 rgba(90,97,105,.11), 0 4px 8px rgba(90,97,105,.12), 0 10px 10px rgba(90,97,105,.06), 0 7px 70px rgba(90,97,105,.1);
 }
 
-.userProfilePicture {
+.addUserContent .userProfilePicture {
     width: 240px;
     padding-top: 0;
 }
 
 
 
-.text-center {
+.addUserContent .text-center {
     text-align: center!important;
     width:100%;
     margin-left: 67px;
     margin-bottom: 1.5rem!important;
 }
-.user__avatar img {
+.addUserContent .user__avatar img {
     width: 120px;
     height: 120px;
 }
-.user__avatar__change {
+.addUserContent .user__avatar__change {
     margin: 0;
     top: 0;
     left: 0;
@@ -161,13 +162,13 @@
 }
 
 
-.commentBlock textarea {
+.addUserContent .commentBlock textarea {
     margin-top: 20px;
     width: 370px;
     height: 70px !important;
 }
 
-.btn {
+.addUserContent .btn {
     font-weight: 400;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
     border: 1px solid transparent;
@@ -178,7 +179,7 @@
     transition: all 250ms cubic-bezier(.27,.01,.38,1.06);
 }
 
-.btnSumbit {
+.addUserContent .btnSumbit {
     background: green;
     color: white;
     font-weight: 500;
