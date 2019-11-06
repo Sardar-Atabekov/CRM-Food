@@ -53,7 +53,7 @@ class MealsPage extends Component {
                                                 
                           <td>{meal.name}</td>
                           
-                          <td>{meal.categoryName}</td>
+                          <td>{meal.category}</td>
                           <td>{meal.status} 
                              <label className="switch">
                                 <input type="checkbox"/>

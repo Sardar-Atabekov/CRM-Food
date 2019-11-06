@@ -40,6 +40,7 @@ class waiterPage extends Component {
                 <aside>
                   <Navigation/> 
                 </aside>
+                <div className="container">
                 <header>
                   <Search/>
                  
@@ -93,6 +94,7 @@ class waiterPage extends Component {
                   
                 </main>
                 <footer>footer</footer>
+                </div>
             </div>
           );
         }
