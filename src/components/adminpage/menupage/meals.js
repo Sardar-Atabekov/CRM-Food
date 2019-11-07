@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import getData from '../../requests/getData';
+import {getData, putData} from '../../requests';
 import './meals.css';
-
+import Navigation from '../../block/navigation.js';
+import Search from '../../block/search.js';
+import Footer from '../../block/footer.js';
 const API = 'https://neobiscrmfood.herokuapp.com/api/';
 const DEFAULT_QUERY = 'admin/getmeals';
 
@@ -23,6 +25,10 @@ class MealsPage extends Component {
     });
   }
 
+  // handleCheck(event) {
+  //     let mealid = event.target.getAttribute('mealid');
+  //     putData(`/admin/changeMealStatus/${mealid}`);
+  // }
   
 
   render() {
@@ -32,10 +38,12 @@ class MealsPage extends Component {
     
     
      return (
-            <div className="menuWrapper">
-                <header className="menu"> Menu </header>   
-                <main className="content">
-                <table>
+            <div className="wrapper">
+                <aside className="navBlock"><Navigation/></aside>     
+                <main className="container">
+                    <header className="main-search"><Search/></header> 
+                    <div className="mealsContent">
+                      <table>
                         <tbody>
                         <tr> 
                             <th>Названия</th> 
@@ -54,29 +62,55 @@ class MealsPage extends Component {
                           <td>{meal.name}</td>
                           
                           <td>{meal.category}</td>
-                          <td>{meal.status} 
-                             <label className="switch">
-                                <input type="checkbox"/>
-                                <span className="slider round"></span>
-                            </label>
+                          <td>
+                            <label className="switch">
+                              <input type="checkbox" mealid={meal.id} onChange={()=>{
+                                putData(`/admin/changeMealStatus/${meal.id}`);
+                              }} defaultChecked={meal.status === "Have"? true:false}/>
+                              <span className="slider round"></span>
+                            </label>    
+                                                  
                           </td>
                           <td>{meal.weight}</td>
-                          <td>{meal.price}</td>
+                          <td>{meal.price} сом</td>
                         </tr>
                        
                     
                     )  }
                         </tbody>
-                    </table>                
-                  
+                       </table> 
+                   </div>             
+                    <footer className="main-footer"><Footer/></footer>  
                 </main>
-            
+                    
             </div>
           );
         }
     
     
 }
+// var Checkbox = React.createClass({
+//   getInitialState: function() {
+//     return {checked: true}
+//   },
+//   handleCheck: function() {
+//     this.setState({checked: !this.state.checked});
+//   },
+//   render: function() {
+//     var msg;
+//     if (this.state.checked) {
+//       msg = "checked";
+//     } else {
+//       msg = "unchecked";
+//     }
+//     return (
+//       <div>
+//         <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked}/>
+//         <p>this box is {msg}.</p>
+//       </div>
+//     );
+//   }
+// });
 
 
 export default MealsPage;

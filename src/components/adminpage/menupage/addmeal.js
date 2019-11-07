@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './waiter.css';
-import './adduser.css';
+// import './waiter.css';
+// import './adduser.css';
 import Navigation from '../../block/navigation.js';
 import Search from '../../block/search.js';
 import Footer from '../../block/footer.js';
@@ -56,15 +56,9 @@ class addUser extends Component {
             <div className="wrapper">
                 <aside className="navBlock"><Navigation/></aside>               
                 <div className="container">
-                  <header className="main-search"><Search/></header> 
-                  <main className="addUserContent">
-                      <div className="card-header p-0">
-                        <div className="edit-user-details__bg">
-                          <img src="https://www.texasheart.org/wp-content/uploads/2018/08/thi-christmas-lights-defocused-background-Bokeh-Gold-Blue.jpg" alt="BackgroundImage" />
-                        
-                        </div>
-                      </div>
-                      <div className="formBlock">
+                    <header className="main-search"><Search/></header> 
+                    <main className="addmeal">
+                    <div className="formBlock">
                           <div className="title-block">
                             <div className="form-title">
                               <h6 className="form-text">User profile</h6>
@@ -165,8 +159,9 @@ class addUser extends Component {
                               
                           </form>
                       </div>
-                  </main>
-                  <footer className="main-footer"><Footer/></footer>
+                  
+                    </main>
+                    <footer className="main-footer"><Footer/></footer>
                 </div>
                 
             </div>

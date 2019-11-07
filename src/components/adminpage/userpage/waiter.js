@@ -35,9 +35,9 @@ class waiterPage extends Component {
 
      return (
             <div className="wrapper">
-                <Navigation/> 
+                <aside className="navBlock"><Navigation/></aside>  
                 <div className="container">
-                  <header className="main-secrh"><Search/></header> 
+                  <header className="main-search"><Search/></header> 
                   <main className="waiterContent">
                       
                       <table>

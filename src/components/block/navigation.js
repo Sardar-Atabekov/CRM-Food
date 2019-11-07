@@ -26,10 +26,10 @@ class Navigation extends Component {
                 <Link className="categories">Бар</Link>
                 <Link className="categories">История транзакции</Link>
                 <Link to={'/users'} className="categories">Пользователи</Link>
-                <Link className="categories">Список блюд</Link>
-                <Link className="categories">Категории</Link>
-                <Link className="categories">Столы</Link>
-                <Link className="categories">Бронирования</Link>
+                <Link to={'/meals'} className="categories">Список блюд</Link>
+                <Link to={'/meals'} className="categories">Категории</Link>
+                <Link to={'/meals'}  className="categories">Столы</Link>
+                <Link to={'/meals'}  className="categories">Бронирования</Link>
             </nav>   
                 
           );

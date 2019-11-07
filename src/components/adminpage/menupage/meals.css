@@ -1,25 +1,25 @@
-.menuWrapper {
+.mealsContent {
     display: flex;
-    padding: 20px;
+    margin: 20px;
     background: #ffffff;
    
 }
 
-.menuWrapper table {
+.mealsContent table {
     border-collapse: collapse; 
     line-height: 1.1;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     
 }
 
-.menuWrapper td, .menuWrapper th {
+.mealsContent td, .mealsContent th {
     border: #e4e4e4 1px solid;
     margin: 0px;
     padding: 15px 15px;
     text-align: center;
 }
 
-.menuWrapper tr {
+.mealsContent tr {
     border: black 1px solid;
     margin: 0px;
     padding: 3px;
@@ -29,20 +29,20 @@
 
 /* switch */
 
-.menuWrapper .switch {
+.mealsContent .switch {
     position: relative;
     display: inline-block;
     width: 50px;
     height: 24px;
   }
   
-  .menuWrapper .switch input { 
+  .mealsContent .switch input { 
     opacity: 0;
     width: 0;
     height: 0;
   }
   
-  .menuWrapper .slider {
+  .mealsContent .slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -54,7 +54,7 @@
     transition: .4s;
   }
   
-  .menuWrapper  .slider:before {
+  .mealsContent  .slider:before {
     position: absolute;
     content: "";
     height: 22px;
@@ -66,21 +66,30 @@
     transition: .4s;
   }
   
-  .menuWrapper input:checked + .slider {
+  .mealsContent input:checked + .slider {
     background-color: green;
   }
   
-  .menuWrapper input:checked + .slider:before {
+  .mealsContent input:checked + .slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
   }
   
   /* Rounded sliders */
-  .menuWrapper  .slider.round {
+  .mealsContent  .slider.round {
     border-radius: 34px;
   }
   
-  .menuWrapper .slider.round:before {
+  .mealsContent .slider.round:before {
     border-radius: 50%;
   }
+
+  .mealsContent .active {
+    background-color: green;
+  }
+
+  .mealsContent .noactive {
+    background-color: red;
+  }
+
