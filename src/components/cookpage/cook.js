@@ -56,7 +56,7 @@ class CookPage extends Component {
             {      
                 
                 data.map(order=>
-                    <div className="cookitem" key={order.orderId}>
+                    <div className="cookItem" key={order.orderId}>
                         <header>
                             <span className="tableNumber">№{order.orderId}</span>
                             <span className="orderTime">{

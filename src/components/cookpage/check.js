@@ -1,5 +1,5 @@
-import postData from './../requests/postData';
-import putData from './../requests/putData';
+import {postData, putData} from './../requests';
+
 
 let notReadyImgUrl = "https://image.flaticon.com/icons/png/512/53/53987.png";
 let doneImgUrl = "https://st2.depositphotos.com/5777248/10629/v/950/depositphotos_106299224-stock-illustration-green-tick-check-mark-icon.jpg";

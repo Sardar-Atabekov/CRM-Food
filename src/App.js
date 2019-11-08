@@ -9,7 +9,8 @@ import waiterPage from './components/adminpage/userpage/waiter.js';
 import addUser from './components/adminpage/userpage/adduser.js';
 import menuPage from './components/adminpage/menupage/menu.js';
 import MealsPage from './components/adminpage/menupage/meals.js';
-import addMeal from './components/adminpage/menupage/meals.js';
+import addMeal from './components/adminpage/menupage/addmeal.js';
+import Tables from './components/adminpage/tablepage/tables.js';
 class App extends Component {
   render() {
       return (
@@ -27,6 +28,7 @@ class App extends Component {
                   <Route path="/admin/adduser" exact component={addUser}/>
                   <Route path="/adduser" exact component={addUser}/>
                   <Route path="/addmeal" exact component={addMeal}/>
+                  <Route path="/tables" exact component={Tables}/>
               </Switch>
               
           </React.Fragment>

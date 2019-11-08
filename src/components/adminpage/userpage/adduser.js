@@ -5,7 +5,7 @@ import Navigation from '../../block/navigation.js';
 import Search from '../../block/search.js';
 import Footer from '../../block/footer.js';
 
-import postData from '../../requests/postData';
+import {postData} from '../../requests.js';
 
 
 
@@ -22,10 +22,7 @@ class addUser extends Component {
   
   handleSubmit(event) {
     event.preventDefault();
-    let formData = new FormData(event.target);
-    let data = {
-
-    };
+    let formData = new FormData(event.target), data = {};
     
     formData.forEach(function(value, key) {
         data[key]=value;
@@ -34,14 +31,6 @@ class addUser extends Component {
     console.log(data);
 
     postData( '/users/', data);
-    
-   
-    
-    
-     
-   
-      
-   
     
   }
   
@@ -87,7 +76,7 @@ class addUser extends Component {
                               <div className="form-group">
                                       <label htmlFor="dateBorn">Date Born</label>
                                       <input type="text" name="dateBorn" required  className="form-control" id="dateBorn" value={this.state.numberOfGuests}
-              onChange={this.handleInputChange} />
+              pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"  />
                               </div>
                               
                               <div className="form-group">
@@ -158,7 +147,7 @@ class addUser extends Component {
                               </div>
                               <div className="commentBlock">
                                       <label htmlFor="comment">Comment</label><br/>
-                                      <textarea id="comment" className="form-control"></textarea>
+                                      <textarea id="comment"  name="comment" className="form-control"></textarea>
                               </div>
                               <input type="submit" className="btn btnSumbit"/>
                                 

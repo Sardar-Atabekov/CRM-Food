@@ -13,7 +13,7 @@ async function getData(url) {
 }
 
 async function postData(url, data) {
-    
+    console.log(data);
     try {
         await fetch(`https://neobiscrmfood.herokuapp.com/api${url}`, {
         method:'POST',
@@ -23,6 +23,7 @@ async function postData(url, data) {
         },
         body:JSON.stringify(data)
         });
+        console.log(JSON.stringify(data));
       } catch(err) {
         console.log(err); // TypeError: failed to fetch
     }

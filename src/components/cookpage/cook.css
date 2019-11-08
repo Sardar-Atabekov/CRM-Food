@@ -1,4 +1,4 @@
-.cookitem {    
+.cookItem {    
     background: #FFFFFF;
 }
 
@@ -16,7 +16,7 @@ body {
     margin: 0px;
     padding: 0px;
 }
-.cookitem header {
+.cookItem header {
     display: flex;
     justify-content: space-between;
     background: #FFE9A6;
@@ -24,12 +24,12 @@ body {
     padding: 10px;
     align-items: center;
 }
-.cookitem ul {
+.cookItem ul {
      padding: 0px;
      margin: 10px 0;
  }
  
- .cookitem li {
+ .cookItem li {
     list-style-type: none;
     margin:  0;
     font-weight: 600;
@@ -38,7 +38,7 @@ body {
     justify-content: space-between;
 }
 
-.cookitem button {
+.cookItem button {
     height: 30px;
     width: 150px;
     background: #E7B10E;
@@ -50,10 +50,10 @@ body {
     padding: 10px 15px;  
 }
 
-.cookitem header .tableNumber {
+.cookItem header .tableNumber {
     padding: 0 10px;
 }
-.cookitem li {
+.cookItem li {
     display: flex;
     justify-content: space-between;
 }
