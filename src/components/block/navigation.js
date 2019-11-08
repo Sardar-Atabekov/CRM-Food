@@ -27,8 +27,8 @@ class Navigation extends Component {
                 <Link className="categories">История транзакции</Link>
                 <Link to={'/users'} className="categories">Пользователи</Link>
                 <Link to={'/meals'} className="categories">Список блюд</Link>
-                <Link to={'/meals'} className="categories">Категории</Link>
-                <Link to={'/meals'}  className="categories">Столы</Link>
+                <Link to={'/category'} className="categories">Категории</Link>
+                <Link to={'/tables'}  className="categories">Столы</Link>
                 <Link to={'/meals'}  className="categories">Бронирования</Link>
             </nav>   
                 

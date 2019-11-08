@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import {getData} from "./../../requests";
+import {getData, deleteData} from "./../../requests";
+import { Link } from 'react-router-dom';
 import './waiter.css';
 import Navigation from '../../block/navigation.js';
 import Search from '../../block/search.js';
-import operatorImg from '../../images/Screenshot.png';
 import Footer from '../../block/footer.js';
 const API = 'https://neobiscrmfood.herokuapp.com/api/';
 const DEFAULT_QUERY = 'users';
@@ -27,6 +27,13 @@ class waiterPage extends Component {
     });
   }
 
+  ModalClick(event) {
+    let target = event.target;
+    target.classList.toggle('noActive');
+    let modal = target.nextSibling;
+    modal.classList.toggle('noActive');
+    console.log(modal);
+  }
   render() {
     let { data } = this.state;
        
@@ -62,7 +69,7 @@ class waiterPage extends Component {
                             <td className="avatar">
                               <img alt="avatar foto" src={`https://cdn2.static1-sima-land.com/items/2973837/1/700-nw.jpg`} />
                             </td>                       
-                            <td>{user.firstName + " " + user.lastName}</td>
+                            <td><Link className="sub-title" to={{pathname: `/user/${user.id}/`}}>{user.firstName + " " + user.lastName}</Link></td>
                             
                             
                             <td>{new Date().getFullYear() - new Date(user.dateBorn).getFullYear()}</td>
@@ -77,7 +84,19 @@ class waiterPage extends Component {
                             <td>{user.email}</td>
                             <td>{user.login}</td>
                             <td>{user.password}</td>
-                            <td><img alt="src" src={operatorImg}/></td>
+                            <td className="operationBlock">
+                              
+                              <div className="operation">
+                                  <Link to={{pathname: `/user/${user.id}/`}}>Изменить </Link>
+                                  <button  onClick={(event)=>{
+                                    deleteData(`/users/${user.id}`);
+                                    event.target.parentNode.parentNode.parentNode.remove();
+                                  }}>Удалить </button>
+
+                              </div>
+                              
+                            
+                            </td>
                           </tr>
                         
                       

@@ -1,67 +1,81 @@
 import React, { Component } from 'react';
-import {getData} from "./../../requests";
+import {getData, postData, putData, deleteData} from "./../../requests";
+import Navigation from '../../block/navigation.js';
+import Search from '../../block/search.js';
+import Footer from '../../block/footer.js';
 import './menu.css';
-
-const API = 'https://neobiscrmfood.herokuapp.com/api/';
-const DEFAULT_QUERY = 'Waiter/getMenu';
-
 
 
 class menuPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [], 
-      categoriesData:[]
+      data: [],
+      isLoading: false,
+      error: null,
     };
   }
   
-  async componentDidMount() {
-    getData(API + DEFAULT_QUERY)
-    .then((body)=> {
-        this.setState({data: body});
-    });
+  addTableClick(event) {
+    let data = {
+        name:event.target.parentNode.firstChild.value,
+        status:0
+    };
+    event.target.parentNode.firstChild.value='';
+    // document.getElementById('detailed-form').reset()
+    postData('/tables/', data);
+  }
+
+  changeTableClick(event) {
+    let id=event.target.getAttribute('id'), data = {
+      name:event.target.parentNode.firstChild.value,
+      status:0,
+    };
+  // document.getElementById('detailed-form').reset()
+  console.log(data);
+  putData(`/tables/${id}`, data);
   }
 
   
+  async componentDidMount() {
+    getData('https://neobiscrmfood.herokuapp.com/api/waiter/getTables')
+    .then((body)=> {
+        this.setState({data: body});
+        console.log(body);
+    });
+  }
 
   render() {
-    let { data, categoriesData } = this.state;
-    
-    let bar = categoriesData.filter(category=>category.departmentName==="Бар"),
-        cook = categoriesData.filter(category=>category.departmentName==="Кухня");
-    
-        console.log(bar);
-        console.log(cook);
+    let { data } = this.state;
+    console.log(data);
     
     
+
      return (
-            <div className="menuWrapper">
-                <header className="menu">  </header>   
-                <main className="content">
-                  {
-                      data.map(item=>
-                          <div className="item" key={item.departmentId}>
-                              <h1>{item.departmentName}</h1>
-                              <div className="categories">
-                                {
-                                  item.categories.map(category=> 
-                                    <div key={category.categoryId}>
-                                      {console.log(category)}
-                                        <span>{category.categoryName}</span>
-                                    </div>
+            <div className="wrapper">
+                <aside className="navBlock"><Navigation/></aside>  
+                <div className="container">
+                  <header className="main-search"><Search/></header> 
+                  <main className="tableContent">
+                    <div  className="addTable">
+                       <input type='text' /> <button onClick={this.addTableClick}>Add</button>
+                    </div>
+                    
+                      {
+                          data.map(item=>
+              <div className="item"  key={item.id}>  
+              <input type='text' className="item" defaultValue={item.name}/>
+              <img id={item.id} src="https://cdn.icon-icons.com/icons2/894/PNG/512/Tick_Mark_icon-icons.com_69146.png" className="changeTable" onClick={this.changeTableClick}  alt="changeImg"/> 
+              <img className="deleteTable" alt="deleteTable" src="https://cdn.dribbble.com/users/2087607/screenshots/5730291/x-delete-round-flat-icon-free-download.png" onClick={(event) =>{
+                deleteData(`/tables/${item.id}`);
+                event.target.parentNode.remove();
+              }} /> 
+              </div>
                                   )
-                                }
-
-                              </div>
-
-
-                          </div>
-                      )
-                  }                
-                  
-                </main>
-            
+                      }
+                  </main>
+                  <footer className="main-footer"><Footer/></footer>
+                </div>
             </div>
           );
         }

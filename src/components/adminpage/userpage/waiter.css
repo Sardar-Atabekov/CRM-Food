@@ -57,3 +57,28 @@
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     margin:0px;
 }
+
+.waiterContent .noActive {
+    display: none !important;
+}
+
+.waiterContent .operation {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.operationBlock {
+    padding: 0px !important;
+}
+.waiterContent .operation button {
+    border:none;
+    background: none;
+    border-top: #e4e4e4 1px solid;
+    padding-top: 10px;
+    font-size: 500;
+}
+
+.waiterContent .operation a {
+    padding-bottom: 7px;
+}
