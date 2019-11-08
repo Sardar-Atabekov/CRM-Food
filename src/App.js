@@ -8,8 +8,10 @@ import adminPage from './components/adminpage/admin.js';
 import waiterPage from './components/adminpage/userpage/waiter.js';
 import addUser from './components/adminpage/userpage/adduser.js';
 import UserPage from './components/adminpage/userpage/user.js';
-import menuPage from './components/adminpage/menupage/menu.js';
+import Departments from './components/adminpage/menupage/Departments.js';
+import Categories from './components/adminpage/menupage/Categories.js';
 import MealsPage from './components/adminpage/menupage/meals.js';
+import MealPage from './components/adminpage/menupage/meal.js';
 import addMeal from './components/adminpage/menupage/addmeal.js';
 import Tables from './components/adminpage/tablepage/tables.js';
 class App extends Component {
@@ -23,7 +25,8 @@ class App extends Component {
                   <Route path="/cook" exact component={CookPage}/>
                   <Route path="/admin" exact component={adminPage}/>
                   <Route path="/users" exact component={waiterPage}/>
-                  <Route path="/category" exact component={menuPage}/>
+                  <Route path="/departments" exact component={Departments}/>
+                  <Route path="/category" exact component={Categories}/>
                   <Route path="/admin/meals" exact component={MealsPage}/>
                   <Route path="/meals" exact component={MealsPage}/>
                   <Route path="/admin/adduser" exact component={addUser}/>
@@ -31,6 +34,7 @@ class App extends Component {
                   <Route path="/addmeal" exact component={addMeal}/>
                   <Route path="/tables" exact component={Tables}/>
                   <Route path="/user/:id" exact component={UserPage}/>
+                  <Route path="/meal/:id" exact component={MealPage}/>
               </Switch>
               
           </React.Fragment>

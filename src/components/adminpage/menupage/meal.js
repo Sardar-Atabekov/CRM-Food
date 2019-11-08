@@ -2,40 +2,61 @@ import React, { Component } from 'react';
 import Navigation from '../../block/navigation.js';
 import Search from '../../block/search.js';
 import Footer from '../../block/footer.js';
-import {postData, getData} from '../../requests.js';
+import {putData, getData} from '../../requests.js';
+
 import './addmeal.css';
 
 
 
-class addMeal extends Component {
+class MealPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       category: [],
+      data:[],
       isLoading: false,
       error: [],
+      selected:null
     };
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  async componentDidMount() {
-    getData('https://neobiscrmfood.herokuapp.com/api/categories')
+//   async componentDidMount() {
+//     getData('https://neobiscrmfood.herokuapp.com/api/categories')
+//     .then((body)=> {
+//         this.setState({category: body});
+//     });
+//   }
+  componentDidMount() {
+    getData(`https://neobiscrmfood.herokuapp.com/api/meals/${this.props.match.params.id}/`)
+    .then((body)=> {
+        this.setState({data: body});
+        console.log(body);
+    });
+    getData(`https://neobiscrmfood.herokuapp.com/api/Categories/`)
     .then((body)=> {
         this.setState({category: body});
+        console.log(body);
     });
   }
-
+  
   handleSubmit(event) {
     event.preventDefault();
     let formData = new FormData(event.target), data = {};
-    
+    let target= event.target;
+    console.log(target);
     formData.forEach(function(value, key) {
         data[key]=value;
     }); 
     console.log(data);
-    postData( '/meals/', data);
+    putData(`/meals/${3}`, data);
    
   }
   
+  handleChange(event) {
+    this.setState({selected: event.target.value});
+  }
   nameVerification(event) {
     let value = event.target.value;
     console.log(value);
@@ -49,10 +70,10 @@ class addMeal extends Component {
   
   }
   render() {
-  let {category} = this.state;
-  console.log(category);
-    
-    
+      
+  let {category, data, selected} = this.state;
+  selected=data.categoryId; 
+  console.log(this.state);
     
     
      return (
@@ -73,13 +94,14 @@ class addMeal extends Component {
                           <div className="form-row">
                               <div className="form-group">
                                       <label htmlFor="name">Name</label>
-                                      <input type="text" name="name" className="form-control" id="name" value={this.state.numberOfGuests}
+                                      <input type="text" name="name" className="form-control" id="name" defaultValue={data.name}
               onChange={this.nameVerification} />
                               </div>
+                              
                               <div className="form-group">
+                                 
                                 <label htmlFor="categoryId">Category</label>
-                                <select id="categoryId" className='select' name="categoryId" value={this.state.numberOfGuests}
-              onChange={this.handleInputChange} >
+                                <select id="categoryId" className='select' name="categoryId" onChange={this.handleChange} value={selected}>
                         {
                           category.map(category=> <option key={category.id} value={category.id}>{category.category}</option>)
                         }
@@ -91,12 +113,12 @@ class addMeal extends Component {
                               </div>
                               <div className="form-group">
                                       <label htmlFor="price">Price</label>
-                                      <input type="number" name="price" required  className="form-control" id="price" />
+                                      <input type="number" name="price" required  defaultValue={data.price} className="form-control" id="price" />
                               </div>
                               
                               <div className="form-group">
                                 <label htmlFor="mealStatus">Status</label>
-                                <select id="mealStatus" name="mealStatus"  className="select" value={this.state.numberOfGuests}
+                                <select id="mealStatus" name="mealStatus"  className="select"  value={data.mealStatus}
               onChange={this.handleInputChange} >
                                     <option value="0">Have</option>
                                     <option value="1">Not</option>   
@@ -106,12 +128,12 @@ class addMeal extends Component {
                               
                               <div className="form-group">
                                 <label htmlFor="weight">Units</label>
-                                <input required name="weight" className="form-control" id="weight" value={this.state.numberOfGuests}
+                                <input required name="weight" className="form-control" id="weight"  defaultValue={data.weight}
               onChange={this.handleInputChange} />
                               </div>
                               <div className="form-group">
                                 <label htmlFor="imageURL">imageURL</label>
-                                <input required name="imageURL" className="form-control" id="imageURL" value={this.state.numberOfGuests}
+                                <input required name="imageURL" className="form-control" id="imageURL"  defaultValue={data.imageURL}
               onChange={this.handleInputChange} />
                               </div>
                           </div>
@@ -133,9 +155,9 @@ class addMeal extends Component {
                               </div>
                               <div className="commentBlock">
                                       <label htmlFor="description">Description</label><br/>
-                                      <textarea id="description" name="description" className="form-control"></textarea>
+                                      <textarea id="description" name="description" defaultValue={data.description} className="form-control"></textarea>
                               </div>
-                              <input type="submit" className="btn btnSumbit"/>
+                              <input type="submit" className="btn btnSumbit" value="Обновить" />
                                 
                               
                           </form>
@@ -152,4 +174,4 @@ class addMeal extends Component {
     
 }
 
-export default addMeal;
+export default MealPage;

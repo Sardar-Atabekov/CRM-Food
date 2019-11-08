@@ -30,8 +30,7 @@ async function postData(url, data) {
 };
 
 
-async function putData(url, data = null) {
-    try {
+async function putData(url, data) {
         console.log(JSON.stringify(data));
         await fetch(`https://neobiscrmfood.herokuapp.com/api${url}`, {
         method:'PUT',
@@ -40,10 +39,9 @@ async function putData(url, data = null) {
             'Content-Type': 'application/json',
         },
         body:JSON.stringify(data)
-        });
-      } catch(err) {
-        console.log(err); // TypeError: failed to fetch
-    }
+        })
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
 };
 
 async function deleteData(url) {
@@ -52,7 +50,7 @@ async function deleteData(url) {
     }).then(() => {
        console.log('removed');
     }).catch(err => {
-      console.error(err)
+      console.error(err);
     });
 };
 

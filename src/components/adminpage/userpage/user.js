@@ -36,7 +36,7 @@ class UserPage extends Component {
     console.log(id);
   }
 
-  async componentDidMount(id) {
+  async componentDidMount() {
     getData(`https://neobiscrmfood.herokuapp.com/api/users/${this.props.match.params.id}/`)
     .then((body)=> {
         this.setState({data: body});

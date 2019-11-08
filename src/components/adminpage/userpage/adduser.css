@@ -85,7 +85,7 @@
     box-sizing: border-box;
 }
 
-.addUserContent  .form-row .select {
+.addUserContent  .form-row .select, .addTable  .select {
     height: calc(2.09375rem + 2px);
     padding: .375rem 1.75rem .375rem .75rem;
     line-height: 1.5;

@@ -19,15 +19,17 @@ class Navigation extends Component {
       
      return (
             <nav className="navigationComponent">
-                <Link to={'/admin'}> <img src={neobisLogo} className="neobis_logo" alt='neobis.logo' /></Link>  
-                <Link className="categories">Заказы</Link>
+                <Link to={'/admin'}> <img src={neobisLogo} className="neobis_logo" alt='neobisLogo' /></Link>  
+                {/* <Link className="categories">Заказы</Link>
                 <Link className="categories">Продажы</Link>
                 <Link className="categories">Кухня</Link>
                 <Link className="categories">Бар</Link>
-                <Link className="categories">История транзакции</Link>
+                <Link className="categories">История транзакции</Link> */}
                 <Link to={'/users'} className="categories">Пользователи</Link>
-                <Link to={'/meals'} className="categories">Список блюд</Link>
+                <Link to={'/departments'} className="categories">Departments</Link>
                 <Link to={'/category'} className="categories">Категории</Link>
+                <Link to={'/meals'} className="categories">Список блюд</Link>
+      
                 <Link to={'/tables'}  className="categories">Столы</Link>
                 <Link to={'/meals'}  className="categories">Бронирования</Link>
             </nav>   

@@ -13,6 +13,7 @@ class Tables extends Component {
       data: [],
       isLoading: false,
       error: null,
+      currentValue: '',
     };
   }
   
@@ -26,14 +27,19 @@ class Tables extends Component {
     postData('/tables/', data);
   }
 
-  changeTableClick(event) {
-    let id=event.target.getAttribute('id'), data = {
-      name:event.target.parentNode.firstChild.value,
-      status:0,
-    };
+  changeTableClick = (id, tableName) => {
+    const data = {
+      name: tableName,
+      status: 0,
+    }
   // document.getElementById('detailed-form').reset()
   console.log(data);
   putData(`/tables/${id}`, data);
+  }
+
+  handleChange = (e) => {
+    this.setState({[e.target.name] : e.target.value});
+
   }
 
   
@@ -64,8 +70,8 @@ class Tables extends Component {
                       {
                           data.map(item=>
               <div className="item"  key={item.id}>  
-              <input type='text' className="item" defaultValue={item.name}/>
-              <img id={item.id} src="https://cdn.icon-icons.com/icons2/894/PNG/512/Tick_Mark_icon-icons.com_69146.png" className="changeTable" onClick={this.changeTableClick}  alt="changeImg"/> 
+              <input type='text' name="currentValue" className="item" defaultValue={item.name} onChange={this.handleChange} />
+              <img id={item.id} src="https://cdn.icon-icons.com/icons2/894/PNG/512/Tick_Mark_icon-icons.com_69146.png" className="changeTable" onClick={() => this.changeTableClick(item.id, this.state.currentValue)}  alt="changeImg"/> 
               <img className="deleteTable" alt="deleteTable" src="https://cdn.dribbble.com/users/2087607/screenshots/5730291/x-delete-round-flat-icon-free-download.png" onClick={(event) =>{
                 deleteData(`/tables/${item.id}`);
                 event.target.parentNode.remove();
