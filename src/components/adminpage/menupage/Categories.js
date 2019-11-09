@@ -30,8 +30,9 @@ class Categories extends Component {
   changeTableClick(event) {
     let id = event.target.getAttribute("id"),
       data = {
+        id:id,
         name: event.target.parentNode.firstChild.value,
-        departmentId: id
+        departmentId: 1
       };
     // document.getElementById('detailed-form').reset()
     console.log(data, id);
