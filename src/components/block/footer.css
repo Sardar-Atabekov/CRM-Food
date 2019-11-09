@@ -1,0 +1,6 @@
+.nav-link {
+    padding: .625rem .625rem;
+    transition: all 250ms cubic-bezier(.27,.01,.38,1.06);
+    font-size: .8125rem;
+    font-weight: 400;
+}

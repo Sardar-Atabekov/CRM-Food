@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {getData, deleteData} from "./../../requests";
+import {getData, deleteData} from "../../requests";
 import { Link } from 'react-router-dom';
-import './waiter.css';
+import './users.css';
 import Navigation from '../../block/navigation.js';
 import Search from '../../block/search.js';
 import Footer from '../../block/footer.js';

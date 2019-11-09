@@ -3,7 +3,7 @@ import Navigation from '../../block/navigation.js';
 import Search from '../../block/search.js';
 import Footer from '../../block/footer.js';
 import Category from '../../block/category.js';
-import {postData, getData} from '../../requests.js';
+import {postData} from '../../requests.js';
 import './addmeal.css';
 
 
@@ -28,22 +28,12 @@ class addMeal extends Component {
         data[key]=value;
     }); 
     console.log(data);
+    event.target.reset();
     postData( '/meals/', data);
    
   }
   
-  nameVerification(event) {
-    let value = event.target.value;
-    console.log(value);
-    getData('https://neobiscrmfood.herokuapp.com/api/meals')
-    .then((body)=> {
-       if(body.filter(item=>item.name===value)){
-        
-       }
-       
-    });
   
-  }
   render() {
   let {category} = this.state;
   console.log(category);

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './waiter.css';
+import './users.css';
 import './adduser.css';
 import Navigation from '../../block/navigation.js';
 import Search from '../../block/search.js';

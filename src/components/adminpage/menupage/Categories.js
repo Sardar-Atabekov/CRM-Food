@@ -4,6 +4,7 @@ import Navigation from '../../block/navigation.js';
 import Search from '../../block/search.js';
 import Footer from '../../block/footer.js';
 import './menu.css';
+import Department from '../../block/department.js';
 
 
 class Categories extends Component {
@@ -30,10 +31,10 @@ class Categories extends Component {
   changeTableClick(event) {
     let id=event.target.getAttribute('id'), data = {
       name:event.target.parentNode.firstChild.value,
-      departmentId:1,
+      departmentId:id,
     };
   // document.getElementById('detailed-form').reset()
-  console.log(data);
+  console.log(data, id);
   putData(`/Categories/${id}`, data);
   }
 
@@ -42,16 +43,14 @@ class Categories extends Component {
     getData('https://neobiscrmfood.herokuapp.com/api/Categories')
     .then((body)=> {
         this.setState({data: body});
-        console.log(body);
     });
   }
 
   render() {
-    let { data } = this.state,
-        barDepartment = data.filter(department=>department.departmentName==="Бар"),
-        cookDepartment = data.filter(department=>department.departmentName==="Кухня");
-    console.log(barDepartment);
-    console.log(cookDepartment);
+    let { data } = this.state;
+        // barDepartment = data.filter(department=>department.departmentName==="Бар"),
+        // cookDepartment = data.filter(department=>department.departmentName==="Кухня");
+ 
 
      return (
             <div className="wrapper">
@@ -61,11 +60,7 @@ class Categories extends Component {
                   <main className="tableContent">
                   <div  className="addTable">
                        <input type='text' />
-                       <select id="Departments" name="Departments"  className="select" value={this.state.numberOfGuests}
-              onChange={this.handleInputChange} >
-                                    <option value="1">Кухня</option>
-                                    <option value="2">Бар</option>   
-                        </select>
+                      <Department/>
                        <button onClick={this.addTableClick}>Add</button>
                     </div>
                     

@@ -5,16 +5,35 @@
   background-color: #fff!important;
 }
 
+.footerComponent {
+  display: flex;
+  padding-top: 10px;
+}
+.footerComponent ul {
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+}
+.main-footer .nav-link {
+  padding: .625rem .625rem;
+  transition: all 250ms cubic-bezier(.27,.01,.38,1.06);
+  font-weight: 400;
+  
+}
 
+.copyright {
+  margin-left: auto!important;
+  margin-bottom: auto!important;
+  margin-top: auto!important;
+  margin-right: 1.5rem!important;
+}
 
-
-
-
-
-
-/* a {
-  color: black;
-} */
+.nav-item {
+  list-style-type:none;
+}
+a {
+  color: #007bff;
+}
 
 .container {
   width: 100%;

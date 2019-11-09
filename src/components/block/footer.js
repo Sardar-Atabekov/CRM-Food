@@ -8,15 +8,17 @@ class Footer extends Component {
   render() {
       
      return (
+          <nav  className="footerComponent">
             <ul className="footerComponent">
-              <li><Link to={'/admin'} className="categories">Home</Link></li>
-              <li><Link to={'/admin'} className="categories">Home</Link></li>
-              <li><Link to={'/barmen'} className="categories">Barmen</Link></li>
+              <li className="nav-item"><Link to={'/admin'} className="nav-link">Home</Link></li>
+              <li className="nav-item"><Link to={'/cook'} className="nav-link">Cook</Link></li>
+              <li className="nav-item"><Link to={'/barmen'} className="nav-link">Barmen</Link></li>
                
                 
                 
-            </ul>   
-                
+            </ul>
+            <span className="copyright">Copyright © 2019 Neobis</span>  
+          </nav>      
           );
         }
     

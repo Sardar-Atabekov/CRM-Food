@@ -5,7 +5,7 @@ import CookPage from './components/cookpage/cook';
 import BarmenPage from './components/barmenpage/barmen';
 import LoginPage from './components/loginpage/login';
 import adminPage from './components/adminpage/admin.js';
-import waiterPage from './components/adminpage/userpage/waiter.js';
+import waiterPage from './components/adminpage/userpage/users.js';
 import addUser from './components/adminpage/userpage/adduser.js';
 import UserPage from './components/adminpage/userpage/user.js';
 import Departments from './components/adminpage/menupage/Departments.js';

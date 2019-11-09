@@ -29,8 +29,9 @@ class Departments extends Component {
   changeTableClick(event) {
     let id=event.target.getAttribute('id'), data = {
       name:event.target.parentNode.firstChild.value,
-      status:0,
+      id:id,
     };
+  console.log(event.target);
   // document.getElementById('detailed-form').reset()
   console.log(data);
   putData(`/Departments/${id}`, data);
@@ -66,7 +67,7 @@ class Departments extends Component {
                           data.map(item=>
               <div className="item"  key={item.departmentId}>  
                   <input type='text' className="item" defaultValue={item.departmentName}/>
-                  <img id={item.id} src="https://cdn.icon-icons.com/icons2/894/PNG/512/Tick_Mark_icon-icons.com_69146.png" className="changeTable" onClick={this.changeTableClick}  alt="changeImg"/> 
+                  <img id={item.departmentId} src="https://cdn.icon-icons.com/icons2/894/PNG/512/Tick_Mark_icon-icons.com_69146.png" className="changeTable" onClick={this.changeTableClick}  alt="changeImg"/> 
                   <img className="deleteTable" alt="deleteTable" src="https://cdn.dribbble.com/users/2087607/screenshots/5730291/x-delete-round-flat-icon-free-download.png" onClick={(event) =>{
                     deleteData(`/Departments/${item.departmentId}`);
                     event.target.parentNode.remove();
