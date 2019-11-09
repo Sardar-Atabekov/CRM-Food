@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getData, putData } from "../../requests";
+import { getData, putData, deleteData } from "../../requests";
 import "./meals.css";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
@@ -7,7 +7,7 @@ import Footer from "../../block/footer.js";
 import { Link } from 'react-router-dom';
 
 const API = "https://neobiscrmfood.herokuapp.com/api/";
-const DEFAULT_QUERY = "admin/getmeals";
+const DEFAULT_QUERY = "admin/getMeals";
 
 class MealsPage extends Component {
   constructor(props) {
@@ -54,6 +54,8 @@ class MealsPage extends Component {
                   <th>Статус</th>
                   <th>Ед. изм.</th>
                   <th>Цена</th>
+                  <th colSpan="2">Операции</th>
+                  
                 </tr>
                 {data.map(meal => (
                   <tr key={meal.id}>
@@ -74,6 +76,11 @@ class MealsPage extends Component {
                     </td>
                     <td>{meal.weight}</td>
                     <td>{meal.price} сом</td>
+                    <td><Link to={{pathname: `/meal/${meal.id}/`}}>Изменить</Link></td>
+                    <td className="deleteMeal" onClick={event => {
+                    deleteData(`/meals/${meal.id}`);
+                    event.target.parentNode.remove();
+                  }}>Удалить </td>
                   </tr>
                 ))}
               </tbody>

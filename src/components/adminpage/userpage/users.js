@@ -27,13 +27,7 @@ class waiterPage extends Component {
     });
   }
 
-  ModalClick(event) {
-    let target = event.target;
-    target.classList.toggle('noActive');
-    let modal = target.nextSibling;
-    modal.classList.toggle('noActive');
-    console.log(modal);
-  }
+  
   render() {
     let { data } = this.state;
        
@@ -67,7 +61,7 @@ class waiterPage extends Component {
                       
                           <tr key={user.id}>   
                             <td className="avatar">
-                              <img alt="avatar foto" src={`https://cdn2.static1-sima-land.com/items/2973837/1/700-nw.jpg`} />
+                              <img alt="avatarPictures" src={`https://cdn2.static1-sima-land.com/items/2973837/1/700-nw.jpg`} />
                             </td>                       
                             <td><Link className="sub-title" to={{pathname: `/user/${user.id}/`}}>{user.firstName + " " + user.lastName}</Link></td>
                             

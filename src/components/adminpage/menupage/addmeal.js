@@ -30,7 +30,7 @@ class addMeal extends Component {
     console.log(data);
     event.target.reset();
     postData( '/meals/', data);
-   
+    
   }
   
   
