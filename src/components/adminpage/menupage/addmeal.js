@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navigation from '../../block/navigation.js';
 import Search from '../../block/search.js';
 import Footer from '../../block/footer.js';
+import Category from '../../block/category.js';
 import {postData, getData} from '../../requests.js';
 import './addmeal.css';
 
@@ -17,12 +18,7 @@ class addMeal extends Component {
     };
   }
 
-  async componentDidMount() {
-    getData('https://neobiscrmfood.herokuapp.com/api/categories')
-    .then((body)=> {
-        this.setState({category: body});
-    });
-  }
+
 
   handleSubmit(event) {
     event.preventDefault();
@@ -78,16 +74,12 @@ class addMeal extends Component {
                               </div>
                               <div className="form-group">
                                 <label htmlFor="categoryId">Category</label>
-                                <select id="categoryId" className='select' name="categoryId" value={this.state.numberOfGuests}
-              onChange={this.handleInputChange} >
-                        {
-                          category.map(category=> <option key={category.id} value={category.id}>{category.category}</option>)
-                        }
+                                <Category/>
                                       {/* <option value="3">Официант</option>
                                       <option value="2">Повар</option>   
                                       <option value="4">Бармен</option>   
                                       <option value="1">Админ</option>    */}
-                                </select>
+                                
                               </div>
                               <div className="form-group">
                                       <label htmlFor="price">Price</label>
@@ -109,11 +101,7 @@ class addMeal extends Component {
                                 <input required name="weight" className="form-control" id="weight" value={this.state.numberOfGuests}
               onChange={this.handleInputChange} />
                               </div>
-                              <div className="form-group">
-                                <label htmlFor="imageURL">imageURL</label>
-                                <input required name="imageURL" className="form-control" id="imageURL" value={this.state.numberOfGuests}
-              onChange={this.handleInputChange} />
-                              </div>
+                             
                           </div>
                           {/*
                           

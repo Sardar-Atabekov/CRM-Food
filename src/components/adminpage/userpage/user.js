@@ -72,7 +72,7 @@ class UserPage extends Component {
                             </div>
                           </div>
             
-                        <form className="form" userid={data.id} key={data.id} onSubmit={this.handleSubmit}>
+                        <form className="form" key={data.id} onSubmit={this.handleSubmit}>
                         
                           <div className="form-row" >
                               <div className="form-group">
@@ -93,7 +93,7 @@ class UserPage extends Component {
                               
                               <div className="form-group">
                                 <label htmlFor="gender">Gender</label>
-                                <select id="gender" name="gender"  className="select" defaultValue={this.state.numberOfGuests}
+                                <select id="gender" name="gender"  className="select" defaultValue={data.gender}
               onChange={this.handleInputChange} >
                                     <option value="Мужчина">Мужчина</option>
                                     <option value="Женщина">Женщина</option>   
@@ -132,8 +132,7 @@ class UserPage extends Component {
                               
                               <div className="form-group">
                                 <label htmlFor="role">Role</label>
-                                <select id="role" className='select' name="role" defaultValue={data.role}
-              onChange={this.handleInputChange} >
+                                <select id="role" className='select' name="role" defaultValue={data.role}>
                                     <option value="3">Официант</option>
                                     <option value="2">Повар</option>   
                                     <option value="4">Бармен</option>   

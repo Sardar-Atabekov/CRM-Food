@@ -10,7 +10,6 @@
     margin: 40px auto;
     width: 804px;
     position: relative;
-    display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -27,7 +26,6 @@
     margin: 20px 1.5rem;
 }
 .addMealContent  .form-row {
-    display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
@@ -54,7 +52,6 @@
 .addMealContent  .form .form-control {
     height: auto;
     padding: .4375rem .75rem;
-    font-size: .8125rem;
     line-height: 1.5;
     color: #495057;
     background-color: #fff;

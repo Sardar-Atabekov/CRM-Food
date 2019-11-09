@@ -2,4 +2,20 @@
   height: 3.75rem;
   border-top: 1px solid #e1e5eb!important;
   padding: .5rem;
+  background-color: #fff!important;
+}
+
+
+
+
+
+
+
+
+/* a {
+  color: black;
+} */
+
+.container {
+  width: 100%;
 }

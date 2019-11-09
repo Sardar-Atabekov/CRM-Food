@@ -8,13 +8,14 @@ class Footer extends Component {
   render() {
       
      return (
-            <nav className="footerComponent">
-                <Link to={'/admin'} className="categories">Home</Link>
-                <Link to={'/cooker'} className="categories">Cooker</Link>
-                <Link to={'/barmen'} className="categories">Barmen</Link>
+            <ul className="footerComponent">
+              <li><Link to={'/admin'} className="categories">Home</Link></li>
+              <li><Link to={'/admin'} className="categories">Home</Link></li>
+              <li><Link to={'/barmen'} className="categories">Barmen</Link></li>
+               
                 
                 
-            </nav>   
+            </ul>   
                 
           );
         }
