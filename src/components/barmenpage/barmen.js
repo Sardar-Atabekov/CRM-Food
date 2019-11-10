@@ -31,11 +31,15 @@ class BarmenPage extends Component {
   render() {
     
     let { data} = this.state;
+    // data= data.map((item)=>{
+    //   item.mealsList=item.mealsList.filter(meal=>meal.departmentName==="Бар");
+    //   return item.mealsList.length>0?item:false;
+    // });
+    // data = data.filter(arr=>arr!==false);
+    data = data.filter(a =>
+      a.mealsList.some(s => s.departmentName === "Бар")
+    );
     console.log(data);
-    data= data.filter(a=>a.mealsList.some(s=>s.departmentName==="Бар"));
-    
-    
-    
      return (
           <div className="backgroundCook">
             <div className="wrapperCook">

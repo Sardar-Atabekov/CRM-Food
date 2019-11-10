@@ -8,7 +8,7 @@ function checkClassName(params) {
   return params === "Ready" ? "ready" : "notReady";
 }
 
-function сheckStatusFood(params) {
+function checkStatusFood(params) {
   return params === "Ready" ? doneImgUrl : notReadyImgUrl;
 }
 
@@ -35,4 +35,4 @@ function orderReady(event) {
   item.remove();
 }
 
-export { сheckStatusFood, checkClassName, mealReady, orderReady };
+export { checkStatusFood, checkClassName, mealReady, orderReady };

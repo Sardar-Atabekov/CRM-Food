@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./cook.css";
 import {
-  сheckStatusFood,
+  checkStatusFood,
   checkClassName,
   mealReady,
   orderReady
@@ -42,7 +42,7 @@ class CookPage extends Component {
     data = data.filter(a =>
       a.mealsList.some(s => s.departmentName === "Кухня")
     );
-
+    console.log(data);
     if (error) {
       return <p>{error.message}</p>;
     }
@@ -87,7 +87,7 @@ class CookPage extends Component {
                       onClick={mealReady}
                       className="btnImg"
                       alt={meal.status}
-                      src={сheckStatusFood(meal.status)}
+                      src={checkStatusFood(meal.status)}
                     />
                   </li>
                 ))}
