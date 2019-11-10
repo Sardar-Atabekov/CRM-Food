@@ -124,7 +124,7 @@ class MealPage extends Component {
                       id="mealStatus"
                       name="mealStatus"
                       className="select"
-                      onChange={this.handleStatusChange.bind(this)}
+                      onChange={this.handleStatusChangeF.bind(this)}
                       value={this.state.status}
                     >
                       <option value="0">Have</option>

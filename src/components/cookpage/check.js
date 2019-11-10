@@ -1,8 +1,8 @@
-import {postData, putData} from './../requests';
-
+import { postData, putData } from "./../requests";
 
 let notReadyImgUrl = "https://image.flaticon.com/icons/png/512/53/53987.png";
-let doneImgUrl = "https://st2.depositphotos.com/5777248/10629/v/950/depositphotos_106299224-stock-illustration-green-tick-check-mark-icon.jpg";
+let doneImgUrl =
+  "https://st2.depositphotos.com/5777248/10629/v/950/depositphotos_106299224-stock-illustration-green-tick-check-mark-icon.jpg";
 
 function checkClassName(params) {
   return params === "Ready" ? "ready" : "notReady";
@@ -16,31 +16,23 @@ function mealReady(event) {
   event.preventDefault();
   let parent = event.target.parentNode;
   event.target.src = doneImgUrl;
-  parent.classList.remove('notReady');
-  parent.classList.add('ready');
+  parent.classList.remove("notReady");
+  parent.classList.add("ready");
   let data = {
-    orderId: parent.getAttribute('orderid'),
-    mealId: event.target.getAttribute('mealid')
+    orderId: parent.getAttribute("orderid"),
+    mealId: event.target.getAttribute("mealid")
   };
-  postData('/cook/closemeal', data);
+  postData("/cook/closemeal", data);
 }
-
 
 function orderReady(event) {
   event.preventDefault();
   let parent = event.target.parentNode,
-      id = event.target.getAttribute('orderid'),
-      item = parent.parentNode;
-  
+    id = event.target.getAttribute("orderid"),
+    item = parent.parentNode;
 
   putData(`/cook/closeorder/${id}`);
   item.remove();
-  
 }
 
-export {
-  сheckStatusFood,
-  checkClassName, 
-  mealReady,
-  orderReady
-};
+export { сheckStatusFood, checkClassName, mealReady, orderReady };

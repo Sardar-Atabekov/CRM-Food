@@ -32,7 +32,7 @@ class Categories extends Component {
       data = {
         id:id,
         name: event.target.parentNode.firstChild.value,
-        departmentId: 1
+        departmentId: event.target.getAttribute("department")
       };
     // document.getElementById('detailed-form').reset()
     console.log(data, id);
@@ -75,6 +75,7 @@ class Categories extends Component {
                 />
                 <img
                   id={item.id}
+                  department={item.departmentId}
                   src="https://cdn.icon-icons.com/icons2/894/PNG/512/Tick_Mark_icon-icons.com_69146.png"
                   className="changeTable"
                   onClick={this.changeTableClick}

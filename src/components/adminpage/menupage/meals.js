@@ -4,7 +4,7 @@ import "./meals.css";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const API = "https://neobiscrmfood.herokuapp.com/api/";
 const DEFAULT_QUERY = "admin/getMeals";
@@ -23,11 +23,6 @@ class MealsPage extends Component {
     });
   }
 
-  // handleCheck(event) {
-  //     let mealid = event.target.getAttribute('mealid');
-  //     putData(`/admin/changeMealStatus/${mealid}`);
-  // }
-
   render() {
     let { data } = this.state;
     console.log(data);
@@ -42,9 +37,7 @@ class MealsPage extends Component {
             <Search />
           </header>
           <div className="mealsContent">
-            <div className='function'> 
-                
-            </div>
+            <div className="function"></div>
             <table>
               <tbody>
                 <tr>
@@ -55,11 +48,14 @@ class MealsPage extends Component {
                   <th>Ед. изм.</th>
                   <th>Цена</th>
                   <th colSpan="2">Операции</th>
-                  
                 </tr>
                 {data.map(meal => (
                   <tr key={meal.id}>
-                    <td><Link to={{pathname: `/meal/${meal.id}/`}}>{meal.name}</Link></td>
+                    <td>
+                      <Link to={{ pathname: `/meal/${meal.id}/` }}>
+                        {meal.name}
+                      </Link>
+                    </td>
 
                     <td>{meal.category}</td>
                     <td>
@@ -76,11 +72,20 @@ class MealsPage extends Component {
                     </td>
                     <td>{meal.weight}</td>
                     <td>{meal.price} сом</td>
-                    <td><Link to={{pathname: `/meal/${meal.id}/`}}>Изменить</Link></td>
-                    <td className="deleteMeal" onClick={event => {
-                    deleteData(`/meals/${meal.id}`);
-                    event.target.parentNode.remove();
-                  }}>Удалить </td>
+                    <td>
+                      <Link to={{ pathname: `/meal/${meal.id}/` }}>
+                        Изменить
+                      </Link>
+                    </td>
+                    <td
+                      className="deleteMeal"
+                      onClick={event => {
+                        deleteData(`/meals/${meal.id}`);
+                        event.target.parentNode.remove();
+                      }}
+                    >
+                      Удалить{" "}
+                    </td>
                   </tr>
                 ))}
               </tbody>

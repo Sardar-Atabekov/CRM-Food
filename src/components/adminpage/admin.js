@@ -1,23 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import axios from 'axios';
-import './../loginpage/login.css';
-import Navigation from '../block/navigation.js';
+import "./../loginpage/login.css";
+import Navigation from "../block/navigation.js";
 
 class adminPage extends Component {
-  render() {    
-    return (     
+  render() {
+    return (
       <div>
-        <Navigation/>
-      </div>  
+        <Navigation />
+      </div>
     );
   }
-    
-    
 }
 
-
 export default adminPage;
-
-
-
-

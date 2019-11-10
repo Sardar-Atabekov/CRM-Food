@@ -1,9 +1,8 @@
-
 .navigationComponent {
     display: flex;
     flex-direction: column;
     position: relative;
-    width:240px;
+    width: 240px;
     background: #ffffff;
     top: 0;
     height: 100%;
@@ -11,16 +10,18 @@
     will-change: transform;
     transition: -webkit-transform .2s ease-in-out;
     transition: transform .2s ease-in-out;
-    transition: transform .2s ease-in-out,-webkit-transform .2s ease-in-out;
-    box-shadow: 0 0.125rem 9.375rem rgba(90,97,105,.1), 0 0.25rem 0.5rem rgba(90,97,105,.12), 0 0.9375rem 1.375rem rgba(90,97,105,.1), 0 0.4375rem 2.1875rem rgba(165,182,201,.1);
+    transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
+    box-shadow: 0 0.125rem 9.375rem rgba(90, 97, 105, .1), 0 0.25rem 0.5rem rgba(90, 97, 105, .12), 0 0.9375rem 1.375rem rgba(90, 97, 105, .1), 0 0.4375rem 2.1875rem rgba(165, 182, 201, .1);
 }
 
 .navBlock {
     height: 100%;
 }
+
 .navigationComponent a {
     color: #3d5170;
 }
+
 .neobis_logo {
     width: 180px;
     height: 40px;
@@ -30,31 +31,34 @@
 .serchNavbar {
     display: flex;
     width: 100%;
-    background: #FCF9F9;    
+    background: #FCF9F9;
 }
+
 .main-search {
     width: 100% !important;
 }
 
-.serchNavbar > div {
+.serchNavbar>div {
     border-right: #e4e4e4 solid 1px;
 }
+
 .serchNavbar .input {
     margin-left: 20px;
-   
+
     height: 50px;
 }
+
 .serchNavbar .navbar-search {
     width: 965px;
     height: 50px;
     margin: 0px;
     border: none;
 }
+
 .navigationComponent .categories {
     padding: .9375rem 1.5625rem;
 }
+
 a {
     text-decoration: none;
 }
-
-
