@@ -41,7 +41,7 @@ class CookPage extends Component {
     let { data, isLoading, error } = this.state;
     data = data.map(item => {
       item.mealsList = item.mealsList.filter(
-        meal => meal.departmentName === "Кухня"
+        meal => meal.departmentName === "Kitchen"
       );
       return item.mealsList.length > 0 ? item : false;
     });

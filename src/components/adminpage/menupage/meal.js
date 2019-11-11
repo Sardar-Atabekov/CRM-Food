@@ -5,6 +5,7 @@ import Footer from "../../block/footer.js";
 import { putData, getData } from "../../requests.js";
 
 import "./addmeal.css";
+import ModalBlock from "../../block/Modal.js";
 
 class MealPage extends Component {
   constructor(props) {
@@ -48,7 +49,7 @@ class MealPage extends Component {
       }
     );
   }
-
+  
   handleSubmit(event) {
     event.preventDefault();
     let formData = new FormData(event.target),
@@ -64,7 +65,8 @@ class MealPage extends Component {
   render() {
     let { data, category } = this.state;
     console.log(this.state);
-
+    console.log(category);
+    
     return (
       <div className="wrapper">
         <aside className="navBlock">
@@ -104,11 +106,16 @@ class MealPage extends Component {
                       onChange={this.handleChange.bind(this)}
                       value={this.state.select}
                     >
-                      {category.map(category => (
-                        <option value={category.id} key={category.id}>
+                      {category.map((category,id) => (
+                        <option value={category.id} key={id}>
                           {category.category}
                         </option>
                       ))}
+                        {/* {
+                           for( i=0; i<10; i++) {
+                           console.log(arr[i]);
+                           };
+                        } */}
                     </select>
                   </div>
                   <div className="form-group">
@@ -183,16 +190,13 @@ class MealPage extends Component {
                     className="form-control"
                   ></textarea>
                 </div>
-                <input
-                  type="submit"
-                  className="btn btnSumbit"
-                  value="Обновить"
-                />
+                <ModalBlock />
               </form>
             </div>
           </main>
-          <footer className="main-footer">
+          <footer className="main-footer" >
             <Footer />
+            
           </footer>
         </div>
       </div>

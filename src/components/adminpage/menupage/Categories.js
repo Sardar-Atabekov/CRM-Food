@@ -3,6 +3,10 @@ import { getData, postData, putData, deleteData } from "../../requests";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
+import ModalBlock from "../../block/footer.js";
+
+
+
 import "./menu.css";
 
 class Categories extends Component {
@@ -31,7 +35,8 @@ class Categories extends Component {
       data = {
         id:id,
         name: event.target.parentNode.firstChild.value,
-        departmentId: event.target.getAttribute("department")
+        department: event.target.previousSibling.value
+
       };
     // document.getElementById('detailed-form').reset()
     console.log(data, id);
@@ -46,6 +51,7 @@ class Categories extends Component {
 
   render() {
     let { data } = this.state;
+    console.log(data);
     // barDepartment = data.filter(department=>department.departmentName==="Бар"),
     // cookDepartment = data.filter(department=>department.departmentName==="Кухня");
 
@@ -76,9 +82,17 @@ class Categories extends Component {
                   className="item"
                   defaultValue={item.category}
                 />
+                <select
+                      id="name"
+                      className="select"
+                      name="name"
+                      defaultValue={item.departmentId}
+                    >
+                      <option value="0">Кухня</option>
+                      <option value="1">Бар</option>
+                    </select>
                 <img
                   id={item.id}
-                  department={item.departmentId}
                   src="https://cdn.icon-icons.com/icons2/894/PNG/512/Tick_Mark_icon-icons.com_69146.png"
                   className="changeTable"
                   onClick={this.changeTableClick}
@@ -98,6 +112,8 @@ class Categories extends Component {
           </main>
           <footer className="main-footer">
             <Footer />
+            <ModalBlock/>
+
           </footer>
         </div>
       </div>
