@@ -1,13 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import './../cookpage/cook.css';
-import {getData} from "./../requests";
-import {сheckStatusFood, checkClassName, mealReady, orderReady} from "./check";
+import "./../cookpage/cook.css";
+import { getData } from "./../requests";
+import {
+  сheckStatusFood,
+  checkClassName,
+  mealReady,
+  orderReady
+} from "./check";
 
-const API = 'https://neobiscrmfood.herokuapp.com/api/';
-const DEFAULT_QUERY = 'barman/getActiveOrders';
-
-
+const API = "https://neobiscrmfood.herokuapp.com/api/";
+const DEFAULT_QUERY = "barman/getActiveOrders";
 
 class BarmenPage extends Component {
   constructor(props) {
@@ -15,71 +18,77 @@ class BarmenPage extends Component {
     this.state = {
       data: [],
       isLoading: false,
-      error: null,
+      error: null
     };
   }
-  
+
   async componentDidMount() {
-    getData(API + DEFAULT_QUERY)
-    .then((body)=> {
-        this.setState({data: body});
+    getData(API + DEFAULT_QUERY).then(body => {
+      this.setState({ data: body });
     });
   }
-  
-  
-  
+
   render() {
-    
-    let { data} = this.state;
-    // data= data.map((item)=>{
-    //   item.mealsList=item.mealsList.filter(meal=>meal.departmentName==="Бар");
-    //   return item.mealsList.length>0?item:false;
-    // });
-    // data = data.filter(arr=>arr!==false);
-    data = data.filter(a =>
-      a.mealsList.some(s => s.departmentName === "Бар")
-    );
+    let { data } = this.state;
+    data = data.map(item => {
+      item.mealsList = item.mealsList.filter(
+        meal => meal.departmentName === "Бар"
+      );
+      return item.mealsList.length > 0 ? item : false;
+    });
+    data = data.filter(arr => arr !== false);
+    // data = data.filter(a =>
+    //   a.mealsList.some(s => s.departmentName === "Бар")
+    // );
     console.log(data);
-     return (
-          <div className="backgroundCook">
-            <div className="wrapperCook">
+    return (
+      <div className="backgroundCook">
+        <div className="wrapperCook">
+          {data.map(order => (
+            <div className="cookItem" key={order.orderId}>
+              <header>
+                <span className="tableNumber">{`№${order.orderId}`}</span>
+                <span className="orderTime">
+                  {new Date(order.dateTimeOrdered).getHours() +
+                    ":" +
+                    new Date(order.dateTimeOrdered).getMinutes()}
+                </span>
+                <button
+                  className="statusOrder"
+                  orderid={order.orderId}
+                  onClick={orderReady}
+                >
+                  Готово!
+                </button>
+              </header>
+              <main>
+                <div className="comments">{order.comment}</div>
 
-            {      
-                
-                data.map(order=>
-                    <div className="cookItem" key={order.orderId}>
-                        <header>
-                            <span className="tableNumber">{`№${order.orderId}`}</span>
-                            <span className="orderTime">{
-                            new Date(order.dateTimeOrdered).getHours()+":"
-                            +new Date(order.dateTimeOrdered).getMinutes()
-                            }
-                            
-                            </span>
-                            <button className="statusOrder" orderid={order.orderId} onClick={orderReady}>Готово!</button>
-                        </header>
-                        <main>
-                            <div className="comments">
-                                {order.comment}
-                            </div>
-                            
-                            <ul>
-                {order.mealsList.map(meal=><li orderid={order.orderId} className={checkClassName(meal.status)} key={meal.mealId}>{`${meal.mealName} x${meal.quantity} id=${meal.mealId} `} 
-                <img mealid={meal.mealId} onClick={mealReady} className="btnImg" alt={meal.status} src={сheckStatusFood(meal.status)} /></li>)}
-                            </ul>
-                            
-                           
-                        </main>
-                    </div> 
-                )
-            }   
+                <ul>
+                  {order.mealsList.map(meal => (
+                    <li
+                      orderid={order.orderId}
+                      className={checkClassName(meal.status)}
+                      key={meal.mealId}
+                    >
+                      {`${meal.mealName} x${meal.quantity} id=${meal.mealId} `}
+                      <img
+                        mealid={meal.mealId}
+                        onClick={mealReady}
+                        className="btnImg"
+                        alt={meal.status}
+                        src={сheckStatusFood(meal.status)}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </main>
             </div>
-          </div>
-          );
-        }
-    
-    
+          ))}
+        </div>
+      </div>
+    );
+  }
 }
-
 
 export default BarmenPage;

@@ -38,9 +38,6 @@ class Navigation extends Component {
         <Link to={"/users"} className="categories">
           Пользователи
         </Link>
-        <Link to={"/departments"} className="categories">
-          Departments
-        </Link>
         <Link to={"/category"} className="categories">
           Категории
         </Link>

@@ -35,19 +35,23 @@ async function putData(url, data) {
     },
     body: JSON.stringify(data)
   })
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
+    .then(res =>  console.log(res.json()))
+    .catch(err => {
+      console.error(err.json());
+    });
 }
 
 async function deleteData(url) {
   await fetch(`https://neobiscrmfood.herokuapp.com/api${url}`, {
     method: "DELETE"
   })
-    .then(() => {
+    .then((res) => {
       console.log("removed");
+      console.log(res.json());
+
     })
     .catch(err => {
-      console.error(err);
+      console.error(err.json());
     });
 }
 

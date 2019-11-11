@@ -39,10 +39,16 @@ class CookPage extends Component {
   }
   render() {
     let { data, isLoading, error } = this.state;
-    data = data.filter(a =>
-      a.mealsList.some(s => s.departmentName === "Кухня")
-    );
-    console.log(data);
+    data = data.map(item => {
+      item.mealsList = item.mealsList.filter(
+        meal => meal.departmentName === "Кухня"
+      );
+      return item.mealsList.length > 0 ? item : false;
+    });
+    let arr = [2, 43, 24, 12];
+    let max = Math.max(...arr);
+    console.log(max);
+    data = data.filter(arr => arr !== false);
     if (error) {
       return <p>{error.message}</p>;
     }

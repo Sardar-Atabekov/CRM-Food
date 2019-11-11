@@ -8,7 +8,6 @@ import adminPage from './components/adminpage/admin.js';
 import waiterPage from './components/adminpage/userpage/users.js';
 import addUser from './components/adminpage/userpage/adduser.js';
 import UserPage from './components/adminpage/userpage/user.js';
-import Departments from './components/adminpage/menupage/Departments.js';
 import Categories from './components/adminpage/menupage/Categories.js';
 import MealsPage from './components/adminpage/menupage/meals.js';
 import MealPage from './components/adminpage/menupage/meal.js';
@@ -25,7 +24,6 @@ class App extends Component {
                   <Route path="/cook" exact component={CookPage}/>
                   <Route path="/admin" exact component={adminPage}/>
                   <Route path="/users" exact component={waiterPage}/>
-                  <Route path="/departments" exact component={Departments}/>
                   <Route path="/category" exact component={Categories}/>
                   <Route path="/admin/meals" exact component={MealsPage}/>
                   <Route path="/meals" exact component={MealsPage}/>

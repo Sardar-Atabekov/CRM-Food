@@ -4,7 +4,6 @@ import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import "./menu.css";
-import Department from "../../block/department.js";
 
 class Categories extends Component {
   constructor(props) {
@@ -62,7 +61,11 @@ class Categories extends Component {
           <main className="tableContent">
             <div className="addTable">
               <input type="text" />
-              <Department />
+              <select  className='select' name="departmentId">
+                  <option value="0" >Кухня</option>
+                  <option value="1" >Бар</option>
+                                      
+              </select>
               <button onClick={this.addTableClick}>Add</button>
             </div>
 

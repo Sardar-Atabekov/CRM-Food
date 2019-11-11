@@ -14,20 +14,20 @@ class MealPage extends Component {
       data: [],
       id: 0,
       select: 1,
-      status:0
+      status: 0
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(e) {
     this.setState({
-      select: e.target.value,
+      select: e.target.value
     });
   }
 
   handleStatusChange(e) {
     this.setState({
-      status: e.target.value,
+      status: e.target.value
     });
   }
 
@@ -35,7 +35,12 @@ class MealPage extends Component {
     getData(
       `https://neobiscrmfood.herokuapp.com/api/meals/${this.props.match.params.id}/`
     ).then(body => {
-      this.setState({ data: body, select: body.categoryId, id: body.id, status: body.mealStatus});
+      this.setState({
+        data: body,
+        select: body.categoryId,
+        id: body.id,
+        status: body.mealStatus
+      });
     });
     getData(`https://neobiscrmfood.herokuapp.com/api/Categories/`).then(
       body => {
@@ -124,7 +129,7 @@ class MealPage extends Component {
                       id="mealStatus"
                       name="mealStatus"
                       className="select"
-                      onChange={this.handleStatusChangeF.bind(this)}
+                      onChange={this.handleStatusChange.bind(this)}
                       value={this.state.status}
                     >
                       <option value="0">Have</option>
