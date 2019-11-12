@@ -30,9 +30,10 @@ class BarmenPage extends Component {
 
   render() {
     let { data } = this.state;
+    console.log(data);
     data = data.map(item => {
       item.mealsList = item.mealsList.filter(
-        meal => meal.departmentName === "Бар"
+        meal => meal.departmentName === "Bar"
       );
       return item.mealsList.length > 0 ? item : false;
     });

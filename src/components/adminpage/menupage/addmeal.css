@@ -194,3 +194,16 @@
     -webkit-appearance: none;
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
+
+.select {
+    height: calc(2.09375rem + 2px);
+    padding: .375rem 1.75rem .375rem .75rem;
+    line-height: 1.5;
+    color: #495057;
+    background-size: 8px 10px;
+    border: 1px solid #e1e5eb;
+    font-weight: 300;
+    font-size: .8125rem;
+    transition: box-shadow 250ms cubic-bezier(.27,.01,.38,1.06),border 250ms cubic-bezier(.27,.01,.38,1.06);
+    border-radius: .25rem;
+}

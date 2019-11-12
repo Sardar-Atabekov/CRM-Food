@@ -196,7 +196,6 @@ class MealPage extends Component {
           </main>
           <footer className="main-footer" >
             <Footer />
-            
           </footer>
         </div>
       </div>

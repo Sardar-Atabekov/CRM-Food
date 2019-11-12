@@ -3,7 +3,7 @@ import { getData, postData, putData, deleteData } from "../../requests";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
-import ModalBlock from "../../block/footer.js";
+// import ModalBlock from "../../block/footer.js";as
 
 
 
@@ -112,7 +112,6 @@ class Categories extends Component {
           </main>
           <footer className="main-footer">
             <Footer />
-            <ModalBlock/>
 
           </footer>
         </div>

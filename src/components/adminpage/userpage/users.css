@@ -9,8 +9,9 @@
 
 .wrapper .waiterContent {
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;  
 }
+
 
 .waiterContent .form {
     display: flex;
@@ -56,6 +57,7 @@
     line-height: 1.1;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     margin:0px;
+    margin-top: 40px;
 }
 
 .waiterContent .noActive {

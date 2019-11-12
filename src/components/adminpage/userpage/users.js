@@ -37,6 +37,10 @@ class waiterPage extends Component {
             <Search />
           </header>
           <main className="waiterContent">
+            <div className="adduser"><Link
+                        className="sub-title"
+                        to={`/adduser`}
+                      >Add user</Link></div>
             <table>
               <tbody>
                 <tr>

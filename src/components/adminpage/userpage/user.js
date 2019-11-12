@@ -4,6 +4,7 @@ import "./adduser.css";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
+import ModalBlock from "../../block/Modal.js";
 
 import { putData, getData } from "../../requests.js";
 
@@ -21,17 +22,16 @@ class UserPage extends Component {
     event.preventDefault();
     console.log(event.target);
     let formData = new FormData(event.target),
-      data = {},
-      id = event.target.firstChild.getAttribute("userid");
-
+      data = {};
+    data.id=event.target.getAttribute("userid");
+    console.log(event.target);
     formData.forEach(function(value, key) {
       data[key] = value;
     });
 
     console.log(data);
 
-    putData(`/users/${7}`, data);
-    console.log(id);
+    putData(`/users/${data.id}`, data);
   }
 
   async componentDidMount() {
@@ -75,7 +75,7 @@ class UserPage extends Component {
                 </div>
               </div>
 
-              <form className="form" key={data.id} onSubmit={this.handleSubmit}>
+              <form className="form" userid={data.id} key={data.id} onSubmit={this.handleSubmit}>
                 <div className="form-row">
                   <div className="form-group">
                     <label htmlFor="firstName">First Name</label>
@@ -109,8 +109,9 @@ class UserPage extends Component {
                       className="form-control"
                       id="dateBorn"
                       defaultValue={data.dateBorn}
-                      pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
+                      
                     />
+                    {/* pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" */}
                   </div>
 
                   <div className="form-group">
@@ -233,11 +234,8 @@ class UserPage extends Component {
                     className="form-control"
                   ></textarea>
                 </div>
-                <input
-                  type="submit"
-                  className="btn btnSumbit"
-                  value="Обновить"
-                />
+                <ModalBlock />
+
               </form>
             </div>
           </main>

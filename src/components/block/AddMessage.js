@@ -15,12 +15,12 @@ const ModalBlock = (props) => {
       <input
                   type="submit" onClick={toggle}
                   className="btn btnSumbit"
-                  value="Обновить"
+                  value="Добавить"
                 />
       <Modal isOpen={modal} toggle={toggle} >
         <ModalHeader toggle={toggle}>{buttonLabel}</ModalHeader>
         <ModalBody>
-          Данные были обновлены
+          Данные были добавлены
         </ModalBody >
         <ModalFooter>
           <Button color="primary" onClick={toggle}>Окей</Button>

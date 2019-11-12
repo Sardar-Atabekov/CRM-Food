@@ -84,7 +84,7 @@ class MealsPage extends Component {
                         event.target.parentNode.remove();
                       }}
                     >
-                      Удалить{" "}
+                      Удалить
                     </td>
                   </tr>
                 ))}

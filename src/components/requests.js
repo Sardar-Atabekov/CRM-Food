@@ -37,7 +37,7 @@ async function putData(url, data) {
   })
     .then(res =>  console.log(res.json()))
     .catch(err => {
-      console.error(err.json());
+      console.error(err);
     });
 }
 
@@ -51,7 +51,7 @@ async function deleteData(url) {
 
     })
     .catch(err => {
-      console.error(err.json());
+      console.error(err);
     });
 }
 
