@@ -141,7 +141,11 @@ class addMeal extends Component {
                     className="form-control"
                   ></textarea>
                 </div>
-                <input type="submit" className="btn btnSumbit" />
+                <input
+                  type="submit" 
+                  className="btn btnSumbit"
+                  value="Добавить"
+                />
               </form>
             </div>
           </main>

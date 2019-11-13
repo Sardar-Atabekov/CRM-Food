@@ -15,6 +15,7 @@ function checkStatusFood(params) {
 function mealReady(event) {
   event.preventDefault();
   let parent = event.target.parentNode;
+  console.log(parent);
   event.target.src = doneImgUrl;
   parent.classList.remove("notReady");
   parent.classList.add("ready");
@@ -22,7 +23,8 @@ function mealReady(event) {
     orderId: parent.getAttribute("orderid"),
     mealId: event.target.getAttribute("mealid")
   };
-  postData("/cook/closemeal", data);
+  console.log(data);
+  postData("/Cook/mealReady", data);
 }
 
 function orderReady(event) {

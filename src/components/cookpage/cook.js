@@ -7,6 +7,7 @@ import {
   mealReady,
   orderReady
 } from "./check";
+import Order from "./Order.js";
 
 const API = "https://neobiscrmfood.herokuapp.com/api/";
 const DEFAULT_QUERY = "cook/getActiveOrders";
@@ -21,6 +22,26 @@ class CookPage extends Component {
     };
   }
 
+  addMeals(name, quantity, id, status, orderId) {
+    let arr = [];
+    for (let i = 0; i < quantity; i++) {
+      arr[i] = (
+        <li key={10000 + i} orderid={orderId}>
+          
+          {name}
+          <img
+            mealid={id}
+            onClick={mealReady}
+            className="btnImg"
+            alt={status}
+            src={`https://st2.depositphotos.com/5777248/10629/v/950/depositphotos_106299224-stock-illustration-green-tick-check-mark-icon.jpg`}
+          />
+        </li>
+      );
+    }
+
+    return arr;
+  }
   async componentDidMount() {
     this.setState({ isLoading: true });
     try {
@@ -45,9 +66,7 @@ class CookPage extends Component {
       );
       return item.mealsList.length > 0 ? item : false;
     });
-    let arr = [2, 43, 24, 12];
-    let max = Math.max(...arr);
-    console.log(max);
+
     data = data.filter(arr => arr !== false);
     if (error) {
       return <p>{error.message}</p>;
@@ -60,46 +79,8 @@ class CookPage extends Component {
 
     return (
       <div className="wrapperCook">
-        {data.map(order => (
-          <div className="cookItem" key={order.orderId}>
-            <header>
-              <span className="tableNumber">№{order.orderId}</span>
-              <span className="orderTime">
-                {new Date(order.dateTimeOrdered).getHours() +
-                  ":" +
-                  new Date(order.dateTimeOrdered).getMinutes()}
-              </span>
-              <button
-                className="statusOrder"
-                orderid={order.orderId}
-                onClick={orderReady}
-              >
-                Готово!
-              </button>
-            </header>
-            <main>
-              <div className="comments">{order.comment}</div>
-
-              <ul>
-                {order.mealsList.map(meal => (
-                  <li
-                    orderid={order.orderId}
-                    className={checkClassName(meal.status)}
-                    key={meal.mealId}
-                  >
-                    {`${meal.mealName} x${meal.quantity} id=${meal.mealId} `}
-                    <img
-                      mealid={meal.mealId}
-                      onClick={mealReady}
-                      className="btnImg"
-                      alt={meal.status}
-                      src={checkStatusFood(meal.status)}
-                    />
-                  </li>
-                ))}
-              </ul>
-            </main>
-          </div>
+        {data.map(order => (          
+             <Order order={order}  key={order.orderId}/>                    
         ))}
       </div>
     );

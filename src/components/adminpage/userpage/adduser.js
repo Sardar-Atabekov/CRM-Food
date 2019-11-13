@@ -30,7 +30,7 @@ class addUser extends Component {
     console.log(data);
 
     postData("/users/", data);
-    event.reset();
+    event.target.reset();
 
   }
 
@@ -226,7 +226,11 @@ class addUser extends Component {
                     className="form-control"
                   ></textarea>
                 </div>
-                <AddMessage />
+                <input
+                  type="submit" 
+                  className="btn btnSumbit"
+                  value="Добавить"
+                />
               </form>
             </div>
           </main>
