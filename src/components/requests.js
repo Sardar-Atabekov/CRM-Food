@@ -18,9 +18,27 @@ async function postData(url, data) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(data)
+    }).then(e=>{
+      if(e.ok) {
+        console.log("Ваша заявка успешно отправлена!");
+      } else {
+        console.log("Ошибка. Проверьте введенные данные");
+      }
     });
+      
+          // Swal.fire({
+          //     text: 'Ваша заявка успешно отправлена!',
+          //     width: 500,
+          //     height: 500,
+          //     showConfirmButton: true,
+          //     confirmButtonColor: '#32B482',
+          // });
+          // document.getElementById('detailed-form').reset();
+      
     console.log(JSON.stringify(data));
   } catch (err) {
+    console.log("Ошибка. Проверьте введенные данные");
+
     console.log(err); // TypeError: failed to fetch
   }
 }

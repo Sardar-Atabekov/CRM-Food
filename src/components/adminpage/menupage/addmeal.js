@@ -26,7 +26,46 @@ class addMeal extends Component {
     });
     console.log(data);
     event.target.reset();
-    postData("/meals/", data);
+    postData("/meals/", data).then(e=>{
+      console.log(e);
+      if(e) {
+        console.log("Ваша заявка успешно отправлена!");
+      } else {
+        console.log("Ошибка. Проверьте введенные данные");
+      }
+    });
+    
+      //  Swal.fire({
+      //     text: 'Ошибка. Проверьте введенные данные.',
+      //     width: 500,
+      //     height: 500,
+      //     showConfirmButton: true,
+      //     confirmButtonColor: 'red',
+      // });
+  
+
+    //   fetch(`${api_base_website}/applications/`, {
+    //     method: 'POST', // or 'PUT'
+    //     body: JSON.stringify(applicationData), // data can be `string` or {object}!
+    //     headers: {"Content-Type": "application/json"}
+    // }).then((e)=>{
+    //     if(e.ok) {
+    //         Swal.fire({
+    //             text: 'Ваша заявка успешно отправлена!',
+    //             width: 500,
+    //             height: 500,
+    //             showConfirmButton: true,
+    //             confirmButtonColor: '#32B482',
+    //         });
+    //         document.getElementById('detailed-form').reset();
+    //     } else  Swal.fire({
+    //         text: 'Ошибка. Проверьте введенные данные.',
+    //         width: 500,
+    //         height: 500,
+    //         showConfirmButton: true,
+    //         confirmButtonColor: 'red',
+    //     });
+    // });  
   }
 
   render() {

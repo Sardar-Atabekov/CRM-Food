@@ -1,7 +1,7 @@
 .navigationComponent {
     display: flex;
     flex-direction: column;
-    position: relative;
+    position: fixed;
     width: 240px;
     background: #ffffff;
     top: 0;

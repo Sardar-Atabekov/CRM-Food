@@ -3,18 +3,26 @@
 }
 
 .wrapperCook {
-    display: grid;
+    /* display: grid;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 2vw;
-    margin: 10px 10px 40px 10px;
-    
+    margin: 10px 10px 40px 10px; */
+    display: flex;
+    flex-wrap:wrap;
+    margin: 10px 10px 40px 30px; 
 }
 
 body {
     background: #E4E4E4;
     margin: 0px;
     padding: 0px;
+}
+
+.cookItem {
+    width: 30%;
+    margin: 10px;
+    margin-right: 35px;
 }
 .cookItem header {
     display: flex;
@@ -53,10 +61,7 @@ body {
 .cookItem header .tableNumber {
     padding: 0 10px;
 }
-.cookItem li {
-    display: flex;
-    justify-content: space-between;
-}
+
 
 .ready {
    background: #F2F2F2;

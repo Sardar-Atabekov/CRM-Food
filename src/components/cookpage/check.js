@@ -21,10 +21,11 @@ function mealReady(event) {
   parent.classList.add("ready");
   let data = {
     orderId: parent.getAttribute("orderid"),
-    mealId: event.target.getAttribute("mealid")
+    mealId: event.target.getAttribute("mealid"),
+    finishedQuantity:1
   };
   console.log(data);
-  postData("/Cook/mealReady", data);
+  postData("/Cook/finishMeal", data);
 }
 
 function orderReady(event) {
@@ -36,5 +37,6 @@ function orderReady(event) {
   putData(`/cook/closeorder/${id}`);
   item.remove();
 }
+
 
 export { checkStatusFood, checkClassName, mealReady, orderReady };

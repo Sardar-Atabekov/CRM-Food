@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./cook.css";
 import {
-  checkStatusFood,
-  checkClassName,
-  mealReady,
-  orderReady
+  mealReady
 } from "./check";
 import Order from "./Order.js";
 
