@@ -4,7 +4,6 @@ import {Route, Switch} from "react-router-dom";
 import CookPage from './components/cookpage/cook';
 import BarmenPage from './components/barmenpage/barmen';
 import LoginPage from './components/loginpage/login';
-import adminPage from './components/adminpage/admin.js';
 import waiterPage from './components/adminpage/userpage/users.js';
 import addUser from './components/adminpage/userpage/adduser.js';
 import UserPage from './components/adminpage/userpage/user.js';
@@ -13,6 +12,7 @@ import MealsPage from './components/adminpage/menupage/meals.js';
 import MealPage from './components/adminpage/menupage/meal.js';
 import addMeal from './components/adminpage/menupage/addmeal.js';
 import Tables from './components/adminpage/tablepage/tables.js';
+import HistoryTransaction from './components/adminpage/transaction/HistoryTransaction.js';
 class App extends Component {
   render() {
       return (
@@ -22,7 +22,6 @@ class App extends Component {
                   <Route path="/" exact component={LoginPage}/> 
                   <Route path="/barmen" exact component={BarmenPage}/>
                   <Route path="/cook" exact component={CookPage}/>
-                  <Route path="/admin" exact component={adminPage}/>
                   <Route path="/users" exact component={waiterPage}/>
                   <Route path="/category" exact component={Categories}/>
                   <Route path="/admin/meals" exact component={MealsPage}/>
@@ -33,6 +32,9 @@ class App extends Component {
                   <Route path="/tables" exact component={Tables}/>
                   <Route path="/user/:id" exact component={UserPage}/>
                   <Route path="/meal/:id" exact component={MealPage}/>
+                  <Route path="/transactions" exact component={HistoryTransaction}/>
+
+                  
               </Switch>
               
           </React.Fragment>
@@ -43,4 +45,4 @@ class App extends Component {
 export default App;
 
 
-
+ 

@@ -5,7 +5,7 @@ import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 // import ModalBlock from "../../block/footer.js";as
 
-
+import "./category.css";
 
 import "./menu.css";
 
@@ -13,18 +13,23 @@ class Categories extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
+      body: [],
       isLoading: false,
-      error: null
+      error: null,
+      select: 2,
+      data: []
     };
+    this.changeSelectDepartment = this.changeSelectDepartment.bind(this);
   }
 
   addTableClick(event) {
     let data = {
       name: event.target.parentNode.firstChild.value,
+      imageURL: event.target.parentNode.childNodes[1].value,
       departmentId: event.target.previousSibling.value
     };
     event.target.parentNode.firstChild.value = "";
+    event.target.parentNode.childNodes[1].value = "";
     // document.getElementById('detailed-form').reset()
     console.log(data);
     postData("/Categories/", data);
@@ -33,27 +38,39 @@ class Categories extends Component {
   changeTableClick(event) {
     let id = event.target.getAttribute("id"),
       data = {
-        id:id,
-        name: event.target.parentNode.firstChild.value,
-        department: event.target.previousSibling.value
-
+        id,
+        name: event.target.parentNode.childNodes[1].value,
+        department: event.target.previousSibling.value,
+        imageURL: event.target.parentNode.firstChild.getAttribute("src")
       };
     // document.getElementById('detailed-form').reset()
-    console.log(data, id);
+    console.log(data);
     putData(`/Categories/${id}`, data);
   }
 
+  
+
+  changeSelectDepartment(event) {
+    let select = event.target.value;
+    console.log(select);
+    let arr = this.state.body;
+
+    if (+select === 2) {
+      this.setState({ data: arr });
+    } else {
+      this.setState({
+        data: arr.filter(department => department.departmentId === +select)
+      });
+    }
+  }
   async componentDidMount() {
     getData("https://neobiscrmfood.herokuapp.com/api/Categories").then(body => {
-      this.setState({ data: body });
+      this.setState({ body });
     });
   }
 
   render() {
-    let { data } = this.state;
-    console.log(data);
-    // barDepartment = data.filter(department=>department.departmentName==="Бар"),
-    // cookDepartment = data.filter(department=>department.departmentName==="Кухня");
+    let data = this.state.data.length > 0 ? this.state.data : this.state.body;
 
     return (
       <div className="wrapper">
@@ -64,55 +81,78 @@ class Categories extends Component {
           <header className="main-search">
             <Search />
           </header>
-          <main className="tableContent">
-            <div className="addTable">
-              <input type="text" />
-              <select  className='select' name="departmentId">
-                  <option value="0" >Кухня</option>
-                  <option value="1" >Бар</option>
-                                      
+          <main className="categoriesContent">
+            <div className="addCategories">
+              <input
+                type="text"
+                className="addCategory"
+                placeholder="Названия категории"
+              />
+              <input
+                type="text"
+                className="addCategory"
+                placeholder="Ссылка изображении"
+              />
+              <select className="select" name="departmentId">
+                <option value="0">Кухня</option>
+                <option value="1">Бар</option>
               </select>
-              <button onClick={this.addTableClick}>Add</button>
-            </div>
-
-            {data.map(item => (
-              <div className="item" key={item.id}>
-                <input
-                  type="text"
-                  className="item"
-                  defaultValue={item.category}
-                />
+              <button onClick={this.addTableClick} className="addCategoryBtn">
+                Добавить
+              </button>
+              <div className="selectDepartment">
+                <label htmlFor="department">По департаментам: </label>
                 <select
-                      id="name"
-                      className="select"
-                      name="name"
-                      defaultValue={item.departmentId}
-                    >
-                      <option value="0">Кухня</option>
-                      <option value="1">Бар</option>
-                    </select>
-                <img
-                  id={item.id}
-                  src="https://cdn.icon-icons.com/icons2/894/PNG/512/Tick_Mark_icon-icons.com_69146.png"
-                  className="changeTable"
-                  onClick={this.changeTableClick}
-                  alt="changeImg"
-                />
-                <img
-                  className="deleteTable"
-                  alt="deleteTable"
-                  src="https://cdn.dribbble.com/users/2087607/screenshots/5730291/x-delete-round-flat-icon-free-download.png"
-                  onClick={event => {
-                    deleteData(`/Categories/${item.id}`);
-                    event.target.parentNode.remove();
-                  }}
-                />
+                  className="select"
+                  onChange={this.changeSelectDepartment}
+                  id="department"
+                >
+                  <option value="2">Все</option>
+                  <option value="0">Кухня</option>
+                  <option value="1">Бар</option>
+                </select>
               </div>
-            ))}
+            </div>
+            <div className="listItem">
+              {data.map(item => (
+                <div className="item" key={item.id}>
+                  <img src={item.image} alt={item.category} />
+                  <input
+                    type="text"
+                    className="input"
+                    defaultValue={item.category}
+                  />
+                  <select
+                    id="name"
+                    className="select"
+                    name="name"
+                    defaultValue={item.departmentId}
+                  >
+                    <option value="0">Кухня</option>
+                    <option value="1">Бар</option>
+                  </select>
+                  <input
+                    type="button"
+                    id={item.id}
+                    className="changeBtn"
+                    onClick={this.changeTableClick}
+                    value="Изменить"
+                  />
+                  <input
+                    type="button"
+                    className="deleteBtn"
+                    value="Удалить"
+                    onClick={event => {
+                      deleteData(`/Categories/${item.id}`);
+                      event.target.parentNode.remove();
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
           </main>
           <footer className="main-footer">
             <Footer />
-
           </footer>
         </div>
       </div>

@@ -1,0 +1,64 @@
+.categoriesContent .listItem {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 40px;
+}
+
+.categoriesContent .listItem .item {
+    display: flex;
+    width: 300px;
+    margin: 30px 50px;
+    flex-wrap: wrap;
+}
+
+.categoriesContent .listItem .item img {
+    height: 250px;
+    width: 270px;
+    border-radius: .25rem;
+
+}
+
+.categoriesContent .listItem .input {
+    padding-left: 15px;
+    border: 1px solid #e1e5eb;
+    border-radius: .25rem;
+}
+
+
+.categoriesContent .listItem .changeBtn, .categoriesContent .listItem .deleteBtn, .addCategoryBtn {
+    background: green;
+    width: 45%;
+    border: 1px solid #e1e5eb;
+    height: 35.5px !important;
+    color: white;
+    border-radius: .25rem;
+
+}
+
+.categoriesContent .listItem .deleteBtn {
+    background: red;
+    width: 46%;
+}
+
+.addCategoryBtn {
+    width: 120px;
+}
+.categoriesContent .addCategories {
+    margin: 30px auto;
+    width: 86%;
+    display: flex;
+}
+
+.categoriesContent .addCategory {
+    padding-left: 15px;
+    border: 1px solid #e1e5eb;
+    height: 35.5px !important;
+    border-radius: .25rem;
+    color: black;
+
+}
+
+.selectDepartment {
+    margin-left: auto;
+}
+    

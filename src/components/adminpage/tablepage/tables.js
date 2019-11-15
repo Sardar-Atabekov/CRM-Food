@@ -63,19 +63,20 @@ class Tables extends Component {
           <header className="main-search">
             <Search />
           </header>
-          <main className="tableContent">
-            <div className="addTable">
-              <input type="text" />
+          <main className="categoriesContent">
+            <div className="addCategories">
+              <input type="text" className="addCategory"/>
               <button onClick={this.addTableClick}>Add</button>
             </div>
 
-            {data.map(item => (
+            {/* {data.map(item => (
               <div className="item" key={item.id}>
                 <input
                   type="text"
                   name="currentValue"
                   className="item"
                   defaultValue={item.name}
+                  
                   onChange={this.handleChange}
                 />
                 <img
@@ -96,7 +97,46 @@ class Tables extends Component {
                   }}
                 />
               </div>
-            ))}
+            ))} */}
+
+            <div className="listItem">
+              {data.map(item => (
+                <div className="item" key={item.id}>
+                  <img src="https://images.ua.prom.st/973385600_stoly-i-stulya.jpg" alt={item.category} />
+                  <input
+                    type="text"
+                    className="input"
+                    defaultValue={item.name}
+                  />
+                  <select
+                    id="name"
+                    className="select"
+                    name="name"
+                    defaultValue={item.status}
+                  >
+                    <option value="0">Free</option>
+                    <option value="1">Busy</option>
+                  </select> 
+                  <input
+                    type="button"
+                    id={item.id}
+                    className="changeBtn"
+                    onClick={this.changeTableClick}
+                    value="Изменить"
+                  />
+                  <input
+                    type="button"
+                    className="deleteBtn"
+                    value="Удалить"
+                    onClick={event => {
+                      deleteData(`/Categories/${item.id}`);
+                      event.target.parentNode.remove();
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
+          
           </main>
           <footer className="main-footer">
             <Footer />

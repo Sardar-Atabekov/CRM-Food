@@ -10,8 +10,14 @@
 .wrapper .waiterContent {
     display: flex;
     flex-direction: column;  
+    margin: 0px;
+    margin-top: 40px;
+    padding-left: 25px;
 }
 
+.wrapper .waiterContent table {
+    background: #fff;
+}
 
 .waiterContent .form {
     display: flex;
@@ -20,10 +26,7 @@
     padding: 20px 13px;
 }
 
-.waiterContent  {
-    background: #ffffff;
-    margin: 20px;
-}
+
 .waiterContent td, .waiterContent th {
     border: #e4e4e4 1px solid;
     margin: 0px;
