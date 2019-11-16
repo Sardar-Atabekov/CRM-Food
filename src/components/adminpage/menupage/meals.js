@@ -4,7 +4,9 @@ import "./meals.css";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
+import NamePage from "./../blocks/namePage.js";
 import { Link } from "react-router-dom";
+import Category from "../../block/category.js";
 
 const API = "https://neobiscrmfood.herokuapp.com/api/";
 const DEFAULT_QUERY = "admin/getMeals";
@@ -13,7 +15,8 @@ class MealsPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
+      select:null
     };
   }
 
@@ -23,10 +26,17 @@ class MealsPage extends Component {
     });
   }
 
+  handleSelectCategory = (langValue) => {
+    this.setState({select: langValue});
+  }
+  // handleSelectCategor(){
+
+  // }
+
   render() {
     let { data } = this.state;
     console.log(data);
-
+    console.log(this.state);
     return (
       <div className="wrapper">
         <aside className="navBlock">
@@ -37,7 +47,27 @@ class MealsPage extends Component {
             <Search />
           </header>
           <div className="mealsContent">
-            <div className="function"></div>
+            <div className="functionPage">
+              <NamePage name="Meals page" />
+              <div className="addMeal">
+                <Link to={"/addmeal"} className="categories">
+                  Добавить
+                </Link>
+              </div>
+              <div className="selectDepartment">
+                <label htmlFor="department">По департаментам: </label>
+                <select
+                  className="select"
+                  onChange={this.changeSelectDepartment}
+                  id="department"
+                >
+                  <option value="2">Все</option>
+                  <option value="0">Кухня</option>
+                  <option value="1">Бар</option>
+                </select>
+              </div>
+              <Category onSelectCategory={this.handleSelectCategory}/>
+            </div>
             <table>
               <tbody>
                 <tr>

@@ -5,7 +5,8 @@ class Category extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: []
+      category: [],
+      select:null
     };
   }
 
@@ -18,9 +19,24 @@ class Category extends Component {
     );
   }
 
+  // handleSelectCategory(event) {
+  //   let select = event.target.value;
+  //   this.props.onSelectCategory(select);
+  // }
+
+  handleLangChange = () => {
+    console.log('d');
+    let select = this.target.value;
+    this.props.onSelectCategory(select);          
+}
+  // handleLangChange = () => {
+  //   var lang = this.dropdown.value;
+  //   this.props.onSelectLanguage(lang);            
+  // }
+
   render() {
     return (
-      <select id="categoryId" className="select" name="categoryId">
+      <select id="categoryId" className="select" onChange={this.handleSelectCategory} name="categoryId">
         {this.state.category.map(category => (
           <option value={category.id} key={category.id}>
             {category.category}

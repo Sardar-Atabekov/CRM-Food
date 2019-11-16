@@ -3,14 +3,14 @@ import './namePage.css';
 class NamePage extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: props.name };
+    this.state = { name: props.name };
   }
 
   render() {
     return (
       <div className="namePage">
         <span className="page-subtitle">DASHBOARD</span>
-        <h3 className="page-title">Transaction History</h3>
+        <h3 className="page-title">{this.state.name}</h3>
       </div>
     );
   }

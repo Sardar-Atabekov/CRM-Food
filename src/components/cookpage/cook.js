@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./cook.css";
-import {
-  mealReady
-} from "./check";
 import Order from "./Order.js";
 
 const API = "https://neobiscrmfood.herokuapp.com/api/";

@@ -40,7 +40,7 @@ class HistoryTransaction extends Component {
           </header>
           <main className="waiterContent transaction">
             <div className="functionPage">
-              <NamePage />
+              <NamePage name="Transaction History"/>
               <Calendar />
             </div>
             <div className="transactionDisplay">
