@@ -16,27 +16,36 @@ class MealsPage extends Component {
     super(props);
     this.state = {
       data: [],
-      select:null
+      body:[]
     };
+
+    this.handleSelectCategory = this.handleSelectCategory.bind(this);
   }
 
   async componentDidMount() {
     getData(API + DEFAULT_QUERY).then(body => {
-      this.setState({ data: body });
+      this.setState({ body });
     });
   }
 
-  handleSelectCategory = (langValue) => {
-    this.setState({select: langValue});
+  handleSelectCategory(select) {
+    let arr = this.state.body;
+
+    if (+select === 2) {
+      this.setState({ data: arr });
+    } else {
+      this.setState({
+        data: arr.filter(department => department.departmentId === +select)
+      });
+    }
   }
   // handleSelectCategor(){
 
   // }
 
   render() {
-    let { data } = this.state;
+    let data = this.state.data.length > 0 ? this.state.data : this.state.body;
     console.log(data);
-    console.log(this.state);
     return (
       <div className="wrapper">
         <aside className="navBlock">
@@ -66,7 +75,7 @@ class MealsPage extends Component {
                   <option value="1">Бар</option>
                 </select>
               </div>
-              <Category onSelectCategory={this.handleSelectCategory}/>
+              <Category onSelectCategory={this.handleSelectCategory} />
             </div>
             <table>
               <tbody>

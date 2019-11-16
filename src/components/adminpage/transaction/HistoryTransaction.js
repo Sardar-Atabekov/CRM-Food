@@ -7,8 +7,7 @@ import Footer from "../../block/footer.js";
 import NamePage from "./../blocks/namePage";
 import Calendar from "./../calendar/calendar";
 import './transaction.css';
-const API = "https://neobiscrmfood.herokuapp.com/api/";
-const DEFAULT_QUERY = "orders";
+
 
 class HistoryTransaction extends Component {
   constructor(props) {
