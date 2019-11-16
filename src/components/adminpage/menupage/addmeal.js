@@ -5,6 +5,7 @@ import Footer from "../../block/footer.js";
 import Category from "../../block/category.js";
 import { postData } from "../../requests.js";
 import "./addmeal.css";
+import ModalBlock from "./../../block/Modal";
 
 class addMeal extends Component {
   constructor(props) {
@@ -12,8 +13,12 @@ class addMeal extends Component {
     this.state = {
       category: [],
       isLoading: false,
-      error: []
+      error: [],
+      data: [],
+      message: "Ошибка. Проверьте введенные данные",
+      status: false
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(event) {
@@ -24,25 +29,30 @@ class addMeal extends Component {
     formData.forEach(function(value, key) {
       data[key] = value;
     });
-    console.log(data);
+
     event.target.reset();
-    postData("/meals/", data).then(e=>{
+    fetch(`https://neobiscrmfood.herokuapp.com/api/meals`, {
+      method: "POST", // or 'PUT'
+      body: JSON.stringify(data), // data can be `string` or {object}!
+      headers: { "Content-Type": "application/json" }
+    }).then(e => {
       console.log(e);
-      if(e) {
-        console.log("Ваша заявка успешно отправлена!");
-      } else {
-        console.log("Ошибка. Проверьте введенные данные");
-      }
+      this.setState({
+        message: e.ok  ? "Данные успешно добавлены!"
+          : "Ошибка. Проверьте введенные данные"
+      });
+      this.setState({status:true});
     });
-    
-      //  Swal.fire({
-      //     text: 'Ошибка. Проверьте введенные данные.',
-      //     width: 500,
-      //     height: 500,
-      //     showConfirmButton: true,
-      //     confirmButtonColor: 'red',
-      // });
-  
+
+    // });
+
+    //  Swal.fire({
+    //     text: 'Ошибка. Проверьте введенные данные.',
+    //     width: 500,
+    //     height: 500,
+    //     showConfirmButton: true,
+    //     confirmButtonColor: 'red',
+    // });
 
     //   fetch(`${api_base_website}/applications/`, {
     //     method: 'POST', // or 'PUT'
@@ -65,12 +75,11 @@ class addMeal extends Component {
     //         showConfirmButton: true,
     //         confirmButtonColor: 'red',
     //     });
-    // });  
+    // });
   }
 
   render() {
-    let { category } = this.state;
-    console.log(category);
+    console.log(this.state);
 
     return (
       <div className="wrapper">
@@ -180,11 +189,8 @@ class addMeal extends Component {
                     className="form-control"
                   ></textarea>
                 </div>
-                <input
-                  type="submit" 
-                  className="btn btnSumbit"
-                  value="Добавить"
-                />
+                
+                <ModalBlock message={this.state.message} modal={this.state.status}/>
               </form>
             </div>
           </main>

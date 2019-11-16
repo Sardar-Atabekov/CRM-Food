@@ -19,7 +19,7 @@ class Order extends Component {
   addMeals(name, quantity, id, status, orderId, finished) {
     let arr = [];
     let quantityActive = quantity - finished;
-    if (finished !== quantity) {
+    if (finished !== quantity ) {
       for (let i = 0; i < quantityActive; i++) {
         arr[i] = (
           <li key={10000 + i} orderid={orderId}>
@@ -34,20 +34,23 @@ class Order extends Component {
           </li>
         );
       }
-      for (let i = quantityActive; i < quantityActive + 1; i++) {
-        arr[i] = (
-          <li key={10000 + i} orderid={orderId} className="ready">
-            {name} x{finished}
-            <img
-              mealid={id}
-              className="btnImg"
-              alt={status}
-              src={`https://st2.depositphotos.com/5777248/10629/v/950/depositphotos_106299224-stock-illustration-green-tick-check-mark-icon.jpg`}
-            />
-          </li>
-        );
+      if(finished > 0) {
+        for (let i = quantityActive; i < quantityActive + 1; i++) {
+          arr[i] = (
+            <li key={10000 + i} orderid={orderId} className="ready">
+              {name} x{finished}
+              <img
+                mealid={id}
+                className="btnImg"
+                alt={status}
+                src={`https://st2.depositphotos.com/5777248/10629/v/950/depositphotos_106299224-stock-illustration-green-tick-check-mark-icon.jpg`}
+              />
+            </li>
+          );
+        }
       }
-    } else {
+      
+    } else if (finished > 0) {
       for (let i = 0; i < 1; i++) {
         arr[i] = (
           <li key={10000 + i} orderid={orderId} className="ready">
@@ -61,7 +64,6 @@ class Order extends Component {
           </li>
         );
       }
-      
     }
     console.log(arr);
     return arr;

@@ -19,26 +19,7 @@ class CookPage extends Component {
     };
   }
 
-  addMeals(name, quantity, id, status, orderId) {
-    let arr = [];
-    for (let i = 0; i < quantity; i++) {
-      arr[i] = (
-        <li key={10000 + i} orderid={orderId}>
-          
-          {name}
-          <img
-            mealid={id}
-            onClick={mealReady}
-            className="btnImg"
-            alt={status}
-            src={`https://st2.depositphotos.com/5777248/10629/v/950/depositphotos_106299224-stock-illustration-green-tick-check-mark-icon.jpg`}
-          />
-        </li>
-      );
-    }
-
-    return arr;
-  }
+  
   async componentDidMount() {
     this.setState({ isLoading: true });
     try {

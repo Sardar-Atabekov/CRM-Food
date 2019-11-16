@@ -3,24 +3,24 @@ import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import './modal.css';
 const ModalBlock = (props) => {
-    const {
-        buttonLabel,
-    } = props;
+  let {message , status} = props;
   const [modal, setModal] = useState(false);
 
-  const toggle = () => setModal(!modal);
+  const toggle = () => {
+    setModal(!modal);
+  };
 
   return (
     <div>
       <input
-                  type="submit" onClick={toggle}
+                  type="submit"  onClick={toggle}
                   className="btn btnSumbit"
-                  value="Обновить"
+                  value="Добавить"
                 />
       <Modal isOpen={modal} toggle={toggle} >
-        <ModalHeader toggle={toggle}>{buttonLabel}</ModalHeader>
+        <ModalHeader toggle={toggle}>Message</ModalHeader>
         <ModalBody>
-          Данные были обновлены
+          {message}
         </ModalBody >
         <ModalFooter>
           <Button color="primary" onClick={toggle}>Окей</Button>
