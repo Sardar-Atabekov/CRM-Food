@@ -54,8 +54,10 @@ class CookPage extends Component {
 
     return (
       <div className="wrapperCook">
-        {data.map(order => (          
-             <Order order={order}  key={order.orderId}/>                    
+        {data.map(order => (   
+          
+             <Order order={order}  key={order.orderId}/>  
+                               
         ))}
       </div>
     );

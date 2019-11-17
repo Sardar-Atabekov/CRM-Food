@@ -5,6 +5,7 @@ import "./users.css";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
+import Time from "../calendar/time";
 const API = "https://neobiscrmfood.herokuapp.com/api/";
 const DEFAULT_QUERY = "users";
 
@@ -80,11 +81,9 @@ class waiterPage extends Component {
                     <td>{user.gender}</td>
                     <td>
                       <time dateTime={user.startWorkDate}>
-                        {new Date().getDate(user.startWorkDate) +
-                          "." +
-                          new Date().getMonth(user.startWorkDate) +
-                          "." +
-                          new Date().getFullYear(user.startWorkDate)}
+                        {
+                          Time(user.startWorkDate)
+                        }
                       </time>
                     </td>
 

@@ -6,8 +6,8 @@ import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import NamePage from "./../blocks/namePage";
 import Calendar from "./../calendar/calendar";
-import './transaction.css';
-
+import Time from './../calendar/time';
+import "./transaction.css";
 
 class HistoryTransaction extends Component {
   constructor(props) {
@@ -20,14 +20,16 @@ class HistoryTransaction extends Component {
   }
 
   async componentDidMount() {
-    getData("https://neobiscrmfood.herokuapp.com/api/Admin/transactionHistory").then(body => {
+    getData(
+      "https://neobiscrmfood.herokuapp.com/api/Admin/transactionHistory"
+    ).then(body => {
       this.setState({ data: body });
     });
   }
 
   render() {
     let { data } = this.state;
-
+    let time;
     return (
       <div className="wrapper">
         <aside className="navBlock">
@@ -39,7 +41,7 @@ class HistoryTransaction extends Component {
           </header>
           <main className="waiterContent transaction">
             <div className="functionPage">
-              <NamePage name="Transaction History"/>
+              <NamePage name="Transaction History" />
               <Calendar />
             </div>
             <div className="transactionDisplay">
@@ -62,23 +64,16 @@ class HistoryTransaction extends Component {
                   <th>Products</th>
                   <th>Status</th>
                   <th>Total</th>
-                  
                 </tr>
                 {data.map(order => (
                   <tr key={order.orderId}>
-                    
-                    
-
-                    <td>
-                      {order.orderId}
-                    </td>
+                    <td>{order.orderId}</td>
                     <td>
                       <time dateTime={order.orderDate}>
-                        {new Date().getDate(order.orderDate) +
-                          "." +
-                          new Date().getMonth(order.orderDate) +
-                          "." +
-                          new Date().getFullYear(order.orderDate)}
+                        {
+                          Time(order.orderDate)
+                       
+                        }
                       </time>
                     </td>
 

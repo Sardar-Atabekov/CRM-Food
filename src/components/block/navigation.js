@@ -20,7 +20,7 @@ class Navigation extends Component {
           {" "}
           <img src={neobisLogo} className="neobis_logo" alt="neobisLogo" />
         </Link>
-        <Link to={"/orders"} className="categories">
+        <Link to={"/traffic"} className="categories">
           Orders
         </Link>
         <Link to={"/sales"} className="categories">
