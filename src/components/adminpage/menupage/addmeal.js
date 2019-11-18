@@ -3,7 +3,7 @@ import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import Category from "../../block/category.js";
-import { postData } from "../../requests.js";
+// import { postData } from "../../requests.js";
 import "./addmeal.css";
 import ModalBlock from "./../../block/Modal";
 

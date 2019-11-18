@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import './modal.css';
 const ModalBlock = (props) => {
-  let {message , status} = props;
+  let {message } = props;
   const [modal, setModal] = useState(false);
 
   const toggle = () => {

@@ -4,7 +4,6 @@ import "./adduser.css";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
-import AddMessage from "../../block/AddMessage.js";
 
 import { postData } from "../../requests.js";
 
