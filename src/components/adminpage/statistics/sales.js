@@ -33,9 +33,7 @@ class Sales extends Component {
     //     data = [...data3, ...data1, ...data2];
     //     console.log(data);
     // }
-    this.setState({count:this.state.count+1 });
 
-    console.log(this.state.count);
     return (
       <div className="wrapper">
         <aside className="navBlock">
@@ -48,6 +46,7 @@ class Sales extends Component {
           <main className="salesContent">
                 <div className="totals">
                     <Total/>
+                    s
                 </div>
           </main>
           <footer className="main-footer">
