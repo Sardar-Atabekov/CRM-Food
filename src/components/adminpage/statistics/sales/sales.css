@@ -5,5 +5,12 @@
 
 
 .salesContent .namePage {
-    margin-left: 10px;
+    margin-left: 20px;
+}
+
+.graphicArt {
+    height:  455px;
+    width: 1180px;
+    margin: 20px;
+    background: #ffffff;
 }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { getData } from "./../../../requests";
-import "./styles.css";
+import { getData } from "../../../requests";
+import "./../blocks/styles.css";
 class Total extends Component {
   constructor(props) {
     super(props);

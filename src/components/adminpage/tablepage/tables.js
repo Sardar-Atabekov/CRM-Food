@@ -114,8 +114,7 @@ class Tables extends Component {
                     name="name"
                     defaultValue={item.status}
                   >
-                    <option value="0">Free</option>
-                    <option value="1">Busy</option>
+                    <option value={item.status}>{item.status}</option>
                   </select> 
                   <input
                     type="button"

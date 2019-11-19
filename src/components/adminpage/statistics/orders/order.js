@@ -4,8 +4,7 @@ import Search from "../../../block/search.js";
 import Footer from "../../../block/footer.js";
 import Total from './totals';
 import { getData } from "../../../requests";
-import NamePage from "./../../blocks/namePage";
-import './sales.css';
+import NamePage from "../../blocks/namePage";
 
 class Sales extends Component {
   constructor(props) {
@@ -40,13 +39,10 @@ class Sales extends Component {
             <Search />
           </header>
           <main className="salesContent">
-            <NamePage name="Sales Overview"/>
-               <Total/>
+            <NamePage name="Orders Overview"/>
+            <Total/>
                <div className="graphicArt"> 
                  Графика
-               </div>
-               <div className="topMeals">
-
                </div>
           </main>
           <footer className="main-footer">

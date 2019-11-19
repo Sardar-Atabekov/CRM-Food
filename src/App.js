@@ -14,7 +14,7 @@ import addMeal from './components/adminpage/menupage/addmeal.js';
 import Tables from './components/adminpage/tablepage/tables.js';
 import HistoryTransaction from './components/adminpage/transaction/HistoryTransaction.js';
 import Sales from './components/adminpage/statistics/sales/sales';
-import Traffic from './components/adminpage/statistics/sales/sales';
+import Traffic from './components/adminpage/statistics/orders/order';
 class App extends Component {
   render() {
       return (
