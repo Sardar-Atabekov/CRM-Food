@@ -4,8 +4,7 @@ import "./adduser.css";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
-
-import { postData } from "../../requests.js";
+import ModalBlock from "./../../block/Modal";
 
 class addUser extends Component {
   constructor(props) {
@@ -13,7 +12,9 @@ class addUser extends Component {
     this.state = {
       data: {},
       isLoading: false,
-      error: null
+      error: null,
+      message: "Ошибка. Проверьте введенные данные",
+      status: false
     };
   }
 
@@ -27,10 +28,25 @@ class addUser extends Component {
     });
 
     console.log(data);
+    fetch(`https://neobiscrmfood.herokuapp.com/api/users/`, {
+      method: "POST", // or 'PUT'
+      body: JSON.stringify(data), // data can be `string` or {object}!
+      headers: { "Content-Type": "application/json" }
+    }).then(e => {
+      console.log(e.ok);
+      if (e.ok) {
+        this.setState({
+          message: "Данные успешно добавлены!"
+        });
+        event.target.reset();
+      } else {
+        this.setState({
+          message: "Ошибка. Проверьте введенные данные"
+        });
+      }
 
-    postData("/users/", data);
-    event.target.reset();
-
+      this.setState({ status: true });
+    });
   }
 
   render() {
@@ -92,6 +108,7 @@ class addUser extends Component {
                       type="text"
                       name="dateBorn"
                       required
+                      placeholder="2000-10-05"
                       className="form-control"
                       id="dateBorn"
                       value={this.state.numberOfGuests}
@@ -168,6 +185,7 @@ class addUser extends Component {
                     <input
                       type="text"
                       required
+                      placeholder="2000-10-05"
                       className="form-control"
                       name="startWorkDay"
                       id="startWorkDay"
@@ -225,10 +243,9 @@ class addUser extends Component {
                     className="form-control"
                   ></textarea>
                 </div>
-                <input
-                  type="submit" 
-                  className="btn btnSumbit"
-                  value="Добавить"
+                <ModalBlock
+                  message={this.state.message}
+                  modal={this.state.status}
                 />
               </form>
             </div>

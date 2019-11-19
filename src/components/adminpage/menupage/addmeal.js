@@ -31,17 +31,23 @@ class addMeal extends Component {
     });
 
     event.target.reset();
+    
     fetch(`https://neobiscrmfood.herokuapp.com/api/meals`, {
       method: "POST", // or 'PUT'
       body: JSON.stringify(data), // data can be `string` or {object}!
       headers: { "Content-Type": "application/json" }
     }).then(e => {
       console.log(e);
-      this.setState({
-        message: e.ok  ? "Данные успешно добавлены!"
-          : "Ошибка. Проверьте введенные данные"
-      });
-      this.setState({status:true});
+      if (e.ok) {
+        this.setState({
+          message: "Данные успешно добавлены!"
+        });
+        event.target.reset();
+      } else {
+        this.setState({
+          message: "Ошибка. Проверьте введенные данные"
+        });
+      }
     });
 
     // });

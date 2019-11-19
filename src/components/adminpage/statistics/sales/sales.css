@@ -3,7 +3,7 @@
     padding-left: 30px;
 }
 
-
+input::-webkit-input-placeholder { color:#e4e4e4; }
 .salesContent .namePage {
     margin-left: 20px;
 }

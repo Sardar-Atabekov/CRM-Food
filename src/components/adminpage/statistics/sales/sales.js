@@ -46,7 +46,7 @@ class Sales extends Component {
                  Графика
                </div>
                <div className="topMeals">
-
+                  
                </div>
           </main>
           <footer className="main-footer">
