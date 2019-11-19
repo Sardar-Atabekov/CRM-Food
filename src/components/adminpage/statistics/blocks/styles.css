@@ -56,3 +56,43 @@
     font-size: 2.0625rem;
     font-weight: 500;
 }
+
+.topMeals li  {
+    list-style-type:none;
+    padding: .625rem 1rem;
+    border-top: 1px solid #e6e5e8;
+    display: flex;
+    justify-content: space-between;
+}
+
+.topMeals .meals {
+    padding-left: 0px;
+    margin: 0px;
+}
+
+.topMeals {
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    margin-left: 20px;
+    border-radius: .625rem;
+    background: #ffffff;
+    box-shadow: 0 2px 0 rgba(90,97,105,.11), 0 4px 8px rgba(90,97,105,.12), 0 10px 10px rgba(90,97,105,.06), 0 7px 70px rgba(90,97,105,.1);
+ }
+
+
+
+ .topMeals .header h4 {
+    margin: 0px;
+ }
+
+ .topMeals .header {
+    border-radius: .625rem .625rem 0 0;
+    padding: 1rem 1rem;
+ }
+
+ .tops {
+     display: flex;
+ }

@@ -5,6 +5,9 @@ import Footer from "../../../block/footer.js";
 import Total from './totals';
 import { getData } from "../../../requests";
 import NamePage from "./../../blocks/namePage";
+import TopMeals from "../blocks/topMeals";
+import TopWaiter from "../blocks/topWaiter";
+
 import './sales.css';
 
 class Sales extends Component {
@@ -45,8 +48,9 @@ class Sales extends Component {
                <div className="graphicArt"> 
                  Графика
                </div>
-               <div className="topMeals">
-                  
+               <div className="tops">
+                  <TopMeals name="Top Meals"/>
+                  <TopWaiter name="Top Waiters"/>
                </div>
           </main>
           <footer className="main-footer">
