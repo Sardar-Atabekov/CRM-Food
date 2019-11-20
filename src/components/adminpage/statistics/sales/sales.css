@@ -1,4 +1,4 @@
-.salesContent {
+.salesContent, .orderContent {
     margin-top: 30px;
     padding-left: 10px;
 }
@@ -7,17 +7,31 @@ input::-webkit-input-placeholder {
     color: #e4e4e4;
 }
 
-.salesContent .namePage {
+.salesContent .namePage, .orderContent .namePage {
     margin-left: 20px;
 }
 
 .graphicArt {
-    height: 455px;
-    width: 1180px;
-    margin: 20px;
+    width: 900px;
+    margin: 0px 0 30px 20px;
     background: #ffffff;
+    box-shadow: 0 2px 0 rgba(90,97,105,.11), 0 4px 8px rgba(90,97,105,.12), 0 10px 10px rgba(90,97,105,.06), 0 7px 70px rgba(90,97,105,.1);
+    border-radius: .625rem;
+
 }
 
 .topMeals .sums {
     margin-left: 20px;
+}
+
+.statistics {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.totalSelect {
+    display: flex;
+    border-radius: 0 0 .625rem .625rem;
+    padding: 1rem 1rem;
+    justify-content: space-between;
 }

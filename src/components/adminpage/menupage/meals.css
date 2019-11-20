@@ -19,8 +19,15 @@
   margin: 0px;
   padding: 15px 15px;
   text-align: center;
+
 }
 
+.mealsContent th::after {
+  width: 10px;
+  height: 13px;
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiP…IiPjwvcG9seWdvbj4gICAgICAgICAgICA8L2c+ICAgICAgICA8L2c+ICAgIDwvZz48L3N2Zz4=);
+  background-size: 90%;
+}
 .mealsContent tr {
   border: black 1px solid;
   margin: 0px;

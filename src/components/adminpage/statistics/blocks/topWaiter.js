@@ -19,7 +19,7 @@ class TopWaiter extends Component {
   }
   render() {
     let { data } = this.state;
-      
+      data = data.sort((a, b) => b.sum - a.sum);
     return (
       <div className="topMeals">
         <div className="header">
@@ -29,13 +29,24 @@ class TopWaiter extends Component {
           {data.map((user, index) =>
             index < 8 ? (
               <li>
-                <span>{user.userName}</span> <span  className="sums">{user.sum}</span>
+                <span>{user.userName}</span> <span  className="sums">{user.sum} сом</span>
               </li>
             ) : (
               false
             )
           )}
         </ul>
+        <div className="totalSelect">
+          <select className="select">
+            <option value="0">Total </option>
+            <option value="1">Last Month</option>
+            <option value="2">Last Week</option>
+            <option value="3">Today</option>
+          </select>
+          <div>
+          Full report
+          </div>
+        </div>
       </div>
     );
   }

@@ -37,6 +37,17 @@ class TopWaiter extends Component {
             )
           )}
         </ul>
+        <div className="totalSelect">
+          <select className="select">
+            <option value="0">Total </option>
+            <option value="1">Last Month</option>
+            <option value="2">Last Week</option>
+            <option value="3">Today</option>
+          </select>
+          <div>
+          Full report
+          </div>
+        </div>
       </div>
     );
   }

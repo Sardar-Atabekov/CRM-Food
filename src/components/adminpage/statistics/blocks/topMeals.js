@@ -35,13 +35,24 @@ class TopMeals extends Component {
           {data.map((meal, index) =>
             index < 8 ? (
               <li>
-                <span>{meal.name}</span> <span className="sums">{meal.sum}</span>
+                <span>{meal.name}</span> <span className="sums">{meal.sum} сом</span>
               </li>
             ) : (
               false
             )
           )}
         </ul>
+        <div className="totalSelect">
+          <select className="select">
+            <option value="0">Total </option>
+            <option value="1">Last Month</option>
+            <option value="2">Last Week</option>
+            <option value="3">Today</option>
+          </select>
+          <div>
+          Full report
+          </div>
+        </div>
       </div>
     );
   }

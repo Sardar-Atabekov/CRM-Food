@@ -16,6 +16,8 @@ class addUser extends Component {
       message: "Ошибка. Проверьте введенные данные",
       status: false
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+
   }
 
   handleSubmit(event) {

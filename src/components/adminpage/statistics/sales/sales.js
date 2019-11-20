@@ -2,22 +2,22 @@ import React, { Component } from "react";
 import Navigation from "../../../block/navigation.js";
 import Search from "../../../block/search.js";
 import Footer from "../../../block/footer.js";
-import Total from './totals';
+import Total from "./totals";
 import { getData } from "../../../requests";
 import NamePage from "./../../blocks/namePage";
 import TopMeals from "../blocks/topMeals";
 import TopWaiter from "../blocks/topWaiter";
 
-import './sales.css';
+import "./sales.css";
 
 class Sales extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data:[],
+      data: [],
       isLoading: false,
       error: null,
-      count:0
+      count: 0
     };
   }
 
@@ -30,7 +30,7 @@ class Sales extends Component {
   }
 
   render() {
-    let {data} = this.state;
+    let { data } = this.state;
     console.log(data);
 
     return (
@@ -43,15 +43,14 @@ class Sales extends Component {
             <Search />
           </header>
           <main className="salesContent">
-            <NamePage name="Sales Overview"/>
-               <Total/>
-               <div className="graphicArt"> 
-                 Графика
-               </div>
-               <div className="tops">
-                  <TopMeals name="Top Meals"/>
-                  <TopWaiter name="Top Waiters"/>
-               </div>
+            <NamePage name="Sales Overview" />
+            <Total />
+            <div className="statistics">
+              <div className="graphicArt">Графика</div>
+
+              <TopMeals name="Top Meals" />
+              <TopWaiter name="Top Waiters" />
+            </div>
           </main>
           <footer className="main-footer">
             <Footer />

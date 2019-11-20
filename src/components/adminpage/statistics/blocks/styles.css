@@ -1,10 +1,14 @@
-.salesContent .totals {
+.salesContent .totals, .orderContent .totals {
     display: flex;
     flex-wrap: wrap;
-    margin-right: 30px;
+    margin-right: 5px;
+    margin-left: 10px;
+    margin: 20px 5px 0px 10px;
 }
 
-
+.orderContent .totals {
+    margin-right: 15px;
+}
 .totalContainer {
     flex-basis: 0;
     -ms-flex-positive: 1;
@@ -18,16 +22,21 @@
     padding-left: 10px;
     padding-right: 10px;
 }
-.salesContent .totals .total {
+
+
+.salesContent .totals .total, .orderContent .totals .total {
    
-    margin: 30px 10px;
+    /* margin: 30px 10px; */
     min-height: 8.7rem;
     box-shadow: 0 2px 0 rgba(90, 97, 105, .11), 0 4px 8px rgba(90, 97, 105, .12), 0 10px 10px rgba(90, 97, 105, .06), 0 7px 70px rgba(90, 97, 105, .1);
     border-radius: .625rem;
     padding-top: 40px;
     color: #3d5170;
-
     background: #ffffff;
+}
+
+.salesContent .totals .total {
+    width: 220px;
 }
 
 .total .text-center {
@@ -41,8 +50,6 @@
     align-items: center;
     padding-right: 15px;
     padding-left: 15px;
-
-
 }
 
 .total span {
@@ -51,7 +58,8 @@
     text-transform: uppercase!important;
     font-family: Roboto,-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
 }
-.salesContent .totals .totalSum {
+
+.totals .totalSum {
     margin: 0px;
     font-size: 2.0625rem;
     font-weight: 500;
@@ -60,7 +68,7 @@
 .topMeals li  {
     list-style-type:none;
     padding: .625rem 1rem;
-    border-top: 1px solid #e6e5e8;
+    border-bottom: 1px solid #e6e5e8;
     display: flex;
     justify-content: space-between;
 }
@@ -75,8 +83,9 @@
     -ms-flex-direction: column;
     flex-direction: column;
     padding-left: 0;
-    margin-bottom: 0;
+    margin-bottom: 30px;
     margin-left: 20px;
+    min-width: 24%;
     border-radius: .625rem;
     background: #ffffff;
     box-shadow: 0 2px 0 rgba(90,97,105,.11), 0 4px 8px rgba(90,97,105,.12), 0 10px 10px rgba(90,97,105,.06), 0 7px 70px rgba(90,97,105,.1);
@@ -91,8 +100,7 @@
  .topMeals .header {
     border-radius: .625rem .625rem 0 0;
     padding: 1rem 1rem;
+    border:1px solid #e6e5e8;
  }
 
- .tops {
-     display: flex;
- }
+ 

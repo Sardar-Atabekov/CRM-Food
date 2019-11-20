@@ -47,8 +47,8 @@ class Total extends Component {
             </div>
           </div>
         </div>
-
-        <div className="totalContainer">
+   
+        <div className="totalContainer"> 
           <div className="total">
             <div className="text-center">
               <span>REVENUE TODAY</span>
