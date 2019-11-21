@@ -2,13 +2,17 @@ import React, { Component } from "react";
 import Navigation from "../../../block/navigation.js";
 import Search from "../../../block/search.js";
 import Footer from "../../../block/footer.js";
-import Total from "./totals";
+import TotalBar from "./totalDrinks";
+import TotalSum from "./totalSum";
+import TopSum from "./topSum";
+import TopDrinks from "./topDrinks";
+import TopWaiterDrinks from "./topWaiterDrinks";
+import TopWaiterSum from "./topWaiterSum";
 import NamePage from "../../blocks/namePage";
-import TopMeals from "./TopMeals";
-import TopWaiter from "./topWaiter";
 
-class Sales extends Component {
-  
+
+class KitchenPage extends Component {
+
   render() {
 
     return (
@@ -21,12 +25,15 @@ class Sales extends Component {
             <Search />
           </header>
           <main className="orderContent">
-            <NamePage name="Orders Overview" />
-            <Total />
+            <NamePage name="Kitchen Stats" />
+            <TotalSum />
+             <TotalBar />
             <div className="statistics">
               <div className="graphicArt">Графика</div>
-              <TopMeals name="Top Meals" />
-              <TopWaiter name="Top Waiters" />
+              <TopSum name ="Top Meals Revenue "/>
+              <TopDrinks name="Top Meals" />
+              <TopWaiterDrinks name="Top Waiters Meals" />
+              <TopWaiterSum name="Top Waiters Revenue" />
             </div>
           </main>
           <footer className="main-footer">
@@ -38,4 +45,4 @@ class Sales extends Component {
   }
 }
 
-export default Sales;
+export default KitchenPage;

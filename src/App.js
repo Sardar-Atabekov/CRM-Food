@@ -16,6 +16,7 @@ import HistoryTransaction from './components/adminpage/transaction/HistoryTransa
 import Sales from './components/adminpage/statistics/sales/sales';
 import Traffic from './components/adminpage/statistics/orders/order';
 import BarPage from './components/adminpage/statistics/bar/bar.js';
+import KitchenPage from './components/adminpage/statistics/kitchen/kitchen.js';
 
 
 class App extends Component {
@@ -41,8 +42,8 @@ class App extends Component {
                   <Route path="/sales" exact component={Sales}/>
                   <Route path="/traffic" exact component={Traffic}/>
                   <Route path="/bar" exact component={BarPage}/>
+                  <Route path="/kitchen" exact component={KitchenPage}/>
 
-                  
               </Switch>
               
           </React.Fragment>
