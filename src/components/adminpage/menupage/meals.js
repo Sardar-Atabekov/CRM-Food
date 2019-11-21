@@ -6,7 +6,7 @@ import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import NamePage from "./../blocks/namePage.js";
 import { Link } from "react-router-dom";
-import Category from "../../block/category.js";
+import Category from "./selectCategory";
 
 const API = "https://neobiscrmfood.herokuapp.com/api/";
 const DEFAULT_QUERY = "admin/getMeals";
@@ -30,18 +30,16 @@ class MealsPage extends Component {
 
   handleSelectCategory(select) {
     let arr = this.state.body;
-
-    if (+select === 2) {
+    console.log(select);
+    if (select === "all") {
       this.setState({ data: arr });
     } else {
       this.setState({
-        data: arr.filter(department => department.departmentId === +select)
+        data: arr.filter(category => category.categoryId === +select)
       });
     }
   }
-  // handleSelectCategor(){
-
-  // }
+ 
 
   render() {
     let data = this.state.data.length > 0 ? this.state.data : this.state.body;
@@ -64,18 +62,10 @@ class MealsPage extends Component {
                 </Link>
               </div>
               <div className="selectDepartment">
-                <label htmlFor="department">По департаментам: </label>
-                <select
-                  className="select"
-                  onChange={this.changeSelectDepartment}
-                  id="department"
-                >
-                  <option value="2">Все</option>
-                  <option value="0">Кухня</option>
-                  <option value="1">Бар</option>
-                </select>
-              </div>
+                <label htmlFor="department">По категориям: </label>
               <Category onSelectCategory={this.handleSelectCategory} />
+                
+              </div>
             </div>
             <table>
               <tbody>

@@ -4,7 +4,7 @@ import "./adduser.css";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
-import ModalBlock from "./../../block/Modal";
+import Modal from "../../block/AddMessage.js";
 
 class addUser extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class addUser extends Component {
       data: {},
       isLoading: false,
       error: null,
-      message: "Ошибка. Проверьте введенные данные",
+      message: "Подождите...",
       status: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,24 +30,25 @@ class addUser extends Component {
     });
 
     console.log(data);
-    fetch(`https://neobiscrmfood.herokuapp.com/api/users/`, {
+    let target = event.target;
+    fetch(`https://neobiscrmfood.herokuapp.com/api/users`, {
       method: "POST", // or 'PUT'
       body: JSON.stringify(data), // data can be `string` or {object}!
       headers: { "Content-Type": "application/json" }
     }).then(e => {
-      console.log(e.ok);
+      console.log(e);
       if (e.ok) {
         this.setState({
-          message: "Данные успешно добавлены!"
+          message: "Данные успешно добавлены!",
+          status: true
         });
-        event.target.reset();
+        target.reset();
       } else {
         this.setState({
-          message: "Ошибка. Проверьте введенные данные"
+          message: "Ошибка. Проверьте введенные данные",
+          status: true
         });
       }
-
-      this.setState({ status: true });
     });
   }
 
@@ -245,9 +246,9 @@ class addUser extends Component {
                     className="form-control"
                   ></textarea>
                 </div>
-                <ModalBlock
+                <Modal
                   message={this.state.message}
-                  modal={this.state.status}
+                  name="Добавить"
                 />
               </form>
             </div>

@@ -4,9 +4,9 @@ import "./adduser.css";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
-import ModalBlock from "../../block/Modal.js";
+import Modal from "../../block/AddMessage.js";
 
-import { putData, getData } from "../../requests.js";
+import { getData } from "../../requests.js";
 
 class UserPage extends Component {
   constructor(props) {
@@ -14,8 +14,11 @@ class UserPage extends Component {
     this.state = {
       data: [],
       isLoading: false,
-      error: null
+      error: null,
+      message: "Подождите..."
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+
   }
 
   handleSubmit(event) {
@@ -23,15 +26,27 @@ class UserPage extends Component {
     console.log(event.target);
     let formData = new FormData(event.target),
       data = {};
-    data.id=event.target.getAttribute("userid");
-    console.log(event.target);
+    data.id = event.target.getAttribute("userid");
+
     formData.forEach(function(value, key) {
       data[key] = value;
     });
-
-    console.log(data);
-
-    putData(`/users/${data.id}`, data);
+    fetch(`https://neobiscrmfood.herokuapp.com/api/users/${data.id}`, {
+      method: "PUT", // or 'PUT'
+      body: JSON.stringify(data), // data can be `string` or {object}!
+      headers: { "Content-Type": "application/json" }
+    }).then(e => {
+      console.log(e);
+      if (e.ok) {
+        this.setState({
+          message: "Данные успешно изменены!"
+        });
+      } else {
+        this.setState({
+          message: "Ошибка. Проверьте введенные данные"
+        });
+      }
+    });
   }
 
   async componentDidMount() {
@@ -75,7 +90,12 @@ class UserPage extends Component {
                 </div>
               </div>
 
-              <form className="form" userid={data.id} key={data.id} onSubmit={this.handleSubmit}>
+              <form
+                className="form"
+                userid={data.id}
+                key={data.id}
+                onSubmit={this.handleSubmit}
+              >
                 <div className="form-row">
                   <div className="form-group">
                     <label htmlFor="firstName">First Name</label>
@@ -109,7 +129,6 @@ class UserPage extends Component {
                       className="form-control"
                       id="dateBorn"
                       defaultValue={data.dateBorn}
-                      
                     />
                     {/* pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" */}
                   </div>
@@ -234,8 +253,7 @@ class UserPage extends Component {
                     className="form-control"
                   ></textarea>
                 </div>
-                <ModalBlock />
-
+                <Modal message={this.state.message} name="Изменить" />
               </form>
             </div>
           </main>

@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
-import { putData, getData } from "../../requests.js";
+import {getData} from "../../requests.js";
 import "./addmeal.css";
-import ModalBlock from "../../block/Modal.js";
+import Modal from "../../block/AddMessage.js";
 
 class MealPage extends Component {
   constructor(props) {
@@ -14,7 +14,8 @@ class MealPage extends Component {
       data: [],
       id: 0,
       select: 1,
-      status: 0
+      status: 0,
+      message: "Подождите..."
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -58,7 +59,23 @@ class MealPage extends Component {
     formData.forEach(function(value, key) {
       data[key] = value;
     });
-    putData(`/meals/${data.id}`, data);
+
+    fetch(`https://neobiscrmfood.herokuapp.com/api/meals/${data.id}`, {
+      method: "PUT", // or 'PUT'
+      body: JSON.stringify(data), // data can be `string` or {object}!
+      headers: { "Content-Type": "application/json" }
+    }).then(e => {
+      console.log(e);
+      if (e.ok) {
+        this.setState({
+          message: "Данные успешно изменены!"
+        });
+      } else {
+        this.setState({
+          message: "Ошибка. Проверьте введенные данные"
+        });
+      }
+    });
   }
 
   render() {
@@ -189,7 +206,7 @@ class MealPage extends Component {
                     className="form-control"
                   ></textarea>
                 </div>
-                <ModalBlock />
+                <Modal message={this.state.message} name="Изменить" />
               </form>
             </div>
           </main>

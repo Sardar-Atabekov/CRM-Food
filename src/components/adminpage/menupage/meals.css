@@ -103,6 +103,17 @@
 }
 
 .mealsContent .functionPage {
-    display: inline-flex;
-    justify-content: flex-start;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mealsContent .selectDepartment {
+  margin: 0px;
+}
+
+.addMeal {
+  border: #e4e4e4 1px solid;
+  border-radius: .425em;
+  padding: 5px;
+  background: #ffffff;
 }

@@ -1,35 +1,36 @@
-
-import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import './modal.css';
-const ModalBlock = (props) => {
-    const {
-        buttonLabel,
-    } = props;
-  const [modal, setModal] = useState(false);
-
-  const toggle = () => setModal(!modal);
-
-  return (
-    <div>
-      <input
-                  type="submit" onClick={toggle}
+import React from 'react';
+import Modal from 'react-responsive-modal';
+ 
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+    };
+  }
+  
+ 
+  onOpenModal = () => {
+    this.setState({ open: true });
+  };
+ 
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
+ 
+  render() {
+    const { open } = this.state;
+    return (
+      <div>
+        <input
+                  type="submit"  onClick={this.onOpenModal}
                   className="btn btnSumbit"
-                  value="Добавить"
+                  value={this.props.name}
                 />
-      <Modal isOpen={modal} toggle={toggle} >
-        <ModalHeader toggle={toggle}>{buttonLabel}</ModalHeader>
-        <ModalBody>
-          Данные были добавлены
-        </ModalBody >
-        <ModalFooter>
-          <Button color="primary" onClick={toggle}>Окей</Button>
-          {/* <Button color="secondary" onClick={toggle}>Cancel</Button> */}
-        </ModalFooter>
-      </Modal>
-    </div>
-  );
+        <Modal open={open} onClose={this.onCloseModal} center>
+          <h2>{this.props.message}</h2>
+        </Modal>
+      </div>
+    );
+  }
 }
-
-
-export default ModalBlock;

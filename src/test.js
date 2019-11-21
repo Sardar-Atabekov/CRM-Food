@@ -47,7 +47,7 @@ class TestsPage extends Component {
     console.log(data);
     return (
       <div className="wrapperCook">
-        s
+        <canvas id="popChart" width="600" height="400"></canvas>
       </div>
     );
   }

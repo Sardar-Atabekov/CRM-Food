@@ -5,7 +5,7 @@ import Footer from "../../block/footer.js";
 import Category from "../../block/category.js";
 // import { postData } from "../../requests.js";
 import "./addmeal.css";
-import ModalBlock from "./../../block/Modal";
+import Modal from "../../block/AddMessage.js";
 
 class addMeal extends Component {
   constructor(props) {
@@ -15,8 +15,7 @@ class addMeal extends Component {
       isLoading: false,
       error: [],
       data: [],
-      message: "Ошибка. Проверьте введенные данные",
-      status: false
+      message: "Подождите..."
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -30,8 +29,7 @@ class addMeal extends Component {
       data[key] = value;
     });
 
-    event.target.reset();
-    
+    let target = event.target;
     fetch(`https://neobiscrmfood.herokuapp.com/api/meals`, {
       method: "POST", // or 'PUT'
       body: JSON.stringify(data), // data can be `string` or {object}!
@@ -40,53 +38,20 @@ class addMeal extends Component {
       console.log(e);
       if (e.ok) {
         this.setState({
-          message: "Данные успешно добавлены!"
+          message: "Данные успешно добавлены!",
+          status: true
         });
-        event.target.reset();
+        target.reset();
       } else {
         this.setState({
-          message: "Ошибка. Проверьте введенные данные"
+          message: "Ошибка. Проверьте введенные данные",
+          status: true
         });
       }
     });
-
-    // });
-
-    //  Swal.fire({
-    //     text: 'Ошибка. Проверьте введенные данные.',
-    //     width: 500,
-    //     height: 500,
-    //     showConfirmButton: true,
-    //     confirmButtonColor: 'red',
-    // });
-
-    //   fetch(`${api_base_website}/applications/`, {
-    //     method: 'POST', // or 'PUT'
-    //     body: JSON.stringify(applicationData), // data can be `string` or {object}!
-    //     headers: {"Content-Type": "application/json"}
-    // }).then((e)=>{
-    //     if(e.ok) {
-    //         Swal.fire({
-    //             text: 'Ваша заявка успешно отправлена!',
-    //             width: 500,
-    //             height: 500,
-    //             showConfirmButton: true,
-    //             confirmButtonColor: '#32B482',
-    //         });
-    //         document.getElementById('detailed-form').reset();
-    //     } else  Swal.fire({
-    //         text: 'Ошибка. Проверьте введенные данные.',
-    //         width: 500,
-    //         height: 500,
-    //         showConfirmButton: true,
-    //         confirmButtonColor: 'red',
-    //     });
-    // });
   }
 
   render() {
-    console.log(this.state);
-
     return (
       <div className="wrapper">
         <aside className="navBlock">
@@ -120,10 +85,6 @@ class addMeal extends Component {
                   <div className="form-group">
                     <label htmlFor="categoryId">Category</label>
                     <Category />
-                    {/* <option value="3">Официант</option>
-                                      <option value="2">Повар</option>   
-                                      <option value="4">Бармен</option>   
-                                      <option value="1">Админ</option>    */}
                   </div>
                   <div className="form-group">
                     <label htmlFor="price">Price</label>
@@ -195,8 +156,8 @@ class addMeal extends Component {
                     className="form-control"
                   ></textarea>
                 </div>
-                
-                <ModalBlock message={this.state.message} modal={this.state.status}/>
+
+                <Modal message={this.state.message} name="Добавить" />
               </form>
             </div>
           </main>
