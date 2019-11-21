@@ -81,9 +81,27 @@
     background: none;
     border-top: #e4e4e4 1px solid;
     padding-top: 10px;
+    padding-bottom: 5px;
     font-size: 500;
 }
 
+.functionPage .select {
+    margin-right: 20px;
+}
+.waiterContent .adduser {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 40px;
+}
+
+.waiterContent .adduser a {
+    border: 1px solid #e4e4e4;
+    border-radius: .625em;
+    background: #fff;
+}
+
 .waiterContent .operation a {
-    padding-bottom: 7px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }

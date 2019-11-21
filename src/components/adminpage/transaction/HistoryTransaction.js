@@ -29,7 +29,6 @@ class HistoryTransaction extends Component {
 
   render() {
     let { data } = this.state;
-    let time;
     return (
       <div className="wrapper">
         <aside className="navBlock">
@@ -61,7 +60,7 @@ class HistoryTransaction extends Component {
                   <th>Date</th>
 
                   <th>Waiter</th>
-                  <th>Products</th>
+                  <th>Кол-во блюд</th>
                   <th>Status</th>
                   <th>Total</th>
                 </tr>

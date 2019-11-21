@@ -3,7 +3,9 @@
     justify-content: space-between;
     align-items:center;
 }
-
+.transaction {
+    margin-bottom: 30px !important;
+}
 .transaction td, .transaction th {
     border: #e4e4e4 1px solid;
     margin: 0px;

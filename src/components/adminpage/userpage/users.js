@@ -5,6 +5,8 @@ import "./users.css";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
+import NamePage from "./../blocks/namePage";
+
 import Time from "../calendar/time";
 const API = "https://neobiscrmfood.herokuapp.com/api/";
 const DEFAULT_QUERY = "users";
@@ -15,18 +17,32 @@ class waiterPage extends Component {
     this.state = {
       data: [],
       isLoading: false,
-      error: null
+      error: null,
+      body:[]
     };
+    this.selectRole = this.selectRole.bind(this);
   }
 
   async componentDidMount() {
     getData(API + DEFAULT_QUERY).then(body => {
-      this.setState({ data: body });
+      this.setState({ body });
     });
   }
 
+  selectRole(e){
+    let select = e.target.value,
+        arr = this.state.body;
+    console.log(arr);
+    if(select==="all") {
+      this.setState({data:arr});
+    } else {
+      arr = arr.filter(user=>user.roleName===select);
+      this.setState({data:arr});
+    }
+
+  }
   render() {
-    let { data } = this.state;
+    let data = this.state.data.length > 0 ? this.state.data : this.state.body;
 
     return (
       <div className="wrapper">
@@ -38,14 +54,29 @@ class waiterPage extends Component {
             <Search />
           </header>
           <main className="waiterContent">
-            <div className="adduser"><Link
-                        className="sub-title"
-                        to={`/adduser`}
-                      >Add user</Link></div>
+            <div className="functionPage">
+              <NamePage name="Users Page" />
+
+              <div className="adduser">
+                <Link className="categories" to={"/adduser"}>
+                  Добавить
+                </Link>
+              </div>
+              <div>
+                <label htmlFor="department">По ролям: </label>
+                <select id="categoryId" className="select" name="categoryId" onChange={this.selectRole}>
+                  <option value="all">Все</option>
+                  <option value="admin">Админ</option>
+                  <option value="cook">Повар</option>
+                  <option value="waiter">Официант</option>
+                  <option value="barman">Бармен</option>
+                </select>
+              </div>
+            </div>
+
             <table>
               <tbody>
                 <tr>
-                  <th>Avatar</th>
                   <th>Name</th>
 
                   <th>Age</th>
@@ -59,12 +90,6 @@ class waiterPage extends Component {
                 </tr>
                 {data.map(user => (
                   <tr key={user.id}>
-                    <td className="avatar">
-                      <img
-                        alt="avatarPictures"
-                        src={`https://cdn2.static1-sima-land.com/items/2973837/1/700-nw.jpg`}
-                      />
-                    </td>
                     <td>
                       <Link
                         className="sub-title"
@@ -81,9 +106,7 @@ class waiterPage extends Component {
                     <td>{user.gender}</td>
                     <td>
                       <time dateTime={user.startWorkDate}>
-                        {
-                          Time(user.startWorkDate)
-                        }
+                        {Time(user.startWorkDate)}
                       </time>
                     </td>
 
