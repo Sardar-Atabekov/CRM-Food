@@ -3,7 +3,6 @@ import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import { putData, getData } from "../../requests.js";
-
 import "./addmeal.css";
 import ModalBlock from "../../block/Modal.js";
 
@@ -49,7 +48,7 @@ class MealPage extends Component {
       }
     );
   }
-  
+
   handleSubmit(event) {
     event.preventDefault();
     let formData = new FormData(event.target),
@@ -66,7 +65,7 @@ class MealPage extends Component {
     let { data, category } = this.state;
     console.log(this.state);
     console.log(category);
-    
+
     return (
       <div className="wrapper">
         <aside className="navBlock">
@@ -106,12 +105,12 @@ class MealPage extends Component {
                       onChange={this.handleChange.bind(this)}
                       value={this.state.select}
                     >
-                      {category.map((category,id) => (
+                      {category.map((category, id) => (
                         <option value={category.id} key={id}>
                           {category.category}
                         </option>
                       ))}
-                        {/* {
+                      {/* {
                            for( i=0; i<10; i++) {
                            console.log(arr[i]);
                            };
@@ -194,7 +193,7 @@ class MealPage extends Component {
               </form>
             </div>
           </main>
-          <footer className="main-footer" >
+          <footer className="main-footer">
             <Footer />
           </footer>
         </div>

@@ -17,7 +17,7 @@ import Sales from './components/adminpage/statistics/sales/sales';
 import Traffic from './components/adminpage/statistics/orders/order';
 import BarPage from './components/adminpage/statistics/bar/bar.js';
 import KitchenPage from './components/adminpage/statistics/kitchen/kitchen.js';
-
+import TestsPage from './test.js';
 
 class App extends Component {
   render() {
@@ -43,6 +43,7 @@ class App extends Component {
                   <Route path="/traffic" exact component={Traffic}/>
                   <Route path="/bar" exact component={BarPage}/>
                   <Route path="/kitchen" exact component={KitchenPage}/>
+                  <Route path="/tests" exact component={TestsPage}/>
 
               </Switch>
               
