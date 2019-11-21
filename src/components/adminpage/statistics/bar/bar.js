@@ -4,6 +4,7 @@ import Search from "../../../block/search.js";
 import Footer from "../../../block/footer.js";
 import TotalBar from "./totalDrinks";
 import TotalSum from "./totalSum";
+import TopSum from "./topSum";
 import TopDrinks from "./topDrinks";
 import TopWaiterDrinks from "./topWaiterDrinks";
 import TopWaiterSum from "./topWaiterSum";
@@ -38,6 +39,7 @@ class BarPage extends Component {
              <TotalBar />
             <div className="statistics">
               <div className="graphicArt">Графика</div>
+              <TopSum name ="Top Drinks Revenue "/>
               <TopDrinks name="Top Drinks" />
               <TopWaiterDrinks name="Top Waiters Drinks" />
               <TopWaiterSum name="Top Waiters Revenue" />
