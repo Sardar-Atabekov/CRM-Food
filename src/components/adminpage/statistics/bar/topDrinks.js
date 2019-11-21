@@ -19,6 +19,7 @@ class TopDrinks extends Component {
   }
   render() {
     let { bar } = this.state;
+    bar = bar.sort((a,b)=>b.count-a.count);
     return (
       <div className="topMeals">
         <div className="header">

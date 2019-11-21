@@ -18,6 +18,7 @@ class TopSum extends Component {
   }
   render() {
     let { bar } = this.state;
+    bar = bar.sort((a,b)=>b.sum-a.sum);
     return (
       <div className="topMeals">
         <div className="header">

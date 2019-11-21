@@ -11,14 +11,15 @@ class TopDrinks extends Component {
     };
   }
   async componentDidMount() {
-    getData(
-      "https://neobiscrmfood.herokuapp.com/api/Admin/topMeals"
-    ).then(body => {
-      this.setState({ bar: body });
-    });
+    getData("https://neobiscrmfood.herokuapp.com/api/Admin/topMeals").then(
+      body => {
+        this.setState({ bar: body });
+      }
+    );
   }
   render() {
     let { bar } = this.state;
+    bar = bar.sort((a, b) => b.count - a.count);
     return (
       <div className="topMeals">
         <div className="header">
@@ -28,7 +29,8 @@ class TopDrinks extends Component {
           {bar.map((meal, index) =>
             index < 8 ? (
               <li key={meal.id}>
-                <span>{meal.name}</span> <span className="sums">{meal.count}</span>
+                <span>{meal.name}</span>{" "}
+                <span className="sums">{meal.count}</span>
               </li>
             ) : (
               false
@@ -42,9 +44,7 @@ class TopDrinks extends Component {
             <option value="2">Last Week</option>
             <option value="3">Today</option>
           </select>
-          <div>
-          Full report
-          </div>
+          <div>Full report</div>
         </div>
       </div>
     );

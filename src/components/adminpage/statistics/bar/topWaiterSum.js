@@ -26,7 +26,7 @@ class TopWaiter extends Component {
             initialValue
         );
         return item;
-    });
+    }).sort((a, b)=>b.meals-a.meals);
     return (
       <div className="topMeals">
         <div className="header">

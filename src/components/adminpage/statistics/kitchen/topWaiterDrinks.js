@@ -21,12 +21,13 @@ class TopWaiter extends Component {
     console.log(data);
     let bar = data.map(item => {
       let initialValue = 0;
+
       item.meals = item.meals.reduce(
-        (accumulator, currentValue) => accumulator + currentValue.sum,
+        (accumulator, currentValue) => accumulator + currentValue.count,
         initialValue
       );
       return item;
-    });
+    }).sort((a, b)=>b.meals-a.meals);
     return (
       <div className="topMeals">
         <div className="header">
@@ -35,7 +36,7 @@ class TopWaiter extends Component {
         <ul className="meals">
           {bar.map((user, index) =>
             index < 8 ? (
-              <li key={user.id}>
+              <li key={user.userId}>
                 <span>{user.userName}</span>
                 <span className="sums">{user.meals}</span>
               </li>
