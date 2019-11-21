@@ -1,41 +1,43 @@
 import React, { Component } from "react";
 import { getData } from "../../../requests";
-import "./styles.css";
+import "./../blocks/styles.css";
 
-class TopMeals extends Component {
+class TopWaiter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      bar: [],
-      kitchen: []
+      data: []
     };
   }
   async componentDidMount() {
     getData(
-      "https://neobiscrmfood.herokuapp.com/api/Admin/barSumStatistics"
+      "https://neobiscrmfood.herokuapp.com/api/Admin/barWaiterMealStatistics"
     ).then(body => {
-      this.setState({ bar: body });
-    });
-    getData(
-      "https://neobiscrmfood.herokuapp.com/api/Admin/kitchenSumStatistics"
-    ).then(body => {
-      this.setState({ kitchen: body });
+      this.setState({ data: body });
     });
   }
   render() {
-    let { bar, kitchen } = this.state,
-      data = [...bar, ...kitchen].sort((a, b) => b.sum - a.sum);
-    console.log(data);
+    let { data } = this.state;
+
+    let bar = data.map(item => {
+        let initialValue =0;
+        item.meals =  item.meals.reduce(
+            (accumulator, currentValue) => accumulator + currentValue.count,
+            initialValue
+        );
+        return item;
+    });
     return (
       <div className="topMeals">
         <div className="header">
           <h4>{this.props.name}</h4>
         </div>
         <ul className="meals">
-          {data.map((meal, index) =>
+          {bar.map((user, index) =>
             index < 8 ? (
-              <li key={meal.id}>
-                <span>{meal.name}</span> <span className="sums">{meal.sum} сом</span>
+              <li key={user.id}>
+                <span>{user.userName}</span>{" "}
+                <span className="sums">{user.meals}</span>
               </li>
             ) : (
               false
@@ -49,13 +51,11 @@ class TopMeals extends Component {
             <option value="2">Last Week</option>
             <option value="3">Today</option>
           </select>
-          <div>
-          Full report
-          </div>
+          <div>Full report</div>
         </div>
       </div>
     );
   }
 }
 
-export default TopMeals;
+export default TopWaiter;

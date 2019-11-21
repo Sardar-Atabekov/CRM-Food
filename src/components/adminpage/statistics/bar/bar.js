@@ -2,12 +2,15 @@ import React, { Component } from "react";
 import Navigation from "../../../block/navigation.js";
 import Search from "../../../block/search.js";
 import Footer from "../../../block/footer.js";
-import Total from "./totals";
+import TotalBar from "./totalDrinks";
+import TotalSum from "./totalSum";
+import TopDrinks from "./topDrinks";
+import TopWaiterDrinks from "./topWaiterDrinks";
+import TopWaiterSum from "./topWaiterSum";
 import NamePage from "../../blocks/namePage";
-import TopMeals from "./TopMeals";
-import TopWaiter from "./topWaiter";
 
-class Sales extends Component {
+
+class BarPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,12 +33,14 @@ class Sales extends Component {
             <Search />
           </header>
           <main className="orderContent">
-            <NamePage name="Orders Overview" />
-            <Total />
+            <NamePage name="Bar Stats" />
+            <TotalSum />
+             <TotalBar />
             <div className="statistics">
               <div className="graphicArt">Графика</div>
-              <TopMeals name="Top Meals" />
-              <TopWaiter name="Top Waiters" />
+              <TopDrinks name="Top Drinks" />
+              <TopWaiterDrinks name="Top Waiters Drinks" />
+              <TopWaiterSum name="Top Waiters Revenue" />
             </div>
           </main>
           <footer className="main-footer">
@@ -47,4 +52,4 @@ class Sales extends Component {
   }
 }
 
-export default Sales;
+export default BarPage;

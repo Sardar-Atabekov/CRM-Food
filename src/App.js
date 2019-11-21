@@ -15,6 +15,9 @@ import Tables from './components/adminpage/tablepage/tables.js';
 import HistoryTransaction from './components/adminpage/transaction/HistoryTransaction.js';
 import Sales from './components/adminpage/statistics/sales/sales';
 import Traffic from './components/adminpage/statistics/orders/order';
+import BarPage from './components/adminpage/statistics/bar/bar.js';
+
+
 class App extends Component {
   render() {
       return (
@@ -37,6 +40,7 @@ class App extends Component {
                   <Route path="/transactions" exact component={HistoryTransaction}/>
                   <Route path="/sales" exact component={Sales}/>
                   <Route path="/traffic" exact component={Traffic}/>
+                  <Route path="/bar" exact component={BarPage}/>
 
                   
               </Switch>

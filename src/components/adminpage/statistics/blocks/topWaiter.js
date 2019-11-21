@@ -28,7 +28,7 @@ class TopWaiter extends Component {
         <ul className="meals">
           {data.map((user, index) =>
             index < 8 ? (
-              <li>
+              <li key={user.id}>
                 <span>{user.userName}</span> <span  className="sums">{user.sum} сом</span>
               </li>
             ) : (

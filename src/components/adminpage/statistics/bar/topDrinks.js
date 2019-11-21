@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { getData } from "../../../requests";
-import "./styles.css";
+import "./../blocks/styles.css";
 
-class TopMeals extends Component {
+class TopDrinks extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,30 +12,23 @@ class TopMeals extends Component {
   }
   async componentDidMount() {
     getData(
-      "https://neobiscrmfood.herokuapp.com/api/Admin/barSumStatistics"
+      "https://neobiscrmfood.herokuapp.com/api/Admin/topDrinks"
     ).then(body => {
       this.setState({ bar: body });
     });
-    getData(
-      "https://neobiscrmfood.herokuapp.com/api/Admin/kitchenSumStatistics"
-    ).then(body => {
-      this.setState({ kitchen: body });
-    });
   }
   render() {
-    let { bar, kitchen } = this.state,
-      data = [...bar, ...kitchen].sort((a, b) => b.sum - a.sum);
-    console.log(data);
+    let { bar } = this.state;
     return (
       <div className="topMeals">
         <div className="header">
           <h4>{this.props.name}</h4>
         </div>
         <ul className="meals">
-          {data.map((meal, index) =>
+          {bar.map((meal, index) =>
             index < 8 ? (
               <li key={meal.id}>
-                <span>{meal.name}</span> <span className="sums">{meal.sum} сом</span>
+                <span>{meal.name}</span> <span className="sums">{meal.count}</span>
               </li>
             ) : (
               false
@@ -58,4 +51,4 @@ class TopMeals extends Component {
   }
 }
 
-export default TopMeals;
+export default TopDrinks;
