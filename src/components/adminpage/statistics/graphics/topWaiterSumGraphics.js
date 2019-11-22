@@ -17,21 +17,24 @@ class TopWaiterGraphics extends Component {
 
     getData("https://neobiscrmfood.herokuapp.com/api/Admin/waiterSumTop").then(
       body => {
-        body= body.sort((a,b)=>b.sum-a.sum);
-        let sum =  [...body.map((item, index) => 
-            index<8?item.sum:false
-        )];
+        body = body.sort((a, b) => b.sum - a.sum);
+        let sum = [
+            ...body.map((item, index) => (index < 8 ? item.sum : false))
+          ],
+          names = [
+            ...body.map((item, index) => (index < 8 ? item.userName : false))
+          ];
         console.log(body);
         Chart.defaults.global.defaultFontFamily = "Lato";
         Chart.defaults.global.defaultFontColor = "blue";
         let myChart = new Chart(node, {
           type: "bar",
           data: {
-            labels:[...body.map(item => item.userName)],
+            labels: names,
             datasets: [
               {
                 label: "Top Waiter Sum",
-                data:sum,
+                data: sum,
                 backgroundColor: [
                   "rgb(60, 180, 100)",
                   "rgba(54, 162, 235, 0.6)",
