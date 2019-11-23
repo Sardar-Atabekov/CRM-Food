@@ -43,12 +43,10 @@ class Tables extends Component {
   }
 
   async componentDidMount() {
-    getData("http://neobiscrmfood.herokuapp.com/api/Tables").then(
-      body => {
-        this.setState({ data: body });
-        console.log(body);
-      }
-    );
+    getData("http://neobiscrmfood.herokuapp.com/api/Tables").then(body => {
+      this.setState({ data: body });
+      console.log(body);
+    });
   }
 
   render() {
@@ -65,44 +63,17 @@ class Tables extends Component {
           </header>
           <main className="categoriesContent">
             <div className="addCategories">
-              <input type="text" className="addCategory"/>
+              <input type="text" className="addCategory" />
               <button onClick={this.addTableClick}>Add</button>
             </div>
-
-            {/* {data.map(item => (
-              <div className="item" key={item.id}>
-                <input
-                  type="text"
-                  name="currentValue"
-                  className="item"
-                  defaultValue={item.name}
-                  
-                  onChange={this.handleChange}
-                />
-                <img
-                  onClick={() =>
-                    this.changeTableClick(item.id, this.state.currentValue)
-                  }
-                  className="changeTable"
-                  src="https://cdn.icon-icons.com/icons2/894/PNG/512/Tick_Mark_icon-icons.com_69146.png"
-                  alt="changeImg"
-                />
-                <img
-                  className="deleteTable"
-                  alt="deleteTable"
-                  src="https://cdn.dribbble.com/users/2087607/screenshots/5730291/x-delete-round-flat-icon-free-download.png"
-                  onClick={event => {
-                    deleteData(`/tables/${item.id}`);
-                    event.target.parentNode.remove();
-                  }}
-                />
-              </div>
-            ))} */}
 
             <div className="listItem">
               {data.map(item => (
                 <div className="item" key={item.id}>
-                  <img src="https://images.ua.prom.st/973385600_stoly-i-stulya.jpg" alt={item.category} />
+                  <img
+                    src="https://images.ua.prom.st/973385600_stoly-i-stulya.jpg"
+                    alt={item.category}
+                  />
                   <input
                     type="text"
                     className="input"
@@ -115,7 +86,7 @@ class Tables extends Component {
                     defaultValue={item.status}
                   >
                     <option value={item.status}>{item.status}</option>
-                  </select> 
+                  </select>
                   <input
                     type="button"
                     id={item.id}
@@ -135,7 +106,6 @@ class Tables extends Component {
                 </div>
               ))}
             </div>
-          
           </main>
           <footer className="main-footer">
             <Footer />
