@@ -28,14 +28,16 @@ class Tables extends Component {
     postData("/tables/", data);
   }
 
-  changeTableClick(id, tableName) {
+  changeTableClick(event) {
+    let target = event.target;
+    console.log(target);
     const data = {
-      id: id,
-      name: tableName,
+      id: target.getAttribute('id'),
+      name: target.parentNode.children[1].value,
       status: 0
     };
     // document.getElementById('detailed-form').reset()
-    putData(`/tables/${id}`, data);
+    putData(`/tables/${data.id}`, data);
   }
 
   handleChange(e) {
@@ -99,7 +101,7 @@ class Tables extends Component {
                     className="deleteBtn"
                     value="Удалить"
                     onClick={event => {
-                      deleteData(`/Categories/${item.id}`);
+                      deleteData(`/tables/${item.id}`);
                       event.target.parentNode.remove();
                     }}
                   />
