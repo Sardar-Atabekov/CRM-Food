@@ -18,7 +18,7 @@ import Traffic from './components/adminpage/statistics/orders/order';
 import BarPage from './components/adminpage/statistics/bar/bar.js';
 import KitchenPage from './components/adminpage/statistics/kitchen/kitchen.js';
 import TestsPage from './test.js';
-
+import NotFound from './components/NotFound';
 class App extends Component {
   render() {
       return (
@@ -44,6 +44,7 @@ class App extends Component {
                   <Route path="/bar" exact component={BarPage}/>
                   <Route path="/kitchen" exact component={KitchenPage}/>
                   <Route path="/tests" exact component={TestsPage}/>
+                  <Route path="*" exact component={NotFound}/>
 
               </Switch>
               
