@@ -43,7 +43,7 @@ class Tables extends Component {
   }
 
   async componentDidMount() {
-    getData("http://neobiscrmfood.herokuapp.com/api/Tables").then(body => {
+    getData("https://neobiscrmfood.herokuapp.com/api/Tables").then(body => {
       this.setState({ data: body });
       console.log(body);
     });
