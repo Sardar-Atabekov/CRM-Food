@@ -63,7 +63,7 @@ class Tables extends Component {
           <header className="main-search">
             <Search />
           </header>
-          <main className="categoriesContent">
+          <main className="categoriesContent tablesContent">
             <div className="addCategories">
               <input type="text" className="addCategory" />
               <button onClick={this.addTableClick}>Add</button>
