@@ -1,11 +1,10 @@
-async function getData(url) {
+async function getData(url, token) {
   try {
-    // let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIxMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJfTW9ub3BvbGlzdF8iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJhZG1pbiIsIm5iZiI6MTU3Mzg5NTUzMSwiZXhwIjoxNTc1NjIzNTMxLCJpc3MiOiJDUk1TZXJ2ZXIiLCJhdWQiOiJDUk1Gb29kIn0.wVbel3bAQMx7NhKvCJ_BGPKMUJRnfSD1U5RJz2xr9Rk";
     let response = await fetch(`${url}`, {
       method: "GET",
       headers: {
         Accept: "application/json",
-        // Authorization: "Bearer " + token,
+        Authorization: "Bearer " + token,
         "Content-Type": "application/json"
       }
     });
