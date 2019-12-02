@@ -13,11 +13,10 @@ class addUser extends Component {
       data: {},
       isLoading: false,
       error: null,
-      message: "Подождите...",
+      message: "Правильно введите данные!",
       status: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-
   }
 
   handleSubmit(event) {
@@ -46,6 +45,9 @@ class addUser extends Component {
       } else {
         this.setState({
           message: "Ошибка. Проверьте введенные данные",
+          
+        });
+        this.setState({
           status: true
         });
       }
@@ -89,8 +91,6 @@ class addUser extends Component {
                       name="firstName"
                       className="form-control"
                       id="firstName"
-                      value={this.state.numberOfGuests}
-                      onChange={this.handleInputChange}
                     />
                   </div>
                   <div className="form-group">
@@ -101,8 +101,6 @@ class addUser extends Component {
                       className="form-control"
                       required
                       id="lastName"
-                      value={this.state.numberOfGuests}
-                      onChange={this.handleInputChange}
                     />
                   </div>
                   <div className="form-group">
@@ -114,20 +112,13 @@ class addUser extends Component {
                       placeholder="2000-10-05"
                       className="form-control"
                       id="dateBorn"
-                      value={this.state.numberOfGuests}
-                      // pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
+                      pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
                     />
                   </div>
 
                   <div className="form-group">
                     <label htmlFor="gender">Gender</label>
-                    <select
-                      id="gender"
-                      name="gender"
-                      className="select"
-                      value={this.state.numberOfGuests}
-                      onChange={this.handleInputChange}
-                    >
+                    <select id="gender" name="gender" className="select">
                       <option value="Мужчина">Мужчина</option>
                       <option value="Женщина">Женщина</option>
                     </select>
@@ -142,8 +133,6 @@ class addUser extends Component {
                       required
                       className="form-control"
                       id="phoneNumber"
-                      value={this.state.numberOfGuests}
-                      onChange={this.handleInputChange}
                     />
                   </div>
                   <div className="form-group">
@@ -154,8 +143,6 @@ class addUser extends Component {
                       name="email"
                       className="form-control"
                       id="email"
-                      value={this.state.numberOfGuests}
-                      onChange={this.handleInputChange}
                     />
                   </div>
                   <div className="form-group">
@@ -166,8 +153,6 @@ class addUser extends Component {
                       name="login"
                       className="form-control"
                       id="login"
-                      value={this.state.numberOfGuests}
-                      onChange={this.handleInputChange}
                     />
                   </div>
                   <div className="form-group">
@@ -178,8 +163,6 @@ class addUser extends Component {
                       name="password"
                       className="form-control"
                       id="password"
-                      value={this.state.numberOfGuests}
-                      onChange={this.handleInputChange}
                     />
                   </div>
 
@@ -191,21 +174,14 @@ class addUser extends Component {
                       placeholder="2000-10-05"
                       className="form-control"
                       name="startWorkDay"
+                      pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
                       id="startWorkDay"
-                      value={this.state.numberOfGuests}
-                      onChange={this.handleInputChange}
                     />
                   </div>
 
                   <div className="form-group">
                     <label htmlFor="role">Role</label>
-                    <select
-                      id="role"
-                      className="select"
-                      name="role"
-                      value={this.state.numberOfGuests}
-                      onChange={this.handleInputChange}
-                    >
+                    <select id="role" className="select" name="role">
                       <option value="3">Официант</option>
                       <option value="2">Повар</option>
                       <option value="4">Бармен</option>
@@ -246,10 +222,7 @@ class addUser extends Component {
                     className="form-control"
                   ></textarea>
                 </div>
-                <Modal
-                  message={this.state.message}
-                  name="Добавить"
-                />
+                <Modal message={this.state.message} status={this.state.status} name="Добавить" />
               </form>
             </div>
           </main>

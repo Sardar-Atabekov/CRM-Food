@@ -5,14 +5,14 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
+      open: props.status,
     };
   }
   
  
-  onOpenModal = () => {
-    this.setState({ open: true });
-  };
+  // onOpenModal = () => {
+  //   this.setState({ open: true });
+  // };
  
   onCloseModal = () => {
     this.setState({ open: false });
@@ -23,7 +23,7 @@ export default class App extends React.Component {
     return (
       <div>
         <input
-                  type="submit"  onClick={this.onOpenModal}
+                  type="submit"  
                   className="btn btnSumbit"
                   value={this.props.name}
                 />

@@ -27,10 +27,12 @@ body {
 .cookItem header {
     display: flex;
     justify-content: space-between;
-    background: #FFE9A6;
-    height: 30px;
-    padding: 10px;
+    background: #04932C;
+    height: 40px;
+    padding:10px 0;
     align-items: center;
+    color: #FFFFFF;
+    padding-left: 10px;
 }
 .cookItem ul {
      padding: 0px;
@@ -47,11 +49,12 @@ body {
 }
 
 .cookItem button {
-    height: 30px;
+    height: 40px;
     width: 150px;
-    background: #E7B10E;
+    background: #B80505;
     border: none;
     font-size: 18px;
+    color: #FFFFFF;
 }
 
 .comments {
