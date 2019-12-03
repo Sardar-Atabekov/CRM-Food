@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { putData } from "../../requests";
-
-import axios from "axios";
-const API = "https://neobiscrmfood.herokuapp.com/api/";
-const DEFAULT_QUERY = "cook/getMeals";
+import { putData, getData } from "../../requests";
 
 class MealsCookPage extends Component {
   constructor(props) {
@@ -12,35 +8,51 @@ class MealsCookPage extends Component {
     this.state = {
       data: [],
       isLoading: false,
-      error: null
+      error: null,
+      categoryData: []
     };
   }
 
   async componentDidMount() {
-    this.setState({ isLoading: true });
-    try {
-      const result = await axios.get(API + DEFAULT_QUERY);
-      this.setState({
-        data: result.data,
-        isLoading: false
-      });
-    } catch (error) {
-      this.setState({
-        error,
-        isLoading: false
-      });
-    }
+    getData("http://neobiscrmfood.herokuapp.com/api/Categories").then(
+      categoryData => {
+        this.setState({ categoryData });
+      }
+    );
+    getData("http://neobiscrmfood.herokuapp.com/api/Cook/getMeals").then(
+      data => {
+        data = data && data.filter(meal => meal.department === "Kitchen");
+        this.setState({ data });
+      }
+    );
   }
 
+    handleSelectCategory(event) {
+      let select = event.target.value;
+      console.log(select);
+      let arr = this.state.body;
+      
+      if (select === "all") {
+        this.setState({ data: arr });
+      } else {
+        this.setState({
+          data: arr.filter(category => category.categoryId === +select)
+        });
+      }
+    }
+
   render() {
-    let data = this.state.data.length > 0 ? this.state.data : this.state.body;
-    let { isLoading, error } = this.state;
-    data = data && data.filter(meal => meal.department === "Kitchen");
+    let { isLoading, error, data, categoryData } = this.state;
+    
+    categoryData =
+      categoryData &&
+      categoryData.filter(meal => meal.departmentName === "Kitchen");
     if (error) {
       return <p>{error.message}</p>;
     }
 
     console.log(data);
+    console.log(categoryData);
     if (isLoading) {
       return <p>Loading ...</p>;
     }
@@ -51,6 +63,24 @@ class MealsCookPage extends Component {
           <Link to={"/cook"} className="menuBtn">
             Активные заказы
           </Link>
+
+          <div className="selectDepartment">
+            <label htmlFor="department">По категориям: </label>
+            <select
+              id="categoryId"
+              className="select"
+              onChange={this.handleSelectCategory}
+              name="categoryId"
+            >
+              <option value="all">Все</option>
+              {categoryData.length > 0 &&
+                categoryData.map(category => (
+                  <option value={category.id} key={category.id}>
+                    {category.category}
+                  </option>
+                ))}
+            </select>
+          </div>
         </div>
         <div className="wrapperCook statusCook">
           <table>

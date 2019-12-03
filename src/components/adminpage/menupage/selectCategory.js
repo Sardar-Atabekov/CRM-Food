@@ -5,8 +5,7 @@ class Category extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: [],
-      select: null
+      data: [],
     };
 
     this.handleSelectCategory = this.handleSelectCategory.bind(this);
@@ -14,9 +13,8 @@ class Category extends Component {
 
   componentDidMount() {
     getData(`https://neobiscrmfood.herokuapp.com/api/Categories/`).then(
-      body => {
-        this.setState({ category: body });
-        console.log(body);
+      data => {
+        this.setState({ data });
       }
     );
   }
@@ -27,6 +25,7 @@ class Category extends Component {
   }
 
   render() {
+    let { data } = this.state;
     return (
       <div className="selectDepartment">
         <label htmlFor="department">По категориям: </label>
@@ -37,11 +36,12 @@ class Category extends Component {
           name="categoryId"
         >
           <option value="all">Все</option>
-          {this.state.category.map(category => (
-            <option value={category.id} key={category.id}>
-              {category.category}
-            </option>
-          ))}
+          {data.length > 0 &&
+            data.map(category => (
+              <option value={category.id} key={category.id}>
+                {category.category}
+              </option>
+            ))}
         </select>
       </div>
     );
