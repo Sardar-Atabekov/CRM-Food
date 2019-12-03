@@ -11,6 +11,8 @@ class MealsCookPage extends Component {
       error: null,
       categoryData: []
     };
+
+    this.handleSelectCategory = this.handleSelectCategory.bind(this);
   }
 
   async componentDidMount() {
@@ -21,29 +23,29 @@ class MealsCookPage extends Component {
     );
     getData("http://neobiscrmfood.herokuapp.com/api/Cook/getMeals").then(
       data => {
-        data = data && data.filter(meal => meal.department === "Kitchen");
-        this.setState({ data });
+        let body = data && data.filter(meal => meal.department === "Kitchen");
+        this.setState({ body });
       }
     );
   }
 
-    handleSelectCategory(event) {
-      let select = event.target.value;
-      console.log(select);
-      let arr = this.state.body;
-      
-      if (select === "all") {
-        this.setState({ data: arr });
-      } else {
-        this.setState({
-          data: arr.filter(category => category.categoryId === +select)
-        });
-      }
+  handleSelectCategory(event) {
+    let select = event.target.value;
+    console.log(select);
+    let arr = this.state.body;
+
+    if (select === "all") {
+      this.setState({ data: arr });
+    } else {
+      this.setState({
+        data: arr.filter(category => category.category === select)
+      });
     }
+  }
 
   render() {
-    let { isLoading, error, data, categoryData } = this.state;
-    
+    let { isLoading, error, categoryData } = this.state;
+    let data = this.state.data.length > 0 ? this.state.data : this.state.body;
     categoryData =
       categoryData &&
       categoryData.filter(meal => meal.departmentName === "Kitchen");
@@ -75,7 +77,7 @@ class MealsCookPage extends Component {
               <option value="all">Все</option>
               {categoryData.length > 0 &&
                 categoryData.map(category => (
-                  <option value={category.id} key={category.id}>
+                  <option value={category.category} key={category.id}>
                     {category.category}
                   </option>
                 ))}
