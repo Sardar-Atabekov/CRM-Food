@@ -14,7 +14,7 @@ class CookPage extends Component {
       data: [],
       isLoading: false,
       error: null,
-      select:null
+      select: null
     };
   }
 

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { putData, getData } from "../../requests";
 
-class MealsCookPage extends Component {
+class MealsBarmenPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,14 +19,14 @@ class MealsCookPage extends Component {
     getData("http://neobiscrmfood.herokuapp.com/api/Categories").then(
       categoryData => {
         categoryData = categoryData.filter(
-          meal => meal.departmentName === "Kitchen"
+          meal => meal.departmentName === "Bar"
         );
         this.setState({ categoryData });
       }
     );
-    getData("http://neobiscrmfood.herokuapp.com/api/Cook/getMeals").then(
+    getData("http://neobiscrmfood.herokuapp.com/api/Barman/getMeals").then(
       data => {
-        let body = data && data.filter(meal => meal.department === "Kitchen");
+        let body = data && data.filter(meal => meal.department === "Bar");
         this.setState({ body });
       }
     );
@@ -49,9 +49,7 @@ class MealsCookPage extends Component {
   render() {
     let { isLoading, error, categoryData } = this.state;
     let data = this.state.data.length > 0 ? this.state.data : this.state.body;
-    categoryData =
-      categoryData &&
-      categoryData.filter(meal => meal.departmentName === "Kitchen");
+
     if (error) {
       return <p>{error.message}</p>;
     }
@@ -65,7 +63,7 @@ class MealsCookPage extends Component {
       <div className="cookPage">
         <h1 className="titleCook">Меню</h1>
         <div className="funcCook">
-          <Link to={"/cook"} className="menuBtn">
+          <Link to={"/barmen"} className="menuBtn">
             Активные заказы
           </Link>
 
@@ -114,7 +112,7 @@ class MealsCookPage extends Component {
                         <input
                           type="checkbox"
                           onChange={() => {
-                            putData(`/cook/changeMealStatus/${meal.id}`);
+                            putData(`/barman/changeMealStatus/${meal.id}`);
                           }}
                           defaultChecked={meal.status === "Have" ? true : false}
                         />
@@ -134,4 +132,4 @@ class MealsCookPage extends Component {
   }
 }
 
-export default MealsCookPage;
+export default MealsBarmenPage;

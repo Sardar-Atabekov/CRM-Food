@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Order from './Order';
-import { getData } from "./../requests";
-
+import axios from "axios";
+import {Link} from "react-router-dom";
 
 const API = "https://neobiscrmfood.herokuapp.com/api/";
 const DEFAULT_QUERY = "barman/getActiveOrders";
@@ -17,31 +17,52 @@ class BarmenPage extends Component {
   }
 
   async componentDidMount() {
-    getData(API + DEFAULT_QUERY).then(body => {
-      this.setState({ data: body });
-    });
-  }
+    this.setState({ isLoading: true });
+    try {
+      const result = await axios.get(API + DEFAULT_QUERY);
 
+      this.setState({
+        data: result.data,
+        isLoading: false
+      });
+    } catch (error) {
+      this.setState({
+        error,
+        isLoading: false
+      });
+    }
+  }
   render() {
-    let { data } = this.state;
-    console.log(data);
+    let { data, isLoading, error } = this.state;
     data = data.map(item => {
       item.mealsList = item.mealsList.filter(
         meal => meal.departmentName === "Bar"
       );
       return item.mealsList.length > 0 ? item : false;
     });
+
     data = data.filter(arr => arr !== false);
-    // data = data.filter(a =>
-    //   a.mealsList.some(s => s.departmentName === "Бар")
-    // );
+    if (error) {
+      return <p>{error.message}</p>;
+    }
+
     console.log(data);
+    if (isLoading) {
+      return <p>Loading ...</p>;
+    }
+
     return (
-      <div className="backgroundCook">
+      <div className="cookPage">
+        <h1 className="titleCook">Активные заказы</h1>
+        <div className="funcCook">
+          <Link to={"/barman/menu"} className="menuBtn">
+            Меню
+          </Link>
+        </div>
+
         <div className="wrapperCook">
           {data.map(order => (
-              <Order order={order} key={order.orderId}/>
-            
+            <Order order={order} key={order.orderId} />
           ))}
         </div>
       </div>

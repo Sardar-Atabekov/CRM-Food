@@ -18,6 +18,8 @@ import Traffic from "./components/adminpage/statistics/orders/order";
 import BarPage from "./components/adminpage/statistics/bar/bar.js";
 import KitchenPage from "./components/adminpage/statistics/kitchen/kitchen.js";
 import CookMealChange from "./components/cookpage/statusMeals/changeMealStatus";
+import BarmanMealChange from "./components/barmenpage/statusMeals/changeMealStatus";
+
 import NotFound from "./components/NotFound";
 class App extends Component {
   render() {
@@ -41,6 +43,8 @@ class App extends Component {
           <Route path="/sales" exact component={Sales} />
           <Route path="/traffic" exact component={Traffic} />
           <Route path="/bar" exact component={BarPage} />
+          <Route path="/bar/menu" exact component={BarmanMealChange} />
+          <Route path="/barman/menu" exact component={BarmanMealChange} />
           <Route path="/kitchen" exact component={KitchenPage} />
           <Route path="/cook/menu" exact component={CookMealChange} />
           <Route path="*" exact component={NotFound} />
