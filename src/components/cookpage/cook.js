@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "./cook.css";
 import Order from "./Order.js";
 
@@ -12,11 +13,11 @@ class CookPage extends Component {
     this.state = {
       data: [],
       isLoading: false,
-      error: null
+      error: null,
+      select:null
     };
   }
 
-  
   async componentDidMount() {
     this.setState({ isLoading: true });
     try {
@@ -53,12 +54,19 @@ class CookPage extends Component {
     }
 
     return (
-      <div className="wrapperCook">
-        {data.map(order => (   
-          
-             <Order order={order}  key={order.orderId}/>  
-                               
-        ))}
+      <div className="cookPage">
+        <h1 className="titleCook">Активные заказы</h1>
+        <div className="funcCook">
+          <Link to={"/cook/menu"} className="menuBtn">
+            Меню
+          </Link>
+        </div>
+
+        <div className="wrapperCook">
+          {data.map(order => (
+            <Order order={order} key={order.orderId} />
+          ))}
+        </div>
       </div>
     );
   }

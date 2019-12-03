@@ -28,19 +28,22 @@ class Category extends Component {
 
   render() {
     return (
-      <select
-        id="categoryId"
-        className="select"
-        onChange={this.handleSelectCategory}
-        name="categoryId"
-      >
-        <option value="all">Все</option>
-        {this.state.category.map(category => (
-          <option value={category.id} key={category.id}>
-            {category.category}
-          </option>
-        ))}
-      </select>
+      <div className="selectDepartment">
+        <label htmlFor="department">По категориям: </label>
+        <select
+          id="categoryId"
+          className="select"
+          onChange={this.handleSelectCategory}
+          name="categoryId"
+        >
+          <option value="all">Все</option>
+          {this.state.category.map(category => (
+            <option value={category.id} key={category.id}>
+              {category.category}
+            </option>
+          ))}
+        </select>
+      </div>
     );
   }
 }

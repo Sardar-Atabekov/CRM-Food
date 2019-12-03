@@ -61,11 +61,9 @@ class MealsPage extends Component {
                   Добавить
                 </Link>
               </div>
-              <div className="selectDepartment">
-                <label htmlFor="department">По категориям: </label>
+              
               <Category onSelectCategory={this.handleSelectCategory} />
                 
-              </div>
             </div>
             <table>
               <tbody>

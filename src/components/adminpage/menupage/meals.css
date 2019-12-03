@@ -4,7 +4,8 @@
   margin: 20px;
 }
 
-.mealsContent table {
+.mealsContent table,
+.wrapperCook table {
   border-collapse: collapse;
   background: #ffffff;
   margin-top: 20px;
@@ -15,7 +16,9 @@
 }
 
 .mealsContent td,
-.mealsContent th {
+.wrapperCook td,
+.mealsContent th,
+.wrapperCook th {
   border: #e4e4e4 1px solid;
   margin: 0px;
   padding: 15px 15px;
@@ -23,13 +26,16 @@
 
 }
 
-.mealsContent th::after {
+.mealsContent th::after,
+.wrapperCook th::after {
   width: 10px;
   height: 13px;
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiP…IiPjwvcG9seWdvbj4gICAgICAgICAgICA8L2c+ICAgICAgICA8L2c+ICAgIDwvZz48L3N2Zz4=);
   background-size: 90%;
 }
-.mealsContent tr {
+
+.mealsContent tr,
+.wrapperCook tr {
   border: black 1px solid;
   margin: 0px;
   padding: 3px;
@@ -39,20 +45,23 @@
 
 /* switch */
 
-.mealsContent .switch {
+.mealsContent .switch,
+.wrapperCook .switch {
   position: relative;
   display: inline-block;
   width: 50px;
   height: 24px;
 }
 
-.mealsContent .switch input {
+.mealsContent .switch input,
+.wrapperCook .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-.mealsContent .slider {
+.mealsContent .slider,
+.wrapperCook .slider {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -64,7 +73,8 @@
   transition: .4s;
 }
 
-.mealsContent .slider:before {
+.mealsContent .slider:before,
+.wrapperCook .slider:before {
   position: absolute;
   content: "";
   height: 22px;
@@ -76,39 +86,47 @@
   transition: .4s;
 }
 
-.mealsContent input:checked+.slider {
+.mealsContent input:checked+.slider,
+.wrapperCook input:checked+.slider {
   background-color: green;
 }
 
-.mealsContent input:checked+.slider:before {
+.mealsContent input:checked+.slider:before,
+.wrapperCook input:checked+.slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
 
 /* Rounded sliders */
-.mealsContent .slider.round {
+.mealsContent .slider.round,
+.wrapperCook .slider.round {
   border-radius: 34px;
 }
 
-.mealsContent .slider.round:before {
+.mealsContent .slider.round:before,
+.wrapperCook .slider.round:before {
   border-radius: 50%;
 }
 
-.mealsContent .active {
+.mealsContent .active,
+.wrapperCook .active {
   background-color: green;
 }
 
-.mealsContent .noactive {
+.mealsContent .noactive,
+.wrapperCook .noactive {
   background-color: red;
 }
 
-.mealsContent .functionPage {
-    display: flex;
-    justify-content: space-between;
+.mealsContent .functionPage,
+.wrapperCook .functionPage {
+  display: flex;
+  justify-content: space-between;
 }
 
-.mealsContent .selectDepartment {
+.mealsContent .selectDepartment,
+.wrapperCook .selectDepartment {
   margin: 0px;
 }
 

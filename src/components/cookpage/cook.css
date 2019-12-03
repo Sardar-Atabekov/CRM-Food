@@ -1,16 +1,45 @@
-.cookItem {    
+.cookPage {
+    display: flex;
+    flex-direction: column;
+    background: url('./cookBackground.svg');
+    font-family: Avenir Next;
+    min-height: 100vh;
+}
+
+.cookItem {
     background: #FFFFFF;
 }
 
-.wrapperCook {
-    /* display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 2vw;
-    margin: 10px 10px 40px 10px; */
+.menuBtn {
+    margin-right: auto;
+    background: #B80505;
+    text-align: center;
+    padding: 10px 45px;
+    color: #FFFFFF;
+    font-weight: 500;
+    box-shadow: 0 2px 0 rgba(90, 97, 105, .11), 0 4px 8px rgba(90, 97, 105, .12), 0 10px 10px rgba(90, 97, 105, .06), 0 7px 70px rgba(90, 97, 105, .1);
+    border-radius: .625rem;
+    margin-left: 40px;
+}
+
+. .cookPage .selectDepartment {
+    margin-right: 50px;
+}
+
+.funcCook {
     display: flex;
-    flex-wrap:wrap;
-    margin: 10px 10px 40px 30px; 
+    justify-content: space-around;
+}
+
+.wrapperCook {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 10px 40px 30px;
+    height: 100%;
+}
+
+.statusCook {
+    margin: 20px auto 100px auto;
 }
 
 body {
@@ -24,24 +53,26 @@ body {
     margin: 10px;
     margin-right: 35px;
 }
+
 .cookItem header {
     display: flex;
     justify-content: space-between;
     background: #04932C;
     height: 40px;
-    padding:10px 0;
+    padding: 10px 0;
     align-items: center;
     color: #FFFFFF;
     padding-left: 10px;
 }
+
 .cookItem ul {
-     padding: 0px;
-     margin: 10px 0;
- }
- 
- .cookItem li {
+    padding: 0px;
+    margin: 10px 0;
+}
+
+.cookItem li {
     list-style-type: none;
-    margin:  0;
+    margin: 0;
     font-weight: 600;
     padding: 10px 15px;
     display: flex;
@@ -58,7 +89,7 @@ body {
 }
 
 .comments {
-    padding: 10px 15px;  
+    padding: 10px 15px;
 }
 
 .cookItem header .tableNumber {
@@ -67,10 +98,16 @@ body {
 
 
 .ready {
-   background: #F2F2F2;
-} 
+    background: #F2F2F2;
+}
 
 .btnImg {
     width: 30px;
     height: 30px;
+}
+
+.titleCook {
+    text-align: center;
+    font-style: normal;
+    font-weight: 600;
 }
