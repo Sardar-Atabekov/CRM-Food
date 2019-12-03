@@ -27,7 +27,6 @@ class Category extends Component {
   }
 
   render() {
-      
     return (
       <select
         id="categoryId"
