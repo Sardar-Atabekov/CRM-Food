@@ -87,7 +87,7 @@ class MealsCookPage extends Component {
             </select>
           </div>
         </div>
-        <div className="wrapperCook statusCook">
+        <div className="wrapperCook statusCook mealsContent">
           <table>
             <tbody>
               <tr>

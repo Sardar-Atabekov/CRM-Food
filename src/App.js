@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import CookPage from "./components/cookpage/cook";
 import BarmenPage from "./components/barmenpage/barmen";
@@ -19,8 +18,9 @@ import BarPage from "./components/adminpage/statistics/bar/bar.js";
 import KitchenPage from "./components/adminpage/statistics/kitchen/kitchen.js";
 import CookMealChange from "./components/cookpage/statusMeals/changeMealStatus";
 import BarmanMealChange from "./components/barmenpage/statusMeals/changeMealStatus";
-
 import NotFound from "./components/NotFound";
+import "./App.css";
+
 class App extends Component {
   render() {
     return (
