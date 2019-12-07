@@ -18,7 +18,7 @@ import BarPage from "./components/adminpage/statistics/bar/bar.js";
 import KitchenPage from "./components/adminpage/statistics/kitchen/kitchen.js";
 import CookMealChange from "./components/cookpage/statusMeals/changeMealStatus";
 import BarmanMealChange from "./components/barmenpage/statusMeals/changeMealStatus";
-import NotFound from "./components/NotFound";
+import NotFound from "./components/404/404.js";
 import "./App.css";
 
 class App extends Component {
