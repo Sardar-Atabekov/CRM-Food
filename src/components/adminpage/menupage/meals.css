@@ -8,6 +8,7 @@
 .selectDepartment .select {
   margin-right: 0;
 }
+
 .mealsContent table,
 .wrapperCook table {
   border-collapse: collapse;
@@ -134,9 +135,13 @@
   margin: 0px;
 }
 
-.addMeal {
-  border: #e4e4e4 1px solid;
-  border-radius: .425em;
-  padding: 5px;
-  background: #ffffff;
+
+.add {
+  color: #ffffff !important;
+  background: #04932C !important;
+  padding: 5px 25px !important;
+  font-family: Avenir Next;
+  padding-top: 10px;
+  border: 1px solid #e4e4e4;
+  border-radius: .625em;
 }

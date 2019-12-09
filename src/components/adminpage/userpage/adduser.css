@@ -56,12 +56,12 @@
     text-align: center;
 }
 
-.adduser a, .addmeal a {
+/* .adduser a, .addmeal a {
     width: 80px;
     height: 40px;
     border:1px solid black;
     padding: 5px;
-}
+} */
 .addUserContent  .form .form-control {
     height: auto;
     padding: .4375rem .75rem;

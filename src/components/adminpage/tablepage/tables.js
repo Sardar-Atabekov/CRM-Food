@@ -83,7 +83,7 @@ class Tables extends Component {
                   />
                   <select
                     id="name"
-                    className="select"
+                    className="select tableSelect"
                     name="name"
                     defaultValue={item.status}
                   >

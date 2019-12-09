@@ -32,7 +32,9 @@
     padding: 10px;
 }
 
-
+.tableSelect {
+    padding: .375rem 1.55rem .375rem .75rem;
+}
 
 .tableContent .deleteTable, .tableContent .changeTable {
     width: 38px;
