@@ -31,9 +31,7 @@ class App extends Component {
           <Route path="/cook" exact component={CookPage} />
           <Route path="/users" exact component={waiterPage} />
           <Route path="/category" exact component={Categories} />
-          <Route path="/admin/meals" exact component={MealsPage} />
           <Route path="/meals" exact component={MealsPage} />
-          <Route path="/admin/adduser" exact component={addUser} />
           <Route path="/adduser" exact component={addUser} />
           <Route path="/addmeal" exact component={addMeal} />
           <Route path="/tables" exact component={Tables} />

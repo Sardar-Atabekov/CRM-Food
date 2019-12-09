@@ -18,7 +18,7 @@ class waiterPage extends Component {
       data: [],
       isLoading: false,
       error: null,
-      body:[]
+      body: []
     };
     this.selectRole = this.selectRole.bind(this);
   }
@@ -29,17 +29,20 @@ class waiterPage extends Component {
     });
   }
 
-  selectRole(e){
+  selectRole(e) {
     let select = e.target.value,
-        arr = this.state.body;
+      arr = this.state.body;
     console.log(arr);
-    if(select==="all") {
-      this.setState({data:arr});
+    if (select === "all") {
+      this.setState({ data: arr });
     } else {
-      arr = arr.filter(user=>user.roleName===select);
-      this.setState({data:arr});
+      console.log(select);
+      console.log(arr);
+      arr = arr.filter(user => user.roleName === select);
+      arr = arr.length > 0 ? arr : "false";
+      console.log(arr);
+      this.setState({ data: arr });
     }
-
   }
   render() {
     let data = this.state.data.length > 0 ? this.state.data : this.state.body;
@@ -64,7 +67,12 @@ class waiterPage extends Component {
               </div>
               <div>
                 <label htmlFor="department">По ролям: </label>
-                <select id="categoryId" className="select" name="categoryId" onChange={this.selectRole}>
+                <select
+                  id="categoryId"
+                  className="select"
+                  name="categoryId"
+                  onChange={this.selectRole}
+                >
                   <option value="all">Все</option>
                   <option value="admin">Админ</option>
                   <option value="cook">Повар</option>
@@ -88,49 +96,55 @@ class waiterPage extends Component {
                   <th>Password</th>
                   <th>Operation</th>
                 </tr>
-                {data.map(user => (
-                  <tr key={user.id}>
-                    <td>
-                      <Link
-                        className="sub-title"
-                        to={{ pathname: `/user/${user.id}/` }}
-                      >
-                        {user.firstName + " " + user.lastName}
-                      </Link>
-                    </td>
-
-                    <td>
-                      {new Date().getFullYear() -
-                        new Date(user.dateBorn).getFullYear()}
-                    </td>
-                    <td>{user.gender}</td>
-                    <td>
-                      <time dateTime={user.startWorkDate}>
-                        {Time(user.startWorkDate)}
-                      </time>
-                    </td>
-
-                    <td>{user.phoneNumber}</td>
-                    <td>{user.email}</td>
-                    <td>{user.login}</td>
-                    <td>{user.password}</td>
-                    <td className="operationBlock">
-                      <div className="operation">
-                        <Link to={{ pathname: `/user/${user.id}/` }}>
-                          Изменить{" "}
-                        </Link>
-                        <button
-                          onClick={event => {
-                            deleteData(`/users/${user.id}`);
-                            event.target.parentNode.parentNode.parentNode.remove();
-                          }}
+                {typeof data === "object" ? (
+                  data.map(user => (
+                    <tr key={user.id}>
+                      <td>
+                        <Link
+                          className="sub-title"
+                          to={{ pathname: `/user/${user.id}/` }}
                         >
-                          Удалить{" "}
-                        </button>
-                      </div>
-                    </td>
+                          {user.firstName + " " + user.lastName}
+                        </Link>
+                      </td>
+
+                      <td>
+                        {new Date().getFullYear() -
+                          new Date(user.dateBorn).getFullYear()}
+                      </td>
+                      <td>{user.gender}</td>
+                      <td>
+                        <time dateTime={user.startWorkDate}>
+                          {Time(user.startWorkDate)}
+                        </time>
+                      </td>
+
+                      <td>{user.phoneNumber}</td>
+                      <td>{user.email}</td>
+                      <td>{user.login}</td>
+                      <td>{user.password}</td>
+                      <td className="operationBlock">
+                        <div className="operation">
+                          <Link to={{ pathname: `/user/${user.id}/` }}>
+                            Изменить{" "}
+                          </Link>
+                          <button
+                            onClick={event => {
+                              deleteData(`/users/${user.id}`);
+                              event.target.parentNode.parentNode.parentNode.remove();
+                            }}
+                          >
+                            Удалить{" "}
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr className="noUsers">
+                    <td colSpan="9">Нету пользователей</td>
                   </tr>
-                ))}
+                )}
               </tbody>
             </table>
           </main>

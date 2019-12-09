@@ -16,7 +16,7 @@ class MealsPage extends Component {
     super(props);
     this.state = {
       data: [],
-      body:[]
+      body: []
     };
 
     this.handleSelectCategory = this.handleSelectCategory.bind(this);
@@ -34,12 +34,13 @@ class MealsPage extends Component {
     if (select === "all") {
       this.setState({ data: arr });
     } else {
+      arr = arr.filter(category => category.categoryId === +select);
+      arr = arr.length > 0 ? arr : "Нету блюд";
       this.setState({
-        data: arr.filter(category => category.categoryId === +select)
+        data: arr
       });
     }
   }
- 
 
   render() {
     let data = this.state.data.length > 0 ? this.state.data : this.state.body;
@@ -61,9 +62,8 @@ class MealsPage extends Component {
                   Добавить
                 </Link>
               </div>
-              
+
               <Category onSelectCategory={this.handleSelectCategory} />
-                
             </div>
             <table>
               <tbody>
@@ -76,45 +76,53 @@ class MealsPage extends Component {
                   <th>Цена</th>
                   <th colSpan="2">Операции</th>
                 </tr>
-                {data.map(meal => (
-                  <tr key={meal.id}>
-                    <td>
-                      <Link to={{ pathname: `/meal/${meal.id}/` }}>
-                        {meal.name}
-                      </Link>
-                    </td>
+                {typeof data === "object" ? (
+                  data.map(meal => (
+                    <tr key={meal.id}>
+                      <td>
+                        <Link to={{ pathname: `/meal/${meal.id}/` }}>
+                          {meal.name}
+                        </Link>
+                      </td>
 
-                    <td>{meal.category}</td>
-                    <td>
-                      <label className="switch">
-                        <input
-                          type="checkbox"
-                          onChange={() => {
-                            putData(`/admin/changeMealStatus/${meal.id}`);
-                          }}
-                          defaultChecked={meal.status === "Have" ? true : false}
-                        />
-                        <span className="slider round"></span>
-                      </label>
-                    </td>
-                    <td>{meal.weight}</td>
-                    <td>{meal.price} сом</td>
-                    <td>
-                      <Link to={{ pathname: `/meal/${meal.id}/` }}>
-                        Изменить
-                      </Link>
-                    </td>
-                    <td
-                      className="deleteMeal"
-                      onClick={event => {
-                        deleteData(`/meals/${meal.id}`);
-                        event.target.parentNode.remove();
-                      }}
-                    >
-                      Удалить
-                    </td>
+                      <td>{meal.category}</td>
+                      <td>
+                        <label className="switch">
+                          <input
+                            type="checkbox"
+                            onChange={() => {
+                              putData(`/admin/changeMealStatus/${meal.id}`);
+                            }}
+                            defaultChecked={
+                              meal.status === "Have" ? true : false
+                            }
+                          />
+                          <span className="slider round"></span>
+                        </label>
+                      </td>
+                      <td>{meal.weight}</td>
+                      <td>{meal.price} сом</td>
+                      <td>
+                        <Link to={{ pathname: `/meal/${meal.id}/` }}>
+                          Изменить
+                        </Link>
+                      </td>
+                      <td
+                        className="deleteMeal"
+                        onClick={event => {
+                          deleteData(`/meals/${meal.id}`);
+                          event.target.parentNode.remove();
+                        }}
+                      >
+                        Удалить
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="6">Нету блюд</td>
                   </tr>
-                ))}
+                )}
               </tbody>
             </table>
           </div>

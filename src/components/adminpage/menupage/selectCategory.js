@@ -5,7 +5,7 @@ class Category extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
+      data: []
     };
 
     this.handleSelectCategory = this.handleSelectCategory.bind(this);

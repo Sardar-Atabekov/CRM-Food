@@ -2,8 +2,12 @@
   display: flex;
   flex-direction: column;
   margin: 20px;
+  margin-bottom: 40px;
 }
 
+.selectDepartment .select {
+  margin-right: 0;
+}
 .mealsContent table,
 .wrapperCook table {
   border-collapse: collapse;

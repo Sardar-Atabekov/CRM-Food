@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./navigation.css";
-
-const neobisLogo = "https://neobis.kg/static/media/Logo.4fff10de.svg";
+import neobisLogo from "./../images/Logo.svg";
+// const neobisLogo = "https://neobis.kg/static/media/Logo.4fff10de.svg";
 class Navigation extends Component {
   constructor(props) {
     super(props);
