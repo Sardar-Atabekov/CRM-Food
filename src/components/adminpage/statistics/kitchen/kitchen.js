@@ -12,9 +12,7 @@ import NamePage from "../../blocks/namePage";
 
 
 class KitchenPage extends Component {
-
   render() {
-
     return (
       <div className="wrapper">
         <aside className="navBlock">

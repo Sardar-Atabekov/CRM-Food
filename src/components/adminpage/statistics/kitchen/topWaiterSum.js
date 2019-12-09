@@ -19,31 +19,36 @@ class TopWaiter extends Component {
   render() {
     let { data } = this.state;
     console.log(data);
-    let bar = data.map(item => {
-        let initialValue =0;
-        console.log(item);
-        item.meals =  item.meals.reduce(
+    let bar =
+      data &&
+      data
+        .map(item => {
+          let initialValue = 0;
+          console.log(item);
+          item.meals = item.meals.reduce(
             (accumulator, currentValue) => accumulator + currentValue.sum,
             initialValue
-        );
-        return item;
-    }).sort((a, b)=>b.meals-a.meals);
+          );
+          return item;
+        })
+        .sort((a, b) => b.meals - a.meals);
     return (
       <div className="topMeals">
         <div className="header">
           <h4>{this.props.name}</h4>
         </div>
         <ul className="meals">
-          {bar.map((user, index) =>
-            index < 8 ? (
-              <li key={user.userId}>
-                <span>{user.userName}</span>
-                <span className="sums">{user.meals}</span>
-              </li>
-            ) : (
-              false
-            )
-          )}
+          {bar &&
+            bar.map((user, index) =>
+              index < 8 ? (
+                <li key={user.userId}>
+                  <span>{user.userName}</span>
+                  <span className="sums">{user.meals}</span>
+                </li>
+              ) : (
+                false
+              )
+            )}
         </ul>
         <div className="totalSelect">
           <select className="select">
@@ -52,7 +57,6 @@ class TopWaiter extends Component {
             <option value="2">Last Week</option>
             <option value="3">Today</option>
           </select>
-          <div>Full report</div>
         </div>
       </div>
     );
