@@ -40,7 +40,7 @@ class MealsBarmenPage extends Component {
     if (select === "all") {
       this.setState({ data: arr });
     } else {
-      arr = arr.filter(category => category.category === select);
+      arr = arr && arr.filter(category => category.category === select);
       arr = arr.length > 0 ? arr : "Нету блюд";
       this.setState({
         data: arr

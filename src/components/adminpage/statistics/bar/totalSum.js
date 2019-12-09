@@ -9,11 +9,11 @@ class TotalSum extends Component {
     };
   }
   async componentDidMount() {
-    getData(
-      "https://neobiscrmfood.herokuapp.com/api/Admin/barTotalSums"
-    ).then(body => {
-      this.setState({ data: body });
-    });
+    getData("https://neobiscrmfood.herokuapp.com/api/Admin/barTotalSums").then(
+      body => {
+        this.setState({ data: body });
+      }
+    );
   }
   render() {
     let data = this.state.data;
@@ -23,35 +23,31 @@ class TotalSum extends Component {
           <div className="total">
             <div className="text-center">
               <span>TOTAL REVENUE</span>
-              <h6 className="totalSum">{data.totalSum} </h6>
+              <h6 className="totalSum">{data && data.totalSum} </h6>
             </div>
           </div>
         </div>
-
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
               <span>REVENUE Month</span>
-
-              <h6 className="totalSum">{data.totalSumMonth} </h6>
+              <h6 className="totalSum">{data && data.totalSumMonth} </h6>
             </div>
           </div>
         </div>
-
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
               <span>REVENUE Week</span>
-              <h6 className="totalSum">{data.totalSumWeek} </h6>
+              <h6 className="totalSum">{data && data.totalSumWeek} </h6>
             </div>
           </div>
         </div>
-
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
               <span>REVENUE TODAY</span>
-              <h6 className="totalSum">{data.totalSumDay} </h6>
+              <h6 className="totalSum">{data && data.totalSumDay} </h6>
             </div>
           </div>
         </div>
