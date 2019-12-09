@@ -24,7 +24,7 @@ class Total extends Component {
           <div className="total">
             <div className="text-center">
               <span>TOTAL REVENUE</span>
-              <h6 className="totalSum">{data.totalSum} сом</h6>
+              <h6 className="totalSum">{data && data.totalSum} сом</h6>
             </div>
           </div>
         </div>
@@ -34,7 +34,7 @@ class Total extends Component {
             <div className="text-center">
               <span>REVENUE Month</span>
 
-              <h6 className="totalSum">{data.totalSumMonth} сом</h6>
+              <h6 className="totalSum">{data && data.totalSumMonth} сом</h6>
             </div>
           </div>
         </div>
@@ -43,16 +43,16 @@ class Total extends Component {
           <div className="total">
             <div className="text-center">
               <span>REVENUE Week</span>
-              <h6 className="totalSum">{data.totalSumWeek} сом</h6>
+              <h6 className="totalSum">{data && data.totalSumWeek} сом</h6>
             </div>
           </div>
         </div>
-   
-        <div className="totalContainer"> 
+
+        <div className="totalContainer">
           <div className="total">
             <div className="text-center">
               <span>REVENUE TODAY</span>
-              <h6 className="totalSum">{data.totalSumToday} сом</h6>
+              <h6 className="totalSum">{data && data.totalSumToday} сом</h6>
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@ class Total extends Component {
           <div className="total">
             <div className="text-center">
               <span>REVENUE Average</span>
-              <h6 className="totalSum">{data.totalSumAverage} сом</h6>
+              <h6 className="totalSum">{data && data.totalSumAverage} сом</h6>
             </div>
           </div>
         </div>

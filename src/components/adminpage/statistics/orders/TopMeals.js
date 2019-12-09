@@ -11,16 +11,16 @@ class TopMeals extends Component {
     };
   }
   async componentDidMount() {
-    getData(
-      "https://neobiscrmfood.herokuapp.com/api/Admin/topMeals"
-    ).then(body => {
-      this.setState({ bar: body });
-    });
-    getData(
-      "https://neobiscrmfood.herokuapp.com/api/Admin/topDrinks"
-    ).then(body => {
-      this.setState({ kitchen: body });
-    });
+    getData("https://neobiscrmfood.herokuapp.com/api/Admin/topMeals").then(
+      body => {
+        this.setState({ bar: body });
+      }
+    );
+    getData("https://neobiscrmfood.herokuapp.com/api/Admin/topDrinks").then(
+      body => {
+        this.setState({ kitchen: body });
+      }
+    );
   }
   render() {
     let { bar, kitchen } = this.state,
@@ -32,15 +32,17 @@ class TopMeals extends Component {
           <h4>{this.props.name}</h4>
         </div>
         <ul className="meals">
-          {data.map((meal, index) =>
-            index < 8 ? (
-              <li key={meal.id}>
-                <span>{meal.name}</span> <span className="sums">{meal.count}</span>
-              </li>
-            ) : (
-              false
-            )
-          )}
+          {data &&
+            data.map((meal, index) =>
+              index < 8 ? (
+                <li key={meal.id}>
+                  <span>{meal.name}</span>{" "}
+                  <span className="sums">{meal.count}</span>
+                </li>
+              ) : (
+                false
+              )
+            )}
         </ul>
         <div className="totalSelect">
           <select className="select">
@@ -49,9 +51,6 @@ class TopMeals extends Component {
             <option value="2">Last Week</option>
             <option value="3">Today</option>
           </select>
-          <div>
-          Full report
-          </div>
         </div>
       </div>
     );

@@ -6,20 +6,19 @@ class TopWaiter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
+      data: []
     };
   }
   async componentDidMount() {
-    getData(
-      "https://neobiscrmfood.herokuapp.com/api/Admin/waiterSumTop"
-    ).then(body => {
-      this.setState({ data: body });
-    });
-   
+    getData("https://neobiscrmfood.herokuapp.com/api/Admin/waiterSumTop").then(
+      body => {
+        this.setState({ data: body });
+      }
+    );
   }
   render() {
     let { data } = this.state;
-      data = data.sort((a, b) => b.sum - a.sum);
+    data = data && data.sort((a, b) => b.sum - a.sum);
     return (
       <div className="topMeals">
         <div className="header">
@@ -29,7 +28,8 @@ class TopWaiter extends Component {
           {data.map((user, index) =>
             index < 8 ? (
               <li key={user.id}>
-                <span>{user.userName}</span> <span  className="sums">{user.sum} сом</span>
+                <span>{user.userName}</span>{" "}
+                <span className="sums">{user.sum} сом</span>
               </li>
             ) : (
               false
@@ -43,9 +43,6 @@ class TopWaiter extends Component {
             <option value="2">Last Week</option>
             <option value="3">Today</option>
           </select>
-          <div>
-          Full report
-          </div>
         </div>
       </div>
     );
