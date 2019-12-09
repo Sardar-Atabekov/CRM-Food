@@ -66,7 +66,7 @@ class Tables extends Component {
           <main className="categoriesContent tablesContent">
             <div className="addCategories">
               <input type="text" className="addCategory" />
-              <button onClick={this.addTableClick}>Add</button>
+              <button className="addCategoryBtn" onClick={this.addTableClick}>Добавить</button>
             </div>
 
             <div className="listItem">

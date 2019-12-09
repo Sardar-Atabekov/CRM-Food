@@ -5,7 +5,9 @@
     margin: 40px auto;
     width: 80%;
 }
-
+.tablesContent {
+    margin-bottom: 40px;
+}
 .tableContent .item input { 
     width: 100%;   
     margin: 10px;
@@ -34,6 +36,7 @@
 
 .tableSelect {
     padding: .375rem 1.55rem .375rem .75rem;
+    width: 90px !important;
 }
 
 .tableContent .deleteTable, .tableContent .changeTable {

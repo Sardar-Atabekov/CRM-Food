@@ -40,8 +40,10 @@ class MealsCookPage extends Component {
     if (select === "all") {
       this.setState({ data: arr });
     } else {
+      arr = arr.filter(category => category.category === select);
+      arr = arr.length > 0 ? arr : "Нету блюд";
       this.setState({
-        data: arr.filter(category => category.category === select)
+        data: arr
       });
     }
   }
@@ -99,7 +101,7 @@ class MealsCookPage extends Component {
                 <th>Цена</th>
                 <th colSpan="2">Описания</th>
               </tr>
-              {data &&
+              {typeof data === "object" ? (
                 data.map(meal => (
                   <tr key={meal.id}>
                     <td>
@@ -125,7 +127,12 @@ class MealsCookPage extends Component {
                     <td>{meal.price} сом</td>
                     <td colSpan="2">{meal.description}</td>
                   </tr>
-                ))}
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="6">Нету блюд</td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>

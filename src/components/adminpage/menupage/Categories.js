@@ -48,8 +48,6 @@ class Categories extends Component {
     putData(`/Categories/${id}`, data);
   }
 
-  
-
   changeSelectDepartment(event) {
     let select = event.target.value;
     console.log(select);
