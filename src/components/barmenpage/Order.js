@@ -5,7 +5,8 @@ import {
   mealReady,
   orderReady
 } from "./check";
-
+import notReadyImgUrl from "./../images/notReady.svg";
+import doneImgUrl from "./../images/ready.svg";
 class Order extends Component {
   constructor(props) {
     super(props);
@@ -28,7 +29,7 @@ class Order extends Component {
               onClick={mealReady}
               className="btnImg"
               alt={status}
-              src={`https://image.flaticon.com/icons/png/512/53/53987.png`}
+              src={notReadyImgUrl}
             />
           </li>
         );
@@ -42,7 +43,7 @@ class Order extends Component {
                 mealid={id}
                 className="btnImg"
                 alt={status}
-                src={`https://st2.depositphotos.com/5777248/10629/v/950/depositphotos_106299224-stock-illustration-green-tick-check-mark-icon.jpg`}
+                src={doneImgUrl}
               />
             </li>
           );
@@ -58,7 +59,7 @@ class Order extends Component {
               mealid={id}
               className="btnImg"
               alt={status}
-              src={`https://st2.depositphotos.com/5777248/10629/v/950/depositphotos_106299224-stock-illustration-green-tick-check-mark-icon.jpg`}
+              src={doneImgUrl}
             />
           </li>
         );

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import Navigation from "../../block/navigation.js";
+import { API } from "../../requests.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import Category from "../../block/category.js";
-import { API } from "../../requests.js";
+import Navigation from "../../block/navigation.js";
+import ModalWindow from "./../../modalWindow/modalWindow";
 import "./addmeal.css";
-import Modal from "../../block/AddMessage.js";
 
 class addMeal extends Component {
   constructor(props) {
@@ -15,6 +15,7 @@ class addMeal extends Component {
       isLoading: false,
       error: [],
       data: [],
+      status: true,
       message: "Подождите..."
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -156,8 +157,13 @@ class addMeal extends Component {
                     className="form-control"
                   ></textarea>
                 </div>
-
-                <Modal message={this.state.message} name="Добавить" />
+                <input
+                  type="submit"
+                  className="btn btnSumbit"
+                  value="Добавить"
+                />
+                {this.state.status ? <ModalWindow /> : null}
+                {/* <Modal message={this.state.message} name="Добавить" /> */}
               </form>
             </div>
           </main>

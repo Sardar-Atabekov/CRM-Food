@@ -46,7 +46,6 @@ class LoginPage extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="loginWrapper">
         <div className="login">

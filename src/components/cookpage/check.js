@@ -1,6 +1,6 @@
 import { postData, putData } from "./../requests";
-import notReadyImgUrl from "./notReady.svg";
-import doneImgUrl from "./ready.svg";
+import notReadyImgUrl from "./../images/notReady.svg";
+import doneImgUrl from "./../images/ready.svg";
 
 function checkClassName(params) {
   return params === "Ready" ? "ready" : "notReady";

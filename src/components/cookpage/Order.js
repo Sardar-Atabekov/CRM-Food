@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import notReadyImgUrl from "./notReady.svg";
-import doneImgUrl from "./ready.svg";
+import notReadyImgUrl from "./../images/notReady.svg";
+import doneImgUrl from "./../images/ready.svg";
+
 import "./cook.css";
 import {
   checkStatusFood,
