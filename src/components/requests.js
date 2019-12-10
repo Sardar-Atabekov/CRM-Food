@@ -8,7 +8,7 @@ if (localStorage.getItem("token")) {
   // console.log(localStorage.getItem("NotFound"));
   // if (localStorage.getItem("NotFound")) {
   //   localStorage.removeItem('NotFound');
-  // } else 
+  // } else
   if (window.location.pathname !== "/") {
     setTimeout(() => (window.location.href = "/"), 3000);
     // localStorage.removeItem('NotFound');

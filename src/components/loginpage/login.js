@@ -5,9 +5,7 @@ import "./login.css";
 class LoginPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      data: []
-    };
+    this.state = {};
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -31,14 +29,14 @@ class LoginPage extends Component {
     const res = await req.json();
     if (res.status === 400) {
       console.log(res);
-      return this.setState({ error: res.message });
+      return this.setState({ error: res.message, status: true });
     }
     console.log(req);
     if (res.access_token) {
       localStorage.setItem("token", res.access_token);
       console.log(res.role);
       if (+res.role === 1) {
-        this.props.history.push(`/admin`);
+        this.props.history.push(`/meals`);
       } else if (+res.role === 2) {
         this.props.history.push(`/cook`);
       } else if (+res.role === 4) {
@@ -48,7 +46,7 @@ class LoginPage extends Component {
   }
 
   render() {
-    console.log(localStorage.getItem("NotFound"));
+    console.log(this.state);
     return (
       <div className="loginWrapper">
         <div className="login">
@@ -69,6 +67,10 @@ class LoginPage extends Component {
               name="password"
               required
             />
+            <br />
+            {this.state.status ? (
+              <div className="errorMessage">{this.state.error}</div>
+            ) : null}
             <br />
             <input
               className="loginInput loginBtn"
