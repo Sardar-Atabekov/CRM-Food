@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Order from './Order';
+import Order from "./Order";
 import axios from "axios";
-import {Link} from "react-router-dom";
-import {API} from "./../requests";
+import { Link } from "react-router-dom";
+import { API } from "./../requests";
 const DEFAULT_QUERY = "/barman/getActiveOrders";
 
 class BarmenPage extends Component {
@@ -56,6 +56,18 @@ class BarmenPage extends Component {
         <div className="funcCook">
           <Link to={"/barman/menu"} className="menuBtn">
             Меню
+          </Link>
+          <Link
+            to={"/"}
+            className="menuBtn exitBtn"
+            onClick={e => {
+              e.preventDefault();
+              localStorage.removeItem("token");
+              console.log(this.props);
+              window.location.href = "/";
+            }}
+          >
+            Выйти
           </Link>
         </div>
 

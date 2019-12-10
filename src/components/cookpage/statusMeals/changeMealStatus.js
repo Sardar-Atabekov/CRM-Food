@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { putData, getData } from "../../requests";
+import { putData, getData, API } from "../../requests";
 
 class MealsCookPage extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class MealsCookPage extends Component {
   }
 
   async componentDidMount() {
-    getData("/Categories").then(
+    getData(`${API}/Categories`).then(
       categoryData => {
         categoryData = categoryData.filter(
           meal => meal.departmentName === "Kitchen"
@@ -24,7 +24,7 @@ class MealsCookPage extends Component {
         this.setState({ categoryData });
       }
     );
-    getData("/Cook/getMeals").then(
+    getData(`${API}/Cook/getMeals`).then(
       data => {
         let body = data && data.filter(meal => meal.department === "Kitchen");
         this.setState({ body });

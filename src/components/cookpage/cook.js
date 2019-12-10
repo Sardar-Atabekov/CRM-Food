@@ -60,6 +60,18 @@ class CookPage extends Component {
           <Link to={"/cook/menu"} className="menuBtn">
             Меню
           </Link>
+          <Link
+            to={"/"}
+            className="menuBtn exitBtn"
+            onClick={e => {
+              e.preventDefault();
+              localStorage.removeItem("token");
+              console.log(this.props);
+              window.location.href = "/";
+            }}
+          >
+            Выйти
+          </Link>
         </div>
 
         <div className="wrapperCook">

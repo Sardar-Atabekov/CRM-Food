@@ -51,6 +51,18 @@ class Navigation extends Component {
         <Link to={"/meals"} className="categories">
           Бронирования
         </Link>
+        <Link
+          to={"/"}
+          className="categories"
+          onClick={e => {
+            e.preventDefault();
+            localStorage.removeItem("token");
+            console.log(this.props);
+            window.location.href = "/";
+          }}
+        >
+          Выйти
+        </Link>
       </nav>
     );
   }
