@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Chart from "chart.js";
-import { getData } from "../../../requests";
+import { getData, API } from "../../../requests";
 import "./graphics.css";
 
 class TopWaiterGraphics extends Component {
@@ -15,7 +15,7 @@ class TopWaiterGraphics extends Component {
   componentDidMount() {
     const node = this.node;
 
-    getData("https://neobiscrmfood.herokuapp.com/api/Admin/waiterSumTop").then(
+    getData(`${API}/Admin/waiterSumTop`).then(
       body => {
         body = body.sort((a, b) => b.sum - a.sum);
         let sum = [

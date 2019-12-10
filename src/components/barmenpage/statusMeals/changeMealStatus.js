@@ -16,7 +16,7 @@ class MealsBarmenPage extends Component {
   }
 
   async componentDidMount() {
-    getData("http://neobiscrmfood.herokuapp.com/api/Categories").then(
+    getData("/Categories").then(
       categoryData => {
         categoryData = categoryData.filter(
           meal => meal.departmentName === "Bar"
@@ -24,7 +24,7 @@ class MealsBarmenPage extends Component {
         this.setState({ categoryData });
       }
     );
-    getData("http://neobiscrmfood.herokuapp.com/api/Barman/getMeals").then(
+    getData("/Barman/getMeals").then(
       data => {
         let body = data && data.filter(meal => meal.department === "Bar");
         this.setState({ body });

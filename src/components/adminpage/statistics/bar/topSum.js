@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getData } from "../../../requests";
+import { getData, API } from "../../../requests";
 
 class TopSum extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class TopSum extends Component {
   }
   async componentDidMount() {
     getData(
-      "https://neobiscrmfood.herokuapp.com/api/Admin/barSumStatistics"
+      `${API}/Admin/barSumStatistics`
     ).then(body => {
       this.setState({ bar: body });
     });

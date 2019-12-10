@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getData, putData, deleteData } from "../../requests";
+import { getData, putData, deleteData, API } from "../../requests";
 import "./meals.css";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
@@ -8,8 +8,7 @@ import NamePage from "./../blocks/namePage.js";
 import { Link } from "react-router-dom";
 import Category from "./selectCategory";
 
-const API = "https://neobiscrmfood.herokuapp.com/api/";
-const DEFAULT_QUERY = "admin/getMeals";
+const DEFAULT_QUERY = "/admin/getMeals";
 
 class MealsPage extends Component {
   constructor(props) {

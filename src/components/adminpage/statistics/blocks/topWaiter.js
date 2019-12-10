@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getData } from "../../../requests";
+import { getData, API } from "../../../requests";
 import "./styles.css";
 
 class TopWaiter extends Component {
@@ -10,7 +10,7 @@ class TopWaiter extends Component {
     };
   }
   async componentDidMount() {
-    getData("https://neobiscrmfood.herokuapp.com/api/Admin/waiterSumTop").then(
+    getData(`${API}/Admin/waiterSumTop`).then(
       body => {
         this.setState({ data: body });
       }

@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
-import {getData} from "../../requests.js";
-import "./addmeal.css";
+import { getData, API } from "../../requests.js";
 import Modal from "../../block/AddMessage.js";
-
+import "./addmeal.css";
 class MealPage extends Component {
   constructor(props) {
     super(props);
@@ -33,9 +32,7 @@ class MealPage extends Component {
   }
 
   componentDidMount() {
-    getData(
-      `https://neobiscrmfood.herokuapp.com/api/meals/${this.props.match.params.id}/`
-    ).then(body => {
+    getData(`${API}/meals/${this.props.match.params.id}/`).then(body => {
       this.setState({
         data: body,
         select: body.categoryId,
@@ -43,11 +40,9 @@ class MealPage extends Component {
         status: body.mealStatus
       });
     });
-    getData(`https://neobiscrmfood.herokuapp.com/api/Categories/`).then(
-      body => {
-        this.setState({ category: body });
-      }
-    );
+    getData(`${API}/Categories/`).then(body => {
+      this.setState({ category: body });
+    });
   }
 
   handleSubmit(event) {
@@ -60,7 +55,7 @@ class MealPage extends Component {
       data[key] = value;
     });
 
-    fetch(`https://neobiscrmfood.herokuapp.com/api/meals/${data.id}`, {
+    fetch(`${API}/meals/${data.id}`, {
       method: "PUT", // or 'PUT'
       body: JSON.stringify(data), // data can be `string` or {object}!
       headers: { "Content-Type": "application/json" }

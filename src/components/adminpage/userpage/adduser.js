@@ -5,7 +5,7 @@ import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import Modal from "../../block/AddMessage.js";
-
+import { API } from "./../../requests";
 class addUser extends Component {
   constructor(props) {
     super(props);
@@ -30,7 +30,7 @@ class addUser extends Component {
 
     console.log(data);
     let target = event.target;
-    fetch(`https://neobiscrmfood.herokuapp.com/api/users`, {
+    fetch(`${API}/users`, {
       method: "POST", // or 'PUT'
       body: JSON.stringify(data), // data can be `string` or {object}!
       headers: { "Content-Type": "application/json" }
@@ -44,8 +44,7 @@ class addUser extends Component {
         target.reset();
       } else {
         this.setState({
-          message: "Ошибка. Проверьте введенные данные",
-          
+          message: "Ошибка. Проверьте введенные данные"
         });
         this.setState({
           status: true
@@ -222,7 +221,11 @@ class addUser extends Component {
                     className="form-control"
                   ></textarea>
                 </div>
-                <Modal message={this.state.message} status={this.state.status} name="Добавить" />
+                <Modal
+                  message={this.state.message}
+                  status={this.state.status}
+                  name="Добавить"
+                />
               </form>
             </div>
           </main>

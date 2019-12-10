@@ -10,7 +10,7 @@ class Category extends Component {
   }
 
   componentDidMount() {
-    getData(`https://neobiscrmfood.herokuapp.com/api/Categories/`).then(
+    getData(`/Categories/`).then(
       category => {
         this.setState({ category });
       }

@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-import "./users.css";
-import "./adduser.css";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import Modal from "../../block/AddMessage.js";
-
-import { getData } from "../../requests.js";
-
+import { getData, API } from "../../requests.js";
+import "./users.css";
+import "./adduser.css";
 class UserPage extends Component {
   constructor(props) {
     super(props);
@@ -31,7 +29,7 @@ class UserPage extends Component {
     formData.forEach(function(value, key) {
       data[key] = value;
     });
-    fetch(`https://neobiscrmfood.herokuapp.com/api/users/${data.id}`, {
+    fetch(`${API}/users/${data.id}`, {
       method: "PUT", // or 'PUT'
       body: JSON.stringify(data), // data can be `string` or {object}!
       headers: { "Content-Type": "application/json" }
@@ -51,7 +49,7 @@ class UserPage extends Component {
 
   async componentDidMount() {
     getData(
-      `https://neobiscrmfood.herokuapp.com/api/users/${this.props.match.params.id}/`
+      `${API}/users/${this.props.match.params.id}/`
     ).then(body => {
       this.setState({ data: body });
       console.log(body);

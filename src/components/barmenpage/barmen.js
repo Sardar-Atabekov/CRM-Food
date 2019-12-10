@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import Order from './Order';
 import axios from "axios";
 import {Link} from "react-router-dom";
-
-const API = "https://neobiscrmfood.herokuapp.com/api/";
-const DEFAULT_QUERY = "barman/getActiveOrders";
+import {API} from "./../requests";
+const DEFAULT_QUERY = "/barman/getActiveOrders";
 
 class BarmenPage extends Component {
   constructor(props) {

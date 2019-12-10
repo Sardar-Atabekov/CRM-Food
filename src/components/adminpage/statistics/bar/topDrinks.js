@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getData } from "../../../requests";
+import { getData, API } from "../../../requests";
 import "./../blocks/styles.css";
 
 class TopDrinks extends Component {
@@ -11,11 +11,9 @@ class TopDrinks extends Component {
     };
   }
   async componentDidMount() {
-    getData("https://neobiscrmfood.herokuapp.com/api/Admin/topDrinks").then(
-      body => {
-        this.setState({ bar: body });
-      }
-    );
+    getData(`${API}/Admin/topDrinks`).then(body => {
+      this.setState({ bar: body });
+    });
   }
   render() {
     let { bar } = this.state;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getData, postData, putData, deleteData } from "../../requests";
+import { getData, postData, putData, deleteData, API } from "../../requests";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
@@ -62,7 +62,7 @@ class Categories extends Component {
     }
   }
   async componentDidMount() {
-    getData("https://neobiscrmfood.herokuapp.com/api/Categories").then(body => {
+    getData(`${API}/Categories`).then(body => {
       this.setState({ body });
     });
   }

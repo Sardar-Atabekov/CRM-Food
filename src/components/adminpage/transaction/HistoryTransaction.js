@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { getData } from "../../requests";
+import { getData, API } from "../../requests";
 // import { Link } from "react-router-dom";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import NamePage from "./../blocks/namePage";
 import Calendar from "./../calendar/calendar";
-import Time from './../calendar/time';
+import Time from "./../calendar/time";
 import "./transaction.css";
 
 class HistoryTransaction extends Component {
@@ -21,7 +21,7 @@ class HistoryTransaction extends Component {
 
   async componentDidMount() {
     getData(
-      "https://neobiscrmfood.herokuapp.com/api/Admin/transactionHistory"
+      `${API}/Admin/transactionHistory`
     ).then(body => {
       this.setState({ data: body });
     });
@@ -69,10 +69,7 @@ class HistoryTransaction extends Component {
                     <td>{order.orderId}</td>
                     <td>
                       <time dateTime={order.orderDate}>
-                        {
-                          Time(order.orderDate)
-                       
-                        }
+                        {Time(order.orderDate)}
                       </time>
                     </td>
 

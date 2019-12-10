@@ -16,7 +16,7 @@ class MealsCookPage extends Component {
   }
 
   async componentDidMount() {
-    getData("http://neobiscrmfood.herokuapp.com/api/Categories").then(
+    getData("/Categories").then(
       categoryData => {
         categoryData = categoryData.filter(
           meal => meal.departmentName === "Kitchen"
@@ -24,7 +24,7 @@ class MealsCookPage extends Component {
         this.setState({ categoryData });
       }
     );
-    getData("http://neobiscrmfood.herokuapp.com/api/Cook/getMeals").then(
+    getData("/Cook/getMeals").then(
       data => {
         let body = data && data.filter(meal => meal.department === "Kitchen");
         this.setState({ body });

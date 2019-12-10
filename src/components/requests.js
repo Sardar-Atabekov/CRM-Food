@@ -1,6 +1,8 @@
+let API = "https://neobiscrmfood.herokuapp.com/api";
+
 async function getData(url, token) {
   try {
-    let response = await fetch(`${url}`, {
+    let response = await fetch(`${API}${url}`, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -64,4 +66,4 @@ async function deleteData(url, token) {
     });
 }
 
-export { getData, postData, putData, deleteData };
+export { getData, postData, putData, deleteData, API };

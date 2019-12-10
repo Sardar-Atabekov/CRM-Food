@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getData } from "../../requests";
+import { getData, API } from "../../requests";
 
 class Category extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class Category extends Component {
   }
 
   componentDidMount() {
-    getData(`https://neobiscrmfood.herokuapp.com/api/Categories/`).then(
+    getData(`${API}/Categories/`).then(
       data => {
         this.setState({ data });
       }

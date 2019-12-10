@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getData, postData, putData, deleteData } from "../../requests";
+import { getData, postData, putData, deleteData, API } from "../../requests";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
@@ -45,7 +45,7 @@ class Tables extends Component {
   }
 
   async componentDidMount() {
-    getData("https://neobiscrmfood.herokuapp.com/api/Tables").then(body => {
+    getData(`${API}/Tables`).then(body => {
       this.setState({ data: body });
       console.log(body);
     });

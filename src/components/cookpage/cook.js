@@ -3,9 +3,9 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./cook.css";
 import Order from "./Order.js";
+import { API } from "./../requests";
 
-const API = "https://neobiscrmfood.herokuapp.com/api/";
-const DEFAULT_QUERY = "cook/getActiveOrders";
+const DEFAULT_QUERY = "/cook/getActiveOrders";
 
 class CookPage extends Component {
   constructor(props) {

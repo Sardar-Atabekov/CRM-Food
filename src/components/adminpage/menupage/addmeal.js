@@ -3,7 +3,7 @@ import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import Category from "../../block/category.js";
-// import { postData } from "../../requests.js";
+import { API } from "../../requests.js";
 import "./addmeal.css";
 import Modal from "../../block/AddMessage.js";
 
@@ -30,7 +30,7 @@ class addMeal extends Component {
     });
 
     let target = event.target;
-    fetch(`https://neobiscrmfood.herokuapp.com/api/meals`, {
+    fetch(`${API}/meals`, {
       method: "POST", // or 'PUT'
       body: JSON.stringify(data), // data can be `string` or {object}!
       headers: { "Content-Type": "application/json" }
