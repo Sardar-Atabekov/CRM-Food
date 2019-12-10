@@ -4,6 +4,8 @@ import notFound from "./img/NF.svg";
 import "./404.css";
 class NotFound extends Component {
   render() {
+    // localStorage.removeItem('NotFound');
+    // localStorage.setItem("NotFound", true);
     return (
       <div className="block_container">
         <div className="NotFound">

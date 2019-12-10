@@ -48,6 +48,7 @@ class LoginPage extends Component {
   }
 
   render() {
+    console.log(localStorage.getItem("NotFound"));
     return (
       <div className="loginWrapper">
         <div className="login">
