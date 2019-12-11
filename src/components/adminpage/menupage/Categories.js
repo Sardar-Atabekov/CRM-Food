@@ -3,10 +3,8 @@ import { getData, postData, putData, deleteData, API } from "../../requests";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
-// import ModalBlock from "../../block/footer.js";as
-
+import ModalWindow from "./../../modalWindow/modalWindow";
 import "./category.css";
-
 import "./menu.css";
 
 class Categories extends Component {
@@ -17,9 +15,11 @@ class Categories extends Component {
       isLoading: false,
       error: null,
       select: 2,
-      data: []
+      data: [],
+      status: false
     };
     this.changeSelectDepartment = this.changeSelectDepartment.bind(this);
+    this.addTableClick = this.addTableClick.bind(this);
   }
 
   addTableClick(event) {
@@ -30,9 +30,20 @@ class Categories extends Component {
     };
     event.target.parentNode.firstChild.value = "";
     event.target.parentNode.childNodes[1].value = "";
-    // document.getElementById('detailed-form').reset()
     console.log(data);
-    postData("/Categories/", data);
+    postData("/Categories/", data).then(message => {
+      if (message.status !== "error") {
+        this.setState({
+          message: "Данные успешно добавлены!",
+          status: true
+        });
+      } else {
+        this.setState({
+          message: "Ошибка. Проверьте введенные данные",
+          status: true
+        });
+      }
+    });
   }
 
   changeTableClick(event) {
@@ -98,6 +109,7 @@ class Categories extends Component {
               <button onClick={this.addTableClick} className="addCategoryBtn">
                 Добавить
               </button>
+
               <div className="selectDepartment">
                 <label htmlFor="department">По департаментам: </label>
                 <select
@@ -153,6 +165,13 @@ class Categories extends Component {
             <Footer />
           </footer>
         </div>
+        {this.state.status ? (
+          <ModalWindow
+            message={this.state.message}
+            statusModal={status => this.setState({ status })}
+            status={this.state.status}
+          />
+        ) : null}
       </div>
     );
   }

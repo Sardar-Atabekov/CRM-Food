@@ -43,7 +43,7 @@ async function postData(url, data) {
     body: JSON.stringify(data)
   });
   const res = await req.json();
-  console.log(res);
+  return res;
 }
 
 async function putData(url, data) {

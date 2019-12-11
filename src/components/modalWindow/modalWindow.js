@@ -1,29 +1,19 @@
 import React from "react";
-import OK from "./../images/ready.svg";
+import OK from "./../images/checked.svg";
 import "./modalWindow.css";
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: props.status
-    };
-    this.handleStatus = this.handleStatus.bind(this);
-  }
-
-  //   onCloseModal = () => {
-  //     this.setState({ open: false });
-  //   };
-
-  handleStatus() {
-    this.props.statusModal(false);
-  }
-
+export default class ModalWindow extends React.Component {
   render() {
     return (
-      <div className="modalWindow">
-        <h2>{this.props.message}</h2>
-        <img src={OK} alt={"Ok"} onClick={this.handleStatus} />
+      <div className="modalWrapper">
+        <div className="modalWindow">
+          <h2>{this.props.message}</h2>
+          <img
+            src={OK}
+            alt={"Ok"}
+            onClick={() => this.props.statusModal(false)}
+          />
+        </div>
       </div>
     );
   }

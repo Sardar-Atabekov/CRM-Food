@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { getData, putData, deleteData, API } from "../../requests";
-import "./meals.css";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import NamePage from "./../blocks/namePage.js";
 import { Link } from "react-router-dom";
 import Category from "./selectCategory";
-
+import "./meals.css";
 const DEFAULT_QUERY = "/admin/getMeals";
 
 

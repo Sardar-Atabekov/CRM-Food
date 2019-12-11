@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { API } from "../../requests.js";
+import { API, postData } from "../../requests.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import Category from "../../block/category.js";
@@ -15,17 +15,11 @@ class addMeal extends Component {
       isLoading: false,
       error: [],
       data: [],
-      status: false,
-      message: "Подождите..."
+      status: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleStatus = this.handleStatus.bind(this);
   }
 
-  handleStatus(status) {
-    console.log(status);
-    this.setState({status});
-  }
   handleSubmit(event) {
     event.preventDefault();
     let formData = new FormData(event.target),
@@ -36,12 +30,15 @@ class addMeal extends Component {
     });
 
     let target = event.target;
+    // postData(`${API}/meals`).then(
+
+    // )
     fetch(`${API}/meals`, {
       method: "POST", // or 'PUT'
       body: JSON.stringify(data), // data can be `string` or {object}!
       headers: { "Content-Type": "application/json" }
     }).then(e => {
-      console.log(e);
+      console.log(e.json());
       if (e.ok) {
         this.setState({
           message: "Данные успешно добавлены!",
@@ -71,29 +68,30 @@ class addMeal extends Component {
             <div className="formBlock">
               <div className="title-block">
                 <div className="form-title">
-                  <h6 className="form-text">Dish</h6>
-                  <p className="form-text">Setting general dish information</p>
+                  <h6 className="form-text">Блюда</h6>
+                  <p className="form-text">Заполните информация о блюде</p>
                 </div>
               </div>
               <form className="form" onSubmit={this.handleSubmit}>
                 <div className="form-row">
                   <div className="form-group">
-                    <label htmlFor="name">Name</label>
+                    <label htmlFor="name">Названия</label>
                     <input
                       type="text"
                       name="name"
                       className="form-control"
                       id="name"
+                      required
                       value={this.state.numberOfGuests}
                       onChange={this.nameVerification}
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="categoryId">Category</label>
+                    <label htmlFor="categoryId">Категория</label>
                     <Category />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="price">Price</label>
+                    <label htmlFor="price">Цена</label>
                     <input
                       type="number"
                       name="price"
@@ -104,7 +102,7 @@ class addMeal extends Component {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="mealStatus">Status</label>
+                    <label htmlFor="mealStatus">В наличии</label>
                     <select
                       id="mealStatus"
                       name="mealStatus"
@@ -112,13 +110,13 @@ class addMeal extends Component {
                       value={this.state.numberOfGuests}
                       onChange={this.handleInputChange}
                     >
-                      <option value="0">Have</option>
-                      <option value="1">Not</option>
+                      <option value="0">Есть</option>
+                      <option value="1">Нет</option>
                     </select>
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="weight">Units</label>
+                    <label htmlFor="weight">Единиц измерение</label>
                     <input
                       required
                       name="weight"
@@ -129,15 +127,9 @@ class addMeal extends Component {
                     />
                   </div>
                 </div>
-                {/*
-                          
-                        
-                          
-                          <input placeholder="comment"/><br/>
-                                              */}
                 <div className="userProfilePicture">
                   <label htmlFor="userProfilePicture" className="text-center">
-                    Dish Picture
+                    Изображения
                   </label>
                   <div className="user__avatar">
                     <img
@@ -154,12 +146,13 @@ class addMeal extends Component {
                   </div>
                 </div>
                 <div className="commentBlock">
-                  <label htmlFor="description">Description</label>
+                  <label htmlFor="description">Описания</label>
                   <br />
                   <textarea
                     id="description"
                     name="description"
                     className="form-control"
+                    required
                   ></textarea>
                 </div>
                 <input
@@ -167,17 +160,21 @@ class addMeal extends Component {
                   className="btn btnSumbit"
                   value="Добавить"
                 />
-                {this.state.status ? (
-                  <ModalWindow message={this.state.message} statusModal={this.handleStatus} status={this.state.status}/>
-                ) : null}
-                {/* <Modal message={this.state.message} name="Добавить" /> */}
               </form>
             </div>
           </main>
+
           <footer className="main-footer">
             <Footer />
           </footer>
         </div>
+        {this.state.status ? (
+          <ModalWindow
+            message={this.state.message}
+            statusModal={status => this.setState({ status })}
+            status={this.state.status}
+          />
+        ) : null}
       </div>
     );
   }
