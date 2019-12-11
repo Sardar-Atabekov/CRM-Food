@@ -9,7 +9,6 @@ function Time(data) {
   let firstSymbol = string[0].toUpperCase(),
         symbol =string.substring(1, string.length),
     time = firstSymbol.concat(symbol);
-  console.log(time);
   return time;
 }
 

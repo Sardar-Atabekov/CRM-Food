@@ -10,6 +10,7 @@ import Category from "./selectCategory";
 
 const DEFAULT_QUERY = "/admin/getMeals";
 
+
 class MealsPage extends Component {
   constructor(props) {
     super(props);

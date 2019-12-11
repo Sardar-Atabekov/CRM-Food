@@ -8,6 +8,7 @@ export default class App extends React.Component {
     this.state = {
       open: props.status
     };
+    this.handleStatus = this.handleStatus.bind(this);
   }
 
   //   onCloseModal = () => {
@@ -22,7 +23,7 @@ export default class App extends React.Component {
     return (
       <div className="modalWindow">
         <h2>{this.props.message}</h2>
-        <img src={OK} alt={"Ok"} />
+        <img src={OK} alt={"Ok"} onClick={this.handleStatus} />
       </div>
     );
   }

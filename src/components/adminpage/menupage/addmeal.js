@@ -15,12 +15,17 @@ class addMeal extends Component {
       isLoading: false,
       error: [],
       data: [],
-      status: true,
+      status: false,
       message: "Подождите..."
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleStatus = this.handleStatus.bind(this);
   }
 
+  handleStatus(status) {
+    console.log(status);
+    this.setState({status});
+  }
   handleSubmit(event) {
     event.preventDefault();
     let formData = new FormData(event.target),
@@ -162,7 +167,9 @@ class addMeal extends Component {
                   className="btn btnSumbit"
                   value="Добавить"
                 />
-                {this.state.status ? <ModalWindow /> : null}
+                {this.state.status ? (
+                  <ModalWindow message={this.state.message} statusModal={this.handleStatus} status={this.state.status}/>
+                ) : null}
                 {/* <Modal message={this.state.message} name="Добавить" /> */}
               </form>
             </div>
