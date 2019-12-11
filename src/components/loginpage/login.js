@@ -34,6 +34,7 @@ class LoginPage extends Component {
     console.log(req);
     if (res.access_token) {
       localStorage.setItem("token", res.access_token);
+      localStorage.setItem("role", +res.role);
       console.log(res.role);
       if (+res.role === 1) {
         this.props.history.push(`/meals`);

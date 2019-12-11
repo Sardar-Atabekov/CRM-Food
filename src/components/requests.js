@@ -33,9 +33,7 @@ async function getData(url) {
 }
 
 async function postData(url, data) {
-  // let token =
-  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIxMCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJfTW9ub3BvbGlzdF8iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJ3YWl0ZXIiLCJuYmYiOjE1NzM4OTA0NjUsImV4cCI6MTU3Mzk3Njg2NSwiaXNzIjoiQ1JNU2VydmVyIiwiYXVkIjoiQ1JNRm9vZCJ9.gvci1D9uOl_ik0Vam1LQPFrKa4j57ooOXYdpP3giiKM";
-  await fetch(`https://neobiscrmfood.herokuapp.com/api${url}`, {
+  let req = await fetch(`https://neobiscrmfood.herokuapp.com/api${url}`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -44,6 +42,8 @@ async function postData(url, data) {
     },
     body: JSON.stringify(data)
   });
+  const res = await req.json();
+  console.log(res);
 }
 
 async function putData(url, data) {
