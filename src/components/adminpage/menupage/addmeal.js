@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { API, postData } from "../../requests.js";
+import { postData } from "../../requests.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import Category from "../../block/category.js";
@@ -30,16 +30,8 @@ class addMeal extends Component {
     });
 
     let target = event.target;
-    // postData(`${API}/meals`).then(
-
-    // )
-    fetch(`${API}/meals`, {
-      method: "POST", // or 'PUT'
-      body: JSON.stringify(data), // data can be `string` or {object}!
-      headers: { "Content-Type": "application/json" }
-    }).then(e => {
-      console.log(e.json());
-      if (e.ok) {
+    postData("/meals/", data).then(res => {
+      if (res.status !== "error") {
         this.setState({
           message: "Данные успешно добавлены!",
           status: true
@@ -171,7 +163,7 @@ class addMeal extends Component {
         {this.state.status ? (
           <ModalWindow
             message={this.state.message}
-            statusModal={status => this.setState({ status })}
+            statusModal={() => this.setState({ status:false })}
             status={this.state.status}
           />
         ) : null}

@@ -48,7 +48,7 @@ async function postData(url, data) {
 
 async function putData(url, data) {
   console.log(JSON.stringify(data));
-  await fetch(`https://neobiscrmfood.herokuapp.com/api${url}`, {
+  let req = await fetch(`https://neobiscrmfood.herokuapp.com/api${url}`, {
     method: "PUT",
     headers: {
       Accept: "application/json",
@@ -56,11 +56,9 @@ async function putData(url, data) {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(data)
-  })
-    .then(res => console.log(res.json()))
-    .catch(err => {
-      console.error(err);
-    });
+  });
+  const res = await req.json();
+  return res;
 }
 
 async function deleteData(url) {

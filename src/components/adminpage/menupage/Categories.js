@@ -31,8 +31,8 @@ class Categories extends Component {
     event.target.parentNode.firstChild.value = "";
     event.target.parentNode.childNodes[1].value = "";
     console.log(data);
-    postData("/Categories/", data).then(message => {
-      if (message.status !== "error") {
+    postData("/Categories/", data).then(res => {
+      if (res.status !== "error") {
         this.setState({
           message: "Данные успешно добавлены!",
           status: true

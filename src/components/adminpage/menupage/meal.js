@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
-import { getData, API } from "../../requests.js";
-import Modal from "../../block/AddMessage.js";
+import { getData, putData, API } from "../../requests.js";
+import ModalWindow from "./../../modalWindow/modalWindow.js";
 import "./addmeal.css";
 class MealPage extends Component {
   constructor(props) {
@@ -14,6 +14,7 @@ class MealPage extends Component {
       id: 0,
       select: 1,
       status: 0,
+      modalStatus: false,
       message: "Подождите..."
     };
 
@@ -54,20 +55,18 @@ class MealPage extends Component {
     formData.forEach(function(value, key) {
       data[key] = value;
     });
-
-    fetch(`${API}/meals/${data.id}`, {
-      method: "PUT", // or 'PUT'
-      body: JSON.stringify(data), // data can be `string` or {object}!
-      headers: { "Content-Type": "application/json" }
-    }).then(e => {
-      console.log(e);
-      if (e.ok) {
+    console.log(data);
+    putData(`/meals/${data.id}`, data).then(res => {
+      console.log(res);
+      if (res.status !== "error" && res.status !== 400) {
         this.setState({
-          message: "Данные успешно изменены!"
+          message: "Данные успешно изменены!",
+          modalStatus: true
         });
       } else {
         this.setState({
-          message: "Ошибка. Проверьте введенные данные"
+          message: "Ошибка. Проверьте введенные данные",
+          modalStatus: true
         });
       }
     });
@@ -75,9 +74,6 @@ class MealPage extends Component {
 
   render() {
     let { data, category } = this.state;
-    console.log(this.state);
-    console.log(category);
-
     return (
       <div className="wrapper">
         <aside className="navBlock">
@@ -122,11 +118,6 @@ class MealPage extends Component {
                           {category.category}
                         </option>
                       ))}
-                      {/* {
-                           for( i=0; i<10; i++) {
-                           console.log(arr[i]);
-                           };
-                        } */}
                     </select>
                   </div>
                   <div className="form-group">
@@ -197,11 +188,15 @@ class MealPage extends Component {
                   <textarea
                     id="description"
                     name="description"
-                    value={data.description}
+                    defaultValue={data.description}
                     className="form-control"
                   ></textarea>
                 </div>
-                <Modal message={this.state.message} name="Изменить" />
+                <input
+                  type="submit"
+                  className="btn btnSumbit"
+                  value="Добавить"
+                />
               </form>
             </div>
           </main>
@@ -209,6 +204,13 @@ class MealPage extends Component {
             <Footer />
           </footer>
         </div>
+        {this.state.modalStatus ? (
+          <ModalWindow
+            message={this.state.message}
+            statusModal={modalStatus => this.setState({ modalStatus })}
+            status={this.state.status}
+          />
+        ) : null}
       </div>
     );
   }
