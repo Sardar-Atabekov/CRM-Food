@@ -20,6 +20,7 @@ class Categories extends Component {
     };
     this.changeSelectDepartment = this.changeSelectDepartment.bind(this);
     this.addTableClick = this.addTableClick.bind(this);
+    this.changeTableClick = this.changeTableClick.bind(this);
   }
 
   addTableClick(event) {
@@ -56,7 +57,19 @@ class Categories extends Component {
       };
     // document.getElementById('detailed-form').reset()
     console.log(data);
-    putData(`/Categories/${id}`, data);
+    putData(`/Categories/${id}`, data).then(res => {
+      if (res.status !== "error" && res.status !== 400) {
+        this.setState({
+          message: "Данные успешно добавлены!",
+          status: true
+        });
+      } else {
+        this.setState({
+          message: "Ошибка. Проверьте введенные данные",
+          status: true
+        });
+      }
+    });
   }
 
   changeSelectDepartment(event) {
