@@ -163,7 +163,7 @@ class addMeal extends Component {
         {this.state.status ? (
           <ModalWindow
             message={this.state.message}
-            statusModal={() => this.setState({ status:false })}
+            statusModal={() => this.setState({ status: false })}
             status={this.state.status}
           />
         ) : null}

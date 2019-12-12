@@ -20,7 +20,7 @@ class TopMeals extends Component {
   }
   render() {
     let { bar, kitchen } = this.state,
-      data = [...bar, ...kitchen].sort((a, b) => b.sum - a.sum);
+      data = [...bar, ...kitchen].sort((a, b) => b.count - a.count);
     console.log(data);
     return (
       <div className="topMeals">

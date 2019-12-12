@@ -9,9 +9,7 @@ class TopSum extends Component {
     };
   }
   async componentDidMount() {
-    getData(
-      `${API}/Admin/barSumStatistics`
-    ).then(body => {
+    getData(`${API}/Admin/barSumStatistics`).then(body => {
       this.setState({ bar: body });
     });
   }
@@ -24,7 +22,8 @@ class TopSum extends Component {
           <h4>{this.props.name}</h4>
         </div>
         <ul className="meals">
-          {bar.length > 0 &&
+          {bar &&
+            bar.length > 0 &&
             bar.map((meal, index) =>
               index < 8 ? (
                 <li key={meal.id}>
