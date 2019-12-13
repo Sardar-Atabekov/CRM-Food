@@ -6,7 +6,7 @@ import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import NamePage from "./../blocks/namePage";
 import Calendar from "./../calendar/calendar";
-import Time from "./../calendar/time";
+import { TimeDate } from "./../calendar/time";
 import "./transaction.css";
 
 class HistoryTransaction extends Component {
@@ -27,6 +27,7 @@ class HistoryTransaction extends Component {
 
   render() {
     let { data } = this.state;
+    console.log(data);
     return (
       <div className="wrapper">
         <aside className="navBlock">
@@ -67,7 +68,7 @@ class HistoryTransaction extends Component {
                     <td>{order.orderId}</td>
                     <td>
                       <time dateTime={order.orderDate}>
-                        {Time(order.orderDate)}
+                        {TimeDate(order.orderDate)}
                       </time>
                     </td>
 

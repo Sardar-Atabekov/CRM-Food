@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import notReadyImgUrl from "./../images/notReady.svg";
 import doneImgUrl from "./../images/ready.svg";
-
+import {TimeHours} from "./../adminpage/calendar/time";
 import "./cook.css";
 import {
   checkStatusFood,
@@ -81,9 +81,7 @@ class Order extends Component {
         <header>
           <span className="tableNumber">№{order.orderId}</span>
           <span className="orderTime">
-            {new Date(order.dateTimeOrdered).getHours() +
-              ":" +
-              new Date(order.dateTimeOrdered).getMinutes()}
+              {TimeHours(order.dateTimeOrdered)}
           </span>
           <button
             className="statusOrder"

@@ -7,7 +7,7 @@ import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import NamePage from "./../blocks/namePage";
 import { API } from "./../../requests";
-import Time from "../calendar/time";
+import {Time} from "../calendar/time";
 const DEFAULT_QUERY = "/users";
 
 class waiterPage extends Component {
