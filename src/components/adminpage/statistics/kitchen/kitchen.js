@@ -10,7 +10,6 @@ import TopWaiterDrinks from "./topWaiterDrinks";
 import TopWaiterSum from "./topWaiterSum";
 import NamePage from "../../blocks/namePage";
 
-
 class KitchenPage extends Component {
   render() {
     return (
@@ -23,15 +22,15 @@ class KitchenPage extends Component {
             <Search />
           </header>
           <main className="orderContent">
-            <NamePage name="Kitchen Stats" />
+            <NamePage name="Кухня" />
             <TotalSum />
-             <TotalBar />
+            <TotalBar />
             <div className="statistics">
               <div className="graphicArt">Графика</div>
-              <TopSum name ="Top Meals Revenue "/>
-              <TopDrinks name="Top Meals" />
-              <TopWaiterDrinks name="Top Waiters Meals" />
-              <TopWaiterSum name="Top Waiters Revenue" />
+              <TopSum name="Топ блюди по прибылью " />
+              <TopDrinks name="Топ блюди" />
+              <TopWaiterDrinks name="Топ официанты по заказам" />
+              <TopWaiterSum name="Топ официанты по прибылью" />
             </div>
           </main>
           <footer className="main-footer">

@@ -84,16 +84,16 @@ class waiterPage extends Component {
             <table>
               <tbody>
                 <tr>
-                  <th>Name</th>
+                  <th>Имя</th>
 
-                  <th>Age</th>
-                  <th>Gender</th>
-                  <th>Start work date</th>
-                  <th>Phone</th>
+                  <th>Возраст</th>
+                  <th>Пол</th>
+                  <th>Начала работы</th>
+                  <th>Телефон</th>
                   <th>Email</th>
                   <th>Login</th>
-                  <th>Password</th>
-                  <th>Operation</th>
+                  <th>Пароль</th>
+                  <th>Операции</th>
                 </tr>
                 {typeof data === "object" ? (
                   data.map(user => (

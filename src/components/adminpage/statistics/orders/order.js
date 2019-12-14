@@ -21,12 +21,12 @@ class Sales extends Component {
             <Search />
           </header>
           <main className="orderContent">
-            <NamePage name="Orders Overview" />
+            <NamePage name="Обзор заказов" />
             <Total />
             <div className="statistics">
               <div className="graphicArt">Графика</div>
-              <TopMeals name="Top Meals" />
-              <TopWaiter name="Top Waiters" />
+              <TopMeals name="Топ блюд" />
+              <TopWaiter name="Топ официанты" />
             </div>
           </main>
           <footer className="main-footer">

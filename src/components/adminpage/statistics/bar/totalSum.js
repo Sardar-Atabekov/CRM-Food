@@ -9,7 +9,7 @@ class TotalSum extends Component {
     };
   }
   async componentDidMount() {
-    getData(`${API}Admin/barTotalSums`).then(body => {
+    getData(`${API}/Admin/barTotalSums`).then(body => {
       this.setState({ data: body });
     });
   }
@@ -20,7 +20,7 @@ class TotalSum extends Component {
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
-              <span>TOTAL REVENUE</span>
+              <span>Общая прибыль</span>
               <h6 className="totalSum">{data && data.totalSum} </h6>
             </div>
           </div>
@@ -28,7 +28,7 @@ class TotalSum extends Component {
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
-              <span>REVENUE Month</span>
+              <span>За месяц</span>
               <h6 className="totalSum">{data && data.totalSumMonth} </h6>
             </div>
           </div>
@@ -36,7 +36,7 @@ class TotalSum extends Component {
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
-              <span>REVENUE Week</span>
+              <span>За неделю</span>
               <h6 className="totalSum">{data && data.totalSumWeek} </h6>
             </div>
           </div>
@@ -44,7 +44,7 @@ class TotalSum extends Component {
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
-              <span>REVENUE TODAY</span>
+              <span>За сегодня</span>
               <h6 className="totalSum">{data && data.totalSumDay} </h6>
             </div>
           </div>

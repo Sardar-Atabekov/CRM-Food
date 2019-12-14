@@ -1,5 +1,5 @@
 import moment from "moment";
-import  "moment/locale/ru";
+import "moment/locale/ru";
 function Time(date) {
   let stillUtc = moment.utc(date);
   let time = moment(stillUtc)
@@ -20,7 +20,7 @@ function TimeDate(date) {
   let stillUtc = moment.utc(date);
   let time = moment(stillUtc)
     .local()
-    .format("DD.MM.YYYY, h:mm");
+    .format("DD.MM.YYYY, hh:mm");
   return time;
 }
 

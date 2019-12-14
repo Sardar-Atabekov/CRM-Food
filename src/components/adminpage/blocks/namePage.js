@@ -4,7 +4,7 @@ export default class NamePage extends Component {
   render() {
     return (
       <div className="namePage">
-        <span className="page-subtitle">DASHBOARD</span>
+        {/* <span className="page-subtitle">Страница</span> */}
         <h3 className="page-title">{this.props.name}</h3>
       </div>
     );

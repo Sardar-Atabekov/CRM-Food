@@ -20,7 +20,7 @@ class TotalBar extends Component {
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
-              <span>TOTAL Drinks</span>
+              <span>Общие заказы</span>
               <h6 className="totalSum">{data && data.totalMeals} </h6>
             </div>
           </div>
@@ -29,7 +29,7 @@ class TotalBar extends Component {
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
-              <span>Drinks Month</span>
+              <span>За месяц</span>
 
               <h6 className="totalSum">{data && data.totalMealsMonth} </h6>
             </div>
@@ -39,7 +39,7 @@ class TotalBar extends Component {
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
-              <span>Drinks Week</span>
+              <span>За неделю</span>
               <h6 className="totalSum">{data && data.totalMealsWeek} </h6>
             </div>
           </div>
@@ -48,7 +48,7 @@ class TotalBar extends Component {
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
-              <span>Drinks TODAY</span>
+              <span>За сегодня</span>
               <h6 className="totalSum">{data && data.totalMealsToday} </h6>
             </div>
           </div>

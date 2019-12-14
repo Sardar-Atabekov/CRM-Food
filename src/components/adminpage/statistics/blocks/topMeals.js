@@ -11,20 +11,28 @@ class TopMeals extends Component {
     };
   }
   async componentDidMount() {
-    getData(
-      `${API}/Admin/barSumStatistics`
-    ).then(body => {
+    getData(`${API}/Admin/barSumStatistics`).then(body => {
       this.setState({ bar: body });
     });
-    getData(
-      `${API}/Admin/kitchenSumStatistics`
-    ).then(body => {
+    getData(`${API}/Admin/kitchenSumStatistics`).then(body => {
       this.setState({ kitchen: body });
     });
   }
   render() {
-    let { bar, kitchen } = this.state,
-      data = [...bar, ...kitchen].sort((a, b) => b.sum - a.sum);
+    let { bar, kitchen } = this.state;
+    bar =
+      bar &&
+      bar.map(meal => {
+        meal.sum = meal.price * meal.quantity;
+        return meal;
+      });
+    kitchen =
+      kitchen &&
+      kitchen.map(meal => {
+        meal.sum = meal.price * meal.quantity;
+        return meal;
+      });
+    let data = [...bar, ...kitchen].sort((a, b) => b.sum - a.sum);
     console.log(data);
     return (
       <div className="topMeals">
@@ -46,10 +54,10 @@ class TopMeals extends Component {
         </ul>
         <div className="totalSelect">
           <select className="select">
-            <option value="0">Total </option>
-            <option value="1">Last Month</option>
+            <option value="0">Общая </option>
+            {/* <option value="1">Last Month</option>
             <option value="2">Last Week</option>
-            <option value="3">Today</option>
+            <option value="3">Today</option> */}
           </select>
         </div>
       </div>

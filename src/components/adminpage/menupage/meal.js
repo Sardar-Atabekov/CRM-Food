@@ -33,6 +33,7 @@ class MealPage extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props);
     getData(`${API}/meals/${this.props.match.params.id}/`).then(body => {
       this.setState({
         data: body,

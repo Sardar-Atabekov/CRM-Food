@@ -56,12 +56,12 @@ class HistoryTransaction extends Component {
               <tbody>
                 <tr>
                   <th className="sortingNumber">#</th>
-                  <th>Date</th>
+                  <th>Время</th>
 
-                  <th>Waiter</th>
+                  <th>Официант</th>
                   <th>Кол-во блюд</th>
-                  <th>Status</th>
-                  <th>Total</th>
+                  <th>Статус</th>
+                  <th>Итого</th>
                 </tr>
                 {data.map(order => (
                   <tr key={order.orderId}>

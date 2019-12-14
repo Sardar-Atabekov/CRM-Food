@@ -15,6 +15,12 @@ class TopSum extends Component {
   }
   render() {
     let { bar } = this.state;
+    bar =
+      bar &&
+      bar.map(meal => {
+        meal.sum = meal.price * meal.quantity;
+        return meal;
+      });
     bar = bar && bar.sort((a, b) => b.sum - a.sum);
     return (
       <div className="topMeals">
@@ -38,9 +44,9 @@ class TopSum extends Component {
         <div className="totalSelect">
           <select className="select">
             <option value="0">Total </option>
-            <option value="1">Last Month</option>
+            {/* <option value="1">Last Month</option>
             <option value="2">Last Week</option>
-            <option value="3">Today</option>
+            <option value="3">Today</option> */}
           </select>
         </div>
       </div>

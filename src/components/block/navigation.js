@@ -21,16 +21,16 @@ class Navigation extends Component {
           <img src={neobisLogo} className="neobis_logo" alt="neobisLogo" />
         </Link>
         <Link to={"/traffic"} className="categories">
-          Orders
+          Заказы
         </Link>
         <Link to={"/sales"} className="categories">
-          Sales
+          Продажи
         </Link>
         <Link to={"/kitchen"} className="categories">
-          Kitchen
+          Кухня
         </Link>
         <Link to={"/bar"} className="categories">
-          Bar
+          Бар
         </Link>
         <Link to={"/transactions"} className="categories">
           История транзакции

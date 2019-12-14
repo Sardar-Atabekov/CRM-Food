@@ -14,12 +14,12 @@ class Footer extends Component {
           </li>
           <li className="nav-item">
             <Link to={"/cook"} className="nav-link">
-              Cook
+              Кухня
             </Link>
           </li>
           <li className="nav-item">
             <Link to={"/barmen"} className="nav-link">
-              Barmen
+              Бар
             </Link>
           </li>
         </ul>

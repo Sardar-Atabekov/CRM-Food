@@ -9,11 +9,9 @@ class Total extends Component {
     };
   }
   async componentDidMount() {
-    getData(`${API}/Admin/totalOrders`).then(
-      body => {
-        this.setState({ data: body });
-      }
-    );
+    getData(`${API}/Admin/totalOrders`).then(body => {
+      this.setState({ data: body });
+    });
   }
   render() {
     let data = this.state.data;
@@ -23,7 +21,7 @@ class Total extends Component {
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
-              <span>TOTAL Orders</span>
+              <span>Общие заказы</span>
               <h6 className="totalSum">{data && data.totalOrders} </h6>
             </div>
           </div>
@@ -32,7 +30,7 @@ class Total extends Component {
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
-              <span>Orders Month</span>
+              <span>За месяц</span>
 
               <h6 className="totalSum">{data && data.totalOrdersMonth} </h6>
             </div>
@@ -42,7 +40,7 @@ class Total extends Component {
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
-              <span>Orders Week</span>
+              <span>За неделю</span>
               <h6 className="totalSum">{data && data.totalOrdersWeek} </h6>
             </div>
           </div>
@@ -51,7 +49,7 @@ class Total extends Component {
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
-              <span>Orders TODAY</span>
+              <span>За сегодня</span>
               <h6 className="totalSum">{data && data.totalOrdersToday} </h6>
             </div>
           </div>

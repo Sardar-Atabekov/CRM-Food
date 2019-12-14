@@ -22,7 +22,6 @@ class TopWaiter extends Component {
       data
         .map(item => {
           let initialValue = 0;
-
           item.meals = item.meals.reduce(
             (accumulator, currentValue) => accumulator + currentValue.count,
             initialValue
@@ -50,10 +49,10 @@ class TopWaiter extends Component {
         </ul>
         <div className="totalSelect">
           <select className="select">
-            <option value="0">Total </option>
-            <option value="1">Last Month</option>
+            <option value="0">Общая </option>
+            {/* <option value="1">Last Month</option>
             <option value="2">Last Week</option>
-            <option value="3">Today</option>
+            <option value="3">Today</option> */}
           </select>
         </div>
       </div>

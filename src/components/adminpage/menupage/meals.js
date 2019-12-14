@@ -54,7 +54,7 @@ class MealsPage extends Component {
           </header>
           <div className="mealsContent">
             <div className="functionPage">
-              <NamePage name="Meals page" />
+              <NamePage name="Блюди" />
               <div className="addMeal">
                 <Link to={"/addmeal"} className="categories add">
                   Добавить

@@ -23,7 +23,7 @@ class Total extends Component {
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
-              <span>TOTAL REVENUE</span>
+              <span>Общая прибыль</span>
               <h6 className="totalSum">{data && data.totalSum} сом</h6>
             </div>
           </div>
@@ -32,7 +32,7 @@ class Total extends Component {
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
-              <span>REVENUE Month</span>
+              <span>За месяц</span>
 
               <h6 className="totalSum">{data && data.totalSumMonth} сом</h6>
             </div>
@@ -42,7 +42,7 @@ class Total extends Component {
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
-              <span>REVENUE Week</span>
+              <span>За неделю</span>
               <h6 className="totalSum">{data && data.totalSumWeek} сом</h6>
             </div>
           </div>
@@ -51,7 +51,7 @@ class Total extends Component {
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
-              <span>REVENUE TODAY</span>
+              <span>За сегодня</span>
               <h6 className="totalSum">{data && data.totalSumToday} сом</h6>
             </div>
           </div>
@@ -59,7 +59,7 @@ class Total extends Component {
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
-              <span>REVENUE Average</span>
+              <span>Средная прибыль</span>
               <h6 className="totalSum">{data && data.totalSumAverage} сом</h6>
             </div>
           </div>
