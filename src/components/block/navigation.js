@@ -36,7 +36,7 @@ class Navigation extends Component {
           История транзакции
         </Link>
         <Link to={"/users"} className="categories">
-          Пользователи
+          Сотрудники
         </Link>
         <Link to={"/category"} className="categories">
           Категории

@@ -57,7 +57,7 @@ class waiterPage extends Component {
           </header>
           <main className="waiterContent">
             <div className="functionPage">
-              <NamePage name="Users Page" />
+              <NamePage name="Сотрудники" />
 
               <div className="adduser">
                 <Link className="categories add" to={"/adduser"}>
