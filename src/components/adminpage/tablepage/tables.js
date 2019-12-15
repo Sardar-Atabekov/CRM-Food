@@ -5,13 +5,14 @@ import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import ModalWindow from "./../../modalWindow/modalWindow";
 import "./tables.css";
+import Loading from "../../loading/loading";
 
 class Tables extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
-      isLoading: false,
+      isLoading: true,
       error: null,
       currentValue: "",
       modalStatus: false
@@ -76,14 +77,13 @@ class Tables extends Component {
 
   async componentDidMount() {
     getData(`${API}/Tables`).then(body => {
-      this.setState({ data: body });
+      this.setState({ data: body, isLoading: false });
       console.log(body);
     });
   }
 
   render() {
     let { data } = this.state;
-
     return (
       <div className="wrapper">
         <aside className="navBlock">
@@ -93,54 +93,58 @@ class Tables extends Component {
           <header className="main-search">
             <Search />
           </header>
-          <main className="categoriesContent tablesContent">
-            <div className="addCategories">
-              <input type="text" className="addCategory" />
-              <button className="addCategoryBtn" onClick={this.addTableClick}>
-                Добавить
-              </button>
-            </div>
+          {this.state.isLoading ? (
+            <Loading />
+          ) : (
+            <main className="categoriesContent tablesContent">
+              <div className="addCategories">
+                <input type="text" className="addCategory" />
+                <button className="addCategoryBtn" onClick={this.addTableClick}>
+                  Добавить
+                </button>
+              </div>
 
-            <div className="listItem">
-              {data.map(item => (
-                <div className="item" key={item.id}>
-                  <img
-                    src="https://images.ua.prom.st/973385600_stoly-i-stulya.jpg"
-                    alt={item.category}
-                  />
-                  <input
-                    type="text"
-                    className="input"
-                    defaultValue={item.name}
-                  />
-                  <select
-                    id="name"
-                    className="select tableSelect"
-                    name="name"
-                    defaultValue={item.status}
-                  >
-                    <option value={item.status}>{item.status}</option>
-                  </select>
-                  <input
-                    type="button"
-                    id={item.id}
-                    className="changeBtn"
-                    onClick={this.changeTableClick}
-                    value="Изменить"
-                  />
-                  <input
-                    type="button"
-                    className="deleteBtn"
-                    value="Удалить"
-                    onClick={event => {
-                      deleteData(`/tables/${item.id}`);
-                      event.target.parentNode.remove();
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
-          </main>
+              <div className="listItem">
+                {data.map(item => (
+                  <div className="item" key={item.id}>
+                    <img
+                      src="https://images.ua.prom.st/973385600_stoly-i-stulya.jpg"
+                      alt={item.category}
+                    />
+                    <input
+                      type="text"
+                      className="input"
+                      defaultValue={item.name}
+                    />
+                    <select
+                      id="name"
+                      className="select tableSelect"
+                      name="name"
+                      defaultValue={item.status}
+                    >
+                      <option value={item.status}>{item.status}</option>
+                    </select>
+                    <input
+                      type="button"
+                      id={item.id}
+                      className="changeBtn"
+                      onClick={this.changeTableClick}
+                      value="Изменить"
+                    />
+                    <input
+                      type="button"
+                      className="deleteBtn"
+                      value="Удалить"
+                      onClick={event => {
+                        deleteData(`/tables/${item.id}`);
+                        event.target.parentNode.remove();
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </main>
+          )}
           <footer className="main-footer">
             <Footer />
           </footer>

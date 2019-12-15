@@ -8,20 +8,21 @@ import NamePage from "./../blocks/namePage";
 import Calendar from "./../calendar/calendar";
 import { TimeDate } from "./../calendar/time";
 import "./transaction.css";
+import Loading from "../../loading/loading";
 
 class HistoryTransaction extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
-      isLoading: false,
+      isLoading: true,
       error: null
     };
   }
 
   async componentDidMount() {
     getData(`${API}/Admin/transactionHistory`).then(body => {
-      this.setState({ data: body });
+      this.setState({ data: body, isLoading: false });
     });
   }
 
@@ -37,46 +38,49 @@ class HistoryTransaction extends Component {
           <header className="main-search">
             <Search />
           </header>
-          <main className="waiterContent transaction">
-            <div className="functionPage">
-              <NamePage name="История транзакции" />
-              <Calendar />
-            </div>
-            <div className="transactionDisplay">
-              <label htmlFor="show">Show</label>
-              <select id="show">
-                <option value="10">10</option>
-                <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-              </select>
-              <label htmlFor="show">entries</label>
-            </div>
-            <table>
-              <tbody>
-                <tr>
-                  <th className="sortingNumber">#</th>
-                  <th>Время</th>
+          {this.state.isLoading ? (
+            <Loading />
+          ) : (
+            <main className="waiterContent transaction">
+              <div className="functionPage">
+                <NamePage name="История транзакции" />
+                <Calendar />
+              </div>
+              <div className="transactionDisplay">
+                <label htmlFor="show">Show</label>
+                <select id="show">
+                  <option value="10">10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+                <label htmlFor="show">entries</label>
+              </div>
+              <table>
+                <tbody>
+                  <tr>
+                    <th className="sortingNumber">#</th>
+                    <th>Время</th>
 
-                  <th>Официант</th>
-                  <th>Кол-во блюд</th>
-                  <th>Статус</th>
-                  <th>Итого</th>
-                </tr>
-                {data.map(order => (
-                  <tr key={order.orderId}>
-                    <td>{order.orderId}</td>
-                    <td>
-                      <time dateTime={order.orderDate}>
-                        {TimeDate(order.orderDate)}
-                      </time>
-                    </td>
+                    <th>Официант</th>
+                    <th>Кол-во блюд</th>
+                    <th>Статус</th>
+                    <th>Итого</th>
+                  </tr>
+                  {data.map(order => (
+                    <tr key={order.orderId}>
+                      <td>{order.orderId}</td>
+                      <td>
+                        <time dateTime={order.orderDate}>
+                          {TimeDate(order.orderDate)}
+                        </time>
+                      </td>
 
-                    <td>{order.waiterName}</td>
-                    <td>{order.mealsCount}</td>
-                    <td>{order.status}</td>
-                    <td>{order.totalPrice} сом</td>
-                    {/* <td className="operationBlock">
+                      <td>{order.waiterName}</td>
+                      <td>{order.mealsCount}</td>
+                      <td>{order.status}</td>
+                      <td>{order.totalPrice} сом</td>
+                      {/* <td className="operationBlock">
                        <div className="operation">
                         <Link to={{ pathname: `/order/${order.id}/` }}>
                           Изменить{" "}
@@ -91,11 +95,13 @@ class HistoryTransaction extends Component {
                         </button>
                       </div>
                     </td> */}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </main>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </main>
+          )}
+
           <footer className="main-footer">
             <Footer />
           </footer>
