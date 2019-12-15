@@ -32,19 +32,26 @@ class Categories extends Component {
     event.target.parentNode.firstChild.value = "";
     event.target.parentNode.childNodes[1].value = "";
     console.log(data);
-    postData("/Categories/", data).then(res => {
-      if (res.status !== "error") {
-        this.setState({
-          message: "Данные успешно добавлены!",
-          status: true
-        });
-      } else {
-        this.setState({
-          message: "Ошибка. Проверьте введенные данные",
-          status: true
-        });
-      }
-    });
+    if (data.name.length > 2) {
+      postData("/Categories/", data).then(res => {
+        if (res.status !== "error") {
+          this.setState({
+            message: "Данные успешно добавлены!",
+            status: true
+          });
+        } else {
+          this.setState({
+            message: "Ошибка. Проверьте введенные данные",
+            status: true
+          });
+        }
+      });
+    } else {
+      this.setState({
+        message: "Ошибка. Проверьте введенные данные",
+        status: true
+      });
+    }
   }
 
   changeTableClick(event) {
@@ -57,19 +64,28 @@ class Categories extends Component {
       };
     // document.getElementById('detailed-form').reset()
     console.log(data);
-    putData(`/Categories/${id}`, data).then(res => {
-      if (res.status !== "error" && res.status !== 400) {
-        this.setState({
-          message: "Данные успешно добавлены!",
-          status: true
-        });
-      } else {
-        this.setState({
-          message: "Ошибка. Проверьте введенные данные",
-          status: true
-        });
-      }
-    });
+    console.log(data.name.length);
+    if (data.name.length > 2) {
+      putData(`/Categories/${id}`, data).then(res => {
+        console.log(res);
+        if (res.status !== "error" && res.status !== 400) {
+          this.setState({
+            message: "Данные успешно добавлены!",
+            status: true
+          });
+        } else {
+          this.setState({
+            message: "Ошибка. Проверьте введенные данные",
+            status: true
+          });
+        }
+      });
+    } else {
+      this.setState({
+        message: "Ошибка. Проверьте введенные данные",
+        status: true
+      });
+    }
   }
 
   changeSelectDepartment(event) {

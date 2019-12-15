@@ -48,7 +48,7 @@ class Navigation extends Component {
         <Link to={"/tables"} className="categories">
           Столы
         </Link>
-        <Link to={"/meals"} className="categories">
+        <Link to={"/reservations"} className="categories">
           Бронирования
         </Link>
         <Link

@@ -32,7 +32,7 @@ class Tables extends Component {
     let target = event.target;
     console.log(target);
     const data = {
-      id: target.getAttribute('id'),
+      id: target.getAttribute("id"),
       name: target.parentNode.children[1].value,
       status: 0
     };
@@ -66,7 +66,9 @@ class Tables extends Component {
           <main className="categoriesContent tablesContent">
             <div className="addCategories">
               <input type="text" className="addCategory" />
-              <button className="addCategoryBtn" onClick={this.addTableClick}>Добавить</button>
+              <button className="addCategoryBtn" onClick={this.addTableClick}>
+                Добавить
+              </button>
             </div>
 
             <div className="listItem">
