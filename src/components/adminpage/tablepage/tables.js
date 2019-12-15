@@ -3,6 +3,7 @@ import { getData, postData, putData, deleteData, API } from "../../requests";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
+import ModalWindow from "./../../modalWindow/modalWindow";
 import "./tables.css";
 
 class Tables extends Component {
@@ -12,10 +13,13 @@ class Tables extends Component {
       data: [],
       isLoading: false,
       error: null,
-      currentValue: ""
+      currentValue: "",
+      modalStatus: false
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.addTableClick = this.addTableClick.bind(this);
+    this.changeTableClick = this.changeTableClick.bind(this);
   }
 
   addTableClick(event) {
@@ -25,7 +29,20 @@ class Tables extends Component {
     };
     event.target.parentNode.firstChild.value = "";
     // document.getElementById('detailed-form').reset()
-    postData("/tables/", data);
+    postData("/tables/", data).then(res => {
+      console.log(res);
+      if (res.status !== "error" && res.status !== 400) {
+        this.setState({
+          message: "Данные успешно изменены!",
+          modalStatus: true
+        });
+      } else {
+        this.setState({
+          message: "Ошибка. Проверьте введенные данные",
+          modalStatus: true
+        });
+      }
+    });
   }
 
   changeTableClick(event) {
@@ -37,7 +54,20 @@ class Tables extends Component {
       status: 0
     };
     // document.getElementById('detailed-form').reset()
-    putData(`/tables/${data.id}`, data);
+    putData(`/tables/${data.id}`, data).then(res => {
+      console.log(res);
+      if (res.status !== "error" && res.status !== 400) {
+        this.setState({
+          message: "Данные успешно изменены!",
+          modalStatus: true
+        });
+      } else {
+        this.setState({
+          message: "Ошибка. Проверьте введенные данные",
+          modalStatus: true
+        });
+      }
+    });
   }
 
   handleChange(e) {
@@ -115,6 +145,13 @@ class Tables extends Component {
             <Footer />
           </footer>
         </div>
+        {this.state.modalStatus ? (
+          <ModalWindow
+            message={this.state.message}
+            statusModal={modalStatus => this.setState({ modalStatus })}
+            status={this.state.status}
+          />
+        ) : null}
       </div>
     );
   }
