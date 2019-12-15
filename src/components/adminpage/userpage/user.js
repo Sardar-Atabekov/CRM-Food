@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
-import Modal from "../../block/AddMessage.js";
-import { getData, API } from "../../requests.js";
+import ModalWindow from "./../../modalWindow/modalWindow";
+import { getData, API, putData } from "../../requests.js";
 import "./users.css";
 import "./adduser.css";
 class UserPage extends Component {
@@ -13,10 +13,10 @@ class UserPage extends Component {
       data: [],
       isLoading: false,
       error: null,
-      message: "Подождите..."
+      message: "Подождите...",
+      status: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-
   }
 
   handleSubmit(event) {
@@ -29,28 +29,25 @@ class UserPage extends Component {
     formData.forEach(function(value, key) {
       data[key] = value;
     });
-    fetch(`${API}/users/${data.id}`, {
-      method: "PUT", // or 'PUT'
-      body: JSON.stringify(data), // data can be `string` or {object}!
-      headers: { "Content-Type": "application/json" }
-    }).then(e => {
-      console.log(e);
-      if (e.ok) {
+
+    putData(`/users/${data.id}`, data).then(res => {
+      console.log(res);
+      if (res.status !== "error") {
         this.setState({
-          message: "Данные успешно изменены!"
+          message: "Данные успешно добавлены!",
+          status: true
         });
       } else {
         this.setState({
-          message: "Ошибка. Проверьте введенные данные"
+          message: "Ошибка. Проверьте введенные данные",
+          status: true
         });
       }
     });
   }
 
   async componentDidMount() {
-    getData(
-      `${API}/users/${this.props.match.params.id}/`
-    ).then(body => {
+    getData(`${API}/users/${this.props.match.params.id}/`).then(body => {
       this.setState({ data: body });
       console.log(body);
     });
@@ -127,6 +124,7 @@ class UserPage extends Component {
                       className="form-control"
                       id="dateBorn"
                       defaultValue={data.dateBorn}
+                      pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
                     />
                     {/* pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))" */}
                   </div>
@@ -251,7 +249,11 @@ class UserPage extends Component {
                     className="form-control"
                   ></textarea>
                 </div>
-                <Modal message={this.state.message} name="Изменить" />
+                <input
+                  type="submit"
+                  className="btn btnSumbit"
+                  value="Изменить"
+                />
               </form>
             </div>
           </main>
@@ -259,6 +261,13 @@ class UserPage extends Component {
             <Footer />
           </footer>
         </div>
+        {this.state.status ? (
+          <ModalWindow
+            message={this.state.message}
+            statusModal={() => this.setState({ status: false })}
+            status={this.state.status}
+          />
+        ) : null}
       </div>
     );
   }

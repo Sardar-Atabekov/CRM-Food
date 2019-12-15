@@ -4,8 +4,9 @@ import "./adduser.css";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
-import Modal from "../../block/AddMessage.js";
-import { API } from "./../../requests";
+import { postData } from "./../../requests";
+import ModalWindow from "./../../modalWindow/modalWindow";
+
 class addUser extends Component {
   constructor(props) {
     super(props);
@@ -28,15 +29,10 @@ class addUser extends Component {
       data[key] = value;
     });
 
-    console.log(data);
     let target = event.target;
-    fetch(`${API}/users`, {
-      method: "POST", // or 'PUT'
-      body: JSON.stringify(data), // data can be `string` or {object}!
-      headers: { "Content-Type": "application/json" }
-    }).then(e => {
-      console.log(e);
-      if (e.ok) {
+    postData("/users/", data).then(res => {
+      console.log(res);
+      if (res.status !== "error") {
         this.setState({
           message: "Данные успешно добавлены!",
           status: true
@@ -44,9 +40,7 @@ class addUser extends Component {
         target.reset();
       } else {
         this.setState({
-          message: "Ошибка. Проверьте введенные данные"
-        });
-        this.setState({
+          message: "Ошибка. Проверьте введенные данные",
           status: true
         });
       }
@@ -221,10 +215,10 @@ class addUser extends Component {
                     className="form-control"
                   ></textarea>
                 </div>
-                <Modal
-                  message={this.state.message}
-                  status={this.state.status}
-                  name="Добавить"
+                <input
+                  type="submit"
+                  className="btn btnSumbit"
+                  value="Добавить"
                 />
               </form>
             </div>
@@ -233,6 +227,13 @@ class addUser extends Component {
             <Footer />
           </footer>
         </div>
+        {this.state.status ? (
+          <ModalWindow
+            message={this.state.message}
+            statusModal={() => this.setState({ status: false })}
+            status={this.state.status}
+          />
+        ) : null}
       </div>
     );
   }
