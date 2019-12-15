@@ -47,9 +47,7 @@ class CookPage extends Component {
     if (error) {
       return <p>{error.message}</p>;
     }
-
     console.log(data);
-
     return (
       <div className="cookPage">
         {!isLoading ? (
