@@ -39,7 +39,7 @@ class UserPage extends Component {
         });
       } else {
         this.setState({
-          message: "Ошибка. Проверьте введенные данные",
+          message: res.message,
           status: true
         });
       }

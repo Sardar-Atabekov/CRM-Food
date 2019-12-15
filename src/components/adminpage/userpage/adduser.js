@@ -32,7 +32,7 @@ class addUser extends Component {
     let target = event.target;
     postData("/users/", data).then(res => {
       console.log(res);
-      if (res.status !== "error") {
+      if (res.status !== "error" && res.status !== 400) {
         this.setState({
           message: "Данные успешно добавлены!",
           status: true
@@ -40,7 +40,7 @@ class addUser extends Component {
         target.reset();
       } else {
         this.setState({
-          message: "Ошибка. Проверьте введенные данные",
+          message: res.message,
           status: true
         });
       }

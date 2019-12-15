@@ -31,7 +31,7 @@ class addMeal extends Component {
 
     let target = event.target;
     postData("/meals/", data).then(res => {
-      if (res.status !== "error") {
+      if (res.status !== "error" && res.status !== 400) {
         this.setState({
           message: "Данные успешно добавлены!",
           status: true
@@ -39,7 +39,7 @@ class addMeal extends Component {
         target.reset();
       } else {
         this.setState({
-          message: "Ошибка. Проверьте введенные данные",
+          message: res.message,
           status: true
         });
       }
