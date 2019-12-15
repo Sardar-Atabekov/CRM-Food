@@ -25,8 +25,9 @@ class Order extends Component {
     if (finished !== quantity ) {
       for (let i = 0; i < quantityActive; i++) {
         arr[i] = (
-          <li key={10000 + i} orderid={orderId}>
-            {name}
+          <li key={i} orderid={orderId} className="orderItem">
+            <span>{name}</span>
+            <span className="inCase">In case</span>
             <img
               mealid={id}
               onClick={mealReady}
@@ -40,7 +41,7 @@ class Order extends Component {
       if(finished > 0) {
         for (let i = quantityActive; i < quantityActive + 1; i++) {
           arr[i] = (
-            <li key={10000 + i} orderid={orderId} className="ready">
+            <li key={i} orderid={orderId} className="ready">
               {name} x{finished}
               <img
                 mealid={id}
@@ -56,7 +57,7 @@ class Order extends Component {
     } else if (finished > 0) {
       for (let i = 0; i < 1; i++) {
         arr[i] = (
-          <li key={10000 + i} orderid={orderId} className="ready">
+          <li key={i} orderid={orderId} className="ready">
             {name} x{finished}
             <img
               mealid={id}
@@ -102,7 +103,7 @@ class Order extends Component {
                   className={checkClassName(meal.status)}
                   key={meal.mealId}
                 >
-                  {`${meal.mealName} x${meal.orderedQuantity} id=${meal.mealId} `}
+                  {`${meal.mealName} x${meal.orderedQuantity} `}
                   <img
                     mealid={meal.mealId}
                     onClick={mealReady}

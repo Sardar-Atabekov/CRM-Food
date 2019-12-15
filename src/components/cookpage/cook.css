@@ -22,7 +22,7 @@
     margin-left: 40px;
 }
 
- .cookPage .selectDepartment {
+.cookPage .selectDepartment {
     margin-right: 50px;
 }
 
@@ -114,4 +114,25 @@ body {
 
 .exitBtn {
     margin-right: 55px;
+}
+
+.inCase {
+    font-family: Avenir Next;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 35px;
+    text-decoration-line: underline;
+    cursor: pointer;
+    color: #B80505;
+    margin-left: auto;
+    margin-right: 50px;
+    
+}
+
+.orderItem {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 18px;
 }
