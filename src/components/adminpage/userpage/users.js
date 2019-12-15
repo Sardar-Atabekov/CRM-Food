@@ -7,7 +7,8 @@ import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import NamePage from "./../blocks/namePage";
 import { API } from "./../../requests";
-import {Time} from "../calendar/time";
+import { Time } from "../calendar/time";
+import Loading from "../../loading/loading";
 const DEFAULT_QUERY = "/users";
 
 class waiterPage extends Component {
@@ -15,7 +16,7 @@ class waiterPage extends Component {
     super(props);
     this.state = {
       data: [],
-      isLoading: false,
+      isLoading: true,
       error: null,
       body: []
     };
@@ -24,7 +25,7 @@ class waiterPage extends Component {
 
   async componentDidMount() {
     getData(API + DEFAULT_QUERY).then(body => {
-      this.setState({ body });
+      this.setState({ body, isLoading: false });
     });
   }
 
@@ -55,98 +56,103 @@ class waiterPage extends Component {
           <header className="main-search">
             <Search />
           </header>
-          <main className="waiterContent">
-            <div className="functionPage">
-              <NamePage name="Сотрудники" />
+          {this.state.isLoading ? (
+            <Loading />
+          ) : (
+            <main className="waiterContent">
+              <div className="functionPage">
+                <NamePage name="Сотрудники" />
 
-              <div className="adduser">
-                <Link className="categories add" to={"/adduser"}>
-                  Добавить
-                </Link>
+                <div className="adduser">
+                  <Link className="categories add" to={"/adduser"}>
+                    Добавить
+                  </Link>
+                </div>
+                <div>
+                  <label htmlFor="department">По ролям: </label>
+                  <select
+                    id="categoryId"
+                    className="select"
+                    name="categoryId"
+                    onChange={this.selectRole}
+                  >
+                    <option value="all">Все</option>
+                    <option value="admin">Админ</option>
+                    <option value="cook">Повар</option>
+                    <option value="waiter">Официант</option>
+                    <option value="barman">Бармен</option>
+                  </select>
+                </div>
               </div>
-              <div>
-                <label htmlFor="department">По ролям: </label>
-                <select
-                  id="categoryId"
-                  className="select"
-                  name="categoryId"
-                  onChange={this.selectRole}
-                >
-                  <option value="all">Все</option>
-                  <option value="admin">Админ</option>
-                  <option value="cook">Повар</option>
-                  <option value="waiter">Официант</option>
-                  <option value="barman">Бармен</option>
-                </select>
-              </div>
-            </div>
 
-            <table>
-              <tbody>
-                <tr>
-                  <th>Имя</th>
+              <table>
+                <tbody>
+                  <tr>
+                    <th>Имя</th>
 
-                  <th>Возраст</th>
-                  <th>Пол</th>
-                  <th>Начала работы</th>
-                  <th>Телефон</th>
-                  <th>Email</th>
-                  <th>Login</th>
-                  <th>Пароль</th>
-                  <th>Операции</th>
-                </tr>
-                {typeof data === "object" ? (
-                  data.map(user => (
-                    <tr key={user.id}>
-                      <td>
-                        <Link
-                          className="sub-title"
-                          to={{ pathname: `/user/${user.id}/` }}
-                        >
-                          {user.firstName + " " + user.lastName}
-                        </Link>
-                      </td>
-
-                      <td>
-                        {new Date().getFullYear() -
-                          new Date(user.dateBorn).getFullYear()}
-                      </td>
-                      <td>{user.gender}</td>
-                      <td>
-                        <time dateTime={user.startWorkDate}>
-                          {Time(user.startWorkDate)}
-                        </time>
-                      </td>
-
-                      <td>{user.phoneNumber}</td>
-                      <td>{user.email}</td>
-                      <td>{user.login}</td>
-                      <td>{user.password}</td>
-                      <td className="operationBlock">
-                        <div className="operation">
-                          <Link to={{ pathname: `/user/${user.id}/` }}>
-                            Изменить{" "}
-                          </Link>
-                          <button
-                            onClick={event => {
-                              deleteData(`/users/${user.id}`);
-                              event.target.parentNode.parentNode.parentNode.remove();
-                            }}
-                          >
-                            Удалить{" "}
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr className="noUsers">
-                    <td colSpan="9">Нету пользователей</td>
+                    <th>Возраст</th>
+                    <th>Пол</th>
+                    <th>Начала работы</th>
+                    <th>Телефон</th>
+                    <th>Email</th>
+                    <th>Login</th>
+                    <th>Пароль</th>
+                    <th>Операции</th>
                   </tr>
-                )}
-              </tbody>
-            </table>
-          </main>
+                  {typeof data === "object" ? (
+                    data.map(user => (
+                      <tr key={user.id}>
+                        <td>
+                          <Link
+                            className="sub-title"
+                            to={{ pathname: `/user/${user.id}/` }}
+                          >
+                            {user.firstName + " " + user.lastName}
+                          </Link>
+                        </td>
+
+                        <td>
+                          {new Date().getFullYear() -
+                            new Date(user.dateBorn).getFullYear()}
+                        </td>
+                        <td>{user.gender}</td>
+                        <td>
+                          <time dateTime={user.startWorkDate}>
+                            {Time(user.startWorkDate)}
+                          </time>
+                        </td>
+
+                        <td>{user.phoneNumber}</td>
+                        <td>{user.email}</td>
+                        <td>{user.login}</td>
+                        <td>{user.password}</td>
+                        <td className="operationBlock">
+                          <div className="operation">
+                            <Link to={{ pathname: `/user/${user.id}/` }}>
+                              Изменить{" "}
+                            </Link>
+                            <button
+                              onClick={event => {
+                                deleteData(`/users/${user.id}`);
+                                event.target.parentNode.parentNode.parentNode.remove();
+                              }}
+                            >
+                              Удалить{" "}
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr className="noUsers">
+                      <td colSpan="9">Нету пользователей</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </main>
+          )}
+
           <footer className="main-footer">
             <Footer />
           </footer>

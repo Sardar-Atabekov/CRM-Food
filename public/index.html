@@ -13,7 +13,7 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
   <style>
-    .loader:empty {
+    /* .loader:empty {
       position: absolute;
       top: calc(50% - 4em);
       left: calc(50% - 4em);
@@ -33,6 +33,76 @@
       100% {
         transform: rotate(360deg);
       }
+    } */
+    #nest5 {
+      display: block;
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      height: 100px;
+      width: 100px;
+      margin: -25px 0 0 -25px;
+      border: 2px solid transparent;
+      border-top-color: #008744;
+      border-radius: 50%;
+      -webkit-animation: spin11 2s linear infinite;
+      animation: spin11 2s linear infinite;
+    }
+
+    #nest5:before {
+      content: "";
+      position: absolute;
+      top: 7px;
+      right: 7px;
+      bottom: 7px;
+      left: 7px;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      border-top-color: #d62d20;
+      -webkit-animation: spin11 3s linear infinite;
+      animation: spin11 3s linear infinite;
+    }
+
+    #nest5:after {
+      content: "";
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      bottom: 15px;
+      left: 15px;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      border-top-color: #ffa700;
+      -webkit-animation: spin11 1.5s linear infinite;
+      animation: spin11 1.5s linear infinite;
+    }
+
+    @-webkit-keyframes spin11 {
+      from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+
+      to {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+      }
+    }
+
+    @keyframes spin11 {
+      from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+
+      to {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+      }
     }
   </style>
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
@@ -50,7 +120,9 @@
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root" class="loader"></div>
+  <div id="root">
+    <div id="nest5"></div>
+  </div>
   <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

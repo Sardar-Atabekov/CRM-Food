@@ -37,7 +37,8 @@ class LoginPage extends Component {
       localStorage.setItem("role", +res.role);
       console.log(res.role);
       if (+res.role === 1) {
-        this.props.history.push(`/meals`);
+        window.location.href = "/meals";
+        // this.props.history.push(`/meals`);
       } else if (+res.role === 2) {
         this.props.history.push(`/cook`);
       } else if (+res.role === 4) {
