@@ -10,7 +10,6 @@ import TopWaiterDrinks from "./topWaiterDrinks";
 import TopWaiterSum from "./topWaiterSum";
 import NamePage from "../../blocks/namePage";
 
-
 class BarPage extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +22,6 @@ class BarPage extends Component {
   }
 
   render() {
-
     return (
       <div className="wrapper">
         <aside className="navBlock">
@@ -34,12 +32,12 @@ class BarPage extends Component {
             <Search />
           </header>
           <main className="orderContent">
-            <NamePage name="Bar Stats" />
+            <NamePage name="Статистика Бара" />
             <TotalSum />
-             <TotalBar />
+            <TotalBar />
             <div className="statistics">
               <div className="graphicArt">Графика</div>
-              <TopSum name ="Топ напитки по прибылью"/>
+              <TopSum name="Топ напитки по прибылью" />
               <TopDrinks name="Топ напитки" />
               <TopWaiterDrinks name="Топ официанты по бару" />
               <TopWaiterSum name="Топ официанты по прибылью" />

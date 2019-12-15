@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 import { getData, API } from "../../../requests";
 import "./../blocks/styles.css";
+import TopLoading from "./../topLoading/topLaoding";
 
 class TopDrinks extends Component {
   constructor(props) {
     super(props);
     this.state = {
       bar: [],
-      kitchen: []
+      kitchen: [],
+      isLoading: true
     };
   }
   async componentDidMount() {
     getData(`${API}/Admin/topDrinks`).then(body => {
-      this.setState({ bar: body });
+      this.setState({ bar: body, isLoading: false });
     });
   }
   render() {
@@ -20,30 +22,36 @@ class TopDrinks extends Component {
     bar = bar && bar.sort((a, b) => b.count - a.count);
     return (
       <div className="topMeals">
-        <div className="header">
-          <h4>{this.props.name}</h4>
-        </div>
-        <ul className="meals">
-          {bar &&
-            bar.map((meal, index) =>
-              index < 8 ? (
-                <li key={meal.id}>
-                  <span>{meal.name}</span>{" "}
-                  <span className="sums">{meal.count}</span>
-                </li>
-              ) : (
-                false
-              )
-            )}
-        </ul>
-        <div className="totalSelect">
-          <select className="select">
-            <option value="0">Общий </option>
-            {/* <option value="1">Last Month</option>
+        {this.state.isLoading ? (
+          <TopLoading />
+        ) : (
+          <div>
+            <div className="header">
+              <h4>{this.props.name}</h4>
+            </div>
+            <ul className="meals">
+              {bar &&
+                bar.map((meal, index) =>
+                  index < 8 ? (
+                    <li key={meal.id}>
+                      <span>{meal.name}</span>{" "}
+                      <span className="sums">{meal.count}</span>
+                    </li>
+                  ) : (
+                    false
+                  )
+                )}
+            </ul>
+            <div className="totalSelect">
+              <select className="select">
+                <option value="0">Общий </option>
+                {/* <option value="1">Last Month</option>
             <option value="2">Last Week</option>
             <option value="3">Today</option> */}
-          </select>
-        </div>
+              </select>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
