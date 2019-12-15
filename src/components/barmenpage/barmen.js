@@ -3,7 +3,9 @@ import Order from "./Order";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { API } from "./../requests";
+import Loading from "./../loading/loading";
 const DEFAULT_QUERY = "/barman/getActiveOrders";
+
 
 class BarmenPage extends Component {
   constructor(props) {
@@ -46,36 +48,40 @@ class BarmenPage extends Component {
     }
 
     console.log(data);
-    if (isLoading) {
-      return <p>Loading ...</p>;
-    }
+   
 
     return (
       <div className="cookPage">
-        <h1 className="titleCook">Активные заказы</h1>
-        <div className="funcCook">
-          <Link to={"/barman/menu"} className="menuBtn">
-            Меню
-          </Link>
-          <Link
-            to={"/"}
-            className="menuBtn exitBtn"
-            onClick={e => {
-              e.preventDefault();
-              localStorage.removeItem("token");
-              console.log(this.props);
-              window.location.href = "/";
-            }}
-          >
-            Выйти
-          </Link>
-        </div>
+        {!isLoading ? (
+          <div>
+            <h1 className="titleCook">Активные заказы</h1>
+            <div className="funcCook">
+              <Link to={"/barman/menu"} className="menuBtn">
+                Меню
+              </Link>
+              <Link
+                to={"/"}
+                className="menuBtn exitBtn"
+                onClick={e => {
+                  e.preventDefault();
+                  localStorage.removeItem("token");
+                  console.log(this.props);
+                  window.location.href = "/";
+                }}
+              >
+                Выйти
+              </Link>
+            </div>
 
-        <div className="wrapperCook">
-          {data.map(order => (
-            <Order order={order} key={order.orderId} />
-          ))}
-        </div>
+            <div className="wrapperCook">
+              {data.map(order => (
+                <Order order={order} key={order.orderId} />
+              ))}
+            </div>
+          </div>
+        ) : (
+          <Loading />
+        )}
       </div>
     );
   }
