@@ -7,6 +7,7 @@ import NamePage from "./../blocks/namePage.js";
 import { Link } from "react-router-dom";
 import Category from "./selectCategory";
 import "./meals.css";
+import Loading from "../../loading/loading";
 const DEFAULT_QUERY = "/admin/getMeals";
 
 class MealsPage extends Component {
@@ -14,7 +15,8 @@ class MealsPage extends Component {
     super(props);
     this.state = {
       data: [],
-      body: []
+      body: [],
+      isLoading: true
     };
 
     this.handleSelectCategory = this.handleSelectCategory.bind(this);
@@ -22,7 +24,7 @@ class MealsPage extends Component {
 
   async componentDidMount() {
     getData(API + DEFAULT_QUERY).then(body => {
-      this.setState({ body });
+      this.setState({ body, isLoading: false });
     });
   }
 
@@ -48,86 +50,90 @@ class MealsPage extends Component {
         <aside className="navBlock">
           <Navigation />
         </aside>
-        <main className="container">
-          <header className="main-search">
-            <Search />
-          </header>
-          <div className="mealsContent">
-            <div className="functionPage">
-              <NamePage name="Блюди" />
-              <div className="addMeal">
-                <Link to={"/addmeal"} className="categories add">
-                  Добавить
-                </Link>
+        {this.state.isLoading ? (
+          <Loading />
+        ) : (
+          <main className="container">
+            <header className="main-search">
+              <Search />
+            </header>
+            <div className="mealsContent">
+              <div className="functionPage">
+                <NamePage name="Блюди" />
+                <div className="addMeal">
+                  <Link to={"/addmeal"} className="categories add">
+                    Добавить
+                  </Link>
+                </div>
+
+                <Category onSelectCategory={this.handleSelectCategory} />
               </div>
-
-              <Category onSelectCategory={this.handleSelectCategory} />
-            </div>
-            <table>
-              <tbody>
-                <tr>
-                  <th>Названия</th>
-
-                  <th>Категория</th>
-                  <th>Статус</th>
-                  <th>Ед. изм.</th>
-                  <th>Цена</th>
-                  <th colSpan="2">Операции</th>
-                </tr>
-                {typeof data === "object" ? (
-                  data.map(meal => (
-                    <tr key={meal.id}>
-                      <td>
-                        <Link to={{ pathname: `/meal/${meal.id}/` }}>
-                          {meal.name}
-                        </Link>
-                      </td>
-
-                      <td>{meal.category}</td>
-                      <td>
-                        <label className="switch">
-                          <input
-                            type="checkbox"
-                            onChange={() => {
-                              putData(`/admin/changeMealStatus/${meal.id}`);
-                            }}
-                            defaultChecked={
-                              meal.status === "Have" ? true : false
-                            }
-                          />
-                          <span className="slider round"></span>
-                        </label>
-                      </td>
-                      <td>{meal.weight}</td>
-                      <td>{meal.price} сом</td>
-                      <td>
-                        <Link to={{ pathname: `/meal/${meal.id}/` }}>
-                          Изменить
-                        </Link>
-                      </td>
-                      <td
-                        className="deleteMeal"
-                        onClick={event => {
-                          deleteData(`/meals/${meal.id}`);
-                          event.target.parentNode.remove();
-                        }}
-                      >
-                        Удалить
-                      </td>
-                    </tr>
-                  ))
-                ) : (
+              <table>
+                <tbody>
                   <tr>
-                    <td colSpan="6">Нету блюд</td>
+                    <th>Названия</th>
+
+                    <th>Категория</th>
+                    <th>Статус</th>
+                    <th>Ед. изм.</th>
+                    <th>Цена</th>
+                    <th colSpan="2">Операции</th>
                   </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
-          <footer className="main-footer">
-            <Footer />
-          </footer>
-        </main>
+                  {typeof data === "object" ? (
+                    data.map(meal => (
+                      <tr key={meal.id}>
+                        <td>
+                          <Link to={{ pathname: `/meal/${meal.id}/` }}>
+                            {meal.name}
+                          </Link>
+                        </td>
+
+                        <td>{meal.category}</td>
+                        <td>
+                          <label className="switch">
+                            <input
+                              type="checkbox"
+                              onChange={() => {
+                                putData(`/admin/changeMealStatus/${meal.id}`);
+                              }}
+                              defaultChecked={
+                                meal.status === "Have" ? true : false
+                              }
+                            />
+                            <span className="slider round"></span>
+                          </label>
+                        </td>
+                        <td>{meal.weight}</td>
+                        <td>{meal.price} сом</td>
+                        <td>
+                          <Link to={{ pathname: `/meal/${meal.id}/` }}>
+                            Изменить
+                          </Link>
+                        </td>
+                        <td
+                          className="deleteMeal"
+                          onClick={event => {
+                            deleteData(`/meals/${meal.id}`);
+                            event.target.parentNode.remove();
+                          }}
+                        >
+                          Удалить
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr>
+                      <td colSpan="6">Нету блюд</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+            <footer className="main-footer">
+              <Footer />
+            </footer>
+          </main>
+        )}
       </div>
     );
   }

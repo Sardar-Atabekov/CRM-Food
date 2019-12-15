@@ -6,13 +6,14 @@ import Footer from "../../block/footer.js";
 import ModalWindow from "./../../modalWindow/modalWindow";
 import "./category.css";
 import "./menu.css";
+import Loading from "../../loading/loading";
 
 class Categories extends Component {
   constructor(props) {
     super(props);
     this.state = {
       body: [],
-      isLoading: false,
+      isLoading: true,
       error: null,
       select: 2,
       data: [],
@@ -103,7 +104,7 @@ class Categories extends Component {
   }
   async componentDidMount() {
     getData(`${API}/Categories`).then(body => {
-      this.setState({ body });
+      this.setState({ body, isLoading: false });
     });
   }
 
@@ -119,77 +120,81 @@ class Categories extends Component {
           <header className="main-search">
             <Search />
           </header>
-          <main className="categoriesContent">
-            <div className="addCategories">
-              <input
-                type="text"
-                className="addCategory"
-                placeholder="Названия категории"
-              />
-              <input
-                type="text"
-                className="addCategory"
-                placeholder="Ссылка изображении"
-              />
-              <select className="select" name="departmentId">
-                <option value="0">Кухня</option>
-                <option value="1">Бар</option>
-              </select>
-              <button onClick={this.addTableClick} className="addCategoryBtn">
-                Добавить
-              </button>
-
-              <div className="selectDepartment">
-                <label htmlFor="department">По департаментам: </label>
-                <select
-                  className="select"
-                  onChange={this.changeSelectDepartment}
-                  id="department"
-                >
-                  <option value="2">Все</option>
+          {this.state.isLoading ? (
+            <Loading />
+          ) : (
+            <main className="categoriesContent">
+              <div className="addCategories">
+                <input
+                  type="text"
+                  className="addCategory"
+                  placeholder="Названия категории"
+                />
+                <input
+                  type="text"
+                  className="addCategory"
+                  placeholder="Ссылка изображении"
+                />
+                <select className="select" name="departmentId">
                   <option value="0">Кухня</option>
                   <option value="1">Бар</option>
                 </select>
-              </div>
-            </div>
-            <div className="listItem">
-              {data.map(item => (
-                <div className="item" key={item.id}>
-                  <img src={item.image} alt={item.category} />
-                  <input
-                    type="text"
-                    className="input"
-                    defaultValue={item.category}
-                  />
+                <button onClick={this.addTableClick} className="addCategoryBtn">
+                  Добавить
+                </button>
+
+                <div className="selectDepartment">
+                  <label htmlFor="department">По департаментам: </label>
                   <select
-                    id="name"
                     className="select"
-                    name="name"
-                    defaultValue={item.departmentId}
+                    onChange={this.changeSelectDepartment}
+                    id="department"
                   >
+                    <option value="2">Все</option>
                     <option value="0">Кухня</option>
                     <option value="1">Бар</option>
                   </select>
-                  <input
-                    type="button"
-                    id={item.id}
-                    className="changeBtn"
-                    onClick={this.changeTableClick}
-                    value="Изменить"
-                  />
-                  <input
-                    type="button"
-                    className="deleteBtn"
-                    value="Удалить"
-                    onClick={event => {
-                      deleteData(`/Categories/${item.id}`);
-                      event.target.parentNode.remove();
-                    }}
-                  />
                 </div>
-              ))}
-            </div>
-          </main>
+              </div>
+              <div className="listItem">
+                {data.map(item => (
+                  <div className="item" key={item.id}>
+                    <img src={item.image} alt={item.category} />
+                    <input
+                      type="text"
+                      className="input"
+                      defaultValue={item.category}
+                    />
+                    <select
+                      id="name"
+                      className="select"
+                      name="name"
+                      defaultValue={item.departmentId}
+                    >
+                      <option value="0">Кухня</option>
+                      <option value="1">Бар</option>
+                    </select>
+                    <input
+                      type="button"
+                      id={item.id}
+                      className="changeBtn"
+                      onClick={this.changeTableClick}
+                      value="Изменить"
+                    />
+                    <input
+                      type="button"
+                      className="deleteBtn"
+                      value="Удалить"
+                      onClick={event => {
+                        deleteData(`/Categories/${item.id}`);
+                        event.target.parentNode.remove();
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </main>
+          )}
           <footer className="main-footer">
             <Footer />
           </footer>
