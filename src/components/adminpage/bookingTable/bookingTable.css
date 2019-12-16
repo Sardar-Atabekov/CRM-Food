@@ -56,3 +56,21 @@
 .selectTable {
     background: green !important;
 }
+
+.clientInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.clientInfo input {
+    background: #E5E5E5;
+    border-radius: 10px;
+    width: 300px;
+    height: 40px;
+    outline: none;
+    font-size: 14px;
+    padding: 20px 30px;
+    margin-top: 15px;
+    border: none;
+}
