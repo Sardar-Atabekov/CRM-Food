@@ -11,6 +11,7 @@ import MealsPage from "./components/adminpage/menupage/meals.js";
 import addMeal from "./components/adminpage/menupage/addmeal.js";
 import waiterPage from "./components/adminpage/userpage/users.js";
 import Sales from "./components/adminpage/statistics/sales/sales";
+import Booking from "./components/adminpage//bookingTable/booking";
 import BarPage from "./components/adminpage/statistics/bar/bar.js";
 import Traffic from "./components/adminpage/statistics/orders/order";
 import Categories from "./components/adminpage/menupage/Categories.js";
@@ -47,6 +48,7 @@ class App extends Component {
           <Route path="/kitchen" exact component={KitchenPage} />
           <Route path="/cook/menu" exact component={CookMealChange} />
           <Route path="/reservations" exact component={ListArmoredTables} />
+          <Route path="/booking" exact component={Booking} />
 
           <Route path="*" exact component={NotFound} />
         </Switch>

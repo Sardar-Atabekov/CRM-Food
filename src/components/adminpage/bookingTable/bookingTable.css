@@ -1,0 +1,58 @@
+.bookingItem .bookingDate {
+    width: 327px;
+    margin-top: 20px;
+}
+
+.booking {
+    display: flex;
+}
+
+.bookingPeople {
+    width: 190px;
+    margin-top: 15px !important;
+}
+
+.prev,
+.next,
+.peopleQuantity {
+    height: 55px;
+    font-size: 36px;
+    text-align: center;
+    width: 60px;
+    cursor: pointer;
+}
+
+.peopleQuantity {
+    border: none;
+    cursor: default;
+    padding: 0 5px;
+    background: #fff;
+    font-size: 30px;
+    border-right: 1px solid rgba(0, 0, 0, 0.5);
+    border-left: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.listTables {
+    display: flex;
+    padding-left: 60px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.listTables li {
+    list-style-type: none;
+    background: #0357A5;
+    height: 90px;
+    cursor: pointer;
+    width: 90px;
+    border-radius: 10px;
+    font-size: 40px;
+    text-align: center;
+    color: #fff;
+    margin-right: 25px;
+    padding-top: 15px;
+}
+
+.selectTable {
+    background: green !important;
+}

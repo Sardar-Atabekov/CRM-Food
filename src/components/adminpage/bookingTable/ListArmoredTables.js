@@ -4,6 +4,7 @@ import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import NamePage from "../blocks/namePage";
+import { Link } from "react-router-dom";
 import calendar from "./../../images/calendar.svg";
 import { TodayDate } from "./../calendar/time";
 // import { TimeDate } from "../calendar/time";
@@ -45,7 +46,7 @@ class ListArmoredTables extends Component {
               <div className="functionPage">
                 <NamePage name="Список бронированных столов" />
               </div>
-              <div className="listArmoredTables">
+              <form className="listArmoredTables">
                 <div className="booking">
                   <div className="bookingDate">
                     <input
@@ -58,9 +59,12 @@ class ListArmoredTables extends Component {
                       className="calendarImg"
                     />
                   </div>
+                  <Link className="bookingTable" to={"/booking"}>
+                    Забронировать
+                  </Link>
                 </div>
                 <ul className="listTables"></ul>
-              </div>
+              </form>
             </main>
           )}
 
