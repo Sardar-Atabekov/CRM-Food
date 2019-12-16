@@ -20,8 +20,19 @@ function TimeDate(date) {
   let stillUtc = moment.utc(date);
   let time = moment(stillUtc)
     .local()
-    .format("DD.MM.YYYY, hh:mm");
+    .format("DD.MM.YYYY, LT");
   return time;
 }
 
-export { Time, TimeHours, TimeDate };
+function TodayDate() {
+  let stillUtc = moment.utc();
+  let time = moment(stillUtc)
+    .local()
+    .format("dddd, D MMMM");
+  let firstSymbol = time[0].toUpperCase(),
+    symbol = time.substring(1, time.length);
+  time = firstSymbol.concat(symbol);
+  return time;
+}
+
+export { Time, TimeHours, TimeDate, TodayDate };
