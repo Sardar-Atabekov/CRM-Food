@@ -11,8 +11,9 @@ class TotalSum extends Component {
   async componentDidMount() {
     getData(
       `${API}/Admin/kitchenTotalSums`
-    ).then(body => {
-      this.setState({ data: body });
+    ).then(data => {
+      console.log(data);
+      this.setState({ data });
     });
   }
   render() {

@@ -16,7 +16,7 @@ class TopWaiter extends Component {
   }
   render() {
     let { data } = this.state;
-
+    console.log(data);
     let bar =
       data &&
       data

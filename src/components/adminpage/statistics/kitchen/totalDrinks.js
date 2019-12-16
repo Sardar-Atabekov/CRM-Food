@@ -10,6 +10,7 @@ class TotalBar extends Component {
   }
   async componentDidMount() {
     getData(`${API}/Admin/kitchenTotalMeals`).then(body => {
+      console.log("kitchenTotalMeals", body);
       this.setState({ data: body });
     });
   }
@@ -20,7 +21,7 @@ class TotalBar extends Component {
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
-              <span>Общие заказы</span>
+              <span>Общие блюда</span>
               <h6 className="totalSum">{data && data.totalMeals} </h6>
             </div>
           </div>
