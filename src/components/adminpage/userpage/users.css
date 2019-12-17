@@ -75,24 +75,13 @@
     display: none !important;
 }
 
-.waiterContent .operation {
-    display: flex;
-    flex-direction: column;
-}
+
 
 
 .operationBlock {
     padding: 0px !important;
 }
 
-.waiterContent .operation button {
-    border: none;
-    background: none;
-    border-top: #e4e4e4 1px solid;
-    padding-top: 10px;
-    padding-bottom: 5px;
-    font-size: 500;
-}
 
 .functionPage .select {
     margin-right: 20px;
@@ -110,15 +99,25 @@
     border-radius: .625em;
 }
 
+
+.waiterContent .operation {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
 .waiterContent .operation a {
-    padding-top: 5px;
-    padding-bottom: 5px;
+    border-right: #e4e4e4 1px solid;
+    /* padding: 7px 10px 7px 5px; */
 }
 
 .noUsers {
     height: 46px;
 }
 
+.waiterContent .operation img {
+    margin:8px 10px 5px;
+}
 .waiterContent td {
     padding: 0px 8px;
 }

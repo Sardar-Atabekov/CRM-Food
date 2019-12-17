@@ -9,6 +9,8 @@ import { API } from "./../../requests";
 import { Time } from "../calendar/time";
 import Loading from "../../loading/loading";
 import DeleteModal from "./../../modalWindow/deleteModal";
+import deleteIcon from "./../../images/deleteIcon.svg";
+import editIcon from "./../../images/editIcon.svg";
 import "./users.css";
 const DEFAULT_QUERY = "/users";
 
@@ -99,7 +101,7 @@ class waiterPage extends Component {
                     <th>Роль</th>
                     <th>Login</th>
                     <th>Пароль</th>
-                    <th>Операции</th>
+                    <th>Действие</th>
                   </tr>
                   {typeof data === "object" ? (
                     data.map(user => (
@@ -132,15 +134,15 @@ class waiterPage extends Component {
                         <td className="operationBlock">
                           <div className="operation">
                             <Link to={{ pathname: `/user/${user.id}/` }}>
-                              Изменить{" "}
+                              <img src={editIcon} alt="editIcon" />
                             </Link>
-                            <button
+                            <img
+                              src={deleteIcon}
+                              alt="deleteIcon"
                               onClick={() => {
                                 this.setState({ deleteModal: true });
                               }}
-                            >
-                              Удалить{" "}
-                            </button>
+                            />
                           </div>
                           {this.state.deleteModal ? (
                             <DeleteModal
