@@ -22,7 +22,8 @@ class waiterPage extends Component {
       isLoading: true,
       error: null,
       body: [],
-      deleteModal: false
+      deleteModal: false,
+      target: null
     };
     this.selectRole = this.selectRole.bind(this);
   }
@@ -139,14 +140,18 @@ class waiterPage extends Component {
                             <img
                               src={deleteIcon}
                               alt="deleteIcon"
-                              onClick={() => {
+                              onClick={event => {
                                 this.setState({ deleteModal: true });
+                                this.setState({
+                                  target: event.target
+                                });
                               }}
                             />
                           </div>
                           {this.state.deleteModal ? (
                             <DeleteModal
                               message={"сотрудника"}
+                              target={this.state.target}
                               deleteStatus={() => {
                                 this.setState({ deleteModal: false });
                               }}

@@ -27,9 +27,8 @@
 }
 
 .waiterContent th {
-    padding: 20px 13px;
+    padding: 15px 13px;
 }
-
 
 .waiterContent td,
 .waiterContent th {
@@ -40,7 +39,7 @@
 }
 
 .waiterContent td {
-    padding: 0px 5px;
+    padding: 5px 5px !important;
 }
 
 .waiterContent tr {
@@ -116,8 +115,10 @@
 }
 
 .waiterContent .operation img {
-    margin:8px 10px 5px;
+    margin: 8px 10px 5px;
+    cursor: pointer;
 }
+
 .waiterContent td {
     padding: 0px 8px;
 }

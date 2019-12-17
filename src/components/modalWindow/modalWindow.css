@@ -6,7 +6,7 @@
     background: rgba(87, 87, 87, 0.8);
     z-index: 1100;
     left: 0%;
-    top:0;
+    top: 0;
 
 }
 
@@ -30,18 +30,20 @@
     height: 42px;
 }
 
-.yesBtn, .noBtn {
+.yesBtn,
+.noBtn {
     background: green;
-    border:none;
+    border: none;
     width: 100px;
     height: 40px;
     color: white;
     font-size: 20px;
     margin-right: 30px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
-.noBtn  {
+.noBtn {
     background: red;
     margin-right: 20px;
 }

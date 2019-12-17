@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { getData, postData, putData, deleteData, API } from "../../requests";
-import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
-import ModalWindow from "./../../modalWindow/modalWindow";
-import "./tables.css";
 import Loading from "../../loading/loading";
+import Navigation from "../../block/navigation.js";
+import ModalWindow from "./../../modalWindow/modalWindow";
+import DeleteModal from "./../../modalWindow/deleteModal";
+import { getData, postData, putData, API } from "../../requests";
+import "./tables.css";
 
 class Tables extends Component {
   constructor(props) {
@@ -15,7 +16,9 @@ class Tables extends Component {
       isLoading: true,
       error: null,
       currentValue: "",
-      modalStatus: false
+      modalStatus: false,
+      deleteModal: false,
+      target: null
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -136,10 +139,22 @@ class Tables extends Component {
                       className="deleteBtn"
                       value="Удалить"
                       onClick={event => {
-                        deleteData(`/tables/${item.id}`);
-                        event.target.parentNode.remove();
+                        this.setState({ deleteModal: true });
+                        this.setState({
+                          target: event.target
+                        });
                       }}
                     />
+                    {this.state.deleteModal ? (
+                      <DeleteModal
+                        message={"стола"}
+                        target={this.state.target}
+                        deleteStatus={() => {
+                          this.setState({ deleteModal: false });
+                        }}
+                        url={`/tables/${item.id}`}
+                      />
+                    ) : null}
                   </div>
                 ))}
               </div>
