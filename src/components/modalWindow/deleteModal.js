@@ -11,6 +11,7 @@ export default class ModalWindow extends React.Component {
           <button
             className="yesBtn"
             onClick={() => {
+              console.log(this.props.url);
               deleteData(this.props.url);
               console.log(this.props.target.parentNode);
               this.props.target.parentNode.remove();

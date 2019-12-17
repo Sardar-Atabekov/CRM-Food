@@ -1,13 +1,16 @@
 import React, { Component } from "react";
-import { getData, putData, deleteData, API } from "../../requests";
+import { getData, putData, API } from "../../requests";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import NamePage from "./../blocks/namePage.js";
 import { Link } from "react-router-dom";
 import Category from "./selectCategory";
-import "./meals.css";
+import deleteIcon from "./../../images/deleteIcon.svg";
+import editIcon from "./../../images/editIcon.svg";
+import DeleteModal from "./../../modalWindow/deleteModal";
 import Loading from "../../loading/loading";
+import "./meals.css";
 const DEFAULT_QUERY = "/admin/getMeals";
 
 class MealsPage extends Component {
@@ -107,17 +110,30 @@ class MealsPage extends Component {
                         <td>{meal.price} сом</td>
                         <td>
                           <Link to={{ pathname: `/meal/${meal.id}/` }}>
-                            Изменить
+                            <img src={editIcon} alt="editIcon" />
                           </Link>
                         </td>
-                        <td
-                          className="deleteMeal"
-                          onClick={event => {
-                            deleteData(`/meals/${meal.id}`);
-                            event.target.parentNode.remove();
-                          }}
-                        >
-                          Удалить
+                        <td className="deleteMeal">
+                          <img
+                            src={deleteIcon}
+                            alt="deleteIcon"
+                            onClick={event => {
+                              this.setState({ deleteModal: true });
+                              this.setState({
+                                target: event.target.parentNode
+                              });
+                            }}
+                          />
+                          {this.state.deleteModal ? (
+                            <DeleteModal
+                              message={"блюда"}
+                              target={this.state.target}
+                              deleteStatus={() => {
+                                this.setState({ deleteModal: false });
+                              }}
+                              url={`/meals/${meal.id}`}
+                            />
+                          ) : null}
                         </td>
                       </tr>
                     ))

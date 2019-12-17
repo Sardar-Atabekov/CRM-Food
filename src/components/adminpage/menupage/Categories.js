@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { getData, postData, putData, deleteData, API } from "../../requests";
+import { getData, postData, putData, API } from "../../requests";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import ModalWindow from "./../../modalWindow/modalWindow";
 import "./category.css";
 import "./menu.css";
+import DeleteModal from "./../../modalWindow/deleteModal";
 import Loading from "../../loading/loading";
 
 class Categories extends Component {
@@ -17,7 +18,9 @@ class Categories extends Component {
       error: null,
       select: 2,
       data: [],
-      status: false
+      status: false,
+      deleteModal: false,
+      target: null
     };
     this.changeSelectDepartment = this.changeSelectDepartment.bind(this);
     this.addTableClick = this.addTableClick.bind(this);
@@ -186,10 +189,22 @@ class Categories extends Component {
                       className="deleteBtn"
                       value="Удалить"
                       onClick={event => {
-                        deleteData(`/Categories/${item.id}`);
-                        event.target.parentNode.remove();
+                        this.setState({ deleteModal: true });
+                        this.setState({
+                          target: event.target
+                        });
                       }}
                     />
+                    {this.state.deleteModal ? (
+                      <DeleteModal
+                        message={"категории"}
+                        target={this.state.target}
+                        deleteStatus={() => {
+                          this.setState({ deleteModal: false });
+                        }}
+                        url={`/Categories/${item.id}`}
+                      />
+                    ) : null}
                   </div>
                 ))}
               </div>

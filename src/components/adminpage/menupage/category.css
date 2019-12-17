@@ -44,7 +44,7 @@
     height: 35.5px !important;
     color: white;
     border-radius: .25rem;
-
+    cursor: pointer;
 }
 
 .categoriesContent .listItem .deleteBtn {
