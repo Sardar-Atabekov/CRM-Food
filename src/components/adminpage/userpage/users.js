@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { getData, deleteData } from "../../requests";
+import { getData } from "../../requests";
 import { Link } from "react-router-dom";
-import "./users.css";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
@@ -9,6 +8,8 @@ import NamePage from "./../blocks/namePage";
 import { API } from "./../../requests";
 import { Time } from "../calendar/time";
 import Loading from "../../loading/loading";
+import DeleteModal from "./../../modalWindow/deleteModal";
+import "./users.css";
 const DEFAULT_QUERY = "/users";
 
 class waiterPage extends Component {
@@ -18,7 +19,8 @@ class waiterPage extends Component {
       data: [],
       isLoading: true,
       error: null,
-      body: []
+      body: [],
+      deleteModal: false
     };
     this.selectRole = this.selectRole.bind(this);
   }
@@ -46,7 +48,6 @@ class waiterPage extends Component {
   }
   render() {
     let data = this.state.data.length > 0 ? this.state.data : this.state.body;
-
     return (
       <div className="wrapper">
         <aside className="navBlock">
@@ -95,6 +96,7 @@ class waiterPage extends Component {
                     <th>Начала работы</th>
                     <th>Телефон</th>
                     <th>Email</th>
+                    <th>Роль</th>
                     <th>Login</th>
                     <th>Пароль</th>
                     <th>Операции</th>
@@ -124,6 +126,7 @@ class waiterPage extends Component {
 
                         <td>{user.phoneNumber}</td>
                         <td>{user.email}</td>
+                        <td>{user.roleName}</td>
                         <td>{user.login}</td>
                         <td>{user.password}</td>
                         <td className="operationBlock">
@@ -132,14 +135,22 @@ class waiterPage extends Component {
                               Изменить{" "}
                             </Link>
                             <button
-                              onClick={event => {
-                                deleteData(`/users/${user.id}`);
-                                event.target.parentNode.parentNode.parentNode.remove();
+                              onClick={() => {
+                                this.setState({ deleteModal: true });
                               }}
                             >
                               Удалить{" "}
                             </button>
                           </div>
+                          {this.state.deleteModal ? (
+                            <DeleteModal
+                              message={"сотрудника"}
+                              deleteStatus={() => {
+                                this.setState({ deleteModal: false });
+                              }}
+                              url={`/users/${user.id}`}
+                            />
+                          ) : null}
                         </td>
                       </tr>
                     ))

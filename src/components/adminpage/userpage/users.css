@@ -1,15 +1,14 @@
-
 .wrapper {
     display: flex;
     background: #F4F5F7;
     width: 100%;
-    height:  100%;
+    height: 100%;
 
 }
 
 .wrapper .waiterContent {
     display: flex;
-    flex-direction: column;  
+    flex-direction: column;
     margin: 0px;
     margin-top: 40px;
     padding-left: 25px;
@@ -26,20 +25,24 @@
 .waiterContent .form {
     display: flex;
 }
+
 .waiterContent th {
     padding: 20px 13px;
 }
 
 
-.waiterContent td, .waiterContent th {
+.waiterContent td,
+.waiterContent th {
     border: #e4e4e4 1px solid;
     margin: 0px;
-   
+
     text-align: center;
 }
+
 .waiterContent td {
     padding: 0px 5px;
 }
+
 .waiterContent tr {
     border: black 1px solid;
     margin: 0px;
@@ -51,19 +54,20 @@
     padding-top: 5px;
     text-align: center;
 }
+
 .waiterContent .avatar img {
     border-radius: 50%;
-    background:url(https://image.freepik.com/free-icon/_318-10391.jpg);
+    background: url(https://image.freepik.com/free-icon/_318-10391.jpg);
     width: 60px;
     height: 60px;
 }
 
 .waiterContent table {
     width: 1250px;
-    border-collapse: collapse; 
+    border-collapse: collapse;
     line-height: 1.1;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    margin:0px;
+    margin: 0px;
     margin-top: 40px;
 }
 
@@ -80,8 +84,9 @@
 .operationBlock {
     padding: 0px !important;
 }
+
 .waiterContent .operation button {
-    border:none;
+    border: none;
     background: none;
     border-top: #e4e4e4 1px solid;
     padding-top: 10px;
@@ -92,6 +97,7 @@
 .functionPage .select {
     margin-right: 20px;
 }
+
 .waiterContent .adduser {
     display: flex;
     justify-content: space-between;
@@ -111,4 +117,8 @@
 
 .noUsers {
     height: 46px;
+}
+
+.waiterContent td {
+    padding: 0px 8px;
 }
