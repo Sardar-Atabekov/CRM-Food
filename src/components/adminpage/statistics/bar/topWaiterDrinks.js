@@ -10,33 +10,22 @@ class TopWaiter extends Component {
     };
   }
   async componentDidMount() {
-    getData(`${API}/Admin/barWaiterMealStatistics`).then(body => {
+    getData(`${API}/Admin/topWaitersBarMeals`).then(body => {
       this.setState({ data: body });
     });
   }
   render() {
     let { data } = this.state;
+    data = data && data.sort((a, b) => b.meals - a.meals);
     console.log(data);
-    let bar =
-      data &&
-      data
-        .map(item => {
-          let initialValue = 0;
-          item.meals = item.meals.reduce(
-            (accumulator, currentValue) => accumulator + currentValue.count,
-            initialValue
-          );
-          return item;
-        })
-        .sort((a, b) => b.meals - a.meals);
     return (
       <div className="topMeals">
         <div className="header">
           <h4>{this.props.name}</h4>
         </div>
         <ul className="meals">
-          {bar &&
-            bar.map((user, index) =>
+          {data &&
+            data.map((user, index) =>
               index < 8 ? (
                 <li key={user.userId}>
                   {console.log(user)}

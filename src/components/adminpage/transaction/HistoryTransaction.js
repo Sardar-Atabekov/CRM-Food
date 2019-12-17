@@ -89,7 +89,7 @@ class HistoryTransaction extends Component {
                           </div>
                         ) : null}
                         <span
-                          onClick={() => this.setState({ moreModal: true })}
+                          // onClick={() => this.setState({ moreModal: true })}
                           className="moreMeals"
                         >
                           Посмотреть

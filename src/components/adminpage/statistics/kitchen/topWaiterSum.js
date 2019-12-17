@@ -10,40 +10,26 @@ class TopWaiter extends Component {
     };
   }
   async componentDidMount() {
-    getData(
-      `${API}/Admin/kitchenWaiterSumStatistics`
-    ).then(body => {
+    getData(`${API}/Admin/topWaitersKitchenSums`).then(body => {
       this.setState({ data: body });
     });
   }
   render() {
     let { data } = this.state;
     console.log(data);
-    let bar =
-      data &&
-      data
-        .map(item => {
-          let initialValue = 0;
-          console.log(item);
-          item.meals = item.meals.reduce(
-            (accumulator, currentValue) => accumulator + currentValue.sum,
-            initialValue
-          );
-          return item;
-        })
-        .sort((a, b) => b.meals - a.meals);
+    data = data && data.sort((a, b) => b.meals - a.meals);
     return (
       <div className="topMeals">
         <div className="header">
           <h4>{this.props.name}</h4>
         </div>
         <ul className="meals">
-          {bar &&
-            bar.map((user, index) =>
+          {data &&
+            data.map((user, index) =>
               index < 8 ? (
                 <li key={user.userId}>
                   <span>{user.userName}</span>
-                  <span className="sums">{user.meals}</span>
+                  <span className="sums">{user.sum}</span>
                 </li>
               ) : (
                 false
