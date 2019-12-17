@@ -1,32 +1,27 @@
 import React, { Component } from "react";
 
 class HistoryTransaction extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-      isLoading: true,
-      error: null
-    };
-  }
-
   render() {
-    let { data } = this.state;
-    console.log(data);
+    let { id, meals } = this.props;
     return (
-      <div>
-        {this.props.status ? (
-          <div className="modalWrapper">
-            <div className="modalWindow">
-              <h2>Заказ №{this.props.id}</h2>
-              <div>
-                {this.props.mealOrders.map((meal, index) => (
-                  <li key={index}>{meal.name}</li>
-                ))}
+      <div className="modalWrapper">
+        <div className="modalWindow">
+          <h2>Заказ №{id}</h2>
+          <div>
+            {meals.map((meal, index) => (
+              <div className="orderMeal" key={index}>
+                {meal.name} x{meal.orderedQuantity}
               </div>
-            </div>
+            ))}
+
+            <input
+              className="changeBtn"
+              type="button"
+              value="Ок"
+              onClick={() => this.props.setStatus()}
+            />
           </div>
-        ) : null}
+        </div>
       </div>
     );
   }

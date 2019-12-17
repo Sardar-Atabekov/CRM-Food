@@ -17,7 +17,7 @@ class TopWaiter extends Component {
   render() {
     let { data } = this.state;
     console.log(data);
-    data = data && data.sort((a, b) => b.meals - a.meals);
+    data = data && data.sort((a, b) => b.sum - a.sum);
     return (
       <div className="topMeals">
         <div className="header">

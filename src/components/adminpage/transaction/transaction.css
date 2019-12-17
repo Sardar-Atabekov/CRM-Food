@@ -12,12 +12,14 @@
 .transaction th {
     border: #e4e4e4 1px solid;
     margin: 0px;
-    padding: 0px;
 }
 
+.orderMeal {
+    margin-bottom: 5px;
+}
 
 .transaction td {
-    padding: .4375rem 1.0625rem;
+    padding: 0.7rem 1.0625rem !important;
 }
 
 .sortingNumber {
@@ -30,9 +32,15 @@
     height: 44px;
 }
 
+.orderMeal {}
 
 .moreMeals {
     text-decoration-line: underline;
     color: green;
     cursor: pointer;
+}
+
+.modalWindow .changeBtn {
+    width: 70px;
+    margin-top: 15px;
 }

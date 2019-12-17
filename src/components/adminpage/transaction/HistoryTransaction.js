@@ -15,7 +15,9 @@ class HistoryTransaction extends Component {
     this.state = {
       data: [],
       isLoading: true,
-      moreModal: false
+      moreModal: false,
+      id: "",
+      meals: ""
     };
   }
 
@@ -75,25 +77,27 @@ class HistoryTransaction extends Component {
                       </td>
 
                       <td>{order.waiterName}</td>
-                      <td className="moreMeals">
+                      <td>
                         {this.state.moreModal ? (
-                          <div className="modalWrapper">
-                            <div className="modalWindow">
-                              <h2>Заказ №{order.orderId}</h2>
-                              <div>
-                                {order.mealOrders.map((meal, index) => (
-                                  <li key={index}>{meal.name}</li>
-                                ))}
-                              </div>
-                            </div>
-                          </div>
-                        ) : null}
-                        <span
-                          // onClick={() => this.setState({ moreModal: true })}
-                          className="moreMeals"
-                        >
-                          Посмотреть
-                        </span>
+                          <MoreModal
+                            id={this.state.id}
+                            meals={this.state.meals}
+                            setStatus={() =>
+                              this.setState({ moreModal: false })
+                            }
+                          />
+                        ) : (
+                          <span
+                            onClick={() => {
+                              this.setState({ moreModal: true });
+                              this.setState({ id: order.orderId });
+                              this.setState({ meals: order.mealOrders });
+                            }}
+                            className="moreMeals"
+                          >
+                            Посмотреть
+                          </span>
+                        )}
                       </td>
                       <td>{order.status}</td>
                       <td>{order.totalPrice} сом</td>

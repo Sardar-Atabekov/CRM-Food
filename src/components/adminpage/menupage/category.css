@@ -37,8 +37,8 @@
 }
 
 
-.categoriesContent .listItem .changeBtn,
-.categoriesContent .listItem .deleteBtn,
+.changeBtn,
+.deleteBtn,
 .addCategoryBtn {
     background: green;
     width: 50%;
