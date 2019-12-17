@@ -197,7 +197,7 @@ class Categories extends Component {
                     />
                     {this.state.deleteModal ? (
                       <DeleteModal
-                        message={"категории"}
+                        message={"категорию"}
                         target={this.state.target}
                         deleteStatus={() => {
                           this.setState({ deleteModal: false });
