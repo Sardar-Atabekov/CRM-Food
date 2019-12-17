@@ -143,7 +143,7 @@ class waiterPage extends Component {
                               onClick={event => {
                                 this.setState({ deleteModal: true });
                                 this.setState({
-                                  target: event.target
+                                  target: event.target.parentNode.parentNode
                                 });
                               }}
                             />
@@ -152,10 +152,11 @@ class waiterPage extends Component {
                             <DeleteModal
                               message={"сотрудника"}
                               target={this.state.target}
+                              dismiss="dismiss"
                               deleteStatus={() => {
                                 this.setState({ deleteModal: false });
                               }}
-                              url={`/users/${user.id}`}
+                              url={`/users/DismissUser/${user.id}`}
                             />
                           ) : null}
                         </td>
