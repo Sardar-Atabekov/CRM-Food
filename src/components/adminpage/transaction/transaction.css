@@ -1,12 +1,15 @@
 .functionPage {
     display: flex;
     justify-content: space-between;
-    align-items:center;
+    align-items: center;
 }
+
 .transaction {
     margin-bottom: 30px !important;
 }
-.transaction td, .transaction th {
+
+.transaction td,
+.transaction th {
     border: #e4e4e4 1px solid;
     margin: 0px;
     padding: 0px;
@@ -25,4 +28,11 @@
     font-weight: 400;
     padding: .75rem 1.0625rem;
     height: 44px;
+}
+
+
+.moreMeals {
+    text-decoration-line: underline;
+    color: green;
+    cursor: pointer;
 }

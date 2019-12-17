@@ -1,22 +1,21 @@
 import React, { Component } from "react";
 import { getData, API } from "../../requests";
-// import { Link } from "react-router-dom";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import NamePage from "./../blocks/namePage";
 import Calendar from "./../calendar/calendar";
 import { TimeDate } from "./../calendar/time";
-import "./transaction.css";
 import Loading from "../../loading/loading";
-
+import MoreModal from "./moreInfoModal";
+import "./transaction.css";
 class HistoryTransaction extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
       isLoading: true,
-      error: null
+      moreModal: false
     };
   }
 
@@ -46,7 +45,7 @@ class HistoryTransaction extends Component {
                 <NamePage name="История транзакции" />
                 <Calendar />
               </div>
-              <div className="transactionDisplay">
+              {/* <div className="transactionDisplay">
                 <label htmlFor="show">Show</label>
                 <select id="show">
                   <option value="10">10</option>
@@ -55,15 +54,14 @@ class HistoryTransaction extends Component {
                   <option value="100">100</option>
                 </select>
                 <label htmlFor="show">entries</label>
-              </div>
+              </div> */}
               <table>
                 <tbody>
                   <tr>
                     <th className="sortingNumber">#</th>
                     <th>Время</th>
-
                     <th>Официант</th>
-                    <th>Кол-во блюд</th>
+                    <th>Блюды</th>
                     <th>Статус</th>
                     <th>Итого</th>
                   </tr>
@@ -77,7 +75,26 @@ class HistoryTransaction extends Component {
                       </td>
 
                       <td>{order.waiterName}</td>
-                      <td>{order.mealsCount}</td>
+                      <td className="moreMeals">
+                        {this.state.moreModal ? (
+                          <div className="modalWrapper">
+                            <div className="modalWindow">
+                              <h2>Заказ №{order.orderId}</h2>
+                              <div>
+                                {order.mealOrders.map((meal, index) => (
+                                  <li key={index}>{meal.name}</li>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        ) : null}
+                        <span
+                          onClick={() => this.setState({ moreModal: true })}
+                          className="moreMeals"
+                        >
+                          Посмотреть
+                        </span>
+                      </td>
                       <td>{order.status}</td>
                       <td>{order.totalPrice} сом</td>
                       {/* <td className="operationBlock">
