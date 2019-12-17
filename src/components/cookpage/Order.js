@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import notReadyImgUrl from "./../images/notReady.svg";
 import doneImgUrl from "./../images/ready.svg";
-import {TimeHours} from "./../adminpage/calendar/time";
+import { TimeHours } from "./../adminpage/calendar/time";
 import "./cook.css";
 import {
   checkStatusFood,
@@ -22,7 +22,7 @@ class Order extends Component {
   addMeals(name, quantity, id, status, orderId, finished) {
     let arr = [];
     let quantityActive = quantity - finished;
-    if (finished !== quantity ) {
+    if (finished !== quantity) {
       for (let i = 0; i < quantityActive; i++) {
         arr[i] = (
           <li key={i} orderid={orderId} className="orderItem">
@@ -38,7 +38,7 @@ class Order extends Component {
           </li>
         );
       }
-      if(finished > 0) {
+      if (finished > 0) {
         for (let i = quantityActive; i < quantityActive + 1; i++) {
           arr[i] = (
             <li key={i} orderid={orderId} className="ready">
@@ -53,18 +53,12 @@ class Order extends Component {
           );
         }
       }
-      
     } else if (finished > 0) {
       for (let i = 0; i < 1; i++) {
         arr[i] = (
           <li key={i} orderid={orderId} className="ready">
             {name} x{finished}
-            <img
-              mealid={id}
-              className="btnImg"
-              alt={status}
-              src={doneImgUrl}
-            />
+            <img mealid={id} className="btnImg" alt={status} src={doneImgUrl} />
           </li>
         );
       }
@@ -81,9 +75,7 @@ class Order extends Component {
       <div className="cookItem">
         <header>
           <span className="tableNumber">№{order.orderId}</span>
-          <span className="orderTime">
-              {TimeHours(order.dateTimeOrdered)}
-          </span>
+          <span className="orderTime">{TimeHours(order.dateTimeOrdered)}</span>
           <button
             className="statusOrder"
             orderid={order.orderId}

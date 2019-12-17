@@ -1,22 +1,24 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import LogOut from "../modalWindow/LogOut";
 import "./navigation.css";
-import neobisLogo from "./../images/Logo.svg";
-// const neobisLogo = "https://neobis.kg/static/media/Logo.4fff10de.svg";
+import neobisLogo from "./../images/CRM Cafe.svg";
 class Navigation extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
       isLoading: false,
-      error: null
+      error: null,
+      LogOutModal: false
     };
   }
 
   render() {
+    console.log(this.state.LogOutModal);
     return (
       <nav className="navigationComponent">
-        <Link to={"/admin"}>
+        <Link to={"/sales"}>
           {" "}
           <img src={neobisLogo} className="neobis_logo" alt="neobisLogo" />
         </Link>
@@ -51,18 +53,36 @@ class Navigation extends Component {
         <Link to={"/reservations"} className="categories">
           Бронирования
         </Link>
-        <Link
-          to={"/"}
+        <div
           className="categories"
-          onClick={e => {
-            e.preventDefault();
-            localStorage.removeItem("token");
-            console.log(this.props);
-            window.location.href = "/";
+          onClick={() => {
+            this.setState({ LogOutModal: true });
           }}
         >
+          {this.state.LogOutModal ? (
+            <div className="modalWrapper">
+              <div className="modalWindow">
+                <h2>Вы точно хотите выйти?</h2>
+                <button
+                  className="yesBtn"
+                  onClick={() => {
+                    localStorage.removeItem("token");
+                    window.location.href = "/";
+                  }}
+                >
+                  Да
+                </button>
+                <button
+                  className="noBtn"
+                  onClick={() => this.setState({ LogOutModal: false })}
+                >
+                  Нет
+                </button>
+              </div>
+            </div>
+          ) : null}
           Выйти
-        </Link>
+        </div>
       </nav>
     );
   }
