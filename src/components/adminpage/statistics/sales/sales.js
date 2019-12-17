@@ -6,7 +6,7 @@ import Total from "./totals";
 import NamePage from "./../../blocks/namePage";
 import TopMeals from "../blocks/topMeals";
 import TopWaiter from "../blocks/topWaiter";
-import TopWaiterGraphics from "../graphics/topWaiterSumGraphics";
+// import TopWaiterGraphics from "../graphics/topWaiterSumGraphics";
 import "./sales.css";
 
 class Sales extends Component {

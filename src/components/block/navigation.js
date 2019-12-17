@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import LogOut from "../modalWindow/LogOut";
+// import LogOut from "../modalWindow/LogOut";
 import "./navigation.css";
 import neobisLogo from "./../images/CRM Cafe.svg";
 class Navigation extends Component {
