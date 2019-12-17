@@ -28,7 +28,7 @@ class Sales extends Component {
 
               <TopMeals name="Топ блюди" />
               <TopWaiter name="Топ официанты" />
-              <TopWaiterGraphics />
+              {/* <TopWaiterGraphics /> */}
             </div>
           </main>
           <footer className="main-footer">

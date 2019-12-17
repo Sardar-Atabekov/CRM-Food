@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getData, API } from "../../../requests";
+import TopWaiterGraphics from "../graphics/topWaiterSumGraphics";
 import "./styles.css";
 
 class TopWaiter extends Component {
@@ -10,11 +11,9 @@ class TopWaiter extends Component {
     };
   }
   async componentDidMount() {
-    getData(`${API}/Admin/waiterSumTop`).then(
-      body => {
-        this.setState({ data: body });
-      }
-    );
+    getData(`${API}/Admin/waiterSumTop`).then(body => {
+      this.setState({ data: body });
+    });
   }
   render() {
     let { data } = this.state;
@@ -44,6 +43,7 @@ class TopWaiter extends Component {
             <option value="3">Today</option> */}
           </select>
         </div>
+        {data && data.length > 0 ? <TopWaiterGraphics data={data} /> : null}
       </div>
     );
   }
