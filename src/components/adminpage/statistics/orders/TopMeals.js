@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { getData, API } from "../../../requests";
 import "./../blocks/styles.css";
-
+import TopGraphics from "./../graphics/topGraphics";
 class TopMeals extends Component {
   constructor(props) {
     super(props);
     this.state = {
       bar: [],
-      kitchen: []
+      kitchen: [],
+      graphics: false
     };
   }
   async componentDidMount() {
@@ -21,7 +22,13 @@ class TopMeals extends Component {
   render() {
     let { bar, kitchen } = this.state,
       data = [...bar, ...kitchen].sort((a, b) => b.count - a.count);
-    console.log(data);
+
+    let sum, names;
+    if (data) {
+      data = data.sort((a, b) => b.count - a.count);
+      sum = [...data.map((item, index) => (index < 8 ? item.count : false))];
+      names = [...data.map((item, index) => (index < 8 ? item.name : false))];
+    }
     return (
       <div className="topMeals">
         <div className="header">
@@ -47,7 +54,24 @@ class TopMeals extends Component {
             <option value="2">Last Week</option>
             <option value="3">Today</option> */}
           </select>
+          <div
+            className="graphicsModal"
+            onClick={() => {
+              console.log(this.state);
+              this.setState({ graphics: true });
+            }}
+          >
+            Графика
+          </div>
         </div>
+        {this.state.graphics ? (
+          <TopGraphics
+            name="Топ блюды"
+            data={sum}
+            names={names}
+            graphicsStatus={() => this.setState({ graphics: false })}
+          />
+        ) : null}
       </div>
     );
   }
