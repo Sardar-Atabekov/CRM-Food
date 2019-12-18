@@ -8,7 +8,8 @@
     box-shadow: 0 2px 0 rgba(90, 97, 105, .11), 0 4px 8px rgba(90, 97, 105, .12), 0 10px 10px rgba(90, 97, 105, .06), 0 7px 70px rgba(90, 97, 105, .1);
 }
 
-.topWaiterGraphics canvas {
+.topWaiterGraphics canvas,
+.graphicArt canvas {
     width: 100% !important;
     height: 100% !important;
 }
@@ -27,5 +28,13 @@
     background: green;
     color: white;
     border-radius: .625rem;
+    box-shadow: 0 2px 0 rgba(90, 97, 105, .11), 0 4px 8px rgba(90, 97, 105, .12), 0 10px 10px rgba(90, 97, 105, .06), 0 7px 70px rgba(90, 97, 105, .1);
+}
+
+.graphicArt {
+    margin: 120px auto 20px;
+    border-radius: .625rem;
+    background: #ffffff;
+    padding: 10px;
     box-shadow: 0 2px 0 rgba(90, 97, 105, .11), 0 4px 8px rgba(90, 97, 105, .12), 0 10px 10px rgba(90, 97, 105, .06), 0 7px 70px rgba(90, 97, 105, .1);
 }
