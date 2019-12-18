@@ -59,7 +59,10 @@ class Total extends Component {
             <div className="text-center">
               <span>Средная прибыль</span>
               <h6 className="totalSum">
-                {data && Math.floor(data.totalSumAverage)} сом
+                {data && data.totalSumAverage 
+                  ? Math.floor(data && data.totalSumAverage)
+                  : null}{" "}
+                сом
               </h6>
             </div>
           </div>
