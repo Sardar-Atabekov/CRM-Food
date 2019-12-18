@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { getData, API } from "../../../requests";
-import TopWaiterGraphics from "../graphics/topGraphics";
+import TopGraphics from "../graphics/topGraphics";
 import "./styles.css";
 
 class TopWaiter extends Component {
@@ -62,7 +62,7 @@ class TopWaiter extends Component {
           </div>
         </div>
         {this.state.graphics ? (
-          <TopWaiterGraphics
+          <TopGraphics
             name="Топ официанты"
             data={sum}
             names={names}
