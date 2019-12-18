@@ -9,11 +9,9 @@ class Total extends Component {
     };
   }
   async componentDidMount() {
-    getData(`${API}/Admin/totalSums`).then(
-      body => {
-        this.setState({ data: body });
-      }
-    );
+    getData(`${API}/Admin/totalSums`).then(body => {
+      this.setState({ data: body });
+    });
   }
   render() {
     let data = this.state.data;
@@ -60,7 +58,9 @@ class Total extends Component {
           <div className="total">
             <div className="text-center">
               <span>Средная прибыль</span>
-              <h6 className="totalSum">{data && data.totalSumAverage} сом</h6>
+              <h6 className="totalSum">
+                {data && Math.floor(data.totalSumAverage)} сом
+              </h6>
             </div>
           </div>
         </div>

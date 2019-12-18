@@ -13,26 +13,28 @@ class Sales extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
-      graphics: false,
-      isLoading: false
+      bar: [],
+      kitchen: [],
+      kitchenLoading: false,
+      barLoading: false
     };
   }
-
   async componentDidMount() {
-    getData(`${API}/Admin/waiterOrderTop`).then(body => {
-      this.setState({ data: body, isLoading: true });
+    getData(`${API}/Admin/topMeals`).then(body => {
+      this.setState({ kitchen: body, kitchenLoading: true });
+    });
+    getData(`${API}/Admin/topDrinks`).then(body => {
+      this.setState({ bar: body, barLoading: true });
     });
   }
   render() {
-    let { data } = this.state;
+    let { bar, kitchen } = this.state,
+      data = [...bar, ...kitchen].sort((a, b) => b.count - a.count);
 
     let sum, names;
     if (data) {
-      data = data.sort((a, b) => b.orderCount - a.orderCount);
-      sum = [
-        ...data.map((item, index) => (index < 8 ? item.orderCount : false))
-      ];
+      data = data.sort((a, b) => b.count - a.count);
+      sum = [...data.map((item, index) => (index < 8 ? item.count : false))];
       names = [...data.map((item, index) => (index < 8 ? item.name : false))];
     }
     return (
@@ -44,12 +46,12 @@ class Sales extends Component {
           <header className="main-search">
             <Search />
           </header>
-          {this.state.isLoading ? (
+          {this.state.barLoading && this.state.kitchenLoading ? (
             <main className="orderContent">
               <NamePage name="Обзор заказов" />
               <Total />
               <div className="statistics">
-                <GraphicArt data={sum} names={names} name="Топ официанты" />
+                <GraphicArt data={sum} names={names} name="Топ блюд" />
                 <TopMeals name="Топ блюд" />
                 <TopWaiter name="Топ официанты" />
               </div>
