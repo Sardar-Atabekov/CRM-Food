@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Chart from "chart.js";
 // import { getData, API } from "../../../requests";
 import "./graphics.css";
-import X from "./../../../images/x.svg";
 class Graphics extends Component {
   componentDidMount() {
     const node = this.node;

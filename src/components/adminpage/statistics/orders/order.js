@@ -21,7 +21,7 @@ class Sales extends Component {
 
   async componentDidMount() {
     getData(`${API}/Admin/waiterOrderTop`).then(body => {
-      this.setState({ data: body });
+      this.setState({ data: body, isLoading: true });
     });
   }
   render() {
