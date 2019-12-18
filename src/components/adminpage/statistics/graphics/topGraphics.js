@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Chart from "chart.js";
 // import { getData, API } from "../../../requests";
 import "./graphics.css";
-
+import X from "./../../../images/x.svg";
 class TopWaiterGraphics extends Component {
   componentDidMount() {
     const node = this.node;
@@ -69,8 +69,17 @@ class TopWaiterGraphics extends Component {
     return (
       <div className="modalWrapper">
         <div className="topWaiterGraphics">
+          <img
+            src={X}
+            alt="xImage"
+            className="xBtn"
+            onClick={() => this.props.graphicsStatus()}
+          />
           <canvas ref={node => (this.node = node)}></canvas>
         </div>
+        {/* <div>
+          <span onClick={() => this.props.graphicsStatus()}>Хорошо</span>
+        </div> */}
       </div>
     );
   }

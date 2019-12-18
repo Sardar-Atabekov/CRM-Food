@@ -62,7 +62,12 @@ class TopWaiter extends Component {
           </div>
         </div>
         {this.state.graphics ? (
-          <TopWaiterGraphics name="Топ официанты" data={sum} names={names} />
+          <TopWaiterGraphics
+            name="Топ официанты"
+            data={sum}
+            names={names}
+            graphicsStatus={() => this.setState({ graphics: false })}
+          />
         ) : null}
       </div>
     );
