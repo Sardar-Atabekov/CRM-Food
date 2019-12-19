@@ -17,7 +17,6 @@ class TopDrinks extends Component {
   }
   render() {
     let { bar } = this.state;
-    bar = bar && bar.sort((a, b) => b.count - a.count);
     let sum, names;
     if (bar) {
       bar = bar.sort((a, b) => b.count - a.count);

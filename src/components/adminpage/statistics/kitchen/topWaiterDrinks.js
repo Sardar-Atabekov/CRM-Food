@@ -16,7 +16,6 @@ class TopWaiter extends Component {
   }
   render() {
     let { data } = this.state;
-    console.log("this", data);
     let sum, names;
     if (data) {
       data = data.sort((a, b) => b.meals - a.meals);

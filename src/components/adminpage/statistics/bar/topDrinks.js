@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { getData, API } from "../../../requests";
 import "./../blocks/styles.css";
 import TopLoading from "./../topLoading/topLaoding";
-
+import TopGraphics from "./../graphics/topGraphics";
 class TopDrinks extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +19,12 @@ class TopDrinks extends Component {
   }
   render() {
     let { bar } = this.state;
-    bar = bar && bar.sort((a, b) => b.count - a.count);
+    let sum, names;
+    if (bar) {
+      bar = bar.sort((a, b) => b.count - a.count);
+      sum = [...bar.map((item, index) => (index < 8 ? item.count : false))];
+      names = [...bar.map((item, index) => (index < 8 ? item.name : false))];
+    }
     return (
       <div className="topMeals">
         {this.state.isLoading ? (
@@ -49,7 +54,24 @@ class TopDrinks extends Component {
             <option value="2">Last Week</option>
             <option value="3">Today</option> */}
               </select>
+              <div
+                className="graphicsModal"
+                onClick={() => {
+                  console.log(this.state);
+                  this.setState({ graphics: true });
+                }}
+              >
+                Графика
+              </div>
             </div>
+            {this.state.graphics ? (
+              <TopGraphics
+                name="Топ блюды"
+                data={sum}
+                names={names}
+                graphicsStatus={() => this.setState({ graphics: false })}
+              />
+            ) : null}
           </div>
         )}
       </div>

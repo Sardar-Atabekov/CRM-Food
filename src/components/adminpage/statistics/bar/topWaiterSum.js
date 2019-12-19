@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getData, API } from "../../../requests";
 import "./../blocks/styles.css";
-
+import TopGraphics from "./../graphics/topGraphics";
 class TopWaiter extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +16,14 @@ class TopWaiter extends Component {
   }
   render() {
     let { data } = this.state;
-    data = data && data.sort((a, b) => b.sum - a.sum);
+    let sum, names;
+    if (data) {
+      data = data.sort((a, b) => b.sum - a.sum);
+      sum = [...data.map((item, index) => (index < 8 ? item.sum : false))];
+      names = [
+        ...data.map((item, index) => (index < 8 ? item.userName : false))
+      ];
+    }
     return (
       <div className="topMeals">
         <div className="header">
@@ -42,7 +49,24 @@ class TopWaiter extends Component {
             <option value="2">Last Week</option>
             <option value="3">Today</option> */}
           </select>
+          <div
+            className="graphicsModal"
+            onClick={() => {
+              console.log(this.state);
+              this.setState({ graphics: true });
+            }}
+          >
+            Графика
+          </div>
         </div>
+        {this.state.graphics ? (
+          <TopGraphics
+            name="Топ официанты"
+            data={sum}
+            names={names}
+            graphicsStatus={() => this.setState({ graphics: false })}
+          />
+        ) : null}
       </div>
     );
   }
