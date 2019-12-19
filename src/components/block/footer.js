@@ -8,7 +8,7 @@ class Footer extends Component {
       <nav className="footerComponent">
         <ul className="footerComponent">
           <li className="nav-item">
-            <Link to={"/admin"} className="nav-link">
+            <Link to={"/sales"} className="nav-link">
               Home
             </Link>
           </li>

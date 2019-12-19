@@ -33,27 +33,39 @@
 .serchNavbar {
     display: flex;
     width: 100%;
-    background: #FCF9F9;
+    background: #fff;
+    justify-content: flex-end;
+    box-shadow: 0 0.125rem 0.625rem rgba(90, 97, 105, .12);
 }
+
+.bell,
+.profileImage {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    padding-top: 12px;
+    border: #e4e4e4 solid 1px;
+    cursor: pointer;
+}
+
 
 .main-search {
     width: 100% !important;
 }
 
-.serchNavbar>div {
-    border-right: #e4e4e4 solid 1px;
-}
+
 
 .serchNavbar .input {
-    margin-left: 20px;
-
-    height: 50px;
+    height: 60px;
+    width: 100%;
 }
 
 .serchNavbar .navbar-search {
-    width: 965px;
-    height: 50px;
+    height: 60px;
     margin: 0px;
+    width: 100%;
+    padding: 5px 20px;
+    margin-left: 20px;
     border: none;
 }
 
@@ -64,4 +76,3 @@
 a {
     text-decoration: none;
 }
-
