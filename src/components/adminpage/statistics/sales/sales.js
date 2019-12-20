@@ -7,7 +7,7 @@ import NamePage from "./../../blocks/namePage";
 import TopMeals from "../blocks/topMeals";
 import TopWaiter from "../blocks/topWaiter";
 import LineCharts from "./../graphics/lineCharts";
-import BarCharts from "./../graphics/barCharts.js";
+// import BarCharts from "./../graphics/barCharts.js";
 import Total from "./totals";
 
 // import TopWaiterGraphics from "../graphics/topWaiterSumGraphics";
@@ -18,7 +18,7 @@ class Sales extends Component {
     super(props);
     this.state = {
       data: [],
-      selectRevenue: false
+      selectRevenue: true
     };
   }
   async componentDidMount() {
@@ -58,7 +58,7 @@ class Sales extends Component {
                     type="line"
                   />
                 ) : (
-                  <BarCharts />
+                  // <BarCharts />
                 )}
               </div>
 
