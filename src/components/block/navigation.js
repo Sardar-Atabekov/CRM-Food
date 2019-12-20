@@ -26,7 +26,7 @@ class Navigation extends Component {
           Заказы
         </Link>
         <Link to={"/sales"} className="categories">
-          Продажи
+          Прибыль
         </Link>
         <Link to={"/kitchen"} className="categories">
           Кухня

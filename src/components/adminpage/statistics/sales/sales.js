@@ -2,15 +2,31 @@ import React, { Component } from "react";
 import Navigation from "../../../block/navigation.js";
 import Search from "../../../block/search.js";
 import Footer from "../../../block/footer.js";
-import Total from "./totals";
+import { API, getData } from "./../../../requests";
 import NamePage from "./../../blocks/namePage";
 import TopMeals from "../blocks/topMeals";
 import TopWaiter from "../blocks/topWaiter";
+import LineCharts from "./../graphics/lineCharts";
+import Total from "./totals";
+
 // import TopWaiterGraphics from "../graphics/topWaiterSumGraphics";
 import "./sales.css";
 
 class Sales extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [],
+      selectRevenue: true
+    };
+  }
+  async componentDidMount() {
+    getData(`${API}/Admin/totalSumsMonth`).then(data => {
+      this.setState({ data });
+    });
+  }
   render() {
+    console.log(this.state);
     return (
       <div className="wrapper">
         <aside className="navBlock">
@@ -21,10 +37,22 @@ class Sales extends Component {
             <Search />
           </header>
           <main className="salesContent">
-            <NamePage name="Продажи" />
+            <NamePage name="Прибыль" />
             <Total />
             <div className="statistics">
-              <div className="graphicArt">Графика</div>
+              <div className="selectRevenueBlock">
+                <div className="selectRevenue">
+                  <span>За неделю</span>
+                  <span>За месяц</span>
+                  <span>За год</span>
+                </div>
+                {this.state.selectRevenue ? (
+                  <LineCharts
+                    // data={sum} names={names}
+                    name="Прибыль за месяц"
+                  />
+                ) : null}
+              </div>
 
               <TopMeals name="Топ блюди" />
               <TopWaiter name="Топ официанты" />

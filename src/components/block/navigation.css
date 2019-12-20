@@ -48,6 +48,9 @@
     cursor: pointer;
 }
 
+.profileImage {
+    margin-right: 2px;
+}
 
 .main-search {
     width: 100% !important;

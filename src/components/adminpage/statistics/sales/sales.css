@@ -1,4 +1,5 @@
-.salesContent, .orderContent {
+.salesContent,
+.orderContent {
     margin-top: 30px;
     padding-left: 10px;
 }
@@ -7,7 +8,8 @@ input::-webkit-input-placeholder {
     color: #e4e4e4;
 }
 
-.salesContent .namePage, .orderContent .namePage {
+.salesContent .namePage,
+.orderContent .namePage {
     margin-left: 20px;
 }
 
@@ -15,7 +17,7 @@ input::-webkit-input-placeholder {
     width: 900px;
     margin: 0px 0 30px 20px;
     background: #ffffff;
-    box-shadow: 0 2px 0 rgba(90,97,105,.11), 0 4px 8px rgba(90,97,105,.12), 0 10px 10px rgba(90,97,105,.06), 0 7px 70px rgba(90,97,105,.1);
+    box-shadow: 0 2px 0 rgba(90, 97, 105, .11), 0 4px 8px rgba(90, 97, 105, .12), 0 10px 10px rgba(90, 97, 105, .06), 0 7px 70px rgba(90, 97, 105, .1);
     border-radius: .625rem;
 
 }
@@ -34,4 +36,22 @@ input::-webkit-input-placeholder {
     border-radius: 0 0 .625rem .625rem;
     padding: 1rem 1rem;
     justify-content: space-between;
+}
+
+.selectRevenueBlock {
+    display: flex;
+    flex-direction: column;
+    width: 900px;
+    /* margin: 0px 0 30px 20px; */
+    background: #ffffff;
+    margin-left: 20px;
+
+}
+
+.selectRevenue {
+    margin-left: 20px;
+}
+
+.selectRevenueBlock .graphicArt {
+    margin: 0;
 }

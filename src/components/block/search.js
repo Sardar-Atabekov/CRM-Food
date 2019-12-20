@@ -20,7 +20,7 @@ class Search extends Component {
           <input
             className="navbar-search form-control"
             type="text"
-            placeholder="Search for something..."
+            placeholder="Поиск..."
             aria-label="Search"
           />
         </div>
