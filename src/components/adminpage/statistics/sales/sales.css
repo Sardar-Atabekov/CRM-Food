@@ -42,6 +42,7 @@ input::-webkit-input-placeholder {
     display: flex;
     flex-direction: column;
     width: 900px;
+    margin-bottom: 30px;
     /* margin: 0px 0 30px 20px; */
     background: #ffffff;
     margin-left: 20px;
@@ -60,4 +61,23 @@ input::-webkit-input-placeholder {
     cursor: pointer;
     padding: 5px;
     margin: 10px;
+}
+
+
+/* .incomeImg {
+    position: absolute;
+    z-index: 5;
+    margin-left: 120px;
+    margin-top: 20px;
+    border-radius: none !important;
+} */
+
+.salesContent .text-center {
+    align-items: flex-start;
+    flex-direction: row;
+    padding: 0 10px;
+}
+
+.percentBlock {
+    display: flex;
 }

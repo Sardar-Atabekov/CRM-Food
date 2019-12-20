@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./navigation.css";
 
 class Footer extends Component {
@@ -7,7 +7,7 @@ class Footer extends Component {
     return (
       <nav className="footerComponent">
         <ul className="footerComponent">
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link to={"/sales"} className="nav-link">
               Home
             </Link>
@@ -21,7 +21,7 @@ class Footer extends Component {
             <Link to={"/barmen"} className="nav-link">
               Бар
             </Link>
-          </li>
+          </li> */}
         </ul>
         <span className="copyright">Copyright © 2019 Neobis</span>
       </nav>
