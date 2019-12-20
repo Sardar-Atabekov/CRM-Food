@@ -63,7 +63,7 @@ class HistoryTransaction extends Component {
                     <th className="sortingNumber">#</th>
                     <th>Время</th>
                     <th>Официант</th>
-                    <th>Блюды</th>
+                    <th>Блюда</th>
                     <th>Статус</th>
                     <th>Итого</th>
                   </tr>

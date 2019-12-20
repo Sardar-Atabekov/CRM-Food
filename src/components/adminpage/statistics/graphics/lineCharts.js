@@ -47,7 +47,7 @@ class Graphics extends Component {
     // });
     var dataFirst = {
       label: "За текущий месяц",
-      data: [0, 59, 75, 20, 20, 55, 40],
+      data: [0, 59, 75, 20, 20],
       lineTension: 0.3,
       backgroundColor: [
         // "rgb(60, 180, 100)",
@@ -62,24 +62,22 @@ class Graphics extends Component {
 
     var dataSecond = {
       label: "За прошлый месяц",
-      data: [20, 15, 60, 60, 65, 30, 70]
-      // Set More Options
+      data: [20, 15, 60, 60, 35]
       // backgroundColor: [
-      //   // "rgba(195,65,105,1)",
-      //   // "rgba(54, 162, 235, 0.6)",
-      //   // "rgba(0,123,255,1)"
-      //   // "rgba(75, 192, 192, 0.6)",
-      //   // "rgba(255, 159, 64, 0.6)"
+      //   "rgba(0,123,255,1)",
+      //   "rgba(54, 162, 235, 0.6)",
+      //   "rgba(75, 192, 192, 0.6)",
+      //   "rgba(255, 159, 64, 0.6)"
       // ]
     };
 
     var speedData = {
-      labels: ["0s", "10s", "20s", "30s", "40s", "50s", "60s"],
+      labels: ["1-неделя", "2-неделя", "3-неделя", "4-неделя", "Остальные дни"],
       datasets: [dataFirst, dataSecond]
     };
 
     var lineChart = new Chart(node, {
-      type: "line",
+      type: this.props.type,
       data: speedData
       // options: chartOptions
     });

@@ -55,3 +55,9 @@ input::-webkit-input-placeholder {
 .selectRevenueBlock .graphicArt {
     margin: 0;
 }
+
+.selectRevenue span {
+    cursor: pointer;
+    padding: 5px;
+    margin: 10px;
+}

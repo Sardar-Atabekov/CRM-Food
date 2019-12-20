@@ -53,7 +53,7 @@ class Sales extends Component {
               <div className="statistics">
                 <GraphicArt data={sum} names={names} name="Топ блюд" />
                 <TopMeals name="Топ блюд" />
-                <TopWaiter name="Топ официанты" />
+                <TopWaiter name="Топ официантов" />
               </div>
             </main>
           ) : (

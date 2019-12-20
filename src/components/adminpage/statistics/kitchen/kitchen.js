@@ -57,11 +57,11 @@ class KitchenPage extends Component {
               <TotalSum />
               <TotalBar />
               <div className="statistics">
-                <GraphicArt data={sum} names={names} name="Топ блюды" />
-                <TopSum name="Топ блюди по прибылью " />
-                <TopDrinks name="Топ блюди" />
-                <TopWaiterDrinks name="Топ официанты по заказам" />
-                <TopWaiterSum name="Топ официанты по прибылью" />
+                <GraphicArt data={sum} names={names} name="Топ блюд" />
+                <TopSum name="Топ блюд по прибыли " />
+                <TopDrinks name="Топ блюд" />
+                <TopWaiterDrinks name="Топ официантов по заказам" />
+                <TopWaiterSum name="Топ официантов по прибыли" />
               </div>
             </main>
           ) : (

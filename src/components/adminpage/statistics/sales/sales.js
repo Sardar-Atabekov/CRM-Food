@@ -7,6 +7,7 @@ import NamePage from "./../../blocks/namePage";
 import TopMeals from "../blocks/topMeals";
 import TopWaiter from "../blocks/topWaiter";
 import LineCharts from "./../graphics/lineCharts";
+import BarCharts from "./../graphics/barCharts";
 import Total from "./totals";
 
 // import TopWaiterGraphics from "../graphics/topWaiterSumGraphics";
@@ -17,7 +18,7 @@ class Sales extends Component {
     super(props);
     this.state = {
       data: [],
-      selectRevenue: true
+      selectRevenue: false
     };
   }
   async componentDidMount() {
@@ -42,20 +43,27 @@ class Sales extends Component {
             <div className="statistics">
               <div className="selectRevenueBlock">
                 <div className="selectRevenue">
-                  <span>За неделю</span>
-                  <span>За месяц</span>
+                  <span onClick={() => this.setState({ selectRevenue: false })}>
+                    За неделю
+                  </span>
+                  <span onClick={() => this.setState({ selectRevenue: true })}>
+                    За месяц
+                  </span>
                   <span>За год</span>
                 </div>
                 {this.state.selectRevenue ? (
                   <LineCharts
                     // data={sum} names={names}
                     name="Прибыль за месяц"
+                    type="line"
                   />
-                ) : null}
+                ) : (
+                  <BarCharts />
+                )}
               </div>
 
-              <TopMeals name="Топ блюди" />
-              <TopWaiter name="Топ официанты" />
+              <TopMeals name="Топ блюд" />
+              <TopWaiter name="Топ официантов" />
               {/* <TopWaiterGraphics /> */}
             </div>
           </main>

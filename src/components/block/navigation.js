@@ -35,7 +35,7 @@ class Navigation extends Component {
           Бар
         </Link>
         <Link to={"/transactions"} className="categories">
-          История транзакции
+          История транзакций
         </Link>
         <Link to={"/users"} className="categories">
           Сотрудники
@@ -44,14 +44,14 @@ class Navigation extends Component {
           Категории
         </Link>
         <Link to={"/meals"} className="categories">
-          Список блюд
+          Блюда и напитки
         </Link>
 
         <Link to={"/tables"} className="categories">
           Столы
         </Link>
         <Link to={"/reservations"} className="categories">
-          Бронирования
+          Бронирование
         </Link>
         <div
           className="categories"
