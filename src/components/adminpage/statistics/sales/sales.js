@@ -57,9 +57,8 @@ class Sales extends Component {
                     name="Прибыль за месяц"
                     type="line"
                   />
-                ) : (
-                  // <BarCharts />
-                )}
+                ) : // <BarCharts />
+                null}
               </div>
 
               <TopMeals name="Топ блюд" />
