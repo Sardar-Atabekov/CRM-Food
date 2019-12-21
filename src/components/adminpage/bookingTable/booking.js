@@ -112,13 +112,16 @@ class ListArmoredTables extends Component {
                     ))}
                   </ul>
                 </div>
-                <div className="clientInfo"> 
+                <div className="clientInfo">
                   <input className="" placeholder="Имя клиента" />
                   <input
                     className=""
                     placeholder="+996"
                     pattern="^\(?\+([9]{2}?[6])\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})[-. ]?([0-9]{3})$"
                   />
+                </div>
+                <div className="btnBooking">
+                  <button className="addCategoryBtn">Забронировать</button>{" "}
                 </div>
               </form>
             </main>

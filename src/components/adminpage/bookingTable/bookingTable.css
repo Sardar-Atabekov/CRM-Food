@@ -60,6 +60,8 @@
 .clientInfo {
     display: flex;
     flex-direction: column;
+    margin-left: 60px;
+    width: 400px;
 }
 
 
@@ -73,4 +75,22 @@
     padding: 20px 30px;
     margin-top: 15px;
     border: none;
+}
+
+.clientInfo input::-webkit-input-placeholder {
+    color: #000;
+}
+
+.clientInfo input::-moz-placeholder {
+    color: #000;
+}
+
+
+.addCategoryBtn {
+    margin-left: 800px;
+    margin-bottom: 40px;
+}
+
+.calendarImg {
+    cursor: pointer;
 }

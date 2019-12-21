@@ -56,7 +56,9 @@
     width: 100% !important;
 }
 
-
+.navigationComponent .categories {
+    color: #3d5170;
+}
 
 .serchNavbar .input {
     height: 60px;
