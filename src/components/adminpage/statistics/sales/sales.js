@@ -7,7 +7,7 @@ import NamePage from "./../../blocks/namePage";
 import TopMeals from "../blocks/topMeals";
 import TopWaiter from "../blocks/topWaiter";
 import LineCharts from "./../graphics/lineCharts";
-import BarCharts from "./../graphics/barCharts.js";
+// import BarCharts from "./../graphics/barCharts.js";
 import Total from "./totals";
 
 // import TopWaiterGraphics from "../graphics/topWaiterSumGraphics";
@@ -57,9 +57,9 @@ class Sales extends Component {
                     name="Прибыль за месяц"
                     type="line"
                   />
-                ) : (
-                  <BarCharts />
-                )}
+                ) : null
+                // <BarCharts />
+                }
               </div>
 
               <TopMeals name="Топ блюд" />
