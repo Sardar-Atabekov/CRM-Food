@@ -7,7 +7,7 @@ import NamePage from "./../blocks/namePage";
 import Calendar from "./../calendar/calendar";
 import { TimeDate } from "./../calendar/time";
 import Loading from "../../loading/loading";
-import MoreModal from "./moreInfoModal";
+import MoreModal from "./../../modalWindow/moreInfoModal";
 import "./transaction.css";
 class HistoryTransaction extends Component {
   constructor(props) {

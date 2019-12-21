@@ -67,7 +67,7 @@ class ListArmoredTables extends Component {
                   <div className="bookingItem">
                     <h2 className="bookingTitle">Кол-во человек</h2>
                     <div className="bookingPeople">
-                      <div
+                      <span
                         className="prev"
                         onClick={() => {
                           people = people > 1 ? people - 1 : people;
@@ -75,7 +75,7 @@ class ListArmoredTables extends Component {
                         }}
                       >
                         -
-                      </div>
+                      </span>
                       <input
                         className="peopleQuantity"
                         type="number"

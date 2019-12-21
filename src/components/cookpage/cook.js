@@ -61,7 +61,7 @@ class CookPage extends Component {
               <Link
                 to={"/"}
                 className="menuBtn exitBtn"
-                onClick={(e) => {
+                onClick={e => {
                   e.preventDefault();
                   this.setState({ LogOutModal: true });
                 }}

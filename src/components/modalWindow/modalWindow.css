@@ -63,3 +63,58 @@
 .cookPage .LogOut .modalWindow {
     margin-left: 0;
 }
+
+
+.frozenMeal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.frozenMeal .prev,
+.frozenMeal .next,
+.frozenMeal .countQuantity {
+    height: 40px;
+    width: 40px;
+
+}
+
+
+.frozenMeal .countQuantity {
+    width: 40px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.frozenMeal .prev {
+    color: #fff;
+    background: green;
+    /* padding-bottom: 25px; */
+    padding-bottom: 40px;
+}
+
+.frozenMeal .next {
+    background: red;
+    color: #fff;
+}
+
+
+.modalWindow .deleteBtn {
+    margin: 30px 0 20px;
+}
+
+
+.xImage {
+    cursor: pointer;
+    margin-left: 620px;
+    width: 35px !important;
+    height: 35px !important;
+    top: 40px;
+}
+
+
+.cookItem .modalWindow {
+    width: 45%;
+    left: 28%;
+}

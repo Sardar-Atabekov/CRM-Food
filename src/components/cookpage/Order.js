@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import notReadyImgUrl from "./../images/notReady.svg";
 import doneImgUrl from "./../images/ready.svg";
+import frozen from "./../images/frozen.svg";
+import FrozenModal from "./../modalWindow/frozenModal";
 import { TimeHours } from "./../adminpage/calendar/time";
 import "./cook.css";
 import {
@@ -15,7 +17,8 @@ class Order extends Component {
     super(props);
     this.state = {
       data: props.order,
-      ready: 0
+      ready: 0,
+      status: false
     };
   }
 
@@ -27,10 +30,27 @@ class Order extends Component {
         arr[i] = (
           <li key={i} orderid={orderId} className="orderItem">
             <span>{name}</span>
-            <span className="inCase">In case</span>
+            <img
+              src={frozen}
+              alt="frozenImage"
+              className="inCase"
+              onClick={() => {
+                this.setState({
+                  name,
+                  orderId,
+                  quantityActive,
+                  frozenModal: true
+                });
+              }}
+            />
             <img
               mealid={id}
-              onClick={mealReady}
+              onClick={e => {
+                this.setState({
+                  status: this.state.status ? false : true
+                });
+                mealReady(e);
+              }}
               className="btnImg"
               alt={status}
               src={notReadyImgUrl}
@@ -70,6 +90,7 @@ class Order extends Component {
   render() {
     let order = this.state.data;
     console.log(order);
+    console.log(this.state);
 
     return (
       <div className="cookItem">
@@ -86,7 +107,12 @@ class Order extends Component {
         </header>
         <main>
           <div className="comments">{order.comment}</div>
-
+          {this.state.frozenModal ? (
+            <FrozenModal
+              data={this.state}
+              frozen={() => this.setState({ frozenModal: false })}
+            />
+          ) : null}
           <ul>
             {order.mealsList.map(meal =>
               meal.orderedQuantity === 1 ? (
@@ -98,7 +124,12 @@ class Order extends Component {
                   {`${meal.mealName} x${meal.orderedQuantity} `}
                   <img
                     mealid={meal.mealId}
-                    onClick={mealReady}
+                    onClick={e => {
+                      this.setState({
+                        status: this.state.status ? false : true
+                      });
+                      mealReady(e);
+                    }}
                     className="btnImg"
                     alt={meal.status}
                     src={checkStatusFood(meal.status)}
