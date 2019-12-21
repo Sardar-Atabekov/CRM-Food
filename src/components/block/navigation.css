@@ -79,3 +79,8 @@
 a {
     text-decoration: none;
 }
+
+
+.categories {
+    cursor: pointer;
+}

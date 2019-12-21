@@ -47,7 +47,7 @@ class Graphics extends Component {
     // });
     var dataFirst = {
       label: "За прошлый неделю",
-      data: [45, 59, 75, 20, 20, 55, 40],
+      data: [4145, 5931, 3424, 4120, 5301, 5315, 3240],
       lineTension: 0.3,
       backgroundColor:
         // "rgb(60, 180, 100)",
@@ -61,7 +61,7 @@ class Graphics extends Component {
 
     var dataSecond = {
       label: "За текущий неделю",
-      data: [20, 15, 60, 60, 65, 30, 70],
+      data: [2767, 3576, 6021, 5460, 5365, 6230, 4370],
       backgroundColor: "rgba(0,123,255,1)"
 
       // backgroundColor: [

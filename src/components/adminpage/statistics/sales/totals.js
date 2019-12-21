@@ -65,7 +65,7 @@ class Total extends Component {
                 <span>ЗА МЕСЯЦ</span>
                 <h6 className="totalSum">{data && data.totalSumMonth} сом</h6>
               </div>
-              {this.percent(data.totalSumLastMonth, data.totalSumMonth)}
+              {/* {this.percent(data.totalSumLastMonth, data.totalSumMonth)} */}
             </div>
           </div>
         </div>
@@ -77,7 +77,7 @@ class Total extends Component {
                 <span>ЗА НЕДЕЛЮ</span>
                 <h6 className="totalSum">{data && data.totalSumWeek} сом</h6>
               </div>
-              {this.percent(data.totalSumLastWeek, data.totalSumWeek)}
+              {/* {this.percent(data.totalSumLastWeek, data.totalSumWeek)} */}
             </div>
           </div>
         </div>
@@ -85,7 +85,7 @@ class Total extends Component {
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
-              {this.percent(data.totalSumLastDay, data.totalSumToday)}
+              {/* {this.percent(data.totalSumLastDay, data.totalSumToday)} */}
               <span>За сегодня</span>
 
               <h6 className="totalSum">{data && data.totalSumToday} сом</h6>

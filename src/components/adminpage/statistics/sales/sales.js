@@ -7,7 +7,8 @@ import NamePage from "./../../blocks/namePage";
 import TopMeals from "../blocks/topMeals";
 import TopWaiter from "../blocks/topWaiter";
 import LineCharts from "./../graphics/lineCharts";
-// import BarCharts from "./../graphics/barCharts.js";
+import BarCharts from "./../graphics/barCharts.js";
+import Graphics from "./../graphics/graphics";
 import Total from "./totals";
 
 // import TopWaiterGraphics from "../graphics/topWaiterSumGraphics";
@@ -18,7 +19,7 @@ class Sales extends Component {
     super(props);
     this.state = {
       data: [],
-      selectRevenue: true
+      selectRevenue: "day"
     };
   }
   async componentDidMount() {
@@ -43,23 +44,63 @@ class Sales extends Component {
             <div className="statistics">
               <div className="selectRevenueBlock">
                 <div className="selectRevenue">
-                  <span onClick={() => this.setState({ selectRevenue: false })}>
-                    За неделю
+                  <span onClick={() => this.setState({ selectRevenue: "day" })}>
+                    По дням
                   </span>
-                  <span onClick={() => this.setState({ selectRevenue: true })}>
-                    За месяц
+                  <span
+                    onClick={() => this.setState({ selectRevenue: "week" })}
+                  >
+                    По неделям
                   </span>
-                  <span>За год</span>
+                  <span
+                    onClick={() => this.setState({ selectRevenue: "month" })}
+                  >
+                    По месяцам
+                  </span>
                 </div>
-                {this.state.selectRevenue ? (
+                {this.state.selectRevenue === "day" ? (
+                  <BarCharts />
+                ) : this.state.selectRevenue === "week" ? (
                   <LineCharts
                     // data={sum} names={names}
                     name="Прибыль за месяц"
                     type="line"
                   />
-                ) : null
-                // <BarCharts />
-                }
+                ) : this.state.selectRevenue === "month" ? (
+                  <Graphics
+                    // data={sum} names={names}
+                    names={[
+                      "Январь",
+                      "Февраль",
+                      "Март",
+                      "Апрель",
+                      "Май",
+                      "Июнь",
+                      "Июль",
+                      "Август",
+                      "Сентябрь",
+                      "Октябрь",
+                      "Ноябрь",
+                      "Декабрь"
+                    ]}
+                    name="Прибыль за месяц"
+                    type="line"
+                    data={[
+                      254543,
+                      252853,
+                      254534,
+                      258535,
+                      253852,
+                      254434,
+                      253523,
+                      253921,
+                      255453,
+                      254023,
+                      253535,
+                      254321
+                    ]}
+                  />
+                ) : null}
               </div>
 
               <TopMeals name="Топ блюд" />

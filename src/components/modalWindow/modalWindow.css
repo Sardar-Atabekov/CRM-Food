@@ -49,3 +49,17 @@
     background: red;
     margin-right: 20px;
 }
+
+.LogOut {
+    width: 1600px !important;
+    text-align: center;
+}
+
+.LogOut .modalWindow {
+    margin-left: 500px;
+}
+
+
+.cookPage .LogOut .modalWindow {
+    margin-left: 0;
+}

@@ -5,6 +5,7 @@ import "./cook.css";
 import Order from "./Order.js";
 import { API } from "./../requests";
 import Loading from "./../loading/loading";
+import LogOut from "./../modalWindow/LogOut";
 const DEFAULT_QUERY = "/cook/getActiveOrders";
 
 class CookPage extends Component {
@@ -60,16 +61,19 @@ class CookPage extends Component {
               <Link
                 to={"/"}
                 className="menuBtn exitBtn"
-                onClick={e => {
+                onClick={(e) => {
                   e.preventDefault();
-                  localStorage.removeItem("token");
-                  console.log(this.props);
-                  window.location.href = "/";
+                  this.setState({ LogOutModal: true });
                 }}
               >
                 Выйти
               </Link>
             </div>
+            {this.state.LogOutModal ? (
+              <LogOut
+                logOutStatus={() => this.setState({ LogOutModal: false })}
+              />
+            ) : null}
             <div className="wrapperCook">
               {data.map(order => (
                 <Order order={order} key={order.orderId} />

@@ -3,7 +3,7 @@ import React from "react";
 export default class ModalWindow extends React.Component {
   render() {
     return (
-      <div className="modalWrapper">
+      <div className="modalWrapper LogOut">
         <div className="modalWindow">
           <h2>Вы точно хотите выйти?</h2>
           <button
@@ -18,7 +18,6 @@ export default class ModalWindow extends React.Component {
           <button
             className="noBtn"
             onClick={() => {
-              console.log(this.props.LogOutModal);
               this.props.logOutStatus(false);
             }}
           >

@@ -47,7 +47,7 @@ class Graphics extends Component {
     // });
     var dataFirst = {
       label: "За текущий месяц",
-      data: [0, 59, 75, 20, 20],
+      data: [23624, 59213, 75123, 61230, 34540],
       lineTension: 0.3,
       backgroundColor: [
         // "rgb(60, 180, 100)",
@@ -62,7 +62,7 @@ class Graphics extends Component {
 
     var dataSecond = {
       label: "За прошлый месяц",
-      data: [20, 15, 60, 60, 35]
+      data: [23507, 18253, 50124, 47535, 54335]
       // backgroundColor: [
       //   "rgba(0,123,255,1)",
       //   "rgba(54, 162, 235, 0.6)",

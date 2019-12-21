@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import LogOut from "../modalWindow/LogOut";
+import LogOut from "../modalWindow/LogOut";
 import "./navigation.css";
 import neobisLogo from "./../images/CRM Cafe.svg";
 class Navigation extends Component {
@@ -59,30 +59,11 @@ class Navigation extends Component {
             this.setState({ LogOutModal: true });
           }}
         >
-          {this.state.LogOutModal ? (
-            <div className="modalWrapper">
-              <div className="modalWindow">
-                <h2>Вы точно хотите выйти?</h2>
-                <button
-                  className="yesBtn"
-                  onClick={() => {
-                    localStorage.removeItem("token");
-                    window.location.href = "/";
-                  }}
-                >
-                  Да
-                </button>
-                <button
-                  className="noBtn"
-                  onClick={() => this.setState({ LogOutModal: false })}
-                >
-                  Нет
-                </button>
-              </div>
-            </div>
-          ) : null}
           Выйти
         </div>
+        {this.state.LogOutModal ? (
+          <LogOut logOutStatus={() => this.setState({ LogOutModal: false })} />
+        ) : null}
       </nav>
     );
   }
