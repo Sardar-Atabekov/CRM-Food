@@ -1,8 +1,8 @@
 let API = "https://neobiscrmfood.herokuapp.com/api";
 
-if (navigator.serviceWorker) {
-  navigator.serviceWorker.register("/offline.html");
-}
+// if (navigator.serviceWorker) {
+//   navigator.serviceWorker.register("/offline.html");
+// }
 let token;
 if (localStorage.getItem("token")) {
   token = localStorage.getItem("token");
