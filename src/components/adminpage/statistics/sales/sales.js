@@ -15,6 +15,7 @@ import Total from "./totals";
 import "./sales.css";
 
 class Sales extends Component {
+  _isMounted = false;
   constructor(props) {
     super(props);
     this.state = {
@@ -23,10 +24,19 @@ class Sales extends Component {
     };
   }
   async componentDidMount() {
-    getData(`${API}/Admin/totalSumsMonth`).then(data => {
-      this.setState({ data });
-    });
+    this._isMounted = true;
+    if (this._isMounted) {
+      this.setState({ isLoading: false });
+      getData(`${API}/Admin/totalSumsMonth`).then(data => {
+        this.setState({ data });
+      });
+    }
   }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+  
   render() {
     console.log(this.state);
     return (
@@ -58,8 +68,8 @@ class Sales extends Component {
                     По месяцам
                   </span>
                 </div>
-                {this.state.selectRevenue === "day" ? // <BarCharts />
-                null : this.state.selectRevenue === "week" ? (
+                {this.state.selectRevenue === "day" ? null : this.state // <BarCharts />
+                    .selectRevenue === "week" ? (
                   <LineCharts
                     // data={sum} names={names}
                     name="Прибыль по месяцам"

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getData, API } from "../../requests";
+import { getData, postData, API } from "../../requests";
 import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
@@ -7,6 +7,7 @@ import NamePage from "../blocks/namePage";
 import calendar from "./../../images/calendar.svg";
 import { TodayDate } from "./../calendar/time";
 // import { TimeDate } from "../calendar/time";
+import ModalWindow from "./../../modalWindow/modalWindow";
 import Loading from "../../loading/loading";
 import "./bookingTable.css";
 class ListArmoredTables extends Component {
@@ -16,9 +17,10 @@ class ListArmoredTables extends Component {
       data: [],
       isLoading: true,
       TodayDate: TodayDate(),
-      people: 2,
+      menQuantity: 2,
       tableId: null
     };
+    this.handleSumbit = this.handleSumbit.bind(this);
   }
 
   async componentDidMount() {
@@ -27,10 +29,39 @@ class ListArmoredTables extends Component {
     });
   }
 
+  handleSumbit(event) {
+    event.preventDefault();
+    let bookTable = this.state,
+      target = event.target;
+    bookTable.bookDate = this.state.TodayDate;
+
+    if (bookTable.tableId) {
+      postData("/Admin/bookTable/", bookTable).then(res => {
+        console.log(res);
+        if (res.status !== "error" && res.status !== 400) {
+          this.setState({
+            message: "Стол забронирован!",
+            status: true
+          });
+          target.reset();
+        } else {
+          this.setState({
+            message: res.message ? res.message : "Проверьте данные",
+            status: true
+          });
+        }
+      });
+    } else {
+      this.setState({
+        message: "Выберите стол!",
+        status: true
+      });
+    }
+  }
+
   render() {
-    let { data, people, tableId } = this.state;
-    console.log(data, people);
-    console.log(tableId);
+    let { data, menQuantity, tableId } = this.state;
+    console.log(this.state);
     return (
       <div className="wrapper">
         <aside className="navBlock">
@@ -47,7 +78,7 @@ class ListArmoredTables extends Component {
               <div className="functionPage">
                 <NamePage name="Бронирование" />
               </div>
-              <form className="listArmoredTables">
+              <form className="listArmoredTables" onSubmit={this.handleSumbit}>
                 <div className="booking">
                   <div className="bookingItem">
                     <h2 className="bookingTitle">Дата брони</h2>
@@ -70,8 +101,9 @@ class ListArmoredTables extends Component {
                       <span
                         className="prev"
                         onClick={() => {
-                          people = people > 1 ? people - 1 : people;
-                          this.setState({ people });
+                          menQuantity =
+                            menQuantity > 1 ? menQuantity - 1 : menQuantity;
+                          this.setState({ menQuantity });
                         }}
                       >
                         -
@@ -80,15 +112,15 @@ class ListArmoredTables extends Component {
                         className="peopleQuantity"
                         type="number"
                         name="menQuantity"
-                        value={this.state.people}
+                        value={this.state.menQuantity}
                         disabled
                       />
 
                       <span
                         className="next"
                         onClick={() => {
-                          people += 1;
-                          this.setState({ people });
+                          menQuantity += 1;
+                          this.setState({ menQuantity });
                         }}
                       >
                         +
@@ -113,20 +145,41 @@ class ListArmoredTables extends Component {
                   </ul>
                 </div>
                 <div className="clientInfo">
-                  <input className="" placeholder="Имя клиента" />
                   <input
                     className=""
+                    placeholder="Имя клиента"
+                    required
+                    onChange={e =>
+                      this.setState({ clientName: e.target.value })
+                    }
+                  />
+                  <input
+                    className=""
+                    onChange={e =>
+                      this.setState({ phoneNumber: e.target.value })
+                    }
                     placeholder="+996"
+                    required
                     pattern="^\(?\+([9]{2}?[6])\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})[-. ]?([0-9]{3})$"
                   />
                 </div>
                 <div className="btnBooking">
-                  <button className="addCategoryBtn">Забронировать</button>{" "}
+                  <input
+                    className="addCategoryBtn"
+                    type="submit"
+                    value="Забронировать"
+                  />{" "}
                 </div>
               </form>
             </main>
           )}
-
+          {this.state.status ? (
+            <ModalWindow
+              message={this.state.message}
+              statusModal={() => this.setState({ status: false })}
+              status={this.state.status}
+            />
+          ) : null}
           <footer className="main-footer">
             <Footer />
           </footer>

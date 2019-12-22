@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getData, API } from "../requests.js";
+import { getData, API } from "../../requests.js";
 
 class Category extends Component {
   constructor(props) {
