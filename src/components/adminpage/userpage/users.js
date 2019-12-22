@@ -108,12 +108,12 @@ class waiterPage extends Component {
                     data.map(user => (
                       <tr key={user.id}>
                         <td>
-                          <Link
+                          <div
                             className="sub-title"
                             to={{ pathname: `/user/${user.id}/` }}
                           >
                             {user.firstName + " " + user.lastName}
-                          </Link>
+                          </div>
                         </td>
 
                         <td>

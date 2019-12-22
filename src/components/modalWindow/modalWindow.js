@@ -4,7 +4,7 @@ import "./modalWindow.css";
 
 export default class ModalWindow extends React.Component {
   render() {
-    setTimeout(() => this.props.statusModal(false), 1500);
+    setTimeout(() => this.props.statusModal(false), 2000);
     return (
       <div className="modalWrapper">
         <div className="modalWindow">

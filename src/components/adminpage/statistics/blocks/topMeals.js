@@ -40,8 +40,8 @@ class TopMeals extends Component {
     
     if (data) {
       data = data.sort((a, b) => b.sum - a.sum);
-      sum = [...data.map((item, index) => (index < 8 ? item.sum : false))];
-      names = [...data.map((item, index) => (index < 8 ? item.name : false))];
+      sum = [...data.map((item, index) => (index < 15 ? item.sum : false))];
+      names = [...data.map((item, index) => (index < 15 ? item.name : false))];
     }
     return (
       <div className="topMeals">

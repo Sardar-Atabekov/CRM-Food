@@ -63,7 +63,7 @@ class Sales extends Component {
                 ) : this.state.selectRevenue === "week" ? (
                   <LineCharts
                     // data={sum} names={names}
-                    name="Прибыль за месяц"
+                    name="Прибыль по месяцам"
                     type="line"
                   />
                 ) : this.state.selectRevenue === "month" ? (
@@ -83,7 +83,7 @@ class Sales extends Component {
                       "Ноябрь",
                       "Декабрь"
                     ]}
-                    name="Прибыль за месяц"
+                    name="Прибыль по месяцам"
                     type="line"
                     data={[
                       254543,

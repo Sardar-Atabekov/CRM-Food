@@ -31,7 +31,11 @@ class addMeal extends Component {
 
     let target = event.target;
     postData("/meals/", data).then(res => {
-      if (res.status !== "error" && res.status !== 400) {
+      console.log(res);
+      if (
+        res.status !== "error" &&
+        res.status !== 400
+      ) {
         this.setState({
           message: "Данные успешно добавлены!",
           status: true
@@ -39,7 +43,7 @@ class addMeal extends Component {
         target.reset();
       } else {
         this.setState({
-          message: res.message,
+          message: res.message ,
           status: true
         });
       }
@@ -118,12 +122,23 @@ class addMeal extends Component {
                       onChange={this.handleInputChange}
                     />
                   </div>
+                  <div className="form-group">
+                    <label htmlFor="imageURL">Изображения</label>
+                    <input
+                      required
+                      name="imageURL"
+                      className="form-control"
+                      id="imageURL"
+                      value={this.state.numberOfGuests}
+                      onChange={this.handleInputChange}
+                    />
+                  </div>
                 </div>
-                <div className="userProfilePicture">
+                {/* <div className="userProfilePicture">
                   <label htmlFor="userProfilePicture" className="text-center">
                     Изображения
                   </label>
-                  <div className="user__avatar">
+                  {/* <div className="user__avatar">
                     <img
                       src="https://www.chatelaine.com/wp-content/uploads/2019/01/canada-new-food-guide-2019.jpeg"
                       alt="DishPicture"
@@ -135,9 +150,9 @@ class addMeal extends Component {
                         className="d-none"
                       />
                     </label>
-                  </div>
-                </div>
-                <div className="commentBlock">
+                  </div> */}
+                {/* </div> */}
+                <div className="commentBlock"> 
                   <label htmlFor="description">Описания</label>
                   <br />
                   <textarea

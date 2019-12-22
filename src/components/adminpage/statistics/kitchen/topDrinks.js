@@ -20,8 +20,8 @@ class TopDrinks extends Component {
     let sum, names;
     if (bar) {
       bar = bar.sort((a, b) => b.count - a.count);
-      sum = [...bar.map((item, index) => (index < 8 ? item.count : false))];
-      names = [...bar.map((item, index) => (index < 8 ? item.name : false))];
+      sum = [...bar.map((item, index) => (index < 15 ? item.count : false))];
+      names = [...bar.map((item, index) => (index < 15 ? item.name : false))];
     }
     return (
       <div className="topMeals">
