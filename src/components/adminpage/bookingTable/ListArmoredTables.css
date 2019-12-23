@@ -3,7 +3,7 @@
     border-radius: 30px;
     width: 80%;
     min-height: 500px;
-    margin: 30px auto 20px 100px;
+    margin: 30px auto 50px 100px;
     box-shadow: 0 2px 0 rgba(90, 97, 105, .11), 0 4px 8px rgba(90, 97, 105, .12), 0 10px 10px rgba(90, 97, 105, .06), 0 7px 70px rgba(90, 97, 105, .1);
 }
 
@@ -71,11 +71,11 @@ input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
-.listArmoredTables .listTables {
+.bookingTables .listTables {
     margin-bottom: 40px;
 }
 
-.listArmoredTables .listTables li {
+.bookingTables .listTables li {
     margin-right: 15px;
     height: 100px;
     width: 100px;

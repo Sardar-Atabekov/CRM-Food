@@ -75,7 +75,7 @@ class ListArmoredTables extends Component {
           {this.state.isLoading ? (
             <Loading />
           ) : (
-            <main className="waiterContent bookingTables">
+            <main className="waiterContent">
               <div className="functionPage">
                 <NamePage name="Бронирование" />
               </div>

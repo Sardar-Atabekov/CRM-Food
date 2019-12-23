@@ -118,7 +118,10 @@ class MealsPage extends Component {
                             src={deleteIcon}
                             alt="deleteIcon"
                             onClick={event => {
-                              this.setState({ deleteModal: true });
+                              this.setState({
+                                deleteModal: true,
+                                mealId: meal.id
+                              });
                               this.setState({
                                 target: event.target.parentNode
                               });
@@ -131,7 +134,7 @@ class MealsPage extends Component {
                               deleteStatus={() => {
                                 this.setState({ deleteModal: false });
                               }}
-                              url={`/meals/${meal.id}`}
+                              url={`/meals/${this.state.mealId}`}
                             />
                           ) : null}
                         </td>

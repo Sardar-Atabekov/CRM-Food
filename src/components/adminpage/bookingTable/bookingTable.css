@@ -37,6 +37,7 @@
     padding-left: 60px;
     margin-top: 30px;
     flex-wrap: wrap;
+    margin-bottom: 0px;
 }
 
 .listTables li {
@@ -50,6 +51,7 @@
     text-align: center;
     color: #fff;
     margin-right: 25px;
+    margin-bottom: 20px;
     padding-top: 15px;
 }
 

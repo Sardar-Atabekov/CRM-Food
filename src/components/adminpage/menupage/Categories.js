@@ -189,7 +189,10 @@ class Categories extends Component {
                       className="deleteBtn"
                       value="Удалить"
                       onClick={event => {
-                        this.setState({ deleteModal: true });
+                        this.setState({
+                          deleteModal: true,
+                          categoryId: item.id
+                        });
                         this.setState({
                           target: event.target
                         });
@@ -202,7 +205,7 @@ class Categories extends Component {
                         deleteStatus={() => {
                           this.setState({ deleteModal: false });
                         }}
-                        url={`/Categories/${item.id}`}
+                        url={`/Categories/${this.state.categoryId}`}
                       />
                     ) : null}
                   </div>

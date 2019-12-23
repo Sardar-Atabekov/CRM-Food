@@ -141,7 +141,10 @@ class waiterPage extends Component {
                               src={deleteIcon}
                               alt="deleteIcon"
                               onClick={event => {
-                                this.setState({ deleteModal: true });
+                                this.setState({
+                                  deleteModal: true,
+                                  userId: user.id
+                                });
                                 this.setState({
                                   target: event.target.parentNode.parentNode
                                 });
@@ -156,7 +159,7 @@ class waiterPage extends Component {
                               deleteStatus={() => {
                                 this.setState({ deleteModal: false });
                               }}
-                              url={`/users/DismissUser/${user.id}`}
+                              url={`/users/DismissUser/${this.state.userId}`}
                             />
                           ) : null}
                         </td>

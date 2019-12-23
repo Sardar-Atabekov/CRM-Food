@@ -37,7 +37,7 @@ class Tables extends Component {
       console.log(res);
       if (res.status !== "error" && res.status !== 400) {
         this.setState({
-          message: "Данные успешно изменены!",
+          message: "Данные успешно добавлена!",
           modalStatus: true
         });
       } else {
@@ -139,7 +139,7 @@ class Tables extends Component {
                       className="deleteBtn"
                       value="Удалить"
                       onClick={event => {
-                        this.setState({ deleteModal: true });
+                        this.setState({ deleteModal: true, tableId: item.id });
                         this.setState({
                           target: event.target
                         });
@@ -152,7 +152,7 @@ class Tables extends Component {
                         deleteStatus={() => {
                           this.setState({ deleteModal: false });
                         }}
-                        url={`/tables/${item.id}`}
+                        url={`/tables/${this.state.tableId}`}
                       />
                     ) : null}
                   </div>
