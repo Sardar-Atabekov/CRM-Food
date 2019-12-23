@@ -147,7 +147,7 @@ class Tables extends Component {
                     />
                     {this.state.deleteModal ? (
                       <DeleteModal
-                        message={"стола"}
+                        message={"удалить стола"}
                         target={this.state.target}
                         deleteStatus={() => {
                           this.setState({ deleteModal: false });

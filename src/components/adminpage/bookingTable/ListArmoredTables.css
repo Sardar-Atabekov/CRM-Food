@@ -35,7 +35,7 @@
 
 .bookingTable {
     margin-top: 10px;
-    margin-right: 60px;
+    margin-right: 35px;
     background: green;
     height: 40px;
     color: #fff;
@@ -69,4 +69,81 @@
 
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
+}
+
+.listArmoredTables .listTables {
+    margin-bottom: 40px;
+}
+
+.listArmoredTables .listTables li {
+    margin-right: 15px;
+    height: 100px;
+    width: 100px;
+}
+
+.bookingsTable {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+
+.firstRow,
+.secondRow {
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+
+.listTables .clientInfo {
+    margin-left: 0;
+    width: 90%;
+}
+
+.firstRow span {
+    margin-left: 40px;
+    font-family: Avenir Next;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.firstRow input {
+    margin-top: 0;
+    background-image: url('./../../icons/person.svg');
+}
+
+.bookingsTable input {
+    background-repeat: no-repeat;
+    background-position: 6%;
+    padding-left: 55px;
+    background-size: auto;
+}
+
+.firstRow span:nth-child(2) {
+    margin-left: 45px;
+}
+
+.secondRow input:first-child {
+    background-image: url('./../../icons/phone.svg');
+}
+
+.secondRow input:nth-child(2) {
+    margin-left: 50px;
+}
+
+.secondRow .readOnly {
+    width: 108px;
+    text-align: center;
+    padding-left: 25px;
+    margin-left: 40px;
+    height: 35.5px !important;
+}
+
+.listTables .deleteBtn {
+    background: red;
+    width: 140px;
+    text-align: center;
+    padding-left: 30px;
+    padding-top: 10px;
+    margin-left: 50px;
 }

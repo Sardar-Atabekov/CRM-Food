@@ -6,7 +6,7 @@ import Footer from "../../block/footer.js";
 import NamePage from "../blocks/namePage";
 import calendar from "./../../images/calendar.svg";
 import { TodayDate } from "./../calendar/time";
-// import { TimeDate } from "../calendar/time";
+import moment from "moment";
 import ModalWindow from "./../../modalWindow/modalWindow";
 import Loading from "../../loading/loading";
 import "./bookingTable.css";
@@ -33,9 +33,10 @@ class ListArmoredTables extends Component {
     event.preventDefault();
     let bookTable = this.state,
       target = event.target;
-    bookTable.bookDate = this.state.TodayDate;
-
+    bookTable.bookDate = moment(this.state.TodayDate).format("YYYY-MM-DD");
+    console.log(bookTable.bookDate);
     if (bookTable.tableId) {
+      console.log(bookTable);
       postData("/Admin/bookTable/", bookTable).then(res => {
         console.log(res);
         if (res.status !== "error" && res.status !== 400) {

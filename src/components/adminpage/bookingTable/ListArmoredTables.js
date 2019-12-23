@@ -4,10 +4,10 @@ import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import NamePage from "../blocks/namePage";
+import DeleteModal from "./../../modalWindow/deleteModal";
 import { Link } from "react-router-dom";
 import calendar from "./../../images/calendar.svg";
-import { TodayDate } from "./../calendar/time";
-// import { TimeDate } from "../calendar/time";
+import { TodayDate, TimeHours } from "./../calendar/time";
 import Loading from "../../loading/loading";
 import "./ListArmoredTables.css";
 class ListArmoredTables extends Component {
@@ -29,7 +29,6 @@ class ListArmoredTables extends Component {
   render() {
     let { data } = this.state;
     console.log(data);
-    console.log();
     return (
       <div className="wrapper">
         <aside className="navBlock">
@@ -46,7 +45,7 @@ class ListArmoredTables extends Component {
               <div className="functionPage">
                 <NamePage name="Список бронированных столов" />
               </div>
-              <form className="listArmoredTables">
+              <div className="listArmoredTables">
                 <div className="booking">
                   <div className="bookingDate">
                     <input
@@ -63,8 +62,55 @@ class ListArmoredTables extends Component {
                     Забронировать
                   </Link>
                 </div>
-                <ul className="listTables"></ul>
-              </form>
+                <ul className="listTables">
+                  {data.map(booking => (
+                    <div key={booking.id} className="bookingsTable">
+                      <li>{booking.tableId}</li>
+                      <div className="clientInfo">
+                        <div className="firstRow">
+                          <input defaultValue={booking.clientName} readOnly />
+                          <span>Кол-во человек </span>
+                          <span>Время</span>
+                        </div>
+                        <div className="secondRow">
+                          <input defaultValue={booking.phoneNumber} readOnly />
+                          <input
+                            defaultValue={booking.menQuantity}
+                            readOnly
+                            className="readOnly"
+                          />
+                          <input
+                            defaultValue={TimeHours(booking.bookDate)}
+                            readOnly
+                            className="readOnly"
+                          />
+                          <input
+                            type="button"
+                            value="Снять бронь"
+                            className="deleteBtn"
+                            onClick={event => {
+                              this.setState({ deleteModal: true });
+                              this.setState({
+                                target: event.target
+                              });
+                            }}
+                          />
+                          {this.state.deleteModal ? (
+                            <DeleteModal
+                              message={"снять бронь"}
+                              target={this.state.target}
+                              deleteStatus={() => {
+                                this.setState({ deleteModal: false });
+                              }}
+                              url={`/deleteBook/${booking.id}`}
+                            />
+                          ) : null}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </ul>
+              </div>
             </main>
           )}
 
