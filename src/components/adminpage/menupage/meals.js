@@ -126,7 +126,7 @@ class MealsPage extends Component {
                           />
                           {this.state.deleteModal ? (
                             <DeleteModal
-                              message={"блюда"}
+                              message={"удалить блюда"}
                               target={this.state.target}
                               deleteStatus={() => {
                                 this.setState({ deleteModal: false });

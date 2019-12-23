@@ -8,7 +8,7 @@ export default class ModalWindow extends React.Component {
       <div className="modalWrapper">
         {!this.props.dismiss ? (
           <div className="modalWindow">
-            <h2>Вы точно хотите удалить {this.props.message}?</h2>
+            <h2>Вы точно хотите {this.props.message}?</h2>
             <button
               className="yesBtn"
               onClick={() => {

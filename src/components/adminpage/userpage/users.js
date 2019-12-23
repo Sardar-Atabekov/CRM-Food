@@ -150,7 +150,7 @@ class waiterPage extends Component {
                           </div>
                           {this.state.deleteModal ? (
                             <DeleteModal
-                              message={"сотрудника"}
+                              message={"уволить сотрудника"}
                               target={this.state.target}
                               dismiss="dismiss"
                               deleteStatus={() => {

@@ -18,6 +18,7 @@ function TimeHours(date) {
 
 function TimeDate(date) {
   let stillUtc = moment.utc(date);
+  console.log("Date format: ", date);
   let time = moment(stillUtc)
     .local()
     .format("DD.MM.YYYY, LT");

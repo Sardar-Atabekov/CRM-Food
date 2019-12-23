@@ -89,9 +89,12 @@ class ListArmoredTables extends Component {
                             value="Снять бронь"
                             className="deleteBtn"
                             onClick={event => {
-                              this.setState({ deleteModal: true });
                               this.setState({
-                                target: event.target
+                                deleteModal: true,
+                                id: booking.id
+                              });
+                              this.setState({
+                                target: event.target.parentNode.parentNode
                               });
                             }}
                           />
@@ -102,7 +105,7 @@ class ListArmoredTables extends Component {
                               deleteStatus={() => {
                                 this.setState({ deleteModal: false });
                               }}
-                              url={`/deleteBook/${booking.id}`}
+                              url={`/admin/deleteBook/${this.state.id}`}
                             />
                           ) : null}
                         </div>

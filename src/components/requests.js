@@ -75,7 +75,7 @@ async function deleteData(url) {
   })
     .then(res => {
       console.log("removed");
-      console.log(res.json());
+      console.log(res);
     })
     .catch(err => {
       console.error(err);
