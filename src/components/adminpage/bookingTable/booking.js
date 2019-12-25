@@ -5,18 +5,23 @@ import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import NamePage from "../blocks/namePage";
 import calendar from "./../../images/calendar.svg";
-import { TodayDate } from "./../calendar/time";
-import moment from "moment";
+// import { TodayDate } from "./../calendar/time";
+import DatePicker, { registerLocale } from "react-datepicker";
+import ru from "date-fns/locale/ru"; // the locale you want
+// register it with the name you want
+// import "bootstrap";
+// import moment from "moment";
 import ModalWindow from "./../../modalWindow/modalWindow";
 import Loading from "../../loading/loading";
 import "./bookingTable.css";
+registerLocale("ru", ru);
 class ListArmoredTables extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
       isLoading: true,
-      TodayDate: TodayDate(),
+      bookDate: new Date(),
       menQuantity: 2,
       tableId: null
     };
@@ -33,7 +38,7 @@ class ListArmoredTables extends Component {
     event.preventDefault();
     let bookTable = this.state,
       target = event.target;
-    bookTable.bookDate = moment(this.state.TodayDate).format("YYYY-MM-DD");
+    // bookTable.bookDate = moment(this.state.TodayDate).format("YYYY-MM-DD");
     console.log(bookTable.bookDate);
     if (bookTable.tableId) {
       console.log(bookTable);
@@ -61,7 +66,7 @@ class ListArmoredTables extends Component {
   }
 
   render() {
-    let { data, menQuantity, tableId } = this.state;
+    let { data, menQuantity, tableId, bookDate } = this.state;
     console.log(this.state);
     return (
       <div className="wrapper">
@@ -84,10 +89,21 @@ class ListArmoredTables extends Component {
                   <div className="bookingItem">
                     <h2 className="bookingTitle">Дата брони</h2>
                     <div className="bookingDate">
-                      <input
+                      {/* <input
                         className="bookingDateInput"
                         name="bookDate"
                         defaultValue={this.state.TodayDate}
+                      /> */}
+                      <DatePicker
+                        selected={bookDate}
+                        className="bookingDateInput"
+                        onChange={date => this.setState({ bookDate: date })}
+                        showTimeSelect
+                        timeFormat="HH:mm"
+                        timeIntervals={15}
+                        timeCaption="Время"
+                        locale="ru"
+                        dateFormat="d MMMM, HH:mm"
                       />
                       <img
                         src={calendar}
