@@ -19,20 +19,16 @@ if (localStorage.getItem("token")) {
 }
 
 async function getData(url) {
-  try {
-    let response = await fetch(`${url}`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        Authorization: "Bearer " + token,
-        "Content-Type": "application/json"
-      }
-    });
-    let body = await response.json();
-    return body;
-  } catch (err) {
-    console.log(err); // TypeError: failed to fetch
-  }
+  let response = await fetch(`${url}`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      Authorization: "Bearer " + token,
+      "Content-Type": "application/json"
+    }
+  });
+  let body = await response.json();
+  return body;
 }
 
 async function postData(url, data) {

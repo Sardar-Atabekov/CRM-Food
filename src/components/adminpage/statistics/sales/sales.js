@@ -7,7 +7,7 @@ import NamePage from "./../../blocks/namePage";
 import TopMeals from "../blocks/topMeals";
 import TopWaiter from "../blocks/topWaiter";
 import LineCharts from "./../graphics/lineCharts";
-// import BarCharts from "./../graphics/barCharts.js";
+import BarCharts from "./../graphics/barCharts.js";
 import Graphics from "./../graphics/graphics";
 import Total from "./totals";
 
@@ -68,7 +68,7 @@ class Sales extends Component {
                     По месяцам
                   </span>
                 </div>
-                {this.state.selectRevenue === "day" ? null : this.state // <BarCharts />
+                {this.state.selectRevenue === "day" ? <BarCharts /> : this.state // <BarCharts />
                     .selectRevenue === "week" ? (
                   <LineCharts
                     // data={sum} names={names}
