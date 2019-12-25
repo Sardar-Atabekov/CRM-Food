@@ -81,7 +81,7 @@ class ListArmoredTables extends Component {
             <Loading />
           ) : (
             <main className="waiterContent">
-              <div className="functionPage">
+              <div className="functionPage nameLeft">
                 <NamePage name="Бронирование" />
               </div>
               <form className="listArmoredTables" onSubmit={this.handleSumbit}>

@@ -12,7 +12,7 @@ function TimeHours(date) {
   let stillUtc = moment.utc(date);
   let time = moment(stillUtc)
     .local()
-    .format("LT");
+    .format("HH:mm");
   return time;
 }
 
