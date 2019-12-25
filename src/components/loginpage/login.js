@@ -43,6 +43,8 @@ class LoginPage extends Component {
         this.props.history.push(`/cook`);
       } else if (+res.role === 4) {
         this.props.history.push(`/barmen`);
+      } else if (+res.role === 3) {
+        this.props.history.push(`/waiter`);
       }
     }
   }

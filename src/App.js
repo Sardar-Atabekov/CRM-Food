@@ -17,6 +17,7 @@ import Traffic from "./components/adminpage/statistics/orders/order";
 import Categories from "./components/adminpage/menupage/Categories.js";
 import KitchenPage from "./components/adminpage/statistics/kitchen/kitchen.js";
 import CookMealChange from "./components/cookpage/statusMeals/changeMealStatus";
+import ListActiveOrders from "./components/waiterpage/listActiveOrders/listOrders";
 import BarmanMealChange from "./components/barmenpage/statusMeals/changeMealStatus";
 import ListArmoredTables from "./components/adminpage/bookingTable/ListArmoredTables";
 import HistoryTransaction from "./components/adminpage/transaction/HistoryTransaction.js";
@@ -49,6 +50,7 @@ class App extends Component {
           <Route path="/cook/menu" exact component={CookMealChange} />
           <Route path="/reservations" exact component={ListArmoredTables} />
           <Route path="/booking" exact component={Booking} />
+          <Route path="/waiter" exact component={ListActiveOrders}/>
           <Route path="*" exact component={NotFound} />
         </Switch>
       </React.Fragment>
