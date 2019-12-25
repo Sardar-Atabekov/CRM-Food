@@ -135,6 +135,25 @@ function registerValidSW(swUrl, config) {
     });
 }
 
+self.addEventListener('install', e => {
+  e.waitUntil(
+    // после установки service worker
+    // открыть новый кэш
+    caches.open('my-pwa-cache').then(cache => {
+      // добавляем все URL ресурсов, которые хотим закэшировать
+      return cache.addAll([
+        '/',
+        '/build/index.html',
+        '/build/static/css/main.f798c97a.chunk.css',
+        '/images/doggo.jpg',
+        './../build/static/js/2.ab09e6e4.chunk.js',
+        './../build/static/js/main.81ca0a41.chunk.js',
+        './../build/static/js/runtime-main.2c658fb8.js'
+      ]);
+    })
+  );
+ });
+
 function checkValidServiceWorker(swUrl, config) {
   // Check if the service worker can be found. If it can't reload the page.
   fetch(swUrl)
