@@ -156,7 +156,7 @@ class ListArmoredTables extends Component {
                         }
                         onClick={() => this.setState({ tableId: table.id })}
                       >
-                        {table.id}
+                        {table.name}
                       </li>
                     ))}
                   </ul>

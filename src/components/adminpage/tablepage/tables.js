@@ -101,7 +101,7 @@ class Tables extends Component {
           ) : (
             <main className="categoriesContent tablesContent">
               <div className="addCategories">
-                <input type="text" className="addCategory" />
+                <input type="number" className="addCategory" />
                 <button className="addCategoryBtn" onClick={this.addTableClick}>
                   Добавить
                 </button>
@@ -115,9 +115,9 @@ class Tables extends Component {
                       alt={item.category}
                     />
                     <input
-                      type="text"
                       className="input"
                       defaultValue={item.name}
+                      type="number"
                     />
                     <select
                       id="name"
@@ -133,6 +133,7 @@ class Tables extends Component {
                       className="changeBtn"
                       onClick={this.changeTableClick}
                       value="Изменить"
+                      
                     />
                     <input
                       type="button"
