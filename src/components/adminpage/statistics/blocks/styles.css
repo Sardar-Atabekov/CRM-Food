@@ -105,3 +105,10 @@
     padding: 1rem 1rem;
     border: 1px solid #e6e5e8;
 }
+
+
+.lastOrders {
+    flex: 1;
+    margin-right: 25px;
+    margin-left: 25px;
+}

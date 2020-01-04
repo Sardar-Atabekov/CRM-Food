@@ -50,7 +50,7 @@ class App extends Component {
           <Route path="/cook/menu" exact component={CookMealChange} />
           <Route path="/reservations" exact component={ListArmoredTables} />
           <Route path="/booking" exact component={Booking} />
-          <Route path="/waiter" exact component={ListActiveOrders}/>
+          <Route path="/waiter" exact component={ListActiveOrders} />
           <Route path="*" exact component={NotFound} />
         </Switch>
       </React.Fragment>

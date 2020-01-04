@@ -6,6 +6,7 @@ import { API, getData } from "./../../../requests";
 import NamePage from "./../../blocks/namePage";
 import TopMeals from "../blocks/topMeals";
 import TopWaiter from "../blocks/topWaiter";
+import LastFinishedOrders from "../blocks/lastOrders";
 import LineCharts from "./../graphics/lineCharts";
 // import BarCharts from "./../graphics/barCharts.js";
 import Graphics from "./../graphics/graphics";
@@ -36,7 +37,7 @@ class Sales extends Component {
   componentWillUnmount() {
     this._isMounted = false;
   }
-  
+
   render() {
     console.log(this.state);
     return (
@@ -114,6 +115,10 @@ class Sales extends Component {
 
               <TopMeals name="Топ блюд" />
               <TopWaiter name="Топ официантов" />
+              <LastFinishedOrders
+                name="Последние завершенные заказы"
+                url="lastFinishedOrders" 
+               />
               {/* <TopWaiterGraphics /> */}
             </div>
           </main>
