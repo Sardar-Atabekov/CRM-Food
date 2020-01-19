@@ -9,6 +9,7 @@ import TopWaiter from "./topWaiter";
 import { API, getData } from "./../../../requests";
 import Loading from "../../../loading/loading.js";
 import GraphicArt from "./../graphics/graphics";
+import LastOrders from "./../blocks//lastOrders";
 class Sales extends Component {
   constructor(props) {
     super(props);
@@ -54,6 +55,7 @@ class Sales extends Component {
                 <GraphicArt data={sum} names={names} name="Топ блюд" />
                 <TopMeals name="Топ блюд" />
                 <TopWaiter name="Топ официантов" />
+                <LastOrders name="Последние заказы" url="lastOrders" />
               </div>
             </main>
           ) : (

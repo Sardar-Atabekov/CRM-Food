@@ -16,6 +16,7 @@ class Category extends Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <select className="select" name="categoryId">
         {this.state.category &&

@@ -91,7 +91,7 @@ class MealsPage extends Component {
                           </Link>
                         </td>
 
-                        <td>{meal.category}</td>
+                        <td>{meal.categoryName}</td>
                         <td>
                           <label className="switch">
                             <input
@@ -100,7 +100,7 @@ class MealsPage extends Component {
                                 putData(`/admin/changeMealStatus/${meal.id}`);
                               }}
                               defaultChecked={
-                                meal.status === "Have" ? true : false
+                                meal.mealStatus === "Have" ? true : false
                               }
                             />
                             <span className="slider round"></span>

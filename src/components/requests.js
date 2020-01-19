@@ -1,4 +1,4 @@
-let API = "https://neobiscrmfood.herokuapp.com/api";
+let API = "http://crmfood.neobis.kg/api";
 
 // if (navigator.serviceWorker) {
 //   navigator.serviceWorker.register("/offline.html");
@@ -32,7 +32,7 @@ async function getData(url) {
 }
 
 async function postData(url, data) {
-  let req = await fetch(`https://neobiscrmfood.herokuapp.com/api${url}`, {
+  let req = await fetch(`${API}${url}`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -47,7 +47,7 @@ async function postData(url, data) {
 
 async function putData(url, data) {
   console.log(JSON.stringify(data));
-  let req = await fetch(`https://neobiscrmfood.herokuapp.com/api${url}`, {
+  let req = await fetch(`${API}${url}`, {
     method: "PUT",
     headers: {
       Accept: "application/json",
@@ -61,7 +61,7 @@ async function putData(url, data) {
 }
 
 async function deleteData(url) {
-  await fetch(`https://neobiscrmfood.herokuapp.com/api${url}`, {
+  await fetch(`${API}${url}`, {
     method: "DELETE",
     headers: {
       Accept: "application/json",

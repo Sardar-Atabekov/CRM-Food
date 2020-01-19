@@ -113,7 +113,7 @@ class Categories extends Component {
 
   render() {
     let data = this.state.data.length > 0 ? this.state.data : this.state.body;
-
+    console.log(data);
     return (
       <div className="wrapper">
         <aside className="navBlock">

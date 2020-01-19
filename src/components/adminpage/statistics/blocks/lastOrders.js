@@ -17,6 +17,7 @@ class LastOrders extends Component {
   }
   render() {
     let { data } = this.state;
+    console.log(data);
     return (
       <div className="topMeals lastOrders">
         <div className="header">
