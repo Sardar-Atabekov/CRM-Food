@@ -12,11 +12,11 @@ class TopMeals extends Component {
     };
   }
   async componentDidMount() {
-    getData(`${API}/Admin/topMeals`).then(body => {
-      this.setState({ bar: body });
+    getData(`${API}/top/topMeals`).then(bar => {
+      this.setState({ bar });
     });
-    getData(`${API}/Admin/topDrinks`).then(body => {
-      this.setState({ kitchen: body });
+    getData(`${API}/top/topDrinks`).then(kitchen => {
+      this.setState({ kitchen});
     });
   }
   render() {

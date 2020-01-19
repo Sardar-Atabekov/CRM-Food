@@ -11,7 +11,7 @@ class LastOrders extends Component {
   }
 
   async componentDidMount() {
-    getData(`${API}/Admin/${this.props.url}`).then(data => {
+    getData(`${API}/Statistic/${this.props.url}`).then(data => {
       this.setState({ data });
     });
   }

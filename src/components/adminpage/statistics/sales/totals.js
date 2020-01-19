@@ -15,7 +15,7 @@ class Total extends Component {
   }
 
   async componentDidMount() {
-    getData(`${API}/Admin/totalSums`).then(body => {
+    getData(`${API}/Statistic/totalSums`).then(body => {
       this.setState({ data: body });
     });
   }

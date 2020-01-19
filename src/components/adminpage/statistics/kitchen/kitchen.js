@@ -22,7 +22,7 @@ class KitchenPage extends Component {
   }
 
   async componentDidMount() {
-    getData(`${API}/Admin/kitchenSumStatistics`).then(body => {
+    getData(`${API}/Statistic/kitchenSum`).then(body => {
       this.setState({ data: body, isLoading: true });
     });
   }

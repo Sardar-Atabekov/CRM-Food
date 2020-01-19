@@ -10,7 +10,7 @@ class TotalSum extends Component {
   }
   async componentDidMount() {
     getData(
-      `${API}/Admin/kitchenTotalSums`
+      `${API}/Statistic/kitchenTotalSums`
     ).then(data => {
       console.log(data);
       this.setState({ data });

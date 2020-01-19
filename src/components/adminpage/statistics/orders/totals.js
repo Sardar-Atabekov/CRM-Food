@@ -9,7 +9,7 @@ class Total extends Component {
     };
   }
   async componentDidMount() {
-    getData(`${API}/Admin/totalOrders`).then(body => {
+    getData(`${API}/Statistic/totalOrders`).then(body => {
       this.setState({ data: body });
     });
   }

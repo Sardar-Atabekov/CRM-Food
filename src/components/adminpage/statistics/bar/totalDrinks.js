@@ -9,7 +9,7 @@ class TotalBar extends Component {
     };
   }
   async componentDidMount() {
-    getData(`${API}/Admin/barTotalMeals`).then(body => {
+    getData(`${API}/Statistic/barTotalMeals`).then(body => {
       this.setState({ data: body });
     });
   }

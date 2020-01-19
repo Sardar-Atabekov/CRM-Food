@@ -10,7 +10,7 @@ class TopWaiter extends Component {
     };
   }
   async componentDidMount() {
-    getData(`${API}/Admin/topWaitersBarSums`).then(body => {
+    getData(`${API}/top/topWaitersBarSums`).then(body => {
       this.setState({ data: body });
     });
   }

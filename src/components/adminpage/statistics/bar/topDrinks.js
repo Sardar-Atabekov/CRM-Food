@@ -13,7 +13,7 @@ class TopDrinks extends Component {
     };
   }
   async componentDidMount() {
-    getData(`${API}/Admin/topDrinks`).then(body => {
+    getData(`${API}/top/topDrinks`).then(body => {
       this.setState({ bar: body, isLoading: false });
     });
   }

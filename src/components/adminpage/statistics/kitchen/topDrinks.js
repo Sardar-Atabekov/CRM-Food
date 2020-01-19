@@ -11,7 +11,7 @@ class TopDrinks extends Component {
     };
   }
   async componentDidMount() {
-    getData(`${API}/Admin/topMeals`).then(body => {
+    getData(`${API}/top/topMeals`).then(body => {
       this.setState({ bar: body });
     });
   }

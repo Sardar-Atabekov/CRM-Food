@@ -9,7 +9,7 @@ class TotalSum extends Component {
     };
   }
   async componentDidMount() {
-    getData(`${API}/Admin/barTotalSums`).then(body => {
+    getData(`${API}/Statistic/barTotalSums`).then(body => {
       this.setState({ data: body });
     });
   }

@@ -28,7 +28,7 @@ class Sales extends Component {
     this._isMounted = true;
     if (this._isMounted) {
       this.setState({ isLoading: false });
-      getData(`${API}/Admin/totalSumsMonth`).then(data => {
+      getData(`${API}/Statistic/totalSumsMonth`).then(data => {
         this.setState({ data });
       });
     }
@@ -117,8 +117,8 @@ class Sales extends Component {
               <TopWaiter name="Топ официантов" />
               <LastFinishedOrders
                 name="Последние завершенные заказы"
-                url="lastFinishedOrders" 
-               />
+                url="lastFinishedOrders"
+              />
               {/* <TopWaiterGraphics /> */}
             </div>
           </main>

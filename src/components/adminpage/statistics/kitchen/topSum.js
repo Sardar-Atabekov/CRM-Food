@@ -10,7 +10,7 @@ class TopSum extends Component {
     };
   }
   async componentDidMount() {
-    getData(`${API}/Admin/kitchenSumStatistics`).then(bar => {
+    getData(`${API}/Statistic/kitchenSum`).then(bar => {
       this.setState({ bar });
     });
   }
