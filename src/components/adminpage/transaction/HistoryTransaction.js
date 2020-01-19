@@ -22,7 +22,7 @@ class HistoryTransaction extends Component {
   }
 
   async componentDidMount() {
-    getData(`${API}/Admin/transactionHistory`).then(body => {
+    getData(`${API}/Statistic/transactionHistory`).then(body => {
       this.setState({ data: body, isLoading: false });
     });
   }
