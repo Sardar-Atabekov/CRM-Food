@@ -17,7 +17,7 @@ class TopMeals extends Component {
     getData(`${API}/Statistic/barSums`).then(body => {
       this.setState({ bar: body });
     });
-    getData(`${API}/Statistic/kitchenSum`).then(body => {
+    getData(`${API}/Statistic/kitchenSums`).then(body => {
       this.setState({ kitchen: body });
     });
   }
