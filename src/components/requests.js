@@ -1,4 +1,4 @@
-let API = "http://crmfood.neobis.kg/api";
+let API = "http://crmfood.neobis.kg:8080/api";
 
 // if (navigator.serviceWorker) {
 //   navigator.serviceWorker.register("/offline.html");
