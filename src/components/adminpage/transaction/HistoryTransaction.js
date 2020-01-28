@@ -68,8 +68,8 @@ class HistoryTransaction extends Component {
                     <th>Итого</th>
                   </tr>
                   {data.map(order => (
-                    <tr key={order.orderId}>
-                      <td>{order.orderId}</td>
+                    <tr key={order.id}>
+                      <td>{order.id}</td>
                       <td>
                         <time dateTime={order.orderDate}>
                           {TimeDate(order.orderDate)}

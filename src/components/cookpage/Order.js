@@ -39,6 +39,7 @@ class Order extends Component {
                   name,
                   orderId,
                   quantityActive,
+                  mealId: id,
                   frozenModal: true
                 });
               }}
@@ -115,13 +116,26 @@ class Order extends Component {
           ) : null}
           <ul>
             {order.mealsList.map(meal =>
-              meal.orderedQuantity === 1 ? (
+              meal.orderedQuantity <= 0 ? (
                 <li
                   orderid={order.orderId}
                   className={checkClassName(meal.status)}
                   key={meal.mealId}
                 >
                   {`${meal.mealName} x${meal.orderedQuantity} `}
+                  <img
+                    src={frozen}
+                    alt="frozenImage"
+                    className="inCase"
+                    onClick={() => {
+                      this.setState({
+                        name: meal.mealName,
+                        orderId: order.orderId,
+                        quantityActive: 1,
+                        frozenModal: true
+                      });
+                    }}
+                  />
                   <img
                     mealid={meal.mealId}
                     onClick={e => {
