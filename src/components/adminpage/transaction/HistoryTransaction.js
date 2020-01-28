@@ -90,7 +90,7 @@ class HistoryTransaction extends Component {
                           <span
                             onClick={() => {
                               this.setState({ moreModal: true });
-                              this.setState({ id: order.orderId });
+                              this.setState({ id: order.id });
                               this.setState({ meals: order.mealOrders });
                             }}
                             className="moreMeals"
