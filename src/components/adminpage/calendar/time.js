@@ -18,11 +18,9 @@ function TimeHours(date) {
 
 function TimeDate(date) {
   let stillUtc = moment.utc(date);
-  console.log("UTC-0: ", date);
   let time = moment(stillUtc)
     .local()
     .format("DD.MM.YYYY, HH:mm");
-  console.log("Local Time", time);
   return time;
 }
 

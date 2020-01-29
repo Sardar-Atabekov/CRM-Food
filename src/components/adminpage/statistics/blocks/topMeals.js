@@ -23,6 +23,7 @@ class TopMeals extends Component {
   }
   render() {
     let { bar, kitchen } = this.state;
+    console.log("money", this.state);
     bar =
       bar &&
       bar.map(meal => {
@@ -37,12 +38,13 @@ class TopMeals extends Component {
       });
     let data = [...bar, ...kitchen].sort((a, b) => b.sum - a.sum);
     let sum, names;
-    
+
     if (data) {
       data = data.sort((a, b) => b.sum - a.sum);
       sum = [...data.map((item, index) => (index < 10 ? item.sum : false))];
       names = [...data.map((item, index) => (index < 10 ? item.name : false))];
     }
+    
     return (
       <div className="topMeals">
         <div className="header">

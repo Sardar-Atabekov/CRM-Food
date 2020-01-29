@@ -95,7 +95,7 @@ class Total extends Component {
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
-              <span>Средная прибыль</span>
+              <span>Средная выручка с заказа</span>
               <h6 className="totalSum">
                 {data && data.totalSumAverage
                   ? data.totalSumAverage.toFixed(2)

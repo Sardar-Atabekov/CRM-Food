@@ -50,7 +50,7 @@ class Sales extends Component {
             <Search />
           </header>
           <main className="salesContent">
-            <NamePage name="Прибыль" />
+            <NamePage name="Выручка" />
             <Total />
             <div className="statistics">
               <div className="selectRevenueBlock">
@@ -73,7 +73,7 @@ class Sales extends Component {
                     .selectRevenue === "week" ? (
                   <LineCharts
                     // data={sum} names={names}
-                    name="Прибыль по месяцам"
+                    name="Выручка по месяцам"
                     type="line"
                   />
                 ) : this.state.selectRevenue === "month" ? (
@@ -93,7 +93,7 @@ class Sales extends Component {
                       "Ноябрь",
                       "Декабрь"
                     ]}
-                    name="Прибыль по месяцам"
+                    name="Выручка по месяцам"
                     type="line"
                     data={[
                       254543,
