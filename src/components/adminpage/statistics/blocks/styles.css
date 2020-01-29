@@ -112,3 +112,12 @@
     margin-right: 25px;
     margin-left: 25px;
 }
+
+.lastOrders tr td {
+    padding: 10px 5px;
+}
+
+.text-center {
+    text-align: center;
+    padding: 5px;
+}

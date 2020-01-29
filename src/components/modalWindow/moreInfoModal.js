@@ -10,7 +10,8 @@ class HistoryTransaction extends Component {
           <div>
             {meals.map((meal, index) => (
               <div className="orderMeal" key={index}>
-                {meal.mealName} x{meal.orderedQuantity}
+                {meal.mealName ? meal.mealName : meal.name} x
+                {meal.orderedQuantity}
               </div>
             ))}
 

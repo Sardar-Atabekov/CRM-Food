@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { getData, API } from "../../../requests";
+import { TimeDate } from "./../../calendar/time";
+import MoreModal from "./../../../modalWindow/moreInfoModal";
 import "./styles.css";
 
 class LastOrders extends Component {
@@ -26,17 +28,41 @@ class LastOrders extends Component {
         <table>
           <thead>
             <tr>
-              <th>Детали</th>
-              <th>Статус</th>
+              <th>№</th>
+              <th>Время</th>
+              <th>Официант</th>
               <th>Блюда</th>
-              <th>Действия</th>
+              <th>Итого</th>
             </tr>
           </thead>
           <tbody>
             {data &&
               data.map(order => (
                 <tr key={order.orderId}>
-                  <td>fgfg</td>
+                  <td className="text-center">{order.orderId}</td>
+                  <td className="text-center">{TimeDate(order.orderDate)}</td>
+                  <td className="text-center">{order.waiterName}</td>
+                  <td className="text-center">
+                    {this.state.moreModal ? (
+                      <MoreModal
+                        id={this.state.id}
+                        meals={this.state.meals}
+                        setStatus={() => this.setState({ moreModal: false })}
+                      />
+                    ) : (
+                      <span
+                        onClick={() => {
+                          this.setState({ moreModal: true });
+                          this.setState({ id: order.orderId });
+                          this.setState({ meals: order.mealOrders });
+                        }}
+                        className="moreMeals"
+                      >
+                        Посмотреть
+                      </span>
+                    )}
+                  </td>
+                  <td className="text-center">{order.totalPrice}</td>
                 </tr>
               ))}
           </tbody>
