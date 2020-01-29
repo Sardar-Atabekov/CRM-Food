@@ -113,8 +113,14 @@
     margin-left: 25px;
 }
 
-.lastOrders tr td {
+.lastOrders table {
+    border-collapse: collapse;
+}
+
+.lastOrders tr td,
+.lastOrders tr th {
     padding: 10px 5px;
+    border-top: #e4e4e4 1px solid;
 }
 
 .text-center {

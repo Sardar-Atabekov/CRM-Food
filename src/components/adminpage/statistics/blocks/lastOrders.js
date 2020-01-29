@@ -62,7 +62,7 @@ class LastOrders extends Component {
                       </span>
                     )}
                   </td>
-                  <td className="text-center">{order.totalPrice}</td>
+                  <td className="text-center">{order.totalPrice} сом</td>
                 </tr>
               ))}
           </tbody>
