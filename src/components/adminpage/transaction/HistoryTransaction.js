@@ -21,6 +21,17 @@ class HistoryTransaction extends Component {
     };
   }
 
+  checkStatus(status) {
+    let res =
+      status === 0
+        ? "Активный"
+        : status === 1
+        ? "Неактивный"
+        : status === 2
+        ? "Кухня готова"
+        : "Бар готова";
+    return res;
+  }
   async componentDidMount() {
     getData(`${API}/Statistic/transactionHistory`).then(body => {
       this.setState({ data: body, isLoading: false });
@@ -99,7 +110,7 @@ class HistoryTransaction extends Component {
                           </span>
                         )}
                       </td>
-                      <td>{order.status}</td>
+                      <td>{this.checkStatus(order.status)}</td>
                       <td>{order.totalPrice} сом</td>
                       {/* <td className="operationBlock">
                        <div className="operation">
