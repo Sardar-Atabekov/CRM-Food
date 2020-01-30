@@ -24,8 +24,12 @@ class TopSum extends Component {
     let sum, names;
     if (bar) {
       bar = bar.sort((a, b) => b.sum - a.sum);
-      sum = [...bar.map((item, index) => (index < 8 ? item.sum : false))];
-      names = [...bar.map((item, index) => (index < 8 ? item.name : false))];
+      sum = [
+        ...bar.map((item, index) => (index < 8 ? item.sum : false))
+      ].filter(a => a);
+      names = [
+        ...bar.map((item, index) => (index < 8 ? item.name : false))
+      ].filter(a => a);
     }
     return (
       <div className="topMeals">

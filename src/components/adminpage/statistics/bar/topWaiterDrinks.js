@@ -19,10 +19,12 @@ class TopWaiter extends Component {
     let sum, names;
     if (data) {
       data = data.sort((a, b) => b.meals - a.meals);
-      sum = [...data.map((item, index) => (index < 8 ? item.meals : false))];
+      sum = [
+        ...data.map((item, index) => (index < 8 ? item.meals : false))
+      ].filter(a => a);
       names = [
         ...data.map((item, index) => (index < 8 ? item.userName : false))
-      ];
+      ].filter(a => a);
     }
     console.log(data);
     return (

@@ -21,9 +21,11 @@ class TopWaiter extends Component {
     if (data) {
       data = data.sort((a, b) => b.orderCount - a.orderCount);
       sum = [
-        ...data.map((item, index) => (index < 8 ? item.orderCount : false))
-      ];
-      names = [...data.map((item, index) => (index < 8 ? item.name : false))];
+        ...data.map((item, index) => (index < 10 ? item.orderCount : false))
+      ].filter(a => a);
+      names = [
+        ...data.map((item, index) => (index < 10 ? item.name : false))
+      ].filter(a => a);
     }
     return (
       <div className="topMeals">

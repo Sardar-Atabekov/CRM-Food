@@ -40,8 +40,12 @@ class BarPage extends Component {
     console.log(data);
     if (data) {
       data = data.sort((a, b) => b.sum - a.sum);
-      sum = [...data.map((item, index) => (index < 8 ? item.sum : false))];
-      names = [...data.map((item, index) => (index < 8 ? item.name : false))];
+      sum = [
+        ...data.map((item, index) => (index < 8 ? item.sum : false))
+      ].filter(a => a);
+      names = [
+        ...data.map((item, index) => (index < 8 ? item.name : false))
+      ].filter(a => a);
     }
     return (
       <div className="wrapper">

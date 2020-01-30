@@ -16,7 +16,7 @@ class TopMeals extends Component {
       this.setState({ bar });
     });
     getData(`${API}/top/topDrinks`).then(kitchen => {
-      this.setState({ kitchen});
+      this.setState({ kitchen });
     });
   }
   render() {
@@ -26,8 +26,12 @@ class TopMeals extends Component {
     let sum, names;
     if (data) {
       data = data.sort((a, b) => b.count - a.count);
-      sum = [...data.map((item, index) => (index < 8 ? item.count : false))];
-      names = [...data.map((item, index) => (index < 8 ? item.name : false))];
+      sum = [
+        ...data.map((item, index) => (index < 12 ? item.count : false))
+      ].filter(a => a);
+      names = [
+        ...data.map((item, index) => (index < 12 ? item.name : false))
+      ].filter(a => a);
     }
     return (
       <div className="topMeals">

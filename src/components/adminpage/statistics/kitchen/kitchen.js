@@ -38,8 +38,12 @@ class KitchenPage extends Component {
     console.log(data);
     if (data) {
       data = data.sort((a, b) => b.sum - a.sum);
-      sum = [...data.map((item, index) => (index < 15 ? item.sum : false))];
-      names = [...data.map((item, index) => (index < 15 ? item.name : false))];
+      sum = [
+        ...data.filter((item, index) => (index < 15 ? item.sum : null))
+      ].filter(a => a);
+      names = [
+        ...data.map((item, index) => (index < 15 ? item.name : null))
+      ].filter(a => a);
     }
 
     return (

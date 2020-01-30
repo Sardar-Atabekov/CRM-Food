@@ -10,7 +10,7 @@ class TopSum extends Component {
     };
   }
   async componentDidMount() {
-    getData(`${API}/Statistic/kitchenSum`).then(bar => {
+    getData(`${API}/Statistic/kitchenSums`).then(bar => {
       this.setState({ bar });
     });
   }
@@ -25,8 +25,12 @@ class TopSum extends Component {
     let sum, names;
     if (bar) {
       bar = bar.sort((a, b) => b.sum - a.sum);
-      sum = [...bar.map((item, index) => (index < 8 ? item.sum : false))];
-      names = [...bar.map((item, index) => (index < 8 ? item.name : false))];
+      sum = [...bar.map((item, index) => (index < 11 ? item.sum : null))].filter(
+        a => a
+      );
+      names = [
+        ...bar.map((item, index) => (index < 11 ? item.name : null))
+      ].filter(a => a);
     }
     return (
       <div className="topMeals">

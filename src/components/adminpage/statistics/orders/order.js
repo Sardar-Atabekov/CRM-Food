@@ -35,8 +35,12 @@ class Sales extends Component {
     let sum, names;
     if (data) {
       data = data.sort((a, b) => b.count - a.count);
-      sum = [...data.map((item, index) => (index < 15 ? item.count : false))];
-      names = [...data.map((item, index) => (index < 15 ? item.name : false))];
+      sum = [
+        ...data.map((item, index) => (index < 15 ? item.count : false))
+      ].filter(a => a);
+      names = [
+        ...data.map((item, index) => (index < 15 ? item.name : false))
+      ].filter(a => a);
     }
     return (
       <div className="wrapper">

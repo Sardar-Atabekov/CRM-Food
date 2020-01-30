@@ -51,7 +51,7 @@ class Total extends Component {
           <div className="total">
             <div className="text-center">
               <div>
-                <span>ОБЩАЯ ПРИБЫЛЬ</span>
+                <span>ОБЩАЯ ВЫРУчКа</span>
                 <h6 className="totalSum">{data && data.totalSum} сом</h6>
               </div>
             </div>
