@@ -9,7 +9,7 @@ class TopDrinks extends Component {
     this.state = {
       bar: [],
       kitchen: [],
-      isLoading: true
+      isLoading: false
     };
   }
   async componentDidMount() {

@@ -18,7 +18,7 @@ class BarPage extends Component {
     super(props);
     this.state = {
       data: [],
-      isLoading: true
+      isLoading: false
     };
   }
 
