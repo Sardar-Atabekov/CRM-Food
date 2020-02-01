@@ -24,7 +24,7 @@ const HistoryTransaction = () => {
       `${API}/Statistic/transactionHistory?&pageNumber=${page}&pageSize=${count}`
     ).then(data => {
       setLoading(false);
-      setData(data);
+      setData(data.items);
     });
   }, [count, page]);
 
