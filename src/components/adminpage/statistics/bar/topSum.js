@@ -18,7 +18,7 @@ class TopSum extends Component {
     bar =
       bar &&
       bar.map(meal => {
-        meal.sum = meal.price * meal.quantity;
+        meal.sum = meal.price * meal.finishedQuantity;
         return meal;
       });
     let sum, names;

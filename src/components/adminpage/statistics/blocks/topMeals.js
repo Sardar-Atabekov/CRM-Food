@@ -27,13 +27,13 @@ class TopMeals extends Component {
     bar =
       bar &&
       bar.map(meal => {
-        meal.sum = meal.price * meal.quantity;
+        meal.sum = meal.price * meal.finishedQuantity;
         return meal;
       });
     kitchen =
       kitchen &&
       kitchen.map(meal => {
-        meal.sum = meal.price * meal.quantity;
+        meal.sum = meal.price * meal.finishedQuantity;
         return meal;
       });
     let data = [...bar, ...kitchen].sort((a, b) => b.sum - a.sum);
