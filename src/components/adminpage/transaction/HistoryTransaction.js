@@ -17,8 +17,9 @@ const HistoryTransaction = () => {
   const [loading, setLoading] = useState(true);
   const [modalStatus, setModalStatus] = useState(false);
   const [modalOrder, setModalOrder] = useState({});
+
   useEffect(() => {
-    document.title = "Истории транзакции";
+    // document.title = "Истории транзакции";
     getData(
       `${API}/Statistic/transactionHistory?&pageNumber=${page}&pageSize=${count}`
     ).then(data => {
@@ -59,6 +60,7 @@ const HistoryTransaction = () => {
   //     );
   //   }
   //   return buttons;
+
   console.log(data);
   return (
     <div className="wrapper">
@@ -89,7 +91,7 @@ const HistoryTransaction = () => {
             <table>
               <tbody>
                 <tr>
-                  <th className="sortingNumber">#</th>
+                  <th className="sortingNumber">№</th>
                   <th>Время</th>
                   <th>Официант</th>
                   <th>Блюда</th>
@@ -161,32 +163,3 @@ const HistoryTransaction = () => {
 };
 
 export default HistoryTransaction;
-
-// class HistoryTransaction extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       data: [],
-//       isLoading: true,
-//       moreModal: false,
-//       id: "",
-//       meals: ""
-//     };
-//   }
-
-//   async componentDidMount() {
-//     getData(`${API}/Statistic/transactionHistory`).then(body => {
-//       this.setState({ data: body, isLoading: false });
-//     });
-//   }
-
-//   render() {
-//     let { data } = this.state;
-//     console.log(data);
-//     return (
-
-//     );
-//   }
-// }
-
-// export default HistoryTransaction;
