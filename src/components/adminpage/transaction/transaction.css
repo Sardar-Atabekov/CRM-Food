@@ -8,6 +8,10 @@
     margin-bottom: 30px !important;
 }
 
+.transaction table {
+    margin-top: 15px;
+}
+
 .transaction td,
 .transaction th {
     border: #e4e4e4 1px solid;
@@ -43,4 +47,14 @@
 .modalWindow .changeBtn {
     width: 70px;
     margin-top: 15px;
+}
+
+.transactionDisplay {
+    margin-left: 10px;
+    margin: 5px 10px;
+    font-size: 18px;
+}
+
+.transactionDisplay select {
+    margin-left: 10px;
 }
