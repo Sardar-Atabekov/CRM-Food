@@ -6,7 +6,7 @@ import TotalBar from "./totalDrinks";
 import TotalSum from "./totalSum";
 import TopSum from "./topSum";
 import TopDrinks from "./topDrinks";
-import TopWaiterDrinks from "./topWaiterDrinks";
+// import TopWaiterDrinks from "./topWaiterDrinks";
 import TopWaiterSum from "./topWaiterSum";
 import NamePage from "../../blocks/namePage";
 import GraphicArt from "./../graphics/graphics";
@@ -67,7 +67,7 @@ class BarPage extends Component {
                 <GraphicArt data={sum} names={names} name="Топ напитков" />
                 <TopSum name="Топ напитков по выручке" />
                 <TopDrinks name="Топ напитков" />
-                <TopWaiterDrinks name="Топ официантов по бару" />
+                {/* <TopWaiterDrinks name="Топ официантов по бару" /> */}
                 <TopWaiterSum name="Топ официантов по выручке" />
               </div>
             </main>

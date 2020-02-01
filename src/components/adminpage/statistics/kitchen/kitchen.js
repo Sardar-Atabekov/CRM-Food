@@ -6,7 +6,7 @@ import TotalBar from "./totalDrinks";
 import TotalSum from "./totalSum";
 import TopSum from "./topSum";
 import TopDrinks from "./topDrinks";
-import TopWaiterDrinks from "./topWaiterDrinks";
+// import TopWaiterDrinks from "./topWaiterDrinks";
 import TopWaiterSum from "./topWaiterSum";
 import NamePage from "../../blocks/namePage";
 import GraphicArt from "./../graphics/graphics";
@@ -69,7 +69,7 @@ class KitchenPage extends Component {
                 />
                 <TopSum name="Топ блюд по выручке " />
                 <TopDrinks name="Топ блюд" />
-                <TopWaiterDrinks name="Топ официантов по заказам" />
+                {/* <TopWaiterDrinks name="Топ официантов по заказам" /> */}
                 <TopWaiterSum name="Топ официантов по выручке" />
               </div>
             </main>

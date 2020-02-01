@@ -12,10 +12,10 @@ if (localStorage.getItem("token")) {
   // if (localStorage.getItem("NotFound")) {
   //   localStorage.removeItem('NotFound');
   // } else
-  // if (window.location.pathname !== "/") {
-  //   setTimeout(() => (window.location.href = "/"), 3000);
-  //   // localStorage.removeItem('NotFound');
-  // }
+  if (window.location.pathname !== "/") {
+    setTimeout(() => (window.location.href = "/"), 2000);
+    // localStorage.removeItem('NotFound');
+  }
 }
 
 async function getData(url) {
