@@ -23,7 +23,7 @@ class TotalSum extends Component {
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
-              <span>Общая прибыль</span>
+              <span>Общая выручка</span>
               <h6 className="totalSum">{data && data.totalSum} </h6>
             </div>
           </div>

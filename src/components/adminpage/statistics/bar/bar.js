@@ -33,20 +33,22 @@ class BarPage extends Component {
     data =
       data &&
       data.map(meal => {
-        meal.sum = meal.price * meal.quantity;
+        meal.sums = meal.price * meal.finishedQuantity;
         return meal;
       });
     let sum, names;
     console.log(data);
     if (data) {
-      data = data.sort((a, b) => b.sum - a.sum);
+      data = data.sort((a, b) => b.sums - a.sums);
       sum = [
-        ...data.map((item, index) => (index < 8 ? item.sum : false))
-      ].filter(a => a);
+        ...data.map((item, index) => (index < 8 ? item.sums : false))
+      ].filter(a => a >= 0);
       names = [
         ...data.map((item, index) => (index < 8 ? item.name : false))
       ].filter(a => a);
     }
+    console.log("sum", sum);
+    console.log("names", names);
     return (
       <div className="wrapper">
         <aside className="navBlock">
@@ -56,17 +58,17 @@ class BarPage extends Component {
           <header className="main-search">
             <Search />
           </header>
-          {this.state.isLoading ? (
+          {this.state.isLoading && sum ? (
             <main className="orderContent">
               <NamePage name="Статистика Бара" />
               <TotalSum />
               <TotalBar />
               <div className="statistics">
                 <GraphicArt data={sum} names={names} name="Топ напитков" />
-                <TopSum name="Топ напитков по прибыли" />
+                <TopSum name="Топ напитков по выручке" />
                 <TopDrinks name="Топ напитков" />
                 <TopWaiterDrinks name="Топ официантов по бару" />
-                <TopWaiterSum name="Топ официантов по прибыли" />
+                <TopWaiterSum name="Топ официантов по выручке" />
               </div>
             </main>
           ) : (

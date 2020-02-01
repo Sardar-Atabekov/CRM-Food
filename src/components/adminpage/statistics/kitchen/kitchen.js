@@ -31,21 +31,22 @@ class KitchenPage extends Component {
     data =
       data &&
       data.map(meal => {
-        meal.sum = meal.price * meal.quantity;
+        meal.sums = meal.price * meal.finishedQuantity;
         return meal;
       });
     let sum, names;
-    console.log(data);
+    console.log("Data", data);
     if (data) {
-      data = data.sort((a, b) => b.sum - a.sum);
+      data = data.sort((a, b) => b.sums - a.sums);
       sum = [
-        ...data.filter((item, index) => (index < 15 ? item.sum : null))
+        ...data.map((item, index) => (index < 11 ? item.sums : null))
       ].filter(a => a);
       names = [
-        ...data.map((item, index) => (index < 15 ? item.name : null))
+        ...data.map((item, index) => (index < 11 ? item.name : null))
       ].filter(a => a);
     }
-
+    console.log("sum", sum);
+    console.log("names", names);
     return (
       <div className="wrapper">
         <aside className="navBlock">
@@ -55,17 +56,21 @@ class KitchenPage extends Component {
           <header className="main-search">
             <Search />
           </header>
-          {this.state.isLoading ? (
+          {this.state.isLoading && sum ? (
             <main className="orderContent">
               <NamePage name="Кухня" />
               <TotalSum />
               <TotalBar />
               <div className="statistics">
-                <GraphicArt data={sum} names={names} name="Топ блюд" />
-                <TopSum name="Топ блюд по прибыли " />
+                <GraphicArt
+                  data={sum}
+                  names={names}
+                  name="Топ блюд по выручке "
+                />
+                <TopSum name="Топ блюд по выручке " />
                 <TopDrinks name="Топ блюд" />
                 <TopWaiterDrinks name="Топ официантов по заказам" />
-                <TopWaiterSum name="Топ официантов по прибыли" />
+                <TopWaiterSum name="Топ официантов по выручке" />
               </div>
             </main>
           ) : (
