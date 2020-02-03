@@ -46,7 +46,7 @@ class Graphics extends Component {
     //   options: chartOptions
     // });
     var dataFirst = {
-      label: "За прошлый неделю",
+      label: "За прошлую неделю",
       data: [4145, 5931, 3424, 4120, 5301, 5315, 3240],
       lineTension: 0.3,
       backgroundColor:
@@ -60,7 +60,7 @@ class Graphics extends Component {
     };
 
     var dataSecond = {
-      label: "За текущий неделю",
+      label: "За текущую неделю",
       data: [2767, 3576, 6021, 5460, 5365, 6230, 4370],
       backgroundColor: "rgba(0,123,255,1)"
 

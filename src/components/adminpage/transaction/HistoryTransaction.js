@@ -12,7 +12,7 @@ import "./transaction.css";
 
 const HistoryTransaction = () => {
   const [page, setPage] = useState(1);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({});
   const [count, setCount] = useState(10);
   const [loading, setLoading] = useState(true);
   const [modalStatus, setModalStatus] = useState(false);
@@ -23,8 +23,9 @@ const HistoryTransaction = () => {
     getData(
       `${API}/Statistic/transactionHistory?&pageNumber=${page}&pageSize=${count}`
     ).then(data => {
+      console.log(data);
       setLoading(false);
-      setData(data.items);
+      setData(data);
     });
   }, [count, page]);
 
@@ -40,26 +41,26 @@ const HistoryTransaction = () => {
     return res;
   };
 
-  // const createPage = () => {
-  //   let buttons = [],
-  //     pages = Math.ceil(result.total / count);
-  //   for (let i = 0; i < pages; i++) {
-  //     buttons.push(
-  //       <Button
-  //         key={i}
-  //         className={
-  //           i === page
-  //             ? "paginationActiveButton shadow all-lessons-pagination all-lessons-pagination-inactive rounded-0 mr-3"
-  //             : "shadow all-lessons-pagination all-lessons-pagination-active rounded-0 mr-3 bg-white"
-  //         }
-  //         color={"faded"}
-  //         onClick={() => setPage(i)}
-  //       >
-  //         {i + 1}
-  //       </Button>
-  //     );
-  //   }
-  //   return buttons;
+  const createPage = () => {
+    let buttons = [];
+    for (let i = 1; i <= data.totalPages; i++) {
+      buttons.push(
+        <button
+          className={`paginationButton${
+            page === i ? " paginationActiveButton" : ""
+          }`}
+          onClick={() => {
+            setPage(i);
+            setLoading(true);
+          }}
+          key={i}
+        >
+          {i}
+        </button>
+      );
+    }
+    return buttons;
+  };
 
   console.log(data);
   return (
@@ -81,7 +82,14 @@ const HistoryTransaction = () => {
             </div>
             <div className="transactionDisplay">
               <label htmlFor="show">Показать по</label>
-              <select id="show" onChange={e => setCount(e.target.value)}>
+              <select
+                id="show"
+                onChange={e => {
+                  setLoading(true);
+                  setCount(e.target.value);
+                }}
+                defaultValue={count}
+              >
                 <option value="10">10</option>
                 <option value="25">25</option>
                 <option value="50">50</option>
@@ -98,41 +106,42 @@ const HistoryTransaction = () => {
                   <th>Статус</th>
                   <th>Итого</th>
                 </tr>
-                {data.map(order => (
-                  <tr key={order.id}>
-                    <td>{order.id}</td>
-                    <td>
-                      <time dateTime={order.orderDate}>
-                        {TimeDate(order.orderDate)}
-                      </time>
-                    </td>
+                {data.items &&
+                  data.items.map(order => (
+                    <tr key={order.id}>
+                      <td>{order.id}</td>
+                      <td>
+                        <time dateTime={order.orderDate}>
+                          {TimeDate(order.orderDate)}
+                        </time>
+                      </td>
 
-                    <td>{order.waiterName}</td>
-                    <td>
-                      {modalStatus ? (
-                        <MoreModal
-                          id={modalOrder.id}
-                          meals={modalOrder.meals}
-                          setStatus={() => setModalStatus(false)}
-                        />
-                      ) : (
-                        <span
-                          onClick={() => {
-                            setModalStatus(true);
-                            setModalOrder({
-                              id: order.id,
-                              meals: order.mealOrders
-                            });
-                          }}
-                          className="moreMeals"
-                        >
-                          Посмотреть
-                        </span>
-                      )}
-                    </td>
-                    <td>{checkStatus(order.status)}</td>
-                    <td>{order.totalPrice} сом</td>
-                    {/* <td className="operationBlock">
+                      <td>{order.waiterName}</td>
+                      <td>
+                        {modalStatus ? (
+                          <MoreModal
+                            id={modalOrder.id}
+                            meals={modalOrder.meals}
+                            setStatus={() => setModalStatus(false)}
+                          />
+                        ) : (
+                          <span
+                            onClick={() => {
+                              setModalStatus(true);
+                              setModalOrder({
+                                id: order.id,
+                                meals: order.mealOrders
+                              });
+                            }}
+                            className="moreMeals"
+                          >
+                            Посмотреть
+                          </span>
+                        )}
+                      </td>
+                      <td>{checkStatus(order.status)}</td>
+                      <td>{order.totalPrice} сом</td>
+                      {/* <td className="operationBlock">
                        <div className="operation">
                         <Link to={{ pathname: `/order/${order.id}/` }}>
                           Изменить{" "}
@@ -147,10 +156,11 @@ const HistoryTransaction = () => {
                         </button>
                       </div>
                     </td> */}
-                  </tr>
-                ))}
+                    </tr>
+                  ))}
               </tbody>
             </table>
+            <div className="paginationBlock">{createPage()}</div>
           </main>
         )}
 
