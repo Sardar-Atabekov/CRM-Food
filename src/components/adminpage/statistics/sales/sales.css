@@ -51,22 +51,11 @@ input::-webkit-input-placeholder {
 
 }
 
-.selectRevenue {
-    margin-left: 20px;
-}
-
 .selectRevenueBlock .graphicArt {
     margin: 0;
     box-shadow: none;
 }
 
-.selectRevenue span {
-    cursor: pointer;
-    padding: 5px;
-    margin: 10px;
-    /* border: 1px solid #e1e5eb;
-    color: #3d5170; */
-}
 
 
 /* .incomeImg {
@@ -97,4 +86,46 @@ input::-webkit-input-placeholder {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+}
+
+.selectRevenueBlock-header {
+    display: flex;
+    padding: 1rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e1e5eb !important;
+}
+
+.block-handle {
+    /* position: relative; */
+    background-image: url("data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDAwMDAwIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+ICAgIDxkZWZzPiAgICAgICAgPHBhdGggZD0iTTAgMGgyNHYyNEgwVjB6IiBpZD0iYSIvPiAgICA8L2RlZnM+ICAgIDxjbGlwUGF0aCBpZD0iYiI+ICAgICAgICA8dXNlIG92ZXJmbG93PSJ2aXNpYmxlIiB4bGluazpocmVmPSIjYSIvPiAgICA8L2NsaXBQYXRoPiAgICA8cGF0aCBjbGlwLXBhdGg9InVybCgjYikiIGQ9Ik0yMCA5SDR2MmgxNlY5ek00IDE1aDE2di0ySDR2MnoiLz48L3N2Zz4=");
+    background-position: center center;
+    background-size: 95%;
+    margin-top: 12px;
+    width: 1.125rem;
+    height: .5rem;
+    top: 50%;
+    right: .9375rem;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    opacity: .15;
+}
+
+.m-0 {
+    margin: 0px !important;
+}
+
+.salesDateBlock {
+    display: flex;
+    padding: 0.5em 1.2em;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e1e5eb !important;
+}
+
+.selectRevenue span {
+    cursor: pointer;
+    padding: 0.2em 1em;
+    border: 1px solid #e1e5eb;
+    color: #3d5170;
 }

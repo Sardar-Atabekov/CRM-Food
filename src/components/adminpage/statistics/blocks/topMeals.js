@@ -57,7 +57,7 @@ class TopMeals extends Component {
         <ul className="meals">
           {data &&
             data.map((meal, index) =>
-              index < 8 ? (
+              index < 11 ? (
                 <li key={meal.id}>
                   <span>{meal.name}</span>{" "}
                   <span className="sums">{meal.sum} сом</span>

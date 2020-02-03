@@ -10,17 +10,20 @@ import LastFinishedOrders from "../blocks/lastOrders";
 import LineCharts from "./../graphics/lineCharts";
 import BarCharts from "./../graphics/barCharts.js";
 import Graphics from "./../graphics/graphics";
+import DatePicker from "react-datepicker";
+import Time from "./../../calendar/time";
 import Total from "./totals";
-
-// import TopWaiterGraphics from "../graphics/topWaiterSumGraphics";
 import "./sales.css";
 
+// import TopWaiterGraphics from "../graphics/topWaiterSumGraphics";
 class Sales extends Component {
   _isMounted = false;
   constructor(props) {
     super(props);
     this.state = {
       data: [],
+      startDate: new Date("2014/02/08"),
+      endDate: new Date("2014/02/10"),
       selectRevenue: "day"
     };
   }
@@ -39,6 +42,7 @@ class Sales extends Component {
   }
 
   render() {
+    let { startDate, endDate, selectRevenue } = this.state;
     console.log(this.state);
     return (
       <div className="wrapper">
@@ -54,21 +58,66 @@ class Sales extends Component {
             <Total />
             <div className="statistics">
               <div className="selectRevenueBlock">
-                <div className="selectRevenue">
-                  <span onClick={() => this.setState({ selectRevenue: "day" })}>
-                    По дням
-                  </span>
-                  <span
-                    onClick={() => this.setState({ selectRevenue: "week" })}
-                  >
-                    По неделям
-                  </span>
-                  <span
-                    onClick={() => this.setState({ selectRevenue: "month" })}
-                  >
-                    По месяцам
-                  </span>
+                <div className="selectRevenueBlock-header">
+                  <h4 className="m-0">Отчет о выручке</h4>
+                  <div className="block-handle"></div>
                 </div>
+                <div className="salesDateBlock">
+                  <div className="selectRevenue">
+                    <span
+                      className={
+                        selectRevenue === "day"
+                          ? "paginationActiveButton"
+                          : null
+                      }
+                      onClick={() => this.setState({ selectRevenue: "day" })}
+                    >
+                      По дням
+                    </span>
+                    <span
+                      className={
+                        selectRevenue === "week"
+                          ? "paginationActiveButton"
+                          : null
+                      }
+                      onClick={() => this.setState({ selectRevenue: "week" })}
+                    >
+                      По неделям
+                    </span>
+                    <span
+                      className={
+                        selectRevenue === "month"
+                          ? "paginationActiveButton"
+                          : null
+                      }
+                      onClick={() => this.setState({ selectRevenue: "month" })}
+                    >
+                      По месяцам
+                    </span>
+                  </div>
+                  <div className="form-group">
+                    <DatePicker
+                      selected={startDate}
+                      onChange={date => this.setState({ startDate: date })}
+                      locale="ru"
+                      selectsStart
+                      className="form-control"
+                      startDate={startDate}
+                      endDate={endDate}
+                    />
+                    <DatePicker
+                      className="form-control"
+                      selected={endDate}
+                      onChange={date => this.setState({ endDate: date })}
+                      selectsEnd
+                      locale="ru"
+                      startDate={startDate}
+                      endDate={endDate}
+                      minDate={startDate}
+                    />
+                  </div>
+                </div>
+
                 {this.state.selectRevenue === "day" ? (
                   <BarCharts />
                 ) : this.state.selectRevenue === "week" ? ( // <BarCharts />

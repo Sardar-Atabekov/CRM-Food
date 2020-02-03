@@ -46,7 +46,7 @@ class Graphics extends Component {
     //   options: chartOptions
     // });
     var dataFirst = {
-      label: "За текущий месяц",
+      label: "За текущую месяц",
       data: [23624, 59213, 75123, 61230, 34540],
       lineTension: 0.3,
       backgroundColor: [
@@ -61,7 +61,7 @@ class Graphics extends Component {
     };
 
     var dataSecond = {
-      label: "За прошлый месяц",
+      label: "За прошлую месяц",
       data: [23507, 18253, 50124, 47535, 54335]
       // backgroundColor: [
       //   "rgba(0,123,255,1)",
