@@ -86,6 +86,7 @@ const HistoryTransaction = () => {
                 id="show"
                 onChange={e => {
                   setLoading(true);
+                  setPage(1);
                   setCount(e.target.value);
                 }}
                 defaultValue={count}
@@ -160,7 +161,9 @@ const HistoryTransaction = () => {
                   ))}
               </tbody>
             </table>
-            <div className="paginationBlock">{createPage()}</div>
+            <div className="paginationBlock">
+              {data.totalPages > 1 ? createPage() : null}
+            </div>
           </main>
         )}
 

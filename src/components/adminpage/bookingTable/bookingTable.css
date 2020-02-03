@@ -101,7 +101,13 @@
     cursor: pointer;
 }
 
-
+/* .calendarImgInput {
+    background-image: url("./../../images/calendar.svg");
+    height: 60px;
+    width: 60px;
+    margin-right: 10px;
+    border: none;
+} */
 .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle,
 .react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle,
 .react-datepicker__year-read-view--down-arrow,

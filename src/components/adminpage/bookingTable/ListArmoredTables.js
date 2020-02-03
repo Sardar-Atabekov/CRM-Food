@@ -10,6 +10,7 @@ import calendar from "./../../images/calendar.svg";
 import { TodayDate, TimeHours } from "./../calendar/time";
 import Loading from "../../loading/loading";
 import "./ListArmoredTables.css";
+import moment from "moment";
 class ListArmoredTables extends Component {
   constructor(props) {
     super(props);
@@ -19,9 +20,10 @@ class ListArmoredTables extends Component {
       TodayDate: TodayDate()
     };
   }
-
   async componentDidMount() {
-    getData(`${API}/Admin/getBooks`).then(body => {
+    getData(
+      `${API}/Statistic/getBooksDay?&data=${moment().format("YYYY-MM-DD")}`
+    ).then(body => {
       this.setState({ data: body, isLoading: false });
     });
   }

@@ -19,7 +19,7 @@ class ListArmoredTables extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
+      tables: [],
       isLoading: true,
       bookDate: new Date(),
       menQuantity: 2,
@@ -29,8 +29,8 @@ class ListArmoredTables extends Component {
   }
 
   async componentDidMount() {
-    getData(`${API}/Tables`).then(body => {
-      this.setState({ data: body, isLoading: false });
+    getData(`${API}/Tables`).then(tables => {
+      this.setState({ tables, isLoading: false });
     });
   }
 
@@ -66,7 +66,7 @@ class ListArmoredTables extends Component {
   }
 
   render() {
-    let { data, menQuantity, tableId, bookDate } = this.state;
+    let { tables, menQuantity, tableId, bookDate } = this.state;
     console.log(this.state);
     return (
       <div className="wrapper">
@@ -105,9 +105,23 @@ class ListArmoredTables extends Component {
                         locale="ru"
                         dateFormat="d MMMM, HH:mm"
                       />
+                      {/* <DatePicker
+                        selected={bookDate}
+                        onChange={date => this.setState({ bookDate: date })}
+                        showTimeSelect
+                        timeFormat="HH:mm"
+                        timeIntervals={15}
+                        timeCaption="Время"
+                        locale="ru"
+                        className="calendarImg"
+                        src={calendar}
+                        
+                        dateFormat="d MMMM, HH:mm"
+                      /> */}
                       <img
                         src={calendar}
                         alt="calendar"
+                        onClick={() => this.setState({ bookDate: bookDate })}
                         className="calendarImg"
                       />
                     </div>
@@ -148,7 +162,7 @@ class ListArmoredTables extends Component {
                 <div className="tables">
                   <h2 className="bookingTitle">Свободные столы</h2>
                   <ul className="listTables">
-                    {data.map(table => (
+                    {tables.map(table => (
                       <li
                         key={table.id}
                         className={
