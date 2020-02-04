@@ -9,7 +9,7 @@ import { TimeDate } from "./../calendar/time";
 import Loading from "../../loading/loading";
 import MoreModal from "./../../modalWindow/moreInfoModal";
 import "./transaction.css";
-
+import DatePicker from "react-datepicker";
 const HistoryTransaction = () => {
   const [page, setPage] = useState(1);
   const [data, setData] = useState({});
@@ -17,6 +17,8 @@ const HistoryTransaction = () => {
   const [loading, setLoading] = useState(true);
   const [modalStatus, setModalStatus] = useState(false);
   const [modalOrder, setModalOrder] = useState({});
+  const [startDate, setStartDate] = useState(new Date("2014/02/08"));
+  const [endDate, setEndDate] = useState(new Date("2014/04/08"));
 
   useEffect(() => {
     // document.title = "Истории транзакции";
@@ -77,26 +79,52 @@ const HistoryTransaction = () => {
         ) : (
           <main className="waiterContent transaction">
             <div className="functionPage">
-              <NamePage name="История транзакции" />
-              <Calendar />
+              <div className="flex-auto">
+                <NamePage name="История транзакции" />
+                <div className="transactionDisplay">
+                  <label htmlFor="show">Показать по</label>
+                  <select
+                    id="show"
+                    onChange={e => {
+                      setLoading(true);
+                      setPage(1);
+                      setCount(e.target.value);
+                    }}
+                    defaultValue={count}
+                  >
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                  </select>
+                </div>
+              </div>
+              <div className="calendar">
+                <DatePicker
+                  selected={startDate}
+                  onChange={date => setStartDate(date)}
+                  locale="ru"
+                  selectsStart
+                  className="form-control"
+                  startDate={startDate}
+                  endDate={endDate}
+                  placeholderText='Enter "tomorrow"'
+                  dateFormat="d-MM-yyyy"
+                />
+                <DatePicker
+                  className="form-control"
+                  selected={endDate}
+                  onChange={date => setEndDate(date)}
+                  selectsEnd
+                  locale="ru"
+                  startDate={startDate}
+                  endDate={endDate}
+                  minDate={startDate}
+                  dateFormat="d-MM-yyyy"
+                />
+              </div>
             </div>
-            <div className="transactionDisplay">
-              <label htmlFor="show">Показать по</label>
-              <select
-                id="show"
-                onChange={e => {
-                  setLoading(true);
-                  setPage(1);
-                  setCount(e.target.value);
-                }}
-                defaultValue={count}
-              >
-                <option value="10">10</option>
-                <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-              </select>
-            </div>
+
             <table>
               <tbody>
                 <tr>
@@ -116,7 +144,6 @@ const HistoryTransaction = () => {
                           {TimeDate(order.orderDate)}
                         </time>
                       </td>
-
                       <td>{order.waiterName}</td>
                       <td>
                         {modalStatus ? (

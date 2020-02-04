@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./calendar.css";
 class Calendar extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +22,7 @@ class Calendar extends Component {
           placeholder="End Date"
           id="analytics-overview-date-range-2"
         />
-        
+
         <span className="input-group-append">
           <span className="input-group-text">
             <i className="material-icons"></i>
