@@ -11,7 +11,7 @@ import LineCharts from "./../graphics/lineCharts";
 import BarCharts from "./../graphics/barCharts.js";
 import Graphics from "./../graphics/graphics";
 import DatePicker from "react-datepicker";
-import Time from "./../../calendar/time";
+// import Time from "./../../calendar/time";
 import Total from "./totals";
 import "./sales.css";
 

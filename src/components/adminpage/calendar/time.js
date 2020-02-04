@@ -35,4 +35,9 @@ function TodayDate() {
   return time;
 }
 
-export { Time, TimeHours, TimeDate, TodayDate };
+function TimeFormat(date) {
+  let stillUtc = moment.utc(date),
+    time = moment(stillUtc).format("YYYY-MM-DD");
+  return time;
+}
+export { Time, TimeHours, TimeDate, TodayDate, TimeFormat };

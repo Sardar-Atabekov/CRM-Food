@@ -7,30 +7,38 @@ import NamePage from "../blocks/namePage";
 import DeleteModal from "./../../modalWindow/deleteModal";
 import { Link } from "react-router-dom";
 import calendar from "./../../images/calendar.svg";
-import { TodayDate, TimeHours } from "./../calendar/time";
+import DatePicker from "react-datepicker";
+import { TimeHours, TimeFormat } from "./../calendar/time";
 import Loading from "../../loading/loading";
 import "./ListArmoredTables.css";
-import moment from "moment";
 class ListArmoredTables extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
       isLoading: true,
-      TodayDate: TodayDate()
+      bookDate: new Date()
     };
   }
   async componentDidMount() {
+    console.log(this.state.bookDate);
     getData(
-      `${API}/Statistic/getBooksDay?&date=${moment().format("YYYY-MM-DD")}`
-    ).then(body => {
-      this.setState({ data: body, isLoading: false });
+      `${API}/Statistic/getBooksDay?&date=${TimeFormat(this.state.bookDate)}`
+    ).then(data => {
+      this.setState({ data, isLoading: false });
     });
   }
 
+  componentDidUpdate(prevState) {
+    console.log("prev", prevState);
+    // if (prevState.bookDate !== this.state.bookDate) {
+    //   this.componentDidMount();
+    // }
+  }
   render() {
-    let { data } = this.state;
+    let { data, bookDate } = this.state;
     console.log(data);
+    console.log(TimeFormat(this.state.bookDate));
     return (
       <div className="wrapper">
         <aside className="navBlock">
@@ -50,9 +58,20 @@ class ListArmoredTables extends Component {
               <div className="listArmoredTables">
                 <div className="booking">
                   <div className="bookingDate">
-                    <input
+                    {/* <input
                       className="bookingDateInput"
                       defaultValue={this.state.TodayDate}
+                    /> */}
+                    <DatePicker
+                      selected={bookDate}
+                      className="bookingDateInput"
+                      onChange={date => this.setState({ bookDate: date })}
+                      // showTimeSelect
+                      // timeFormat="HH:mm"
+                      // timeIntervals={15}
+                      // timeCaption="Время"
+                      locale="ru"
+                      dateFormat=" d MMMM"
                     />
                     <img
                       src={calendar}
