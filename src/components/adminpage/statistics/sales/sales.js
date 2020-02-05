@@ -22,8 +22,8 @@ class Sales extends Component {
     super(props);
     this.state = {
       data: [],
-      startDate: new Date("2014/02/08"),
-      endDate: new Date("2014/02/10"),
+      startDate: new Date("2019/02/01"),
+      endDate: new Date("2019/02/10"),
       selectRevenue: "day"
     };
   }

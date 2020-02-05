@@ -4,7 +4,7 @@ import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import NamePage from "./../blocks/namePage";
-import Calendar from "./../calendar/calendar";
+// import Calendar from "./../calendar/calendar";
 import { TimeDate } from "./../calendar/time";
 import Loading from "../../loading/loading";
 import MoreModal from "./../../modalWindow/moreInfoModal";
