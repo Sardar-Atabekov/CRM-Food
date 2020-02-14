@@ -23,7 +23,7 @@ class ListArmoredTables extends Component {
   async componentDidMount() {
     console.log(this.state.bookDate);
     getData(
-      `${API}/Statistic/getBooksDay?&date=${TimeFormat(this.state.bookDate)}`
+      `${API}/admin/getBooks`
     ).then(data => {
       this.setState({ data, isLoading: false });
     });

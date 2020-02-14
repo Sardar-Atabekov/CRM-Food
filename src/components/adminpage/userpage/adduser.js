@@ -69,16 +69,16 @@ class addUser extends Component {
             <div className="formBlock">
               <div className="title-block">
                 <div className="form-title">
-                  <h6 className="form-text">User profile</h6>
+                  <h6 className="form-text">Профиль сотрудника</h6>
                   <p className="form-text">
-                    Configure general user profile information
+                    Настройка общей информации профиля сотрудника
                   </p>
                 </div>
               </div>
               <form className="form" onSubmit={this.handleSubmit}>
                 <div className="form-row">
                   <div className="form-group">
-                    <label htmlFor="firstName">First Name</label>
+                    <label htmlFor="firstName">Имя</label>
                     <input
                       type="text"
                       name="firstName"
@@ -87,7 +87,7 @@ class addUser extends Component {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="lastName">Last Name</label>
+                    <label htmlFor="lastName">Фамилию</label>
                     <input
                       type="text"
                       name="lastName"
@@ -97,7 +97,7 @@ class addUser extends Component {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="dateBorn">Date Born</label>
+                    <label htmlFor="dateBorn">Дата рождения</label>
                     <input
                       type="text"
                       name="dateBorn"
@@ -110,7 +110,7 @@ class addUser extends Component {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="gender">Gender</label>
+                    <label htmlFor="gender">Пол</label>
                     <select id="gender" name="gender" className="select">
                       <option value="Мужчина">Мужчина</option>
                       <option value="Женщина">Женщина</option>
@@ -118,7 +118,7 @@ class addUser extends Component {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="phoneNumber">Phone Number</label>
+                    <label htmlFor="phoneNumber">Номер телефона</label>
                     <input
                       type="tel"
                       name="phoneNumber"
@@ -139,7 +139,7 @@ class addUser extends Component {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="login">Login</label>
+                    <label htmlFor="login">Логин</label>
                     <input
                       type="login"
                       required
@@ -149,7 +149,7 @@ class addUser extends Component {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password">Пароль</label>
                     <input
                       type="password"
                       required
@@ -160,7 +160,7 @@ class addUser extends Component {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="startWorkDay">Start Work Day</label>
+                    <label htmlFor="startWorkDay">Дата начало работы</label>
                     <input
                       type="text"
                       required
@@ -173,7 +173,7 @@ class addUser extends Component {
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="role">Role</label>
+                    <label htmlFor="role">Рол</label>
                     <select id="role" className="select" name="role">
                       <option value="3">Официант</option>
                       <option value="2">Повар</option>
@@ -190,7 +190,7 @@ class addUser extends Component {
                                               */}
                 <div className="userProfilePicture">
                   <label htmlFor="userProfilePicture" className="text-center">
-                    Profile Picture
+                    Фото сотрудника
                   </label>
                   <div className="user__avatar">
                     <img
@@ -207,7 +207,7 @@ class addUser extends Component {
                   </div>
                 </div>
                 <div className="commentBlock">
-                  <label htmlFor="comment">Comment</label>
+                  <label htmlFor="comment">Комментарии</label>
                   <br />
                   <textarea
                     id="comment"

@@ -95,7 +95,7 @@ class Sales extends Component {
                       По месяцам
                     </span>
                   </div>
-                  <div className="form-group">
+                  {/* <div className="form-group">
                     <DatePicker
                       selected={startDate}
                       onChange={date => this.setState({ startDate: date })}
@@ -115,7 +115,7 @@ class Sales extends Component {
                       endDate={endDate}
                       minDate={startDate}
                     />
-                  </div>
+                  </div> */}
                 </div>
 
                 {this.state.selectRevenue === "day" ? (

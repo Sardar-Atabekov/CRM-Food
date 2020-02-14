@@ -99,7 +99,7 @@ const HistoryTransaction = () => {
                   </select>
                 </div>
               </div>
-              <div className="calendar">
+              {/* <div className="calendar">
                 <DatePicker
                   selected={startDate}
                   onChange={date => setStartDate(date)}
@@ -122,7 +122,7 @@ const HistoryTransaction = () => {
                   minDate={startDate}
                   dateFormat="d-MM-yyyy"
                 />
-              </div>
+              </div> */}
             </div>
 
             <table>
