@@ -43,6 +43,7 @@ class MealPage extends Component {
         id: body.id,
         status: body.mealStatus
       });
+      console.log(body);
     });
     getData(`${API}/Categories/`).then(body => {
       this.setState({ category: body, isLoading: false });

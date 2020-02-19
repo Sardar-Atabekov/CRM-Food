@@ -16,18 +16,18 @@ class TopSum extends Component {
   }
   render() {
     let { bar } = this.state;
-    bar =
-      bar &&
-      bar.map(meal => {
-        meal.sum = meal.price * meal.finishedQuantity;
-        return meal;
-      });
+    // bar =
+    //   bar &&
+    //   bar.map(meal => {
+    //     meal.sum = meal.price * meal.finishedQuantity;
+    //     return meal;
+    //   });
     let sum, names;
     if (bar) {
       bar = bar.sort((a, b) => b.sum - a.sum);
-      sum = [...bar.map((item, index) => (index < 11 ? item.sum : null))].filter(
-        a => a
-      );
+      sum = [
+        ...bar.map((item, index) => (index < 11 ? item.sum : null))
+      ].filter(a => a);
       names = [
         ...bar.map((item, index) => (index < 11 ? item.name : null))
       ].filter(a => a);

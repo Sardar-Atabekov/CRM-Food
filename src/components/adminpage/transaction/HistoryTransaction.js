@@ -4,12 +4,14 @@ import Navigation from "../../block/navigation.js";
 import Search from "../../block/search.js";
 import Footer from "../../block/footer.js";
 import NamePage from "./../blocks/namePage";
+import addMonths from "date-fns/addMonths";
+import subMonths from "date-fns/subMonths";
 // import Calendar from "./../calendar/calendar";
-import { TimeDate } from "./../calendar/time";
+import { TimeDate, TimeFormat } from "./../calendar/time";
 import Loading from "../../loading/loading";
 import MoreModal from "./../../modalWindow/moreInfoModal";
-import "./transaction.css";
 import DatePicker from "react-datepicker";
+import "./transaction.css";
 const HistoryTransaction = () => {
   const [page, setPage] = useState(1);
   const [data, setData] = useState({});
@@ -17,19 +19,20 @@ const HistoryTransaction = () => {
   const [loading, setLoading] = useState(true);
   const [modalStatus, setModalStatus] = useState(false);
   const [modalOrder, setModalOrder] = useState({});
-  const [startDate, setStartDate] = useState(new Date("2014/02/08"));
-  const [endDate, setEndDate] = useState(new Date("2014/04/08"));
-
+  const [startDate, setStartDate] = useState(subMonths(new Date(), 1));
+  const [endDate, setEndDate] = useState(new Date());
+  console.log("Start", startDate);
   useEffect(() => {
-    // document.title = "Истории транзакции";
     getData(
-      `${API}/Statistic/transactionHistory?&pageNumber=${page}&pageSize=${count}`
+      `${API}/Statistic/transactionHistory?&pageNumber=${page}&pageSize=${count}&startDate=${TimeFormat(
+        startDate
+      )}&endDate=${TimeFormat(endDate)}`
     ).then(data => {
       console.log(data);
       setLoading(false);
       setData(data);
     });
-  }, [count, page]);
+  }, [count, page, startDate, endDate]);
 
   const checkStatus = status => {
     let res =
@@ -48,7 +51,7 @@ const HistoryTransaction = () => {
     for (let i = 1; i <= data.totalPages; i++) {
       buttons.push(
         <button
-          className={`paginationButton${
+          className={`paginationButton ${
             page === i ? " paginationActiveButton" : ""
           }`}
           onClick={() => {
@@ -99,7 +102,7 @@ const HistoryTransaction = () => {
                   </select>
                 </div>
               </div>
-              {/* <div className="calendar">
+              <div className="calendar">
                 <DatePicker
                   selected={startDate}
                   onChange={date => setStartDate(date)}
@@ -108,8 +111,8 @@ const HistoryTransaction = () => {
                   className="form-control"
                   startDate={startDate}
                   endDate={endDate}
-                  placeholderText='Enter "tomorrow"'
-                  dateFormat="d-MM-yyyy"
+                  maxDate={endDate}
+                  dateFormat="dd-MM-yyyy"
                 />
                 <DatePicker
                   className="form-control"
@@ -120,9 +123,9 @@ const HistoryTransaction = () => {
                   startDate={startDate}
                   endDate={endDate}
                   minDate={startDate}
-                  dateFormat="d-MM-yyyy"
+                  dateFormat="dd-MM-yyyy"
                 />
-              </div> */}
+              </div>
             </div>
 
             <table>
