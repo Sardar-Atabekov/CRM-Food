@@ -30,18 +30,18 @@ class BarPage extends Component {
 
   render() {
     let { data } = this.state;
-    data =
-      data &&
-      data.map(meal => {
-        meal.sums = meal.price * meal.finishedQuantity;
-        return meal;
-      });
+    // data =
+    //   data &&
+    //   data.map(meal => {
+    //     meal.sums = meal.price * meal.finishedQuantity;
+    //     return meal;
+    //   });
     let sum, names;
     console.log(data);
     if (data) {
-      data = data.sort((a, b) => b.sums - a.sums);
+      data = data.sort((a, b) => b.sum - a.sum);
       sum = [
-        ...data.map((item, index) => (index < 8 ? item.sums : false))
+        ...data.map((item, index) => (index < 8 ? item.sum : false))
       ].filter(a => a >= 0);
       names = [
         ...data.map((item, index) => (index < 8 ? item.name : false))

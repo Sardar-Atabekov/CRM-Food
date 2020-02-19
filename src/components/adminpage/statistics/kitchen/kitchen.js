@@ -28,12 +28,12 @@ class KitchenPage extends Component {
   }
   render() {
     let { data } = this.state;
-    data =
-      data &&
-      data.map(meal => {
-        meal.sums = meal.price * meal.finishedQuantity;
-        return meal;
-      });
+    // data =
+    //   data &&
+    //   data.map(meal => {
+    //     meal.sums = meal.price * meal.finishedQuantity;
+    //     return meal;
+    //   });
     let sum, names;
     console.log("Data", data);
     if (data) {
