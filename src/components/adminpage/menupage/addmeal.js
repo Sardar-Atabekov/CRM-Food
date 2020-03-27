@@ -128,7 +128,7 @@ class addMeal extends Component {
                       />
                     </div>
                     <div className="form-group">
-                      <label htmlFor="imageURL">Изображения</label>
+                      <label htmlFor="imageURL">Себестоимость блюда</label>
                       <input
                         required
                         name="imageURL"
