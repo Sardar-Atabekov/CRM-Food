@@ -33,10 +33,10 @@ class TopWaiterGraphics extends Component {
               "rgba(54, 162, 235, 0.6)",
               "rgba(255, 206, 86, 0.6)",
               "rgba(75, 192, 192, 0.6)",
-              "rgba(255, 159, 64, 0.6)"
-            ]
-          }
-        ]
+              "rgba(255, 159, 64, 0.6)",
+            ],
+          },
+        ],
       },
       options: {
         responsive: false,
@@ -46,8 +46,8 @@ class TopWaiterGraphics extends Component {
           labels: {
             boxWidth: 80,
             fontColor: "rgb(60, 180, 100)",
-            backgroundColor: "#e4e4e4"
-          }
+            backgroundColor: "#e4e4e4",
+          },
         },
         tooltips: {
           cornerRadius: 0,
@@ -58,9 +58,9 @@ class TopWaiterGraphics extends Component {
           titleFontStyle: "normal",
           titleMarginBottom: 15,
           titleFontColor: "black",
-          bodyFontColor: "black"
-        }
-      }
+          bodyFontColor: "black",
+        },
+      },
     });
 
     console.log(myChart);
@@ -75,7 +75,7 @@ class TopWaiterGraphics extends Component {
             className="xBtn"
             onClick={() => this.props.graphicsStatus()}
           />
-          <canvas ref={node => (this.node = node)}></canvas>
+          <canvas ref={(node) => (this.node = node)}></canvas>
         </div>
         {/* <div>
           <span onClick={() => this.props.graphicsStatus()}>Хорошо</span>

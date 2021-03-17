@@ -47,7 +47,7 @@ class Graphics extends Component {
     // });
     var dataFirst = {
       label: "За текущую месяц",
-      data: [23624, 59213, 75123, 61230, 34540],
+      data: [23624, 59213, 7513, 0, 0],
       lineTension: 0.3,
       backgroundColor: [
         // "rgb(60, 180, 100)",

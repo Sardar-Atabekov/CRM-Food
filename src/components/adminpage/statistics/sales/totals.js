@@ -10,12 +10,12 @@ class Total extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
     };
   }
 
   async componentDidMount() {
-    getData(`${API}/Statistic/totalSums`).then(body => {
+    getData(`${API}/Statistic/totalSums`).then((body) => {
       this.setState({ data: body });
     });
   }
@@ -73,10 +73,10 @@ class Total extends Component {
         <div className="totalContainer">
           <div className="total">
             <div className="text-center">
-              <div>
+              {/* <div> */}
                 <span>ЗА НЕДЕЛЮ</span>
                 <h6 className="totalSum">{data && data.totalSumWeek} сом</h6>
-              </div>
+              {/* </div> */}
               {/* {this.percent(data.totalSumLastWeek, data.totalSumWeek)} */}
             </div>
           </div>

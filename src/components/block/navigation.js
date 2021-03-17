@@ -19,7 +19,6 @@ class Navigation extends Component {
     return (
       <nav className="navigationComponent">
         <Link to={"/sales"}>
-          {" "}
           <img src={neobisLogo} className="neobis_logo" alt="neobisLogo" />
         </Link>
         <Link to={"/traffic"} className="categories">

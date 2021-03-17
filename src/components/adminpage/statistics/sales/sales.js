@@ -8,7 +8,7 @@ import TopMeals from "../blocks/topMeals";
 import TopWaiter from "../blocks/topWaiter";
 import LastFinishedOrders from "../blocks/lastOrders";
 import LineCharts from "./../graphics/lineCharts";
-import BarCharts from "./../graphics/barCharts.js";
+import BarCharts from "./../graphics/barcharts.js";
 import Graphics from "./../graphics/graphics";
 import DatePicker from "react-datepicker";
 // import Time from "./../../calendar/time";
@@ -24,14 +24,14 @@ class Sales extends Component {
       data: [],
       startDate: new Date("2019/02/01"),
       endDate: new Date("2019/02/10"),
-      selectRevenue: "day"
+      selectRevenue: "day",
     };
   }
   async componentDidMount() {
     this._isMounted = true;
     if (this._isMounted) {
       this.setState({ isLoading: false });
-      getData(`${API}/Statistic/totalSumsMonth`).then(data => {
+      getData(`${API}/Statistic/totalSumsMonth`).then((data) => {
         this.setState({ data });
       });
     }
@@ -95,27 +95,6 @@ class Sales extends Component {
                       По месяцам
                     </span>
                   </div>
-                  {/* <div className="form-group">
-                    <DatePicker
-                      selected={startDate}
-                      onChange={date => this.setState({ startDate: date })}
-                      locale="ru"
-                      selectsStart
-                      className="form-control"
-                      startDate={startDate}
-                      endDate={endDate}
-                    />
-                    <DatePicker
-                      className="form-control"
-                      selected={endDate}
-                      onChange={date => this.setState({ endDate: date })}
-                      selectsEnd
-                      locale="ru"
-                      startDate={startDate}
-                      endDate={endDate}
-                      minDate={startDate}
-                    />
-                  </div> */}
                 </div>
 
                 {this.state.selectRevenue === "day" ? (
@@ -141,7 +120,7 @@ class Sales extends Component {
                       "Сентябрь",
                       "Октябрь",
                       "Ноябрь",
-                      "Декабрь"
+                      "Декабрь",
                     ]}
                     name="Выручка по месяцам"
                     type="line"
@@ -154,10 +133,10 @@ class Sales extends Component {
                       254434,
                       253523,
                       253921,
-                      255453,
-                      254023,
-                      253535,
-                      254321
+                      5453,
+                      0,
+                      0,
+                      0,
                     ]}
                   />
                 ) : null}

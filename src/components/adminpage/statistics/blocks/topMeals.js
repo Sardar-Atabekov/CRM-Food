@@ -9,12 +9,12 @@ class TopMeals extends Component {
     this.state = {
       bar: [],
       kitchen: [],
-      graphics: false
+      graphics: false,
     };
   }
 
   async componentDidMount() {
-    getData(`${API}/Statistic/barSums`).then(body => {
+    getData(`${API}/Statistic/barSums`).then((body) => {
       this.setState({ bar: body });
     });
     // getData(`${API}/Statistic/kitchenSums`).then(body => {
@@ -41,11 +41,11 @@ class TopMeals extends Component {
 
     if (data) {
       sum = [
-        ...data.map((item, index) => (index < 11 ? item.sum : false))
-      ].filter(a => a);
+        ...data.map((item, index) => (index < 11 ? item.sum : false)),
+      ].filter((a) => a);
       names = [
-        ...data.map((item, index) => (index < 11 ? item.name : false))
-      ].filter(a => a);
+        ...data.map((item, index) => (index < 11 ? item.name : false)),
+      ].filter((a) => a);
     }
 
     return (
@@ -65,6 +65,15 @@ class TopMeals extends Component {
                 false
               )
             )}
+          <li>
+            <span>Name</span> <span className="sums">1230 сом</span>
+          </li>
+          <li>
+            <span>Name</span> <span className="sums">2230 сом</span>
+          </li>
+          <li>
+            <span>Name</span> <span className="sums">3230 сом</span>
+          </li>
         </ul>
         <div className="totalSelect">
           <select className="select">

@@ -17,7 +17,7 @@ class KitchenPage extends Component {
     super(props);
     this.state = {
       data: [],
-      isLoading: false
+      isLoading: true
     };
   }
 

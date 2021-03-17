@@ -17,14 +17,14 @@ class Sales extends Component {
       bar: [],
       kitchen: [],
       kitchenLoading: false,
-      barLoading: false
+      barLoading: false,
     };
   }
   async componentDidMount() {
-    getData(`${API}/top/topMeals`).then(body => {
+    getData(`${API}/top/topMeals`).then((body) => {
       this.setState({ kitchen: body, kitchenLoading: true });
     });
-    getData(`${API}/top/topDrinks`).then(body => {
+    getData(`${API}/top/topDrinks`).then((body) => {
       this.setState({ bar: body, barLoading: true });
     });
   }
@@ -36,11 +36,11 @@ class Sales extends Component {
     if (data) {
       data = data.sort((a, b) => b.count - a.count);
       sum = [
-        ...data.map((item, index) => (index < 15 ? item.count : false))
-      ].filter(a => a);
+        ...data.map((item, index) => (index < 15 ? item.count : false)),
+      ].filter((a) => a);
       names = [
-        ...data.map((item, index) => (index < 15 ? item.name : false))
-      ].filter(a => a);
+        ...data.map((item, index) => (index < 15 ? item.name : false)),
+      ].filter((a) => a);
     }
     return (
       <div className="wrapper">
@@ -51,20 +51,20 @@ class Sales extends Component {
           <header className="main-search">
             <Search />
           </header>
-          {this.state.barLoading && this.state.kitchenLoading ? (
-            <main className="orderContent">
-              <NamePage name="Обзор заказов" />
-              <Total />
-              <div className="statistics">
-                <GraphicArt data={sum} names={names} name="Топ блюд" />
-                <TopMeals name="Топ блюд" />
-                <TopWaiter name="Топ официантов" />
-                <LastOrders name="Последние заказы" url="lastOrders" />
-              </div>
-            </main>
-          ) : (
+          {/* {this.state.barLoading && this.state.kitchenLoading ? ( */}
+          <main className="orderContent">
+            <NamePage name="Обзор заказов" />
+            <Total />
+            <div className="statistics">
+              <GraphicArt data={sum} names={names} name="Топ блюд" />
+              <TopMeals name="Топ блюд" />
+              <TopWaiter name="Топ официантов" />
+              <LastOrders name="Последние заказы" url="lastOrders" />
+            </div>
+          </main>
+          {/* ) : (
             <Loading />
-          )}
+          )} */}
 
           <footer className="main-footer">
             <Footer />

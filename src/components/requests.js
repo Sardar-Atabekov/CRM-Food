@@ -1,4 +1,4 @@
-let API = "http://crmfood.neobis.kg:8080/api";
+let API = "http://localhost:51349/api";
 
 // if (navigator.serviceWorker) {
 //   navigator.serviceWorker.register("/offline.html");
@@ -12,10 +12,10 @@ if (localStorage.getItem("token")) {
   // if (localStorage.getItem("NotFound")) {
   //   localStorage.removeItem('NotFound');
   // } else
-  if (window.location.pathname !== "/") {
-    setTimeout(() => (window.location.href = "/"), 2000);
-    // localStorage.removeItem('NotFound');
-  }
+  // if (window.location.pathname !== "/") {
+  //   setTimeout(() => (window.location.href = "/"), 2000);
+  //   // localStorage.removeItem('NotFound');
+  // }
 }
 
 async function getData(url) {

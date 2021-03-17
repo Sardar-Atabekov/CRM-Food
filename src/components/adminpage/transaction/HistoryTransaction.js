@@ -16,7 +16,7 @@ const HistoryTransaction = () => {
   const [page, setPage] = useState(1);
   const [data, setData] = useState({});
   const [count, setCount] = useState(10);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [modalStatus, setModalStatus] = useState(false);
   const [modalOrder, setModalOrder] = useState({});
   const [startDate, setStartDate] = useState(subMonths(new Date(), 1));
@@ -27,14 +27,14 @@ const HistoryTransaction = () => {
       `${API}/Statistic/transactionHistory?&pageNumber=${page}&pageSize=${count}&startDate=${TimeFormat(
         startDate
       )}&endDate=${TimeFormat(endDate)}`
-    ).then(data => {
+    ).then((data) => {
       console.log(data);
       setLoading(false);
       setData(data);
     });
   }, [count, page, startDate, endDate]);
 
-  const checkStatus = status => {
+  const checkStatus = (status) => {
     let res =
       status === 0
         ? "Активный"
@@ -88,7 +88,7 @@ const HistoryTransaction = () => {
                   <label htmlFor="show">Показать по</label>
                   <select
                     id="show"
-                    onChange={e => {
+                    onChange={(e) => {
                       setLoading(true);
                       setPage(1);
                       setCount(e.target.value);
@@ -105,7 +105,7 @@ const HistoryTransaction = () => {
               <div className="calendar">
                 <DatePicker
                   selected={startDate}
-                  onChange={date => setStartDate(date)}
+                  onChange={(date) => setStartDate(date)}
                   locale="ru"
                   selectsStart
                   className="form-control"
@@ -117,7 +117,7 @@ const HistoryTransaction = () => {
                 <DatePicker
                   className="form-control"
                   selected={endDate}
-                  onChange={date => setEndDate(date)}
+                  onChange={(date) => setEndDate(date)}
                   selectsEnd
                   locale="ru"
                   startDate={startDate}
@@ -139,7 +139,7 @@ const HistoryTransaction = () => {
                   <th>Итого</th>
                 </tr>
                 {data.items &&
-                  data.items.map(order => (
+                  data.items.map((order) => (
                     <tr key={order.id}>
                       <td>{order.id}</td>
                       <td>
@@ -161,7 +161,7 @@ const HistoryTransaction = () => {
                               setModalStatus(true);
                               setModalOrder({
                                 id: order.id,
-                                meals: order.mealOrders
+                                meals: order.mealOrders,
                               });
                             }}
                             className="moreMeals"
