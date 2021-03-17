@@ -98,7 +98,8 @@ class Sales extends Component {
                 </div>
 
                 {this.state.selectRevenue === "day" ? (
-                  <BarCharts />
+                  // <BarCharts />
+                  null
                 ) : this.state.selectRevenue === "week" ? ( // <BarCharts />
                   <LineCharts
                     // data={sum} names={names}
